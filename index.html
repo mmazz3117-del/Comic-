@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#05070b" />
+  <title>Comic Vault — The Character Archive</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <button class="brand" id="homeBtn" aria-label="Comic Vault home">
+        <span class="brand-mark">CV</span>
+        <span class="brand-copy">
+          <strong>COMIC VAULT</strong>
+          <small>THE CHARACTER ARCHIVE</small>
+        </span>
+      </button>
+      <button class="icon-btn" id="menuBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </header>
+
+    <main id="mainContent">
+      <section class="hero" id="hero">
+        <div class="hero-grid"></div>
+        <div class="eyebrow">✧ LIVE FROM EARTH-PRIME</div>
+        <h1>UNLOCK THE<br><span>MULTIVERSE.</span></h1>
+        <p class="hero-sub">One archive. Every identity, power, rivalry and transformation that built the worlds of DC and Marvel.</p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="exploreFeatured">EXPLORE BATMAN <span>↗</span></button>
+          <button class="btn btn-ghost" id="randomBtn">⤨ RANDOM FILE</button>
+        </div>
+
+        <div class="featured-stage">
+          <div class="featured-card">
+            <div class="featured-kicker" id="featuredKicker">FEATURED FILE // 01</div>
+            <div class="featured-name" id="featuredName">BATMAN</div>
+            <div class="featured-real" id="featuredReal">Bruce Wayne</div>
+            <div class="featured-rule"></div>
+            <div class="featured-first" id="featuredFirst">Detective Comics #27 (1939)</div>
+          </div>
+
+          <div class="character-art" id="featuredArt" aria-hidden="true">
+            <div class="art-glow"></div>
+            <div class="art-monogram">B</div>
+            <div class="art-name">BATMAN</div>
+          </div>
+        </div>
+
+        <div class="featured-selector" id="featuredSelector"></div>
+      </section>
+
+      <section class="archive-command">
+        <div class="searchbar">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="Search every character…" autocomplete="off" />
+          <span class="shortcut">⌘ K</span>
+          <button id="clearSearch" class="clear-btn" aria-label="Clear search">×</button>
+        </div>
+      </section>
+
+      <div class="archive-ticker" aria-hidden="true">
+        <div class="ticker-track">
+          <span>EARTH-PRIME</span>
+          <span class="ticker-muted">DC ARCHIVE CONNECTED</span>
+          <b>◆</b>
+          <span>EARTH-616</span>
+          <span class="ticker-muted">MARVEL ARCHIVE CONNECTED</span>
+          <b>◆</b>
+          <span>EARTH-PRIME</span>
+          <span class="ticker-muted">DC ARCHIVE CONNECTED</span>
+        </div>
+      </div>
+
+      <section class="archive" id="archive">
+        <div class="archive-intro">
+          <div class="section-kicker">BROWSE THE ARCHIVE</div>
+          <h2>CHARACTER INDEX</h2>
+          <p>Every file follows the same deep, visual dossier format. Browse by universe, search the archive, or jump directly by letter.</p>
+          <div class="count" id="resultCount">0 FILES</div>
+        </div>
+
+        <div class="publisher-tabs" role="tablist" aria-label="Filter by publisher">
+          <button class="pub-tab active" data-publisher="ALL">ALL</button>
+          <button class="pub-tab" data-publisher="DC">DC</button>
+          <button class="pub-tab" data-publisher="MARVEL">MARVEL</button>
+        </div>
+
+        <div class="alphabet" id="alphabet"></div>
+
+        <div class="archive-list" id="archiveList"></div>
+      </section>
+    </main>
+
+    <div class="profile-sheet" id="profileSheet" aria-hidden="true">
+      <div class="sheet-backdrop" data-close-sheet></div>
+      <article class="sheet-panel" role="dialog" aria-modal="true" aria-labelledby="profileName">
+        <div class="sheet-handle"></div>
+        <button class="sheet-close" data-close-sheet aria-label="Close profile">×</button>
+
+        <div class="profile-hero">
+          <div class="profile-publisher" id="profilePublisher">DC</div>
+          <div class="profile-visual" id="profileVisual">
+            <div class="profile-monogram">B</div>
+          </div>
+          <div class="profile-title">
+            <div class="profile-status" id="profileStatus">CLASSIFIED DOSSIER</div>
+            <h2 id="profileName">BATMAN</h2>
+            <p id="profileRealName">Bruce Wayne</p>
+          </div>
+        </div>
+
+        <div class="profile-facts" id="profileFacts"></div>
+
+        <nav class="profile-tabs" id="profileTabs" aria-label="Character profile sections">
+          <button class="profile-tab active" data-tab="overview">OVERVIEW</button>
+          <button class="profile-tab" data-tab="history">HISTORY</button>
+          <button class="profile-tab" data-tab="powers">POWERS</button>
+          <button class="profile-tab" data-tab="allies">ALLIES</button>
+          <button class="profile-tab" data-tab="enemies">ENEMIES</button>
+          <button class="profile-tab" data-tab="costumes">COSTUMES</button>
+          <button class="profile-tab" data-tab="comics">COMICS</button>
+        </nav>
+
+        <div class="profile-body" id="profileBody"></div>
+      </article>
+    </div>
+
+    <aside class="side-menu" id="sideMenu" aria-hidden="true">
+      <div class="side-backdrop" data-close-menu></div>
+      <div class="side-panel">
+        <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
+        <div class="brand menu-brand">
+          <span class="brand-mark">CV</span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><small>THE CHARACTER ARCHIVE</small></span>
+        </div>
+        <div class="menu-section">
+          <button data-jump="hero">HOME</button>
+          <button data-jump="archive">CHARACTER ARCHIVE</button>
+          <button id="menuRandom">RANDOM FILE</button>
+        </div>
+        <div class="menu-note">
+          <strong>VAULT STATUS</strong>
+          <p>Standalone rebuild. Character records are stored in <code>data.js</code> so the archive can grow without rewriting the app.</p>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
