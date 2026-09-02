@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="6.4" />
+  <meta name="comic-vault-build" content="6.5" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -13,11 +13,11 @@
   <meta name="apple-mobile-web-app-title" content="Comic Vault" />
   <meta name="format-detection" content="telephone=no" />
   <title>Comic Vault — The Character Archive</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=6.4" />
-  <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=6.4" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=6.4" />
-  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=6.4" />
-  <!-- Comic Vault v6.4: iPhone Safe-Fit Artwork + Home Screen App Icon -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=6.5" />
+  <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=6.5" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=6.5" />
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=6.5" />
+  <!-- Comic Vault v6.5: Larger Dossier Artwork + Tap-to-Enlarge Art Viewer -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1174,7 +1174,7 @@ button{
 }
 
 
-/* Comic Vault v6.4 visible build marker */
+/* Comic Vault v6.5 visible build marker */
 .brand-meta{
   display:flex;
   align-items:center;
@@ -1206,7 +1206,7 @@ button{
 }
 
 
-/* Comic Vault v6.4 — aliases + family dossier expansion */
+/* Comic Vault v6.5 — aliases + family dossier expansion */
 .identity-connections{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1296,7 +1296,7 @@ button{
 }
 
 
-/* Comic Vault v6.4 — 200 character archive */
+/* Comic Vault v6.5 — 200 character archive */
 .archive-total-badge{
   display:inline-flex;
   align-items:center;
@@ -1317,7 +1317,7 @@ button{
 }
 
 
-/* Comic Vault v6.4 — robust dossier overview */
+/* Comic Vault v6.5 — robust dossier overview */
 .dossier-number b{
   color:#7abaff;
   font-weight:900;
@@ -1485,7 +1485,7 @@ button{
 }
 
 
-/* Comic Vault v6.4 — installed artwork count */
+/* Comic Vault v6.5 — installed artwork count */
 .art-count-badge{
   display:inline-flex;align-items:center;min-height:20px;padding:0 7px;
   border:1px solid #315881;background:#0a131c;color:#68acf1;
@@ -1493,7 +1493,7 @@ button{
 }
 @media(max-width:430px){.art-count-badge{min-height:18px;padding:0 6px;font-size:6px}}
 
-/* Comic Vault v6.4 — iPhone featured artwork + linked family */
+/* Comic Vault v6.5 — iPhone featured artwork + linked family */
 .family-row{
   width:100%;
   appearance:none;
@@ -1577,7 +1577,7 @@ button{
 }
 
 
-/* Comic Vault v6.4 — safe-fit character artwork */
+/* Comic Vault v6.5 — safe-fit character artwork */
 @media (max-width:600px){
   /* Featured-file artwork: preserve the whole silhouette. */
   .character-art{
@@ -1638,6 +1638,210 @@ button{
   }
 }
 
+
+/* Comic Vault v6.5 — larger dossier artwork + full-view viewer */
+.profile-art-trigger{
+  cursor:zoom-in;
+  outline:none;
+}
+.profile-art-trigger:focus-visible{
+  box-shadow:inset 0 0 0 2px #4aa5ff;
+}
+.profile-art-hint{
+  position:absolute;
+  right:16px;
+  bottom:10px;
+  z-index:4;
+  padding:6px 8px;
+  border:1px solid rgba(91,169,245,.38);
+  background:rgba(5,10,16,.76);
+  color:#6bb5ff;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.11em;
+  pointer-events:none;
+  opacity:.82;
+}
+
+@media (max-width:600px){
+  .profile-hero{
+    min-height:390px;
+  }
+  .profile-visual{
+    width:70%;
+    right:-2%;
+  }
+  .profile-character-image{
+    inset:6px 0 2px 0 !important;
+  }
+  .profile-character-image img{
+    object-fit:contain !important;
+    object-position:right bottom !important;
+    transform:scale(1) !important;
+    transform-origin:right bottom !important;
+  }
+}
+@media (max-width:390px){
+  .profile-hero{
+    min-height:380px;
+  }
+  .profile-visual{
+    width:69%;
+  }
+}
+
+/* Full-screen artwork viewer */
+.art-viewer{
+  position:fixed;
+  inset:0;
+  z-index:220;
+  visibility:hidden;
+  pointer-events:none;
+}
+.art-viewer.open{
+  visibility:visible;
+  pointer-events:auto;
+}
+.art-viewer-backdrop{
+  position:absolute;
+  inset:0;
+  background:rgba(2,5,9,.9);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.art-viewer-panel{
+  position:absolute;
+  inset:max(12px,env(safe-area-inset-top)) 10px max(12px,env(safe-area-inset-bottom));
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+  border:1px solid #273545;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 50% 35%,rgba(51,147,245,.12),transparent 35%),
+    linear-gradient(180deg,#0b121b,#05080d);
+  box-shadow:0 24px 80px rgba(0,0,0,.72);
+  transform:scale(.96);
+  opacity:0;
+  transition:transform .2s ease,opacity .2s ease;
+}
+.art-viewer.open .art-viewer-panel{
+  transform:scale(1);
+  opacity:1;
+}
+.art-viewer-close{
+  position:absolute;
+  top:14px;
+  right:14px;
+  z-index:8;
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  border:1px solid #344254;
+  background:#111923;
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+}
+.art-viewer-meta{
+  position:relative;
+  z-index:5;
+  padding:23px 74px 8px 22px;
+  display:flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.art-viewer-meta span{
+  border:1px solid #37618b;
+  color:#6db7ff;
+  padding:6px 9px;
+  font-size:9px;
+  font-weight:900;
+  letter-spacing:.16em;
+}
+.art-viewer-meta strong{
+  margin-top:12px;
+  font-family:"Barlow Condensed",sans-serif;
+  color:#f4f7fb;
+  font-size:34px;
+  line-height:.95;
+}
+.art-viewer-meta small{
+  margin-top:7px;
+  color:#647489;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.14em;
+}
+.art-viewer-stage{
+  position:relative;
+  flex:1 1 auto;
+  min-height:0;
+  overflow:hidden;
+  display:grid;
+  place-items:center;
+  margin:4px 12px 0;
+}
+.art-viewer-stage::before{
+  content:"";
+  position:absolute;
+  width:min(78vw,520px);
+  aspect-ratio:1;
+  border:1px solid rgba(60,158,255,.2);
+  border-radius:50%;
+  box-shadow:
+    0 0 0 70px rgba(43,127,211,.025),
+    0 0 80px rgba(40,139,240,.08);
+}
+.art-viewer-image{
+  position:absolute;
+  inset:8px;
+  z-index:2;
+}
+.art-viewer-image img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center center;
+  filter:drop-shadow(0 28px 34px rgba(0,0,0,.7));
+}
+.art-viewer-image:not(.missing-art) ~ .art-viewer-monogram{
+  opacity:.035;
+}
+.art-viewer-image.missing-art ~ .art-viewer-monogram{
+  opacity:1;
+}
+.art-viewer-monogram{
+  position:relative;
+  z-index:0;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:min(60vw,330px);
+  font-weight:900;
+  color:#101b27;
+  -webkit-text-stroke:1px rgba(66,160,255,.22);
+}
+.art-viewer-foot{
+  flex:0 0 auto;
+  padding:11px 18px 16px;
+  color:#59687a;
+  text-align:center;
+  font-size:8px;
+  font-weight:800;
+  letter-spacing:.08em;
+}
+
+@media (min-width:700px){
+  .art-viewer-panel{
+    left:50%;
+    right:auto;
+    width:min(680px,92vw);
+    transform:translateX(-50%) scale(.96);
+  }
+  .art-viewer.open .art-viewer-panel{
+    transform:translateX(-50%) scale(1);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1647,7 +1851,7 @@ button{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.4</em><em class="archive-total-badge">200 FILES</em><em class="art-count-badge">53 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.5</em><em class="archive-total-badge">200 FILES</em><em class="art-count-badge">53 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -1736,8 +1940,12 @@ button{
 
         <div class="profile-hero">
           <div class="profile-publisher" id="profilePublisher">DC</div>
-          <div class="profile-visual" id="profileVisual">
+          <div class="profile-visual profile-art-trigger" id="profileVisual"
+               role="button" tabindex="0"
+               aria-label="Enlarge character artwork"
+               title="Tap artwork to enlarge">
             <div class="profile-monogram">B</div>
+            <span class="profile-art-hint">TAP ART TO ENLARGE ↗</span>
           </div>
           <div class="profile-title">
             <div class="profile-status" id="profileStatus">CLASSIFIED DOSSIER</div>
@@ -1764,13 +1972,28 @@ button{
       </article>
     </div>
 
+
+    <div class="art-viewer" id="artViewer" aria-hidden="true">
+      <div class="art-viewer-backdrop" data-close-art-viewer></div>
+      <section class="art-viewer-panel" role="dialog" aria-modal="true" aria-labelledby="artViewerName">
+        <button class="art-viewer-close" type="button" data-close-art-viewer aria-label="Close artwork viewer">×</button>
+        <div class="art-viewer-meta">
+          <span id="artViewerPublisher">DC</span>
+          <strong id="artViewerName">BATMAN</strong>
+          <small>ARCHIVE ARTWORK // FULL VIEW</small>
+        </div>
+        <div class="art-viewer-stage" id="artViewerStage"></div>
+        <div class="art-viewer-foot">Tap × or the background to return to the dossier.</div>
+      </section>
+    </div>
+
     <aside class="side-menu" id="sideMenu" aria-hidden="true">
       <div class="side-backdrop" data-close-menu></div>
       <div class="side-panel">
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.4</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.5</em></span></span>
         </div>
         <div class="menu-section">
           <button data-jump="hero">HOME</button>
@@ -30216,6 +30439,7 @@ window.COMIC_VAULT_CHARACTERS = [
   const profileBody = $("profileBody");
   const profileTabs = $("profileTabs");
   const sideMenu = $("sideMenu");
+  const artViewer = $("artViewer");
 
   const esc = (s="") => String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 
@@ -30354,7 +30578,7 @@ window.COMIC_VAULT_CHARACTERS = [
     $("profilePublisher").textContent = c.publisher;
     $("profileName").textContent = c.name.toUpperCase();
     $("profileRealName").textContent = c.realName;
-    $("profileVisual").innerHTML = `${artMarkup(c,"profile-character-image")}<div class="profile-monogram">${esc(c.name.charAt(0))}</div>`;
+    $("profileVisual").innerHTML = `${artMarkup(c,"profile-character-image")}<div class="profile-monogram">${esc(c.name.charAt(0))}</div><span class="profile-art-hint">TAP ART TO ENLARGE ↗</span>`;
     updateFavoriteButton();
     $("profileFacts").innerHTML = [
       ["FIRST APPEARANCE",c.firstAppearance],["ALIGNMENT",c.alignment],["BASE",c.base],["TEAMS",c.teams.slice(0,2).join(", ") || "—"]
@@ -30364,6 +30588,24 @@ window.COMIC_VAULT_CHARACTERS = [
     document.body.style.overflow="hidden";
     setProfileTab(tab);
     setTimeout(()=>document.querySelector(".sheet-panel").scrollTop=0,10);
+  }
+
+
+  function openArtViewer(){
+    if(!activeCharacter || !artViewer) return;
+    $("artViewerPublisher").textContent = activeCharacter.publisher;
+    $("artViewerName").textContent = activeCharacter.name.toUpperCase();
+    $("artViewerStage").innerHTML = `
+      ${artMarkup(activeCharacter,"art-viewer-image")}
+      <div class="art-viewer-monogram">${esc(activeCharacter.name.charAt(0))}</div>`;
+    artViewer.classList.add("open");
+    artViewer.setAttribute("aria-hidden","false");
+  }
+
+  function closeArtViewer(){
+    if(!artViewer) return;
+    artViewer.classList.remove("open");
+    artViewer.setAttribute("aria-hidden","true");
   }
 
   function updateFavoriteButton(){
@@ -30438,7 +30680,7 @@ window.COMIC_VAULT_CHARACTERS = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v6.4</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v6.5</b></span>
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
         </section>
@@ -30591,6 +30833,9 @@ window.COMIC_VAULT_CHARACTERS = [
   }
 
   document.addEventListener("click",e=>{
+    if(e.target.closest("[data-close-art-viewer]")){ closeArtViewer(); return; }
+    const artTrigger = e.target.closest("#profileVisual");
+    if(artTrigger && profileSheet.classList.contains("open")){ openArtViewer(); return; }
     const card = e.target.closest("[data-character]"); if(card){ openProfile(card.dataset.character); return; }
     const rel = e.target.closest("[data-related]"); if(rel){ openProfile(rel.dataset.related); return; }
     const overviewJump = e.target.closest("[data-overview-tab]");
@@ -30631,6 +30876,19 @@ window.COMIC_VAULT_CHARACTERS = [
 
   profileTabs.addEventListener("click",e=>{
     const b=e.target.closest("[data-tab]"); if(b) setProfileTab(b.dataset.tab);
+  });
+
+  $("profileVisual").addEventListener("keydown",e=>{
+    if(e.key==="Enter" || e.key===" "){
+      e.preventDefault();
+      openArtViewer();
+    }
+  });
+
+  document.addEventListener("keydown",e=>{
+    if(e.key==="Escape" && artViewer?.classList.contains("open")){
+      closeArtViewer();
+    }
   });
 
   $("exploreFeatured").addEventListener("click",e=>openProfile(e.currentTarget.dataset.character || "Batman"));
