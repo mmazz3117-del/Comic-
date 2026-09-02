@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="6.12" />
+  <meta name="comic-vault-build" content="6.13" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -13,11 +13,11 @@
   <meta name="apple-mobile-web-app-title" content="Comic Vault" />
   <meta name="format-detection" content="telephone=no" />
   <title>Comic Vault — The Character Archive</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=6.12" />
-  <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=6.12" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=6.12" />
-  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=6.12" />
-  <!-- Comic Vault v6.12: Deep Audit A1 — 16 A Profiles + Etrigan Pilot -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=6.13" />
+  <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=6.13" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=6.13" />
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=6.13" />
+  <!-- Comic Vault v6.13: Hierarchical Hero/Villain Subcategories -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1174,7 +1174,7 @@ button{
 }
 
 
-/* Comic Vault v6.12 visible build marker */
+/* Comic Vault v6.13 visible build marker */
 .brand-meta{
   display:flex;
   align-items:center;
@@ -1206,7 +1206,7 @@ button{
 }
 
 
-/* Comic Vault v6.12 — aliases + family dossier expansion */
+/* Comic Vault v6.13 — aliases + family dossier expansion */
 .identity-connections{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1296,7 +1296,7 @@ button{
 }
 
 
-/* Comic Vault v6.12 — 200 character archive */
+/* Comic Vault v6.13 — 200 character archive */
 .archive-total-badge{
   display:inline-flex;
   align-items:center;
@@ -1317,7 +1317,7 @@ button{
 }
 
 
-/* Comic Vault v6.12 — robust dossier overview */
+/* Comic Vault v6.13 — robust dossier overview */
 .dossier-number b{
   color:#7abaff;
   font-weight:900;
@@ -1485,7 +1485,7 @@ button{
 }
 
 
-/* Comic Vault v6.12 — installed artwork count */
+/* Comic Vault v6.13 — installed artwork count */
 .art-count-badge{
   display:inline-flex;align-items:center;min-height:20px;padding:0 7px;
   border:1px solid #315881;background:#0a131c;color:#68acf1;
@@ -1493,7 +1493,7 @@ button{
 }
 @media(max-width:430px){.art-count-badge{min-height:18px;padding:0 6px;font-size:6px}}
 
-/* Comic Vault v6.12 — iPhone featured artwork + linked family */
+/* Comic Vault v6.13 — iPhone featured artwork + linked family */
 .family-row{
   width:100%;
   appearance:none;
@@ -1577,7 +1577,7 @@ button{
 }
 
 
-/* Comic Vault v6.12 — safe-fit character artwork */
+/* Comic Vault v6.13 — safe-fit character artwork */
 @media (max-width:600px){
   /* Featured-file artwork: preserve the whole silhouette. */
   .character-art{
@@ -1639,7 +1639,7 @@ button{
 }
 
 
-/* Comic Vault v6.12 — larger dossier artwork + full-view viewer */
+/* Comic Vault v6.13 — larger dossier artwork + full-view viewer */
 .profile-art-trigger{
   cursor:zoom-in;
   outline:none;
@@ -1844,7 +1844,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v6.12 — HOMEPAGE GATEWAY REVAMP
+   COMIC VAULT v6.13 — HOMEPAGE GATEWAY REVAMP
    Original UI artwork only: gradients, rings, grid and glow.
    ========================================================== */
 
@@ -2291,7 +2291,7 @@ button{
 }
 
 
-/* Comic Vault v6.12 — portal monogram + clearer encyclopedia identity */
+/* Comic Vault v6.13 — portal monogram + clearer encyclopedia identity */
 .gateway-core{
   overflow:visible;
 }
@@ -2335,7 +2335,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v6.12 — APP PAGES + LARGER ANIMATED GATEWAY
+   COMIC VAULT v6.13 — APP PAGES + LARGER ANIMATED GATEWAY
    ========================================================== */
 
 .app-page{display:none !important}
@@ -2591,7 +2591,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v6.12 — iPHONE ORBIT ANIMATION FIX
+   COMIC VAULT v6.13 — iPHONE ORBIT ANIMATION FIX
    ========================================================== */
 
 .gateway-orbit{
@@ -2626,7 +2626,7 @@ button{
 }
 
 /*
-  v6.12 no longer silently disables the portal because of the system
+  v6.13 no longer silently disables the portal because of the system
   reduced-motion preference. The app instead uses slower motion below.
 */
 @media (prefers-reduced-motion:reduce){
@@ -2646,7 +2646,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v6.12 — FIRST-SCREEN MOBILE ENTRY
+   COMIC VAULT v6.13 — FIRST-SCREEN MOBILE ENTRY
    Goal: headline + identity + portal + DC/Marvel on one phone screen.
    ========================================================== */
 
@@ -2799,7 +2799,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v6.12 — ENCYCLOPEDIA NAVIGATION
+   COMIC VAULT v6.13 — ENCYCLOPEDIA NAVIGATION
    Favorites + collections + Groups & Leagues
    ========================================================== */
 
@@ -3029,7 +3029,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v6.12 — DEEP AUDIT UI
+   COMIC VAULT v6.13 — DEEP AUDIT UI
    ========================================================== */
 
 .audit-badge{
@@ -3129,6 +3129,111 @@ button{
   }
 }
 
+
+/* ==========================================================
+   COMIC VAULT v6.13 — HIERARCHICAL COLLECTIONS
+   Heroes/Villains > origin/type
+   ========================================================== */
+
+.menu-tree{
+  border-bottom:1px solid #202b36;
+}
+.menu-tree summary{
+  min-height:64px;
+  position:relative;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:0 8px;
+  cursor:pointer;
+  list-style:none;
+  color:#eff5fc;
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:20px;
+  font-weight:900;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+.menu-tree summary::-webkit-details-marker{
+  display:none;
+}
+.menu-tree summary::before{
+  content:"›";
+  width:14px;
+  color:#459ff5;
+  font-family:Arial,sans-serif;
+  font-size:21px;
+  font-weight:400;
+  transform:rotate(0deg);
+  transition:transform .18s ease;
+}
+.menu-tree[open] summary::before{
+  transform:rotate(90deg);
+}
+.menu-tree summary span{
+  margin-right:auto;
+}
+.menu-tree summary em{
+  flex:0 0 auto;
+  min-width:30px;
+  padding:4px 6px;
+  border:1px solid #263a4d;
+  color:#60778e;
+  font-family:"Inter",sans-serif;
+  font-size:8px;
+  font-style:normal;
+  font-weight:900;
+  letter-spacing:.08em;
+  text-align:center;
+}
+
+.menu-tree-body{
+  padding:2px 0 10px 22px;
+  border-top:1px solid rgba(44,62,79,.42);
+  background:rgba(8,15,23,.65);
+}
+.menu-tree-body button{
+  min-height:43px !important;
+  padding:0 8px 0 13px !important;
+  border-bottom:0 !important;
+  border-left:1px solid #26394b !important;
+  color:#9cabbc !important;
+  font-family:"Inter",sans-serif !important;
+  font-size:9px !important;
+  font-weight:800 !important;
+  letter-spacing:.09em !important;
+}
+.menu-tree-body button + button{
+  border-top:1px solid rgba(39,54,68,.45) !important;
+}
+.menu-tree-body button span{
+  margin-right:auto;
+}
+.menu-tree-body button em{
+  min-width:27px !important;
+  padding:3px 5px !important;
+  font-size:7px !important;
+}
+.menu-tree-body button:active,
+.menu-tree-body button:hover{
+  color:#6bb6fb !important;
+  background:#0a1825 !important;
+  border-left-color:#479ff2 !important;
+}
+
+@media(max-width:600px){
+  .menu-tree summary{
+    min-height:59px;
+    font-size:19px;
+  }
+  .menu-tree-body{
+    padding-left:18px;
+  }
+  .menu-tree-body button{
+    min-height:42px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3138,7 +3243,7 @@ button{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.12</em><em class="archive-total-badge">200 FILES</em><em class="art-count-badge">143 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.13</em><em class="archive-total-badge">200 FILES</em><em class="art-count-badge">143 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -3368,7 +3473,7 @@ button{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.12</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.13</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -3377,9 +3482,33 @@ button{
           <button data-page="spotlight"><span>FEATURED FILE</span></button>
 
           <div class="menu-label">BROWSE COLLECTIONS</div>
-          <button class="menu-collection" data-collection="heroes"><span>HEROES</span><em id="menuHeroCount">0</em></button>
-          <button class="menu-collection" data-collection="villains"><span>VILLAINS</span><em id="menuVillainCount">0</em></button>
-          <button class="menu-collection" data-collection="supernatural"><span>SUPERNATURAL</span><em id="menuSupernaturalCount">0</em></button>
+
+          <details class="menu-tree" id="heroesTree">
+            <summary><span>HEROES</span><em id="menuHeroCount">0</em></summary>
+            <div class="menu-tree-body">
+              <button data-collection="heroes" data-origin="all"><span>ALL HEROES</span><em id="heroAllCount">0</em></button>
+              <button data-collection="heroes" data-origin="human"><span>HUMAN</span><em id="heroHumanCount">0</em></button>
+              <button data-collection="heroes" data-origin="enhanced"><span>ENHANCED / METAHUMAN</span><em id="heroEnhancedCount">0</em></button>
+              <button data-collection="heroes" data-origin="mutant"><span>MUTANT</span><em id="heroMutantCount">0</em></button>
+              <button data-collection="heroes" data-origin="alien"><span>ALIEN / COSMIC</span><em id="heroAlienCount">0</em></button>
+              <button data-collection="heroes" data-origin="supernatural"><span>SUPERNATURAL / MYSTIC</span><em id="heroSupernaturalCount">0</em></button>
+              <button data-collection="heroes" data-origin="artificial"><span>ARTIFICIAL / CONSTRUCT</span><em id="heroArtificialCount">0</em></button>
+            </div>
+          </details>
+
+          <details class="menu-tree" id="villainsTree">
+            <summary><span>VILLAINS</span><em id="menuVillainCount">0</em></summary>
+            <div class="menu-tree-body">
+              <button data-collection="villains" data-origin="all"><span>ALL VILLAINS</span><em id="villainAllCount">0</em></button>
+              <button data-collection="villains" data-origin="human"><span>HUMAN</span><em id="villainHumanCount">0</em></button>
+              <button data-collection="villains" data-origin="enhanced"><span>ENHANCED / METAHUMAN</span><em id="villainEnhancedCount">0</em></button>
+              <button data-collection="villains" data-origin="mutant"><span>MUTANT</span><em id="villainMutantCount">0</em></button>
+              <button data-collection="villains" data-origin="alien"><span>ALIEN / COSMIC</span><em id="villainAlienCount">0</em></button>
+              <button data-collection="villains" data-origin="supernatural"><span>SUPERNATURAL / MYSTIC</span><em id="villainSupernaturalCount">0</em></button>
+              <button data-collection="villains" data-origin="artificial"><span>ARTIFICIAL / CONSTRUCT</span><em id="villainArtificialCount">0</em></button>
+            </div>
+          </details>
+
           <button class="menu-collection" data-page="groups"><span>GROUPS &amp; LEAGUES</span><em id="menuGroupsCount">0</em></button>
         </div>
         <div class="menu-note">
@@ -32537,6 +32666,7 @@ window.COMIC_VAULT_CHARACTERS = [
   let currentPublisher = "ALL";
   let currentLetter = "ALL";
   let currentCollection = "all";
+  let currentOrigin = "all";
   let currentTeam = null;
   let activeCharacter = null;
   let activeTab = "overview";
@@ -32670,7 +32800,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "Hawkgirl","Hawkman","John Constantine","Juggernaut","Loki","Magik",
     "Man-Bat","Mister Miracle","Moon Knight","Raven","Ra's al Ghul",
     "Scarlet Witch","Shazam","Swamp Thing","Thor","Vixen","Wonder Woman",
-    "Zatanna"
+    "Zatanna","Enchantress","Dormammu","Mephisto","Hela"
   ]);
 
   function isHero(c){
@@ -32690,8 +32820,57 @@ window.COMIC_VAULT_CHARACTERS = [
       ...(c.powers || []),
       ...(c.teams || [])
     ].join(" ").toLowerCase();
-    return /\b(demon|witch|mage|magic|magical|mystic|mystical|sorcer|supernatural|god\b|goddess|asgard|jotun|spirit|soul|divine|curse|lazarus|elemental|khonshu)\b/.test(hay);
+    return /\b(demon|witch|mage|magic|magical|mystic|mystical|sorcer|supernatural|god\b|goddess|asgard|jotun|spirit|soul|divine|curse|hell\b|occult|khonshu|hellfire)\b/.test(hay);
   }
+
+  function originType(c){
+    const species = String(c.species || "").toLowerCase();
+    const powers = (c.powers || []).join(" ").toLowerCase();
+    const occupation = String(c.occupation || "").toLowerCase();
+    const hay = `${species} ${powers} ${occupation}`;
+
+    // Mystic/divine takes precedence over ordinary human biology.
+    if(isSupernatural(c)) return "supernatural";
+
+    // Artificial life, machines and constructed beings.
+    if(/\b(android|robot|synthezoid|artificial intelligence|artificial being|construct|cyborg organism|machine life|clone construct)\b/.test(hay)){
+      return "artificial";
+    }
+
+    // Marvel mutants are a useful encyclopedia category of their own.
+    if(/\bmutant\b/.test(species) && !/\bmutate\b/.test(species)){
+      return "mutant";
+    }
+
+    // Extraterrestrial / cosmic species.
+    if(/\b(kryptonian|martian|tamaranean|czarnian|thanagarian|kree|skrull|shi'ar|zen-lavian|alien|extraterrestrial|eternal|new god|celestial|cosmic being|asgardian alien)\b/.test(hay)){
+      return "alien";
+    }
+
+    // Atlanteans, metahumans, gamma mutates, enhanced humans, etc.
+    if(/\b(metahuman|mutate|enhanced human|super-soldier|atlantean|amazon|inhuman|human\/atlantean|human gamma|gamma mutate|vampire hybrid|human mutate)\b/.test(hay)){
+      return "enhanced";
+    }
+
+    // Non-powered or skill/technology based humans.
+    if(/\bhuman\b/.test(species) || !species){
+      return "human";
+    }
+
+    // Non-human terrestrial and unusual species default to enhanced/other rather
+    // than being incorrectly labeled alien.
+    return "enhanced";
+  }
+
+  const originLabels = {
+    all:"ALL",
+    human:"HUMAN",
+    enhanced:"ENHANCED / METAHUMAN",
+    mutant:"MUTANT",
+    alien:"ALIEN / COSMIC",
+    supernatural:"SUPERNATURAL / MYSTIC",
+    artificial:"ARTIFICIAL / CONSTRUCT"
+  };
 
   const ignoredGroupPatterns = [
     /^various/i,/rogues$/i,/underworld/i,/organizations?$/i,/allies$/i,
@@ -32761,10 +32940,13 @@ window.COMIC_VAULT_CHARACTERS = [
     if(currentTeam){
       return characterTeams(c).includes(currentTeam);
     }
-    if(currentCollection === "heroes") return isHero(c);
-    if(currentCollection === "villains") return isVillain(c);
-    if(currentCollection === "supernatural") return isSupernatural(c);
-    return true;
+
+    let alignmentOK = true;
+    if(currentCollection === "heroes") alignmentOK = isHero(c);
+    if(currentCollection === "villains") alignmentOK = isVillain(c);
+
+    const originOK = currentOrigin === "all" || originType(c) === currentOrigin;
+    return alignmentOK && originOK;
   }
 
   const collectionMeta = {
@@ -32782,33 +32964,42 @@ window.COMIC_VAULT_CHARACTERS = [
       kicker:"ENCYCLOPEDIA // ALIGNMENT",
       title:"VILLAINS",
       description:"Explore villains, antagonists and morally complex adversaries across both universes."
-    },
-    supernatural:{
-      kicker:"ENCYCLOPEDIA // SUPERNATURAL",
-      title:"SUPERNATURAL",
-      description:"Mystics, gods, demons, magical champions, cursed beings and other supernatural characters."
     }
   };
 
   function updateArchiveBanner(){
-    const meta = currentTeam
-      ? {
-          kicker:"ENCYCLOPEDIA // GROUP AFFILIATION",
-          title:currentTeam.toUpperCase(),
-          description:`Characters in Comic Vault connected to ${currentTeam}. Refine the group by universe, letter or search.`
-        }
-      : (collectionMeta[currentCollection] || collectionMeta.all);
+    let meta;
+
+    if(currentTeam){
+      meta = {
+        kicker:"ENCYCLOPEDIA // GROUP AFFILIATION",
+        title:currentTeam.toUpperCase(),
+        description:`Characters in Comic Vault connected to ${currentTeam}. Refine the group by universe, letter or search.`
+      };
+    }else{
+      const base = collectionMeta[currentCollection] || collectionMeta.all;
+      const nested = currentOrigin !== "all" && ["heroes","villains"].includes(currentCollection);
+      meta = nested ? {
+        kicker:`ENCYCLOPEDIA // ${currentCollection.toUpperCase()} // ${originLabels[currentOrigin]}`,
+        title:`${currentCollection.toUpperCase()} — ${originLabels[currentOrigin]}`,
+        description:`Browse ${originLabels[currentOrigin].toLowerCase()} ${currentCollection} across DC and Marvel, then refine by universe, letter or search.`
+      } : base;
+    }
 
     $("archivePageKicker").textContent = meta.kicker;
     $("archivePageTitle").textContent = meta.title;
     $("archivePageDescription").textContent = meta.description;
 
     const scope = $("archiveScope");
-    if(currentCollection === "all" && !currentTeam){
+    if(currentCollection === "all" && currentOrigin === "all" && !currentTeam){
       scope.hidden = true;
     }else{
       scope.hidden = false;
-      scope.textContent = currentTeam ? `GROUP // ${currentTeam}` : `COLLECTION // ${meta.title}`;
+      scope.textContent = currentTeam
+        ? `GROUP // ${currentTeam}`
+        : currentOrigin !== "all"
+          ? `${currentCollection.toUpperCase()} // ${originLabels[currentOrigin]}`
+          : `COLLECTION // ${meta.title}`;
     }
   }
 
@@ -32820,8 +33011,9 @@ window.COMIC_VAULT_CHARACTERS = [
     document.querySelectorAll("#alphabet button").forEach(btn=>btn.classList.toggle("active",btn.dataset.letter==="ALL"));
   }
 
-  function browseCollection(type){
-    currentCollection = ["heroes","villains","supernatural"].includes(type) ? type : "all";
+  function browseCollection(type, origin="all"){
+    currentCollection = ["heroes","villains"].includes(type) ? type : "all";
+    currentOrigin = originLabels[origin] ? origin : "all";
     currentTeam = null;
     resetArchiveControls();
     updateArchiveBanner();
@@ -32831,6 +33023,7 @@ window.COMIC_VAULT_CHARACTERS = [
 
   function browseTeam(team){
     currentCollection = "all";
+    currentOrigin = "all";
     currentTeam = team;
     resetArchiveControls();
     updateArchiveBanner();
@@ -32871,20 +33064,32 @@ window.COMIC_VAULT_CHARACTERS = [
   }
 
   function updateMenuCounts(){
-    const heroCount = characters.filter(isHero).length;
-    const villainCount = characters.filter(isVillain).length;
-    const supernaturalCount = characters.filter(isSupernatural).length;
+    const heroList = characters.filter(isHero);
+    const villainList = characters.filter(isVillain);
     const favCount = characters.filter(c=>savedFiles.has(c.name)).length;
 
-    if($("menuHeroCount")) $("menuHeroCount").textContent = heroCount;
-    if($("menuVillainCount")) $("menuVillainCount").textContent = villainCount;
-    if($("menuSupernaturalCount")) $("menuSupernaturalCount").textContent = supernaturalCount;
-    if($("menuGroupsCount")) $("menuGroupsCount").textContent = groupIndex.length;
-    if($("menuFavoritesCount")) $("menuFavoritesCount").textContent = favCount;
+    const setCount = (id, value)=>{
+      if($(id)) $(id).textContent = value;
+    };
+
+    setCount("menuHeroCount", heroList.length);
+    setCount("menuVillainCount", villainList.length);
+    setCount("heroAllCount", heroList.length);
+    setCount("villainAllCount", villainList.length);
+
+    ["human","enhanced","mutant","alien","supernatural","artificial"].forEach(type=>{
+      const suffix = type.charAt(0).toUpperCase() + type.slice(1);
+      setCount(`hero${suffix}Count`, heroList.filter(c=>originType(c)===type).length);
+      setCount(`villain${suffix}Count`, villainList.filter(c=>originType(c)===type).length);
+    });
+
+    setCount("menuGroupsCount", groupIndex.length);
+    setCount("menuFavoritesCount", favCount);
   }
 
+
   function makeFeatured(){
-    // v6.12: numbered featured carousel removed in favor of a single lower-page spotlight.
+    // v6.13: numbered featured carousel removed in favor of a single lower-page spotlight.
   }
 
   function setFeatured(name){
@@ -33115,7 +33320,7 @@ window.COMIC_VAULT_CHARACTERS = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v6.12</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v6.13</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -33355,6 +33560,7 @@ window.COMIC_VAULT_CHARACTERS = [
 
   function browsePublisher(pub){
     currentCollection = "all";
+    currentOrigin = "all";
     currentTeam = null;
     currentPublisher = pub;
     currentLetter = "ALL";
@@ -33379,7 +33585,7 @@ window.COMIC_VAULT_CHARACTERS = [
     const collection = e.target.closest("[data-collection]");
     if(collection){
       closeMenu();
-      browseCollection(collection.dataset.collection);
+      browseCollection(collection.dataset.collection, collection.dataset.origin || "all");
       return;
     }
 
@@ -33406,7 +33612,7 @@ window.COMIC_VAULT_CHARACTERS = [
     const pageLink = e.target.closest("[data-page-link]");
     if(!pageLink) return;
     if(pageLink.dataset.pageLink === "archive"){
-      browseCollection("all");
+      browseCollection("all","all");
       return;
     }
     showPage(pageLink.dataset.pageLink);
