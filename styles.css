@@ -619,3 +619,311 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--blue-2);outline
   .card-monogram{font-size:150px}
   .card-title{font-size:30px}
 }
+
+
+/* ===== v3: iPhone-first refinement ===== */
+
+html, body {
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+}
+
+body{
+  padding-left:env(safe-area-inset-left, 0px);
+  padding-right:env(safe-area-inset-right, 0px);
+}
+
+button,
+a,
+input{
+  -webkit-tap-highlight-color:transparent;
+}
+
+button{
+  touch-action:manipulation;
+}
+
+.topbar{
+  padding-left:max(18px, env(safe-area-inset-left));
+  padding-right:max(18px, env(safe-area-inset-right));
+}
+
+.hero{
+  padding-left:max(22px, env(safe-area-inset-left));
+  padding-right:max(22px, env(safe-area-inset-right));
+}
+
+.archive-command,
+.archive{
+  padding-left:max(22px, env(safe-area-inset-left));
+  padding-right:max(22px, env(safe-area-inset-right));
+}
+
+/* Keep the main hero actions in the original compact side-by-side layout */
+@media (max-width: 600px){
+  .hero-actions{
+    display:grid;
+    grid-template-columns:minmax(0,1.35fr) minmax(0,.85fr);
+    gap:8px;
+    width:100%;
+  }
+
+  .hero-actions .btn{
+    width:100%;
+    min-width:0;
+    padding:0 10px;
+    white-space:nowrap;
+    font-size:clamp(9px,2.55vw,11px);
+    letter-spacing:.09em;
+  }
+
+  .btn-primary,
+  .btn-ghost{
+    flex:none;
+  }
+}
+
+/* iPhone typography: preserve drama without clipping */
+@media (max-width: 430px){
+  .hero{
+    min-height:auto;
+    padding-top:42px;
+    padding-bottom:28px;
+  }
+
+  .hero h1{
+    font-size:clamp(61px,17vw,72px);
+    line-height:.82;
+    max-width:100%;
+  }
+
+  .hero-sub{
+    font-size:16px;
+    line-height:1.62;
+    max-width:96%;
+  }
+
+  .eyebrow{
+    font-size:11px;
+    letter-spacing:.22em;
+  }
+
+  .featured-stage{
+    min-height:325px;
+    margin-top:18px;
+  }
+
+  .featured-card{
+    width:min(74vw,310px);
+    padding:20px 20px 18px;
+    margin-bottom:18px;
+  }
+
+  .featured-name{
+    font-size:35px;
+  }
+
+  .featured-selector{
+    gap:7px;
+  }
+
+  .featured-selector button{
+    min-height:58px;
+  }
+
+  .archive-command{
+    padding-top:0;
+    padding-bottom:18px;
+  }
+
+  .archive-command .searchbar{
+    min-height:64px;
+    padding-left:14px;
+    padding-right:10px;
+    gap:9px;
+  }
+
+  .archive-command .searchbar input{
+    font-size:16px; /* prevents Safari auto-zoom */
+  }
+
+  .shortcut{
+    padding:8px 9px;
+  }
+
+  .archive-ticker{
+    height:58px;
+  }
+
+  .ticker-track{
+    gap:24px;
+    padding:0 22px;
+    font-size:10px;
+  }
+
+  .archive{
+    padding-top:56px;
+    padding-bottom:calc(80px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .archive-intro h2{
+    font-size:clamp(56px,14.5vw,70px);
+    line-height:.9;
+    white-space:nowrap;
+  }
+
+  .archive-intro p{
+    font-size:15px;
+    line-height:1.72;
+  }
+
+  .publisher-tabs{
+    padding:6px;
+    margin-bottom:34px;
+  }
+
+  .pub-tab{
+    min-height:64px;
+    font-size:14px;
+  }
+
+  .alphabet button{
+    min-width:0;
+    height:64px;
+    font-size:13px;
+  }
+
+  .letter-heading{
+    width:48px;
+    height:48px;
+    font-size:27px;
+  }
+
+  .character-grid{
+    gap:11px;
+  }
+
+  .char-card{
+    min-height:430px;
+  }
+
+  .char-card .card-topline{
+    top:16px;
+    left:14px;
+    right:14px;
+  }
+
+  .char-card .char-pub{
+    min-height:42px;
+    padding:0 11px;
+    font-size:11px;
+  }
+
+  .char-code{
+    font-size:9px;
+    letter-spacing:.12em;
+  }
+
+  .card-figure{
+    height:278px;
+  }
+
+  .card-monogram{
+    font-size:145px;
+  }
+
+  .card-copy{
+    left:14px;
+    right:14px;
+    bottom:20px;
+  }
+
+  .card-role{
+    font-size:9px;
+    line-height:1.45;
+    margin-bottom:16px;
+  }
+
+  .card-title{
+    font-size:clamp(27px,7vw,33px);
+    line-height:.91;
+    overflow-wrap:anywhere;
+  }
+
+  .card-real{
+    font-size:10px;
+  }
+
+  .profile-sheet .sheet-panel{
+    height:calc(100dvh - max(10px, env(safe-area-inset-top, 0px)));
+    max-height:calc(100dvh - max(10px, env(safe-area-inset-top, 0px)));
+  }
+
+  .profile-body{
+    padding-bottom:calc(90px + env(safe-area-inset-bottom, 0px));
+  }
+
+  .side-panel{
+    padding-bottom:calc(32px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Smaller iPhones / landscape-narrow browser widths */
+@media (max-width: 375px){
+  .brand-copy strong{font-size:15px}
+  .brand-copy small{font-size:8px}
+  .hero h1{font-size:clamp(56px,16.2vw,64px)}
+  .hero-sub{font-size:15px}
+  .hero-actions .btn{font-size:9px}
+  .archive-intro h2{font-size:53px}
+  .alphabet button{height:58px}
+  .char-card{min-height:405px}
+  .card-figure{height:258px}
+  .card-title{font-size:27px}
+}
+
+/* Larger Pro Max style widths */
+@media (min-width: 431px) and (max-width: 600px){
+  .hero h1{
+    font-size:clamp(70px,16vw,82px);
+  }
+
+  .character-grid{
+    gap:14px;
+  }
+
+  .char-card{
+    min-height:455px;
+  }
+
+  .card-title{
+    font-size:36px;
+  }
+}
+
+/* PWA / standalone iPhone mode */
+@media (display-mode: standalone){
+  .topbar{
+    padding-top:calc(14px + env(safe-area-inset-top, 0px));
+  }
+
+  .archive{
+    padding-bottom:calc(36px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* Avoid accidental horizontal bleed from decorative hero elements */
+.hero,
+.featured-stage,
+.character-art,
+.archive,
+.archive-command,
+.archive-ticker,
+.profile-sheet,
+.side-menu{
+  max-width:100%;
+}
+
