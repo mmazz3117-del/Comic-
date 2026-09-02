@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="6.1" />
+  <meta name="comic-vault-build" content="6.3" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -13,7 +13,7 @@
   <meta name="apple-mobile-web-app-title" content="Comic Vault" />
   <meta name="format-detection" content="telephone=no" />
   <title>Comic Vault — The Character Archive</title>
-  <!-- Comic Vault v6.1: Robust Dossiers + Alias/Family Render Verification -->
+  <!-- Comic Vault v6.3: iPhone Featured Art Placement + Clickable Family Relationships -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1170,7 +1170,7 @@ button{
 }
 
 
-/* Comic Vault v6.1 visible build marker */
+/* Comic Vault v6.3 visible build marker */
 .brand-meta{
   display:flex;
   align-items:center;
@@ -1202,7 +1202,7 @@ button{
 }
 
 
-/* Comic Vault v6.1 — aliases + family dossier expansion */
+/* Comic Vault v6.3 — aliases + family dossier expansion */
 .identity-connections{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1292,7 +1292,7 @@ button{
 }
 
 
-/* Comic Vault v6.1 — 200 character archive */
+/* Comic Vault v6.3 — 200 character archive */
 .archive-total-badge{
   display:inline-flex;
   align-items:center;
@@ -1313,7 +1313,7 @@ button{
 }
 
 
-/* Comic Vault v6.1 — robust dossier overview */
+/* Comic Vault v6.3 — robust dossier overview */
 .dossier-number b{
   color:#7abaff;
   font-weight:900;
@@ -1480,6 +1480,98 @@ button{
   .archive-facts{grid-template-columns:1fr}
 }
 
+
+/* Comic Vault v6.3 — installed artwork count */
+.art-count-badge{
+  display:inline-flex;align-items:center;min-height:20px;padding:0 7px;
+  border:1px solid #315881;background:#0a131c;color:#68acf1;
+  font-style:normal;font-size:7px;font-weight:900;letter-spacing:.11em;line-height:1;white-space:nowrap;
+}
+@media(max-width:430px){.art-count-badge{min-height:18px;padding:0 6px;font-size:6px}}
+
+/* Comic Vault v6.3 — iPhone featured artwork + linked family */
+.family-row{
+  width:100%;
+  appearance:none;
+  font-family:inherit;
+  text-align:left;
+  background:transparent;
+  border:0;
+  border-bottom:1px solid #1c2734;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+.family-row span{
+  min-width:0;
+}
+.family-link{
+  cursor:pointer;
+  color:#b8c6d8;
+  border-left:2px solid #348fe7;
+  padding-left:22px;
+}
+.family-link::before{
+  color:#65b2ff;
+  left:6px;
+}
+.family-link b{
+  flex:0 0 auto;
+  color:#5ba9f5;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.11em;
+  white-space:nowrap;
+}
+.family-link:active{
+  background:rgba(57,152,255,.09);
+}
+
+/* Keep the featured character beside the card instead of behind it. */
+@media (max-width:600px){
+  .featured-stage{
+    min-height:390px;
+  }
+  .featured-card{
+    width:min(66vw,290px);
+  }
+  .character-art{
+    right:-1%;
+    bottom:4px;
+    width:47%;
+    height:98%;
+    align-items:flex-end;
+  }
+  .featured-character-image img{
+    object-position:right bottom;
+    transform:translateX(2%) translateY(-8px) scale(.94);
+    transform-origin:right bottom;
+  }
+  .art-glow{
+    width:300px;
+    height:300px;
+    transform:translateX(20px);
+  }
+}
+
+@media (max-width:390px){
+  .featured-stage{
+    min-height:375px;
+  }
+  .featured-card{
+    width:min(64vw,250px);
+    padding-left:18px;
+    padding-right:18px;
+  }
+  .character-art{
+    width:46%;
+  }
+  .featured-character-image img{
+    transform:translateX(3%) translateY(-10px) scale(.91);
+  }
+}
+
 </style>
 </head>
 <body>
@@ -1489,7 +1581,7 @@ button{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.1</em><em class="archive-total-badge">200 FILES</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.3</em><em class="archive-total-badge">200 FILES</em><em class="art-count-badge">23 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -1612,7 +1704,7 @@ button{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.1</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.3</em></span></span>
         </div>
         <div class="menu-section">
           <button data-jump="hero">HOME</button>
@@ -30068,13 +30160,37 @@ window.COMIC_VAULT_CHARACTERS = [
     const slug = c.imageSlug || slugify(c.name);
     return `
       <picture class="${cls}">
-        <source srcset="assets/characters/${slug}.webp" type="image/webp">
-        <img src="assets/characters/${slug}.png" alt="${esc(c.name)} artwork"
-          onerror="this.closest('picture').classList.add('missing-art'); this.style.display='none';">
+        <img src="assets/characters/${slug}.webp" alt="${esc(c.name)} artwork"
+          data-png-fallback="assets/characters/${slug}.png"
+          onerror="if(!this.dataset.fallbackTried){this.dataset.fallbackTried='1';this.src=this.dataset.pngFallback;}else{this.closest('picture').classList.add('missing-art');this.style.display='none';}">
       </picture>`;
   }
 
   function byName(name){ return characters.find(c=>c.name.toLowerCase()===String(name).toLowerCase()); }
+
+  function resolveCharacterReference(reference){
+    const raw = String(reference || "").trim();
+    if(!raw) return null;
+
+    // Family entries are stored like "Bruce Wayne — cousin" or
+    // "Superman / Clark Kent — father".  Resolve the person/identity portion.
+    const identityPart = raw.split(/\s+—\s+/)[0].trim();
+    const candidates = identityPart
+      .split(/\s*\/\s*/)
+      .map(x=>x.trim())
+      .filter(Boolean);
+
+    for(const candidate of candidates){
+      const key = candidate.toLowerCase();
+      const match = characters.find(c=>{
+        if(c.name.toLowerCase()===key) return true;
+        if(String(c.realName || "").toLowerCase()===key) return true;
+        return (c.aliases || []).some(a=>String(a).toLowerCase()===key);
+      });
+      if(match) return match;
+    }
+    return null;
+  }
 
   function makeFeatured(){
     const wrap = $("featuredSelector");
@@ -30234,13 +30350,15 @@ window.COMIC_VAULT_CHARACTERS = [
       ].map(([l,v])=>`<div class="archive-fact"><label>${esc(l)}</label><span>${esc(v || "Not yet indexed")}</span></div>`).join("");
 
       const overviewAllies = (c.allies || []).slice(0,6).map(name=>{
-        const linked = !!byName(name);
-        return `<button class="network-chip ally ${linked?"linked":""}" ${linked?`data-related="${esc(name)}"`:""}>${esc(name)}</button>`;
+        const target = resolveCharacterReference(name);
+        const linked = !!target;
+        return `<button class="network-chip ally ${linked?"linked":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(name)}</button>`;
       }).join("") || `<span class="connection-empty">No ally relationships currently indexed.</span>`;
 
       const overviewEnemies = (c.enemies || []).slice(0,6).map(name=>{
-        const linked = !!byName(name);
-        return `<button class="network-chip enemy ${linked?"linked":""}" ${linked?`data-related="${esc(name)}"`:""}>${esc(name)}</button>`;
+        const target = resolveCharacterReference(name);
+        const linked = !!target;
+        return `<button class="network-chip enemy ${linked?"linked":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(name)}</button>`;
       }).join("") || `<span class="connection-empty">No enemy relationships currently indexed.</span>`;
 
       const storylineHighlights = (c.history || []).slice(0,4).map(([era,title,detail])=>`
@@ -30254,7 +30372,7 @@ window.COMIC_VAULT_CHARACTERS = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v6.1</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v6.3</b></span>
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
         </section>
@@ -30274,7 +30392,12 @@ window.COMIC_VAULT_CHARACTERS = [
           </div>
           <div class="connection-panel family-panel">
             <div class="connection-heading"><span>FAMILY</span><h3>Notable Family</h3></div>
-            <div class="family-list">${(c.family || []).length ? c.family.map(x=>`<div class="family-row">${esc(x)}</div>`).join("") : `<span class="connection-empty">No notable family relationships currently indexed.</span>`}</div>
+            <div class="family-list">${(c.family || []).length ? c.family.map(entry=>{
+              const target = resolveCharacterReference(entry);
+              return target
+                ? `<button class="family-row family-link" data-related="${esc(target.name)}"><span>${esc(entry)}</span><b>OPEN FILE ↗</b></button>`
+                : `<div class="family-row"><span>${esc(entry)}</span></div>`;
+            }).join("") : `<span class="connection-empty">No notable family relationships currently indexed.</span>`}</div>
           </div>
         </section>
 
@@ -30285,7 +30408,7 @@ window.COMIC_VAULT_CHARACTERS = [
             <div class="network-column"><h4>Known Allies</h4><div class="network-chips">${overviewAllies}</div></div>
             <div class="network-column"><h4>Known Enemies</h4><div class="network-chips">${overviewEnemies}</div></div>
           </div>
-          <p class="micro-note">Linked names can be opened directly when that character already has an archive file.</p>
+          <p class="micro-note">Blue-highlighted allies, enemies and family relationships open that character's dossier directly.</p>
         </section>
 
         <section class="body-section"><h3>Primary Capabilities</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></section>
