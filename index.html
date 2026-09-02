@@ -30283,7 +30283,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Flashpoint",
       "The Flash: The Dastardly Death of the Rogues"
     ],
-    "imageSlug": "the-flash",
+    "imageSlug": "flash",
     "aliases": [
       "Scarlet Speedster"
     ],
@@ -32762,8 +32762,7 @@ window.COMIC_VAULT_CHARACTERS = [
     return `
       <picture class="${cls}">
         <img src="assets/characters/${slug}.webp" alt="${esc(c.name)} artwork"
-          data-png-fallback="assets/characters/${slug}.png"
-          onerror="if(!this.dataset.fallbackTried){this.dataset.fallbackTried='1';this.src=this.dataset.pngFallback;}else{this.closest('picture').classList.add('missing-art');this.style.display='none';}">
+          onerror="const picture=this.closest&amp;&amp;this.closest('picture');if(picture)picture.classList.add('missing-art');this.style.display='none';this.onerror=null;">
       </picture>`;
   }
 
