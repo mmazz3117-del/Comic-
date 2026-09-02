@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="6.7" />
+  <meta name="comic-vault-build" content="6.8" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -13,11 +13,11 @@
   <meta name="apple-mobile-web-app-title" content="Comic Vault" />
   <meta name="format-detection" content="telephone=no" />
   <title>Comic Vault — The Character Archive</title>
-  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=6.7" />
-  <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=6.7" />
-  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=6.7" />
-  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=6.7" />
-  <!-- Comic Vault v6.7: Gateway CV Fix + Encyclopedia Positioning -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=6.8" />
+  <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=6.8" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=6.8" />
+  <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=6.8" />
+  <!-- Comic Vault v6.8: Multipage App Navigation + Animated Gateway -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1174,7 +1174,7 @@ button{
 }
 
 
-/* Comic Vault v6.7 visible build marker */
+/* Comic Vault v6.8 visible build marker */
 .brand-meta{
   display:flex;
   align-items:center;
@@ -1206,7 +1206,7 @@ button{
 }
 
 
-/* Comic Vault v6.7 — aliases + family dossier expansion */
+/* Comic Vault v6.8 — aliases + family dossier expansion */
 .identity-connections{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1296,7 +1296,7 @@ button{
 }
 
 
-/* Comic Vault v6.7 — 200 character archive */
+/* Comic Vault v6.8 — 200 character archive */
 .archive-total-badge{
   display:inline-flex;
   align-items:center;
@@ -1317,7 +1317,7 @@ button{
 }
 
 
-/* Comic Vault v6.7 — robust dossier overview */
+/* Comic Vault v6.8 — robust dossier overview */
 .dossier-number b{
   color:#7abaff;
   font-weight:900;
@@ -1485,7 +1485,7 @@ button{
 }
 
 
-/* Comic Vault v6.7 — installed artwork count */
+/* Comic Vault v6.8 — installed artwork count */
 .art-count-badge{
   display:inline-flex;align-items:center;min-height:20px;padding:0 7px;
   border:1px solid #315881;background:#0a131c;color:#68acf1;
@@ -1493,7 +1493,7 @@ button{
 }
 @media(max-width:430px){.art-count-badge{min-height:18px;padding:0 6px;font-size:6px}}
 
-/* Comic Vault v6.7 — iPhone featured artwork + linked family */
+/* Comic Vault v6.8 — iPhone featured artwork + linked family */
 .family-row{
   width:100%;
   appearance:none;
@@ -1577,7 +1577,7 @@ button{
 }
 
 
-/* Comic Vault v6.7 — safe-fit character artwork */
+/* Comic Vault v6.8 — safe-fit character artwork */
 @media (max-width:600px){
   /* Featured-file artwork: preserve the whole silhouette. */
   .character-art{
@@ -1639,7 +1639,7 @@ button{
 }
 
 
-/* Comic Vault v6.7 — larger dossier artwork + full-view viewer */
+/* Comic Vault v6.8 — larger dossier artwork + full-view viewer */
 .profile-art-trigger{
   cursor:zoom-in;
   outline:none;
@@ -1844,7 +1844,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v6.7 — HOMEPAGE GATEWAY REVAMP
+   COMIC VAULT v6.8 — HOMEPAGE GATEWAY REVAMP
    Original UI artwork only: gradients, rings, grid and glow.
    ========================================================== */
 
@@ -2291,7 +2291,7 @@ button{
 }
 
 
-/* Comic Vault v6.7 — portal monogram + clearer encyclopedia identity */
+/* Comic Vault v6.8 — portal monogram + clearer encyclopedia identity */
 .gateway-core{
   overflow:visible;
 }
@@ -2333,6 +2333,262 @@ button{
   }
 }
 
+
+/* ==========================================================
+   COMIC VAULT v6.8 — APP PAGES + LARGER ANIMATED GATEWAY
+   ========================================================== */
+
+.app-page{display:none !important}
+.app-page.active-page{display:block !important}
+.hero-v66.active-page{display:block !important}
+
+.hero-v66{
+  overflow:hidden;
+  min-height:calc(100dvh - var(--header-h));
+  padding-bottom:34px;
+}
+.home-feature-link{
+  display:block;
+  margin:22px auto 0;
+  border:0;
+  background:transparent;
+  color:#60778d;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.17em;
+  padding:10px 16px;
+}
+
+/* Larger centerpiece */
+.vault-gateway{
+  width:min(780px,104vw) !important;
+  margin:-6px auto -12px !important;
+}
+.gateway-core{width:34% !important}
+
+/* Visible moving orbit markers */
+.gateway-orbit{
+  position:absolute;
+  border-radius:50%;
+  z-index:4;
+  pointer-events:none;
+}
+.gateway-orbit i{
+  position:absolute;
+  left:50%;
+  top:-5px;
+  width:10px;
+  height:10px;
+  margin-left:-5px;
+  border-radius:50%;
+  background:#55adff;
+  box-shadow:0 0 9px #55adff,0 0 22px rgba(73,161,255,.75);
+}
+.gateway-orbit-1{inset:9%;animation:cvOrbit 13s linear infinite}
+.gateway-orbit-2{inset:20%;animation:cvOrbitReverse 9s linear infinite}
+.gateway-orbit-2 i{
+  width:11px;height:11px;top:-5.5px;margin-left:-5.5px;
+  background:#ed4c9c;
+  box-shadow:0 0 9px #ed4c9c,0 0 22px rgba(237,76,156,.72);
+}
+.gateway-orbit-3{inset:31%;animation:cvOrbit 6.5s linear infinite}
+.gateway-orbit-3 i{
+  width:7px;height:7px;top:-3.5px;margin-left:-3.5px;
+  background:#a4d9ff;
+  box-shadow:0 0 7px #77bdff,0 0 16px rgba(95,177,255,.65);
+}
+@keyframes cvOrbit{to{transform:rotate(360deg)}}
+@keyframes cvOrbitReverse{to{transform:rotate(-360deg)}}
+
+/* Page framing */
+.archive-page,.saved-page{
+  min-height:calc(100dvh - var(--header-h));
+  background:#070a0f;
+}
+.page-banner{
+  position:relative;
+  padding:34px clamp(22px,5vw,48px) 30px;
+  border-bottom:1px solid #1c2733;
+  background:
+    radial-gradient(circle at 88% 5%,rgba(54,146,240,.11),transparent 31%),
+    linear-gradient(180deg,#0a111a,#080c12);
+}
+.page-banner h2{
+  margin:13px 0 10px;
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:clamp(48px,10vw,78px);
+  line-height:.9;
+}
+.page-banner p{
+  max-width:650px;
+  margin:0;
+  color:#7d8999;
+  font-size:13px;
+  line-height:1.65;
+}
+.page-back{
+  min-height:34px;
+  padding:0;
+  margin-bottom:23px;
+  border:0;
+  background:transparent;
+  color:#65aff9;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.archive-page .archive-command{
+  margin:0;
+  padding-top:24px;
+}
+.archive-page .archive{padding-top:46px}
+
+/* Featured File is now its own page */
+.spotlight-page{
+  min-height:calc(100dvh - var(--header-h)) !important;
+  padding-top:78px !important;
+}
+.spotlight-back{
+  position:absolute;
+  left:max(22px,env(safe-area-inset-left));
+  top:28px;
+  z-index:8;
+}
+.spotlight-page .home-spotlight-copy{margin-top:20px}
+
+/* Saved files page */
+.saved-page{padding-bottom:80px}
+.saved-count{
+  margin-top:20px;
+  display:inline-block;
+  border:1px solid #2b435c;
+  color:#6db5fb;
+  padding:7px 9px;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.saved-grid{
+  max-width:980px;
+  margin:0 auto;
+  padding:28px clamp(20px,5vw,44px) 70px;
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+.saved-card{
+  min-height:170px;
+  position:relative;
+  overflow:hidden;
+  display:grid;
+  grid-template-columns:42% 1fr 20px;
+  align-items:center;
+  gap:10px;
+  border:1px solid #253140;
+  background:
+    radial-gradient(circle at 25% 35%,rgba(52,143,236,.10),transparent 43%),
+    #090e15;
+  padding:12px;
+  color:#fff;
+  text-align:left;
+}
+.saved-card-art{
+  position:relative;
+  align-self:stretch;
+  min-height:140px;
+  display:grid;
+  place-items:center;
+}
+.saved-character-image{position:absolute;inset:0}
+.saved-character-image img{
+  width:100%;height:100%;
+  object-fit:contain;
+  object-position:center bottom;
+}
+.saved-character-image:not(.missing-art) ~ span{opacity:.05}
+.saved-card-art > span{
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:90px;
+  font-weight:900;
+  color:#142233;
+  -webkit-text-stroke:1px rgba(68,156,248,.25);
+}
+.saved-card-copy small{
+  display:block;margin-bottom:8px;color:#5eaaf7;
+  font-size:7px;font-weight:900;letter-spacing:.12em;
+}
+.saved-card-copy strong{
+  display:block;
+  font-family:"Barlow Condensed",Impact,sans-serif;
+  font-size:27px;line-height:.95;
+}
+.saved-card-copy em{
+  display:block;margin-top:7px;color:#788596;
+  font-size:10px;font-style:normal;
+}
+.saved-card > b{color:#519ff2;font-weight:400}
+.saved-empty{
+  grid-column:1/-1;
+  min-height:320px;
+  border:1px dashed #283747;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+  text-align:center;
+  background:#080d13;
+}
+.saved-empty > span{color:#4fa5fb;font-size:42px}
+.saved-empty strong{
+  margin-top:12px;
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:29px;
+}
+.saved-empty p{max-width:430px;color:#778698;line-height:1.6}
+.saved-empty button{
+  margin-top:10px;min-height:44px;padding:0 16px;
+  border:1px solid #378ee8;background:#0b1723;
+  color:#65aff9;font-size:9px;font-weight:900;letter-spacing:.1em;
+}
+.menu-section button.active-page-link{
+  color:#65aff9;
+  border-color:#2e679d;
+  background:#0b1723;
+}
+
+@media (max-width:600px){
+  .hero-v66{
+    min-height:calc(100dvh - var(--header-h));
+    padding-top:28px;
+  }
+  .vault-gateway{
+    width:112vw !important;
+    max-width:620px !important;
+    margin:-20px 0 -18px 50% !important;
+    transform:translateX(-50%);
+  }
+  .gateway-core{width:35% !important}
+  .gateway-orbit i{
+    width:9px;height:9px;top:-4.5px;margin-left:-4.5px;
+  }
+  .gateway-orbit-2 i{
+    width:10px;height:10px;top:-5px;margin-left:-5px;
+  }
+  .page-banner{padding-top:26px}
+  .saved-grid{
+    grid-template-columns:1fr;
+    padding:20px 18px 60px;
+  }
+  .spotlight-page{padding-top:72px !important}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .gateway-orbit-1,.gateway-orbit-2,.gateway-orbit-3{
+    animation:none !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -2342,7 +2598,7 @@ button{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.7</em><em class="archive-total-badge">200 FILES</em><em class="art-count-badge">113 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.8</em><em class="archive-total-badge">200 FILES</em><em class="art-count-badge">113 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -2351,7 +2607,7 @@ button{
     </header>
 
     <main id="mainContent">
-      <section class="hero hero-v66" id="hero">
+<section class="hero hero-v66 app-page active-page" id="hero" data-page-view="home">
         <div class="hero-grid"></div>
         <div class="hero-v66-copy">
           <div class="eyebrow">✧ THE SUPERHERO ENCYCLOPEDIA // MULTIVERSE ONLINE</div>
@@ -2364,6 +2620,9 @@ button{
           <div class="gateway-halo gateway-halo-1"></div>
           <div class="gateway-halo gateway-halo-2"></div>
           <div class="gateway-halo gateway-halo-3"></div>
+          <div class="gateway-orbit gateway-orbit-1"><i></i></div>
+          <div class="gateway-orbit gateway-orbit-2"><i></i></div>
+          <div class="gateway-orbit gateway-orbit-3"><i></i></div>
           <div class="gateway-axis gateway-axis-x"></div>
           <div class="gateway-axis gateway-axis-y"></div>
           <div class="gateway-node gateway-node-a"></div>
@@ -2404,9 +2663,18 @@ button{
           <i></i>
           <div><strong>2</strong><span>CONNECTED UNIVERSES</span></div>
         </div>
+        <button class="home-feature-link" id="homeFeaturedLink">VIEW FEATURED FILE →</button>
       </section>
 
-      <section class="archive-command">
+      
+      <div class="app-page archive-page" id="archivePage" data-page-view="archive">
+        <section class="page-banner archive-page-banner">
+          <button class="page-back" data-page-link="home">← HOME</button>
+          <div class="section-kicker">COMIC VAULT // DATABASE</div>
+          <h2>CHARACTER ARCHIVE</h2>
+          <p>Search and browse all 200 DC and Marvel character dossiers by universe or alphabet.</p>
+        </section>
+<section class="archive-command">
         <div class="searchbar">
           <span>⌕</span>
           <input id="searchInput" type="search" placeholder="Search every character…" autocomplete="off" />
@@ -2415,7 +2683,8 @@ button{
         </div>
       </section>
 
-      <div class="archive-ticker" aria-hidden="true">
+      
+<div class="archive-ticker" aria-hidden="true">
         <div class="ticker-track">
           <span>EARTH-PRIME</span>
           <span class="ticker-muted">DC ARCHIVE CONNECTED</span>
@@ -2428,24 +2697,8 @@ button{
         </div>
       </div>
 
-      <section class="home-spotlight" id="featuredSpotlight">
-        <div class="home-spotlight-copy">
-          <div class="featured-kicker" id="featuredKicker">ARCHIVE SPOTLIGHT // FEATURED FILE</div>
-          <h2 id="featuredName">BATMAN</h2>
-          <p class="home-spotlight-real" id="featuredReal">Bruce Wayne</p>
-          <div class="home-spotlight-rule"></div>
-          <p class="home-spotlight-first" id="featuredFirst">Detective Comics #27 (1939)</p>
-          <p class="home-spotlight-text">Start with a featured dossier, or jump directly into the full archive above.</p>
-          <button class="home-spotlight-btn" id="exploreFeatured">OPEN BATMAN DOSSIER ↗</button>
-        </div>
-        <div class="home-spotlight-art" id="featuredArt" aria-hidden="true">
-          <div class="spotlight-orbit"></div>
-          <div class="art-monogram">B</div>
-          <div class="art-name">BATMAN</div>
-        </div>
-      </section>
-
-      <section class="archive" id="archive">
+      
+<section class="archive" id="archive">
         <div class="archive-intro">
           <div class="section-kicker">BROWSE THE ARCHIVE</div>
           <h2>CHARACTER INDEX</h2>
@@ -2463,6 +2716,38 @@ button{
 
         <div class="archive-list" id="archiveList"></div>
       </section>
+    
+      </div>
+<section class="home-spotlight app-page spotlight-page" id="featuredSpotlight" data-page-view="spotlight">
+        <button class="page-back spotlight-back" data-page-link="home">← HOME</button>
+        <div class="home-spotlight-copy">
+          <div class="featured-kicker" id="featuredKicker">ARCHIVE SPOTLIGHT // FEATURED FILE</div>
+          <h2 id="featuredName">BATMAN</h2>
+          <p class="home-spotlight-real" id="featuredReal">Bruce Wayne</p>
+          <div class="home-spotlight-rule"></div>
+          <p class="home-spotlight-first" id="featuredFirst">Detective Comics #27 (1939)</p>
+          <p class="home-spotlight-text">Start with a featured dossier, or jump directly into the full archive above.</p>
+          <button class="home-spotlight-btn" id="exploreFeatured">OPEN BATMAN DOSSIER ↗</button>
+        </div>
+        <div class="home-spotlight-art" id="featuredArt" aria-hidden="true">
+          <div class="spotlight-orbit"></div>
+          <div class="art-monogram">B</div>
+          <div class="art-name">BATMAN</div>
+        </div>
+      </section>
+
+      
+      <section class="saved-page app-page" id="savedPage" data-page-view="saved">
+        <section class="page-banner saved-page-banner">
+          <button class="page-back" data-page-link="home">← HOME</button>
+          <div class="section-kicker">YOUR PERSONAL VAULT</div>
+          <h2>SAVED FILES</h2>
+          <p>Characters you mark with ★ SAVE FILE will appear here for quick access.</p>
+          <div class="saved-count" id="savedCount">0 SAVED</div>
+        </section>
+        <div class="saved-grid" id="savedList"></div>
+      </section>
+
     </main>
 
     <div class="profile-sheet" id="profileSheet" aria-hidden="true">
@@ -2526,11 +2811,13 @@ button{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.7</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v6.8</em></span></span>
         </div>
         <div class="menu-section">
-          <button data-jump="hero">HOME</button>
-          <button data-jump="archive">CHARACTER ARCHIVE</button>
+          <button data-page="home">HOME</button>
+          <button data-page="archive">CHARACTER ARCHIVE</button>
+          <button data-page="spotlight">FEATURED FILE</button>
+          <button data-page="saved">SAVED FILES</button>
           <button id="menuRandom">RANDOM FILE</button>
         </div>
         <div class="menu-note">
@@ -30979,6 +31266,32 @@ window.COMIC_VAULT_CHARACTERS = [
   const slugify = (s="") => String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
   const savedFiles = new Set(JSON.parse(localStorage.getItem("comicVaultSavedFiles") || "[]"));
 
+
+  let currentPage = "home";
+
+  function showPage(name, options={}){
+    const target = ["home","archive","spotlight","saved"].includes(name) ? name : "home";
+    currentPage = target;
+
+    document.querySelectorAll("[data-page-view]").forEach(view=>{
+      view.classList.toggle("active-page", view.dataset.pageView === target);
+    });
+
+    document.querySelectorAll(".menu-section [data-page]").forEach(btn=>{
+      btn.classList.toggle("active-page-link", btn.dataset.page === target);
+    });
+
+    if(target === "saved") renderSaved();
+
+    if(options.updateHash !== false){
+      const nextHash = `#${target}`;
+      if(location.hash !== nextHash) history.replaceState(null,"",nextHash);
+    }
+
+    document.body.dataset.currentPage = target;
+    window.scrollTo({top:0,behavior:options.instant ? "auto" : "smooth"});
+  }
+
   function artMarkup(c, cls="character-image"){
     const slug = c.imageSlug || slugify(c.name);
     return `
@@ -31016,7 +31329,7 @@ window.COMIC_VAULT_CHARACTERS = [
   }
 
   function makeFeatured(){
-    // v6.7: numbered featured carousel removed in favor of a single lower-page spotlight.
+    // v6.8: numbered featured carousel removed in favor of a single lower-page spotlight.
   }
 
   function setFeatured(name){
@@ -31150,6 +31463,42 @@ window.COMIC_VAULT_CHARACTERS = [
     else savedFiles.add(activeCharacter.name);
     localStorage.setItem("comicVaultSavedFiles", JSON.stringify([...savedFiles]));
     updateFavoriteButton();
+    renderSaved();
+  }
+
+
+  function renderSaved(){
+    const host = $("savedList");
+    const count = $("savedCount");
+    if(!host || !count) return;
+
+    const list = characters.filter(c=>savedFiles.has(c.name));
+    count.textContent = `${list.length} SAVED`;
+
+    if(!list.length){
+      host.innerHTML = `
+        <div class="saved-empty">
+          <span>☆</span>
+          <strong>NO SAVED FILES YET</strong>
+          <p>Open a character dossier and tap “☆ SAVE FILE” to build your personal vault.</p>
+          <button data-page-link="archive">BROWSE CHARACTER ARCHIVE →</button>
+        </div>`;
+      return;
+    }
+
+    host.innerHTML = list.map(c=>`
+      <button class="saved-card" data-character="${esc(c.name)}">
+        <div class="saved-card-art">
+          ${artMarkup(c,"saved-character-image")}
+          <span>${esc(c.name.charAt(0))}</span>
+        </div>
+        <div class="saved-card-copy">
+          <small>${esc(c.publisher)} // SAVED FILE</small>
+          <strong>${esc(c.name)}</strong>
+          <em>${esc(c.realName)}</em>
+        </div>
+        <b>↗</b>
+      </button>`).join("");
   }
 
   function closeProfile(){
@@ -31207,7 +31556,7 @@ window.COMIC_VAULT_CHARACTERS = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v6.7</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v6.8</b></span>
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
         </section>
@@ -31425,22 +31774,30 @@ window.COMIC_VAULT_CHARACTERS = [
     document.querySelectorAll(".pub-tab").forEach(btn=>btn.classList.toggle("active",btn.dataset.publisher===pub));
     document.querySelectorAll("#alphabet button").forEach(btn=>btn.classList.toggle("active",btn.dataset.letter==="ALL"));
     renderArchive();
-    $("archive").scrollIntoView({behavior:"smooth",block:"start"});
+    showPage("archive");
   }
 
   $("browseDC").addEventListener("click",()=>browsePublisher("DC"));
   $("browseMarvel").addEventListener("click",()=>browsePublisher("MARVEL"));
   $("browseAll").addEventListener("click",()=>browsePublisher("ALL"));
+  $("homeFeaturedLink").addEventListener("click",()=>showPage("spotlight"));
   $("exploreFeatured").addEventListener("click",e=>openProfile(e.currentTarget.dataset.character || "Batman"));
   $("randomBtn").addEventListener("click",randomCharacter);
   $("favoriteBtn").addEventListener("click",toggleFavorite);
   $("menuRandom").addEventListener("click",()=>{closeMenu();randomCharacter();});
   $("menuBtn").addEventListener("click",()=>{sideMenu.classList.add("open");sideMenu.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";});
-  $("homeBtn").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
+  $("homeBtn").addEventListener("click",()=>showPage("home"));
 
   document.querySelector(".menu-section").addEventListener("click",e=>{
-    const b=e.target.closest("[data-jump]"); if(!b) return;
-    closeMenu(); document.getElementById(b.dataset.jump)?.scrollIntoView({behavior:"smooth"});
+    const b=e.target.closest("[data-page]"); if(!b) return;
+    closeMenu();
+    showPage(b.dataset.page);
+  });
+
+  document.addEventListener("click",e=>{
+    const pageLink = e.target.closest("[data-page-link]");
+    if(!pageLink) return;
+    showPage(pageLink.dataset.pageLink);
   });
 
   function closeMenu(){ sideMenu.classList.remove("open");sideMenu.setAttribute("aria-hidden","true");document.body.style.overflow=""; }
@@ -31453,6 +31810,10 @@ window.COMIC_VAULT_CHARACTERS = [
   makeAlphabet();
   setFeatured("Batman");
   renderArchive();
+  renderSaved();
+
+  const initialPage = (location.hash || "#home").replace("#","");
+  showPage(["home","archive","spotlight","saved"].includes(initialPage) ? initialPage : "home", {instant:true,updateHash:false});
 })();
   </script>
 </body>
