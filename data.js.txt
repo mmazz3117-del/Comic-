@@ -126,7 +126,230 @@ window.COMIC_VAULT_CHARACTERS = [
       "The Dark Knight Returns",
       "Batman: Hush",
       "Batman: The Court of Owls"
-    ]
+    ],
+    "imageSlug": "batman",
+    "aliases": [
+      "The Dark Knight",
+      "The Caped Crusader",
+      "Matches Malone"
+    ],
+    "family": [
+      "Thomas Wayne",
+      "Martha Wayne",
+      "Damian Wayne"
+    ],
+    "gear": [
+      {
+        "name": "Batsuit",
+        "type": "Armor",
+        "detail": "A modular protective suit built around mobility, stealth, identity concealment and mission-specific upgrades."
+      },
+      {
+        "name": "Utility Belt",
+        "type": "Equipment",
+        "detail": "Carries compact tools such as grapnel systems, forensic equipment, restraints, smoke devices and mission-specific technology."
+      },
+      {
+        "name": "Batarangs",
+        "type": "Weapon / Tool",
+        "detail": "Bat-shaped throwing tools produced in numerous specialized forms."
+      },
+      {
+        "name": "Grapnel Launcher",
+        "type": "Mobility",
+        "detail": "Rapid vertical traversal and controlled movement across Gotham's rooftops."
+      },
+      {
+        "name": "Batcomputer",
+        "type": "Technology",
+        "detail": "Advanced investigative and intelligence systems used for research, surveillance and case analysis."
+      },
+      {
+        "name": "Batmobile",
+        "type": "Vehicle",
+        "detail": "A family of high-performance vehicles designed for pursuit, protection and tactical response."
+      }
+    ],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1939",
+          "title": "Golden Age Batman",
+          "detail": "The earliest Batman stories establish Bruce Wayne, Gotham crimefighting and the core visual identity."
+        },
+        {
+          "era": "1987",
+          "title": "Post-Crisis / Year One",
+          "detail": "A grounded modern origin focuses on Bruce's first year as Batman and James Gordon's arrival in Gotham."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "DC relaunches continuity while preserving much of Batman's recent history and expanding the Court of Owls mythology."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Legacy, the Bat-Family and Bruce's emotional life return to the foreground."
+        },
+        {
+          "era": "2020s",
+          "title": "Infinite Frontier / Current",
+          "detail": "Modern stories continue to reshape Bruce's resources, Gotham and his relationship with the wider Batman Family."
+        }
+      ],
+      "Alternate Universes": [
+        {
+          "era": "1986",
+          "title": "The Dark Knight Returns",
+          "detail": "An older Bruce Wayne returns to vigilantism in a dystopian future."
+        },
+        {
+          "era": "1989",
+          "title": "Gotham by Gaslight",
+          "detail": "A Victorian-era Batman investigates murder in an alternate Gotham."
+        },
+        {
+          "era": "2011",
+          "title": "Flashpoint Batman",
+          "detail": "An alternate timeline radically changes who becomes Batman."
+        }
+      ],
+      "Movies": [
+        {
+          "era": "1989",
+          "title": "Burton Batman",
+          "detail": "A heavily stylized cinematic Gotham and armored black Batsuit redefine Batman on film."
+        },
+        {
+          "era": "2005",
+          "title": "The Dark Knight Trilogy",
+          "detail": "A grounded, tactical interpretation emphasizes training, fear and realistic technology."
+        },
+        {
+          "era": "2022",
+          "title": "The Batman",
+          "detail": "A younger detective-focused Batman operates in a rain-soaked noir Gotham."
+        }
+      ],
+      "Television & Animation": [
+        {
+          "era": "1966",
+          "title": "Batman Television Era",
+          "detail": "A colorful, pop-art interpretation becomes one of the character's most recognizable cultural versions."
+        },
+        {
+          "era": "1992",
+          "title": "Batman: The Animated Series",
+          "detail": "A landmark noir-inspired animated interpretation influences Batman storytelling for decades."
+        },
+        {
+          "era": "2000s",
+          "title": "Justice League Animation",
+          "detail": "Batman operates as strategist, investigator and founding Justice League member."
+        }
+      ],
+      "Video Games": [
+        {
+          "era": "2009",
+          "title": "Arkham Asylum",
+          "detail": "The Arkham series combines free-flow combat, stealth and detective systems into an influential interactive Batman."
+        },
+        {
+          "era": "2011",
+          "title": "Arkham City",
+          "detail": "The playable Gotham environment grows alongside Batman's gadgets and rogues gallery."
+        },
+        {
+          "era": "2015",
+          "title": "Arkham Knight",
+          "detail": "The Batmobile becomes a major gameplay system and Batman's technology reaches its most elaborate form in the series."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1939",
+          "title": "Original",
+          "detail": "Long ears, gray-and-black palette and the earliest bat-emblem."
+        },
+        {
+          "era": "1940s–50s",
+          "title": "Golden Age Refinement",
+          "detail": "The silhouette becomes cleaner and the cape, gloves and emblem settle into recognizable forms."
+        },
+        {
+          "era": "1960s",
+          "title": "Silver Age",
+          "detail": "Blue cape and cowl, lighter gray body suit and yellow oval emblem define the era."
+        },
+        {
+          "era": "1970s",
+          "title": "Bronze Age",
+          "detail": "A darker, more athletic version of the blue-and-gray suit accompanies Batman's return to mystery and gothic crime."
+        },
+        {
+          "era": "1980s",
+          "title": "Dark Knight Era",
+          "detail": "Heavier shadows and more imposing silhouettes influence later interpretations."
+        },
+        {
+          "era": "1990s",
+          "title": "Modern Tactical Shift",
+          "detail": "Longer ears, darker cape and increasingly armored designs appear across major storylines."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Segmented armor and modern tactical detailing reshape the suit."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "A streamlined charcoal suit introduces the black bat emblem with a gold outline."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Contemporary suits blend tactical protection with classic gray-and-black iconography."
+        }
+      ],
+      "Movies": [
+        {
+          "era": "1989",
+          "title": "Keaton / Burton Suit",
+          "detail": "Sculpted black armor with yellow oval emblem."
+        },
+        {
+          "era": "2008",
+          "title": "The Dark Knight Suit",
+          "detail": "Segmented armor increases mobility and tactical realism."
+        },
+        {
+          "era": "2016",
+          "title": "DCEU Batman",
+          "detail": "A broad gray-and-black comic-inspired silhouette with heavy armor variants."
+        },
+        {
+          "era": "2022",
+          "title": "The Batman Suit",
+          "detail": "A handmade tactical look built around exposed armor, utility and a compact chest emblem."
+        }
+      ],
+      "Animation": [
+        {
+          "era": "1992",
+          "title": "Animated Series",
+          "detail": "A simplified gray-and-black design built for strong silhouette and noir lighting."
+        },
+        {
+          "era": "1997",
+          "title": "New Batman Adventures",
+          "detail": "Sharper geometry, black suit elements and simplified eyes update the animated design."
+        }
+      ]
+    }
   },
   {
     "name": "Superman",
@@ -248,7 +471,79 @@ window.COMIC_VAULT_CHARACTERS = [
       "Superman: Birthright",
       "The Death of Superman",
       "Superman for All Seasons"
-    ]
+    ],
+    "imageSlug": "superman",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1938",
+          "title": "Debut",
+          "detail": "Superman launches the superhero age in Action Comics #1."
+        },
+        {
+          "era": "1950s",
+          "title": "Mythology Expands",
+          "detail": "Krypton, Supergirl and a wider supporting mythology become central."
+        },
+        {
+          "era": "1986",
+          "title": "Post-Crisis",
+          "detail": "The character is reintroduced with a modernized origin."
+        },
+        {
+          "era": "1992",
+          "title": "Death of Superman",
+          "detail": "A major crossover temporarily removes Superman after his battle with Doomsday."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "A younger Superman anchors a relaunched continuity."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Classic family elements return to the forefront."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1938",
+          "title": "Golden Age",
+          "detail": "Early shield, shorter cape and classic trunks."
+        },
+        {
+          "era": "1950s",
+          "title": "Silver Age",
+          "detail": "The familiar red-and-blue suit becomes standardized."
+        },
+        {
+          "era": "1990s",
+          "title": "Return Era",
+          "detail": "The black recovery suit becomes a memorable temporary design."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Armored Kryptonian styling replaces the trunks."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Modern suit elements merge with classic visual cues."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Contemporary designs continue to alternate between classic and updated details."
+        }
+      ]
+    }
   },
   {
     "name": "Wonder Woman",
@@ -352,7 +647,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "Wonder Woman: Gods and Mortals",
       "Wonder Woman: The Hiketeia",
       "Wonder Woman: Rebirth"
-    ]
+    ],
+    "imageSlug": "wonder-woman",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1941",
+          "title": "Debut",
+          "detail": "Wonder Woman enters the DC universe during the Golden Age."
+        },
+        {
+          "era": "1987",
+          "title": "Modern Reintroduction",
+          "detail": "George Pérez helps redefine Themyscira, mythology and Diana's mission."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Her divine family history is reworked."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "The character's truth, legacy and mythology are revisited."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1941",
+          "title": "Golden Age",
+          "detail": "Patriotic bodice, skirt and tiara."
+        },
+        {
+          "era": "1970s",
+          "title": "Classic",
+          "detail": "Star-spangled shorts become a defining visual."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Silver accents and battle-oriented styling."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Armor inspired by classical Amazon design."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "A blend of armored and iconic elements."
+        }
+      ]
+    }
   },
   {
     "name": "The Flash",
@@ -450,7 +802,59 @@ window.COMIC_VAULT_CHARACTERS = [
       "The Flash: Rebirth",
       "Flashpoint",
       "The Flash: The Dastardly Death of the Rogues"
-    ]
+    ],
+    "imageSlug": "the-flash",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1956",
+          "title": "Debut",
+          "detail": "Barry Allen ushers in the Silver Age Flash."
+        },
+        {
+          "era": "1985",
+          "title": "Crisis",
+          "detail": "Barry makes a defining sacrifice during Crisis on Infinite Earths."
+        },
+        {
+          "era": "2008",
+          "title": "Return",
+          "detail": "Barry returns to the DC universe."
+        },
+        {
+          "era": "2011",
+          "title": "Flashpoint",
+          "detail": "Barry's actions help trigger a transformed continuity."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "The Speed Force and lost legacy become central again."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1956",
+          "title": "Silver Age",
+          "detail": "Red suit, yellow lightning trim and winged ear pieces."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Segmented lines and armor-like detail."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "A streamlined modern version of the classic silhouette."
+        }
+      ]
+    }
   },
   {
     "name": "Green Lantern",
@@ -553,7 +957,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "Green Lantern: Rebirth",
       "The Sinestro Corps War",
       "Blackest Night"
-    ]
+    ],
+    "imageSlug": "green-lantern",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1959",
+          "title": "Debut",
+          "detail": "Hal Jordan becomes the Silver Age Green Lantern."
+        },
+        {
+          "era": "1960",
+          "title": "Corps Expands",
+          "detail": "The Green Lantern Corps and Guardians become core mythology."
+        },
+        {
+          "era": "1990s",
+          "title": "Parallax",
+          "detail": "Hal's role changes dramatically during Emerald Twilight."
+        },
+        {
+          "era": "2004",
+          "title": "Rebirth",
+          "detail": "Hal returns as Green Lantern and the Corps is restored."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Cosmic Green Lantern storytelling continues through the relaunch."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1959",
+          "title": "Classic",
+          "detail": "Green-and-black uniform with white gloves."
+        },
+        {
+          "era": "1990s",
+          "title": "Parallax",
+          "detail": "A darker transformation during Hal's fall."
+        },
+        {
+          "era": "2004",
+          "title": "Rebirth",
+          "detail": "Updated Corps uniform with glowing emblem."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Streamlined ring-generated uniform variants."
+        }
+      ]
+    }
   },
   {
     "name": "Aquaman",
@@ -652,7 +1113,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "Aquaman: The Trench",
       "Aquaman: Throne of Atlantis",
       "Aquaman: Rebirth"
-    ]
+    ],
+    "imageSlug": "aquaman",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1941",
+          "title": "Debut",
+          "detail": "Aquaman appears in More Fun Comics."
+        },
+        {
+          "era": "1960s",
+          "title": "Atlantis Mythology",
+          "detail": "His royal heritage and supporting cast expand."
+        },
+        {
+          "era": "1990s",
+          "title": "Warrior King",
+          "detail": "A more rugged interpretation reshapes the character."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Aquaman receives a major modern relaunch."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Politics, Atlantis and Arthur's dual identity remain central."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1941",
+          "title": "Classic",
+          "detail": "Orange scaled shirt and green gloves/leggings."
+        },
+        {
+          "era": "1990s",
+          "title": "Warrior",
+          "detail": "Long hair, armor and harpoon hand."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Metallic scale armor modernizes the classic look."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Classic royal colors with contemporary armor."
+        }
+      ]
+    }
   },
   {
     "name": "Joker",
@@ -751,7 +1269,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "The Man Who Laughs",
       "Death of the Family",
       "The Joker War"
-    ]
+    ],
+    "imageSlug": "joker",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1940",
+          "title": "Debut",
+          "detail": "The Joker appears as a homicidal clown-themed criminal."
+        },
+        {
+          "era": "1950s",
+          "title": "Comic Criminal",
+          "detail": "Stories often become more elaborate and prank-oriented."
+        },
+        {
+          "era": "1970s",
+          "title": "Darker Return",
+          "detail": "The character regains a lethal, psychologically disturbing edge."
+        },
+        {
+          "era": "1988",
+          "title": "The Killing Joke",
+          "detail": "A famous story explores a possible origin while preserving ambiguity."
+        },
+        {
+          "era": "2000s",
+          "title": "Modern Joker",
+          "detail": "Stories increasingly emphasize unpredictability, obsession and psychological warfare."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1940",
+          "title": "Classic",
+          "detail": "Purple suit, green hair and white skin."
+        },
+        {
+          "era": "1970s",
+          "title": "Bronze Age",
+          "detail": "Longer, leaner silhouette and dramatic coat tails."
+        },
+        {
+          "era": "2000s",
+          "title": "Modern",
+          "detail": "Numerous scarred, tailored and anarchic interpretations."
+        },
+        {
+          "era": "Current",
+          "title": "Contemporary",
+          "detail": "Traditional purple styling continues alongside darker reinventions."
+        }
+      ]
+    }
   },
   {
     "name": "Harley Quinn",
@@ -848,7 +1423,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "Harley Quinn",
       "Gotham City Sirens",
       "Harleen"
-    ]
+    ],
+    "imageSlug": "harley-quinn",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1992",
+          "title": "Animated Debut",
+          "detail": "Harley is created for Batman: The Animated Series."
+        },
+        {
+          "era": "1993",
+          "title": "Comics Debut",
+          "detail": "She enters DC comics continuity."
+        },
+        {
+          "era": "2000s",
+          "title": "Independent Direction",
+          "detail": "Harley increasingly separates from the Joker."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "A redesigned Harley becomes a major Suicide Squad character."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Her solo identity and supporting cast continue to expand."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1992",
+          "title": "Jester",
+          "detail": "Classic red-and-black harlequin suit."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Punk-influenced redesign."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Red-and-blue streetwear and comic styling."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Multiple costumes preserve the red/black palette and playful chaos."
+        }
+      ]
+    }
   },
   {
     "name": "Nightwing",
@@ -955,7 +1587,69 @@ window.COMIC_VAULT_CHARACTERS = [
       "Nightwing: Year One",
       "Nightwing: Rebirth",
       "Nightwing: Leaping Into the Light"
-    ]
+    ],
+    "imageSlug": "nightwing",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1940",
+          "title": "Robin",
+          "detail": "Dick Grayson debuts as the first Robin."
+        },
+        {
+          "era": "1984",
+          "title": "Nightwing",
+          "detail": "He adopts the Nightwing identity."
+        },
+        {
+          "era": "1990s",
+          "title": "Blüdhaven",
+          "detail": "Nightwing receives a long-running solo series and his own city."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Dick resumes the Nightwing identity after a period as a spy."
+        },
+        {
+          "era": "2020s",
+          "title": "Modern Era",
+          "detail": "Nightwing's role as a community-focused hero and legacy leader expands."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1984",
+          "title": "Disco Suit",
+          "detail": "Blue-and-gold high-collar costume."
+        },
+        {
+          "era": "1990s",
+          "title": "Black & Blue",
+          "detail": "The iconic black suit with blue bird motif."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Black-and-red redesign."
+        },
+        {
+          "era": "2016",
+          "title": "Rebirth",
+          "detail": "Blue returns with an updated emblem."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Refined black-and-blue suit with finger stripes."
+        }
+      ]
+    }
   },
   {
     "name": "Batgirl",
@@ -1060,7 +1754,69 @@ window.COMIC_VAULT_CHARACTERS = [
       "Batgirl: Year One",
       "Birds of Prey",
       "Batgirl of Burnside"
-    ]
+    ],
+    "imageSlug": "batgirl",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1967",
+          "title": "Debut",
+          "detail": "Barbara Gordon becomes Batgirl."
+        },
+        {
+          "era": "1988",
+          "title": "The Killing Joke",
+          "detail": "Barbara is critically injured."
+        },
+        {
+          "era": "1989",
+          "title": "Oracle",
+          "detail": "She reinvents herself as the information specialist Oracle."
+        },
+        {
+          "era": "2011",
+          "title": "Batgirl Returns",
+          "detail": "Barbara returns to field action as Batgirl."
+        },
+        {
+          "era": "2020s",
+          "title": "Oracle & Batgirl",
+          "detail": "Modern stories allow both identities to remain part of her role."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1967",
+          "title": "Classic",
+          "detail": "Purple/blue cape, cowl and yellow accents."
+        },
+        {
+          "era": "2000s",
+          "title": "Oracle",
+          "detail": "Civilian identity with advanced information systems."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Armored black suit."
+        },
+        {
+          "era": "2014",
+          "title": "Burnside",
+          "detail": "Purple street-tech redesign."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Tactical costume drawing on classic purple and yellow."
+        }
+      ]
+    }
   },
   {
     "name": "Robin",
@@ -1154,7 +1910,59 @@ window.COMIC_VAULT_CHARACTERS = [
       "Robin: Son of Batman",
       "Super Sons",
       "Robin"
-    ]
+    ],
+    "imageSlug": "robin",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "2006",
+          "title": "Damian Appears",
+          "detail": "Bruce Wayne's son is introduced to modern continuity."
+        },
+        {
+          "era": "2009",
+          "title": "Robin",
+          "detail": "Damian becomes Robin alongside Dick Grayson's Batman."
+        },
+        {
+          "era": "2011",
+          "title": "Batman and Robin",
+          "detail": "Bruce and Damian develop a difficult father-son partnership."
+        },
+        {
+          "era": "2016",
+          "title": "Super Sons",
+          "detail": "Damian forms a popular friendship/rivalry with Jon Kent."
+        },
+        {
+          "era": "2020s",
+          "title": "Solo Growth",
+          "detail": "Stories explore Damian beyond the Robin role."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "2009",
+          "title": "Robin",
+          "detail": "Red tunic, dark cape and hood."
+        },
+        {
+          "era": "2011",
+          "title": "New 52",
+          "detail": "Armored Robin uniform."
+        },
+        {
+          "era": "2020s",
+          "title": "Modern",
+          "detail": "Black/red/gray variations with League-inspired details."
+        }
+      ]
+    }
   },
   {
     "name": "Spider-Man",
@@ -1270,7 +2078,74 @@ window.COMIC_VAULT_CHARACTERS = [
       "Kraven's Last Hunt",
       "Spider-Man: Blue",
       "Ultimate Spider-Man"
-    ]
+    ],
+    "imageSlug": "spider-man",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Debut",
+          "detail": "Peter Parker becomes Spider-Man in Amazing Fantasy #15."
+        },
+        {
+          "era": "1960s",
+          "title": "College Era",
+          "detail": "Peter graduates high school and the supporting cast expands."
+        },
+        {
+          "era": "1984",
+          "title": "Black Costume",
+          "detail": "Spider-Man acquires the alien costume that becomes Venom."
+        },
+        {
+          "era": "2000s",
+          "title": "Modern Era",
+          "detail": "Major identity, relationship and status-quo shifts reshape the character."
+        },
+        {
+          "era": "2010s",
+          "title": "Spider-Verse",
+          "detail": "The wider multiverse of Spider-heroes becomes central."
+        },
+        {
+          "era": "2020s",
+          "title": "Current Adventures",
+          "detail": "Peter continues balancing heroism, science and personal responsibility."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Classic",
+          "detail": "Red-and-blue web-patterned suit."
+        },
+        {
+          "era": "1984",
+          "title": "Black Suit",
+          "detail": "Symbiote costume introduces an all-black silhouette."
+        },
+        {
+          "era": "2006",
+          "title": "Iron Spider",
+          "detail": "Stark-designed red-and-gold armor."
+        },
+        {
+          "era": "2010s",
+          "title": "Advanced Suits",
+          "detail": "Technology-heavy variations appear alongside the classic costume."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Classic suit remains the visual foundation."
+        }
+      ]
+    }
   },
   {
     "name": "Iron Man",
@@ -1395,7 +2270,84 @@ window.COMIC_VAULT_CHARACTERS = [
       "Extremis",
       "Invincible Iron Man",
       "Armor Wars"
-    ]
+    ],
+    "imageSlug": "iron-man",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1963",
+          "title": "Debut",
+          "detail": "Tony Stark creates his first armor to escape captivity."
+        },
+        {
+          "era": "1960s",
+          "title": "Armor Evolution",
+          "detail": "The bulky original suit rapidly becomes a streamlined red-and-gold design."
+        },
+        {
+          "era": "1979",
+          "title": "Demon in a Bottle",
+          "detail": "A landmark storyline explores Tony's personal struggles."
+        },
+        {
+          "era": "2006",
+          "title": "Civil War",
+          "detail": "Tony becomes a central leader of superhero registration."
+        },
+        {
+          "era": "2010s",
+          "title": "Armor Revolution",
+          "detail": "Modular, Extremis and nanotech-inspired suits expand the concept."
+        },
+        {
+          "era": "2020s",
+          "title": "Modern Iron Man",
+          "detail": "Tony continues to redefine the boundary between human and machine."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1963",
+          "title": "Mark I",
+          "detail": "Bulky gray survival armor."
+        },
+        {
+          "era": "1963",
+          "title": "Golden Avenger",
+          "detail": "Gold repaint and early improvements."
+        },
+        {
+          "era": "1960s",
+          "title": "Classic Red & Gold",
+          "detail": "The long-lived visual template."
+        },
+        {
+          "era": "1980s",
+          "title": "Silver Centurion",
+          "detail": "Red-and-silver angular armor."
+        },
+        {
+          "era": "2000s",
+          "title": "Extremis",
+          "detail": "Biotech integration and streamlined plating."
+        },
+        {
+          "era": "2010s",
+          "title": "Bleeding Edge",
+          "detail": "Nanotech-like armor stored within Tony's body."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "High-performance suits blend classic styling and adaptive technology."
+        }
+      ]
+    }
   },
   {
     "name": "Captain America",
@@ -1507,7 +2459,74 @@ window.COMIC_VAULT_CHARACTERS = [
       "The Winter Soldier",
       "Civil War",
       "Captain America: Man Out of Time"
-    ]
+    ],
+    "imageSlug": "captain-america",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1941",
+          "title": "Debut",
+          "detail": "Captain America punches Hitler on the cover of his first issue."
+        },
+        {
+          "era": "1964",
+          "title": "Return",
+          "detail": "The Avengers discover Steve frozen in suspended animation."
+        },
+        {
+          "era": "1970s",
+          "title": "Nomad",
+          "detail": "Steve temporarily abandons the Captain America identity."
+        },
+        {
+          "era": "2000s",
+          "title": "Winter Soldier",
+          "detail": "Bucky's survival radically reshapes Steve's history."
+        },
+        {
+          "era": "2006",
+          "title": "Civil War",
+          "detail": "Steve leads resistance to superhero registration."
+        },
+        {
+          "era": "2020s",
+          "title": "Living Symbol",
+          "detail": "Modern stories continue to test what the symbol should represent."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1941",
+          "title": "Golden Age",
+          "detail": "Chainmail-inspired costume and triangular shield."
+        },
+        {
+          "era": "1941",
+          "title": "Round Shield",
+          "detail": "The circular shield becomes permanent."
+        },
+        {
+          "era": "1960s",
+          "title": "Classic",
+          "detail": "Streamlined red-white-blue uniform."
+        },
+        {
+          "era": "2010s",
+          "title": "Modern Tactical",
+          "detail": "Armor textures and tactical details update the design."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Classic symbolism with contemporary materials."
+        }
+      ]
+    }
   },
   {
     "name": "Thor",
@@ -1614,7 +2633,69 @@ window.COMIC_VAULT_CHARACTERS = [
       "The Mighty Thor by Walt Simonson",
       "Thor: God of Thunder",
       "The Mighty Thor: Jane Foster"
-    ]
+    ],
+    "imageSlug": "thor",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Debut",
+          "detail": "Thor is introduced in Journey into Mystery."
+        },
+        {
+          "era": "1960s",
+          "title": "Asgard Expands",
+          "detail": "The mythology of Odin, Loki and the Nine Realms grows."
+        },
+        {
+          "era": "1980s",
+          "title": "Simonson Era",
+          "detail": "Epic fantasy, Beta Ray Bill and Ragnarok stories redefine Thor."
+        },
+        {
+          "era": "2010s",
+          "title": "Unworthy Thor",
+          "detail": "Thor loses access to Mjolnir and Jane Foster becomes Thor."
+        },
+        {
+          "era": "2020s",
+          "title": "King Thor Era",
+          "detail": "Modern stories explore Thor's responsibilities as ruler and cosmic hero."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Classic",
+          "detail": "Winged helmet, red cape and circular chest discs."
+        },
+        {
+          "era": "1980s",
+          "title": "Simonson",
+          "detail": "Classic silhouette refined for epic fantasy storytelling."
+        },
+        {
+          "era": "2010s",
+          "title": "Modern Armor",
+          "detail": "Chainmail and heavier Asgardian armor."
+        },
+        {
+          "era": "Unworthy",
+          "title": "Odinson",
+          "detail": "A more rugged axe-wielding look."
+        },
+        {
+          "era": "Current",
+          "title": "King Thor",
+          "detail": "Regal armor and classic elements combine."
+        }
+      ]
+    }
   },
   {
     "name": "Hulk",
@@ -1720,7 +2801,69 @@ window.COMIC_VAULT_CHARACTERS = [
       "Planet Hulk",
       "World War Hulk",
       "Immortal Hulk"
-    ]
+    ],
+    "imageSlug": "hulk",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Debut",
+          "detail": "Bruce Banner becomes the Hulk after a gamma bomb accident."
+        },
+        {
+          "era": "1970s",
+          "title": "Wandering Hulk",
+          "detail": "Stories emphasize Banner's tragic life on the run."
+        },
+        {
+          "era": "1990s",
+          "title": "Merged Hulk",
+          "detail": "Different Hulk personas become a major psychological theme."
+        },
+        {
+          "era": "2006",
+          "title": "Planet Hulk",
+          "detail": "Hulk is exiled and becomes a gladiator and ruler."
+        },
+        {
+          "era": "2018",
+          "title": "Immortal Hulk",
+          "detail": "A horror-focused run explores gamma, death and Banner's fractured psyche."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Gray Hulk",
+          "detail": "The original Hulk is gray."
+        },
+        {
+          "era": "1962",
+          "title": "Green Hulk",
+          "detail": "Green skin quickly becomes the standard."
+        },
+        {
+          "era": "1990s",
+          "title": "Professor Hulk",
+          "detail": "A more intelligent Hulk with tailored clothing."
+        },
+        {
+          "era": "2006",
+          "title": "Planet Hulk",
+          "detail": "Gladiator armor and weapons."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Designs vary according to Hulk persona."
+        }
+      ]
+    }
   },
   {
     "name": "Wolverine",
@@ -1834,7 +2977,74 @@ window.COMIC_VAULT_CHARACTERS = [
       "Weapon X",
       "Old Man Logan",
       "Astonishing X-Men"
-    ]
+    ],
+    "imageSlug": "wolverine",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1974",
+          "title": "Debut",
+          "detail": "Wolverine battles Hulk and Wendigo."
+        },
+        {
+          "era": "1975",
+          "title": "X-Men",
+          "detail": "Logan joins the new international X-Men team."
+        },
+        {
+          "era": "1982",
+          "title": "Japan",
+          "detail": "A celebrated solo miniseries deepens Wolverine's samurai connections."
+        },
+        {
+          "era": "1990s",
+          "title": "Weapon X",
+          "detail": "His mysterious past and adamantium bonding are explored."
+        },
+        {
+          "era": "2000s",
+          "title": "Avenger",
+          "detail": "Wolverine becomes a member of the Avengers as well as the X-Men."
+        },
+        {
+          "era": "2010s",
+          "title": "Legacy",
+          "detail": "Laura Kinney increasingly carries the Wolverine mantle."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1974",
+          "title": "Original",
+          "detail": "Yellow-and-blue suit with whiskered mask."
+        },
+        {
+          "era": "1975",
+          "title": "Classic",
+          "detail": "Refined yellow-and-blue costume."
+        },
+        {
+          "era": "1980",
+          "title": "Brown & Tan",
+          "detail": "A darker brown costume becomes a fan favorite."
+        },
+        {
+          "era": "1990s",
+          "title": "Blue & Yellow",
+          "detail": "Classic palette returns."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Traditional silhouettes continue with tactical refinements."
+        }
+      ]
+    }
   },
   {
     "name": "Daredevil",
@@ -1940,7 +3150,69 @@ window.COMIC_VAULT_CHARACTERS = [
       "Born Again",
       "The Man Without Fear",
       "Daredevil by Bendis & Maleev"
-    ]
+    ],
+    "imageSlug": "daredevil",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1964",
+          "title": "Debut",
+          "detail": "Matt Murdock becomes Daredevil."
+        },
+        {
+          "era": "1980s",
+          "title": "Miller Era",
+          "detail": "Crime noir, ninjas and Kingpin become central to the series."
+        },
+        {
+          "era": "1986",
+          "title": "Born Again",
+          "detail": "Kingpin dismantles Matt's life in a landmark story."
+        },
+        {
+          "era": "2000s",
+          "title": "Identity Crisis",
+          "detail": "Matt's secret identity becomes increasingly difficult to contain."
+        },
+        {
+          "era": "2010s",
+          "title": "San Francisco",
+          "detail": "Daredevil temporarily relocates west."
+        },
+        {
+          "era": "2020s",
+          "title": "Modern Era",
+          "detail": "Faith, justice and vigilantism remain core themes."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1964",
+          "title": "Yellow Suit",
+          "detail": "Yellow, black and red original costume."
+        },
+        {
+          "era": "1965",
+          "title": "Classic Red",
+          "detail": "All-red suit becomes iconic."
+        },
+        {
+          "era": "1990s",
+          "title": "Armored",
+          "detail": "Black-and-red armor briefly replaces the classic suit."
+        },
+        {
+          "era": "2010s",
+          "title": "Modern",
+          "detail": "Streamlined red suit with tactical detail."
+        }
+      ]
+    }
   },
   {
     "name": "Doctor Strange",
@@ -2042,7 +3314,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "Doctor Strange: The Oath",
       "Triumph and Torment",
       "The Last Days of Magic"
-    ]
+    ],
+    "imageSlug": "doctor-strange",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1963",
+          "title": "Debut",
+          "detail": "Doctor Strange appears in Strange Tales."
+        },
+        {
+          "era": "1960s",
+          "title": "Mystic Marvel",
+          "detail": "Steve Ditko's surreal visual mythology expands the character."
+        },
+        {
+          "era": "1970s",
+          "title": "Defenders",
+          "detail": "Strange helps anchor Marvel's unconventional team."
+        },
+        {
+          "era": "2000s",
+          "title": "Illuminati",
+          "detail": "He joins a secret group of major Marvel leaders."
+        },
+        {
+          "era": "2010s",
+          "title": "Sorcerer Supreme",
+          "detail": "Modern stories explore the cost and ecology of magic."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1963",
+          "title": "Early Mystic",
+          "detail": "Blue robes and simpler amulet."
+        },
+        {
+          "era": "1960s",
+          "title": "Classic",
+          "detail": "Cloak of Levitation and Eye of Agamotto."
+        },
+        {
+          "era": "2010s",
+          "title": "Modern",
+          "detail": "Layered robes and contemporary mystical detailing."
+        },
+        {
+          "era": "Current",
+          "title": "Sorcerer",
+          "detail": "Classic magical silhouette with varied robes."
+        }
+      ]
+    }
   },
   {
     "name": "Doctor Doom",
@@ -2146,7 +3475,69 @@ window.COMIC_VAULT_CHARACTERS = [
       "Secret Wars (1984)",
       "Secret Wars (2015)",
       "Infamous Iron Man"
-    ]
+    ],
+    "imageSlug": "doctor-doom",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Debut",
+          "detail": "Doctor Doom confronts the Fantastic Four."
+        },
+        {
+          "era": "1960s",
+          "title": "Latveria",
+          "detail": "Doom's rule over Latveria and rivalry with Reed Richards deepen."
+        },
+        {
+          "era": "1980s",
+          "title": "Secret Wars",
+          "detail": "Doom steals vast cosmic power."
+        },
+        {
+          "era": "2015",
+          "title": "Secret Wars",
+          "detail": "Doom becomes the godlike ruler of Battleworld."
+        },
+        {
+          "era": "2016",
+          "title": "Infamous Iron Man",
+          "detail": "Victor attempts a period of heroism in Iron Man armor."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Classic Armor",
+          "detail": "Green hooded cloak over medieval-tech armor."
+        },
+        {
+          "era": "1980s",
+          "title": "Imperial Doom",
+          "detail": "Refined regal armor and tunics."
+        },
+        {
+          "era": "2015",
+          "title": "God Emperor",
+          "detail": "White robes and armor on Battleworld."
+        },
+        {
+          "era": "2016",
+          "title": "Infamous Iron Man",
+          "detail": "Doom-themed Iron Man armor."
+        },
+        {
+          "era": "Current",
+          "title": "Modern Doom",
+          "detail": "Classic green cloak and metal mask remain foundational."
+        }
+      ]
+    }
   },
   {
     "name": "Magneto",
@@ -2242,7 +3633,59 @@ window.COMIC_VAULT_CHARACTERS = [
       "Magneto Testament",
       "Fatal Attractions",
       "House of X / Powers of X"
-    ]
+    ],
+    "imageSlug": "magneto",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1963",
+          "title": "Debut",
+          "detail": "Magneto leads the Brotherhood against the X-Men."
+        },
+        {
+          "era": "1980s",
+          "title": "Complexity",
+          "detail": "His tragic past and friendship with Charles Xavier gain greater emphasis."
+        },
+        {
+          "era": "2000s",
+          "title": "Mutant Politics",
+          "detail": "Magneto's role shifts repeatedly between revolutionary, ruler and ally."
+        },
+        {
+          "era": "2019",
+          "title": "Krakoa",
+          "detail": "Magneto becomes one of the founders of the mutant nation of Krakoa."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1963",
+          "title": "Classic",
+          "detail": "Red-and-purple armor with distinctive helmet."
+        },
+        {
+          "era": "1990s",
+          "title": "White Accents",
+          "detail": "Various armored redesigns appear."
+        },
+        {
+          "era": "2010s",
+          "title": "White Magneto",
+          "detail": "White costume marks a major visual departure."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Classic helmet and regal mutant-leader styling remain central."
+        }
+      ]
+    }
   },
   {
     "name": "Black Panther",
@@ -2338,7 +3781,59 @@ window.COMIC_VAULT_CHARACTERS = [
       "Black Panther by Christopher Priest",
       "Who Is the Black Panther?",
       "A Nation Under Our Feet"
-    ]
+    ],
+    "imageSlug": "black-panther",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1966",
+          "title": "Debut",
+          "detail": "T'Challa meets the Fantastic Four in Wakanda."
+        },
+        {
+          "era": "1970s",
+          "title": "Solo Adventures",
+          "detail": "Black Panther leads Jungle Action stories."
+        },
+        {
+          "era": "1998",
+          "title": "Priest Era",
+          "detail": "Political intrigue and Wakandan world-building expand dramatically."
+        },
+        {
+          "era": "2010s",
+          "title": "Nation Under Pressure",
+          "detail": "Modern stories explore Wakanda's monarchy, democracy and global role."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1966",
+          "title": "Classic",
+          "detail": "Simple full black suit and cat-like cowl."
+        },
+        {
+          "era": "1998",
+          "title": "Modern Panther",
+          "detail": "Gold accents and ceremonial elements."
+        },
+        {
+          "era": "2010s",
+          "title": "Vibranium Suit",
+          "detail": "Textured high-tech costume."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Sleek black technology with regal details."
+        }
+      ]
+    }
   },
   {
     "name": "Storm",
@@ -2440,7 +3935,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "Lifedeath",
       "X-Men Red",
       "Storm"
-    ]
+    ],
+    "imageSlug": "storm",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1975",
+          "title": "Debut",
+          "detail": "Storm joins the new international X-Men."
+        },
+        {
+          "era": "1980s",
+          "title": "Team Leader",
+          "detail": "Ororo becomes a major X-Men leader."
+        },
+        {
+          "era": "1980s",
+          "title": "Powerless Era",
+          "detail": "Storm leads the X-Men even after temporarily losing her powers."
+        },
+        {
+          "era": "2000s",
+          "title": "Wakanda",
+          "detail": "Storm marries T'Challa and becomes queen of Wakanda."
+        },
+        {
+          "era": "2019",
+          "title": "Krakoa",
+          "detail": "Storm assumes major leadership roles in mutant society and beyond."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1975",
+          "title": "Classic",
+          "detail": "Black costume, cape and tiara."
+        },
+        {
+          "era": "1980s",
+          "title": "Punk Storm",
+          "detail": "Leather, mohawk and dramatic attitude shift."
+        },
+        {
+          "era": "1990s",
+          "title": "White Suit",
+          "detail": "Popular white costume in animation and comics."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Regal, weather-goddess styling with X-Men elements."
+        }
+      ]
+    }
   },
   {
     "name": "Scarlet Witch",
@@ -2545,7 +4097,69 @@ window.COMIC_VAULT_CHARACTERS = [
       "Avengers Disassembled",
       "House of M",
       "Scarlet Witch"
-    ]
+    ],
+    "imageSlug": "scarlet-witch",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1964",
+          "title": "Debut",
+          "detail": "Wanda appears with the Brotherhood of Evil Mutants."
+        },
+        {
+          "era": "1965",
+          "title": "Avenger",
+          "detail": "Scarlet Witch joins the Avengers."
+        },
+        {
+          "era": "1980s",
+          "title": "Vision and Wanda",
+          "detail": "Her family life and magical heritage become central."
+        },
+        {
+          "era": "2004",
+          "title": "Avengers Disassembled",
+          "detail": "A crisis involving Wanda reshapes the Avengers."
+        },
+        {
+          "era": "2005",
+          "title": "House of M",
+          "detail": "Reality is transformed around Wanda's grief."
+        },
+        {
+          "era": "2020s",
+          "title": "Redemption & Magic",
+          "detail": "Modern stories emphasize Wanda's role as a protector of magic."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1964",
+          "title": "Classic",
+          "detail": "Red costume and horned headpiece."
+        },
+        {
+          "era": "1990s",
+          "title": "Avengers Era",
+          "detail": "Various red bodysuit and cape variants."
+        },
+        {
+          "era": "2010s",
+          "title": "Modern Witch",
+          "detail": "Long coats, layered fabrics and mystical styling."
+        },
+        {
+          "era": "Current",
+          "title": "Scarlet Witch",
+          "detail": "Crown-like headpiece and modern magical attire."
+        }
+      ]
+    }
   },
   {
     "name": "Black Widow",
@@ -2646,7 +4260,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "Black Widow: The Itsy-Bitsy Spider",
       "Black Widow by Waid & Samnee",
       "Black Widow by Kelly Thompson"
-    ]
+    ],
+    "imageSlug": "black-widow",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1964",
+          "title": "Debut",
+          "detail": "Natasha enters Marvel stories as a Soviet spy."
+        },
+        {
+          "era": "1960s",
+          "title": "Defection",
+          "detail": "She defects and becomes an ally to Marvel heroes."
+        },
+        {
+          "era": "1970s",
+          "title": "Daredevil",
+          "detail": "Natasha co-stars in Daredevil and gains a stronger heroic identity."
+        },
+        {
+          "era": "2000s",
+          "title": "Modern Spy",
+          "detail": "Solo series deepen her Red Room history and espionage world."
+        },
+        {
+          "era": "2020s",
+          "title": "Independent Hero",
+          "detail": "Current stories emphasize Natasha's autonomy and found family."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1964",
+          "title": "Early Spy",
+          "detail": "Formal Cold War fashion and veils."
+        },
+        {
+          "era": "1970",
+          "title": "Classic Black Suit",
+          "detail": "Black bodysuit, red hair and Widow's Bite bracelets."
+        },
+        {
+          "era": "2000s",
+          "title": "Tactical",
+          "detail": "Modern tactical versions of the classic black suit."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Sleek espionage gear with signature wrist weapons."
+        }
+      ]
+    }
   },
   {
     "name": "Miles Morales",
@@ -2742,7 +4413,59 @@ window.COMIC_VAULT_CHARACTERS = [
       "Ultimate Comics Spider-Man",
       "Spider-Men",
       "Miles Morales: Spider-Man"
-    ]
+    ],
+    "imageSlug": "miles-morales",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "2011",
+          "title": "Debut",
+          "detail": "Miles appears after the death of Ultimate Peter Parker."
+        },
+        {
+          "era": "2012",
+          "title": "Ultimate Spider-Man",
+          "detail": "Miles grows into the Spider-Man role."
+        },
+        {
+          "era": "2015",
+          "title": "Secret Wars",
+          "detail": "Miles survives the end of the Ultimate universe."
+        },
+        {
+          "era": "2016",
+          "title": "Main Marvel Universe",
+          "detail": "Miles and his family become part of Earth-616."
+        },
+        {
+          "era": "2020s",
+          "title": "Expanded Legacy",
+          "detail": "Miles develops a wider rogues gallery and new abilities."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "2011",
+          "title": "Classic Miles",
+          "detail": "Black-and-red Spider-Man suit."
+        },
+        {
+          "era": "2020s",
+          "title": "Street Variants",
+          "detail": "Temporary hoodies and streetwear-inspired suits."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Black-and-red identity remains the core design."
+        }
+      ]
+    }
   },
   {
     "name": "Deadpool",
@@ -2832,7 +4555,54 @@ window.COMIC_VAULT_CHARACTERS = [
       "Deadpool by Joe Kelly",
       "Cable & Deadpool",
       "Deadpool by Posehn & Duggan"
-    ]
+    ],
+    "imageSlug": "deadpool",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1991",
+          "title": "Debut",
+          "detail": "Deadpool appears as an adversary in New Mutants."
+        },
+        {
+          "era": "1990s",
+          "title": "Solo Star",
+          "detail": "His personality and fourth-wall humor become central."
+        },
+        {
+          "era": "2000s",
+          "title": "Cable & Deadpool",
+          "detail": "Wade forms a memorable partnership with Cable."
+        },
+        {
+          "era": "2010s",
+          "title": "Mainstream Antihero",
+          "detail": "Deadpool becomes one of Marvel's most prominent antiheroes."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1991",
+          "title": "Classic",
+          "detail": "Red-and-black full-body mercenary suit."
+        },
+        {
+          "era": "2000s",
+          "title": "Refined",
+          "detail": "Classic design gains more tactical detail."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Numerous armor and gear variants retain the red-and-black mask."
+        }
+      ]
+    }
   },
   {
     "name": "Venom",
@@ -2931,7 +4701,64 @@ window.COMIC_VAULT_CHARACTERS = [
       "Venom: Lethal Protector",
       "Venom by Donny Cates",
       "King in Black"
-    ]
+    ],
+    "imageSlug": "venom",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1984",
+          "title": "Alien Costume",
+          "detail": "Spider-Man acquires the symbiote during Secret Wars."
+        },
+        {
+          "era": "1988",
+          "title": "Venom Debut",
+          "detail": "Eddie Brock and the symbiote confront Spider-Man as Venom."
+        },
+        {
+          "era": "1990s",
+          "title": "Lethal Protector",
+          "detail": "Venom transitions toward antihero status."
+        },
+        {
+          "era": "2018",
+          "title": "Symbiote Mythology",
+          "detail": "Knull and the cosmic origin of symbiotes expand the character's scope."
+        },
+        {
+          "era": "2020s",
+          "title": "King in Black Legacy",
+          "detail": "Venom's role becomes increasingly cosmic."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1988",
+          "title": "Classic Venom",
+          "detail": "Black symbiote body with white spider emblem and eyes."
+        },
+        {
+          "era": "1990s",
+          "title": "Lethal Protector",
+          "detail": "Larger, more monstrous proportions."
+        },
+        {
+          "era": "2010s",
+          "title": "Agent Venom",
+          "detail": "Flash Thompson uses a tactical symbiote suit."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Classic Eddie/Venom styling alongside cosmic forms."
+        }
+      ]
+    }
   },
   {
     "name": "Loki",
@@ -3032,7 +4859,69 @@ window.COMIC_VAULT_CHARACTERS = [
       "Journey into Mystery #85",
       "Journey into Mystery by Kieron Gillen",
       "Loki: Agent of Asgard"
-    ]
+    ],
+    "imageSlug": "loki",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Modern Debut",
+          "detail": "Loki becomes one of Thor's earliest recurring enemies."
+        },
+        {
+          "era": "1963",
+          "title": "Avengers Form",
+          "detail": "Loki's scheme indirectly leads to the formation of the Avengers."
+        },
+        {
+          "era": "2010s",
+          "title": "Kid Loki",
+          "detail": "Reincarnation opens a long period of identity reinvention."
+        },
+        {
+          "era": "2010s",
+          "title": "Agent of Asgard",
+          "detail": "Loki actively challenges the stories and labels imposed upon them."
+        },
+        {
+          "era": "2020s",
+          "title": "Modern Loki",
+          "detail": "The character continues to move between trickster, ruler and ally."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1962",
+          "title": "Classic",
+          "detail": "Green-and-yellow suit with enormous horned helmet."
+        },
+        {
+          "era": "2000s",
+          "title": "Regal Loki",
+          "detail": "More ornate Asgardian robes and armor."
+        },
+        {
+          "era": "2010s",
+          "title": "Kid Loki",
+          "detail": "Youthful green-and-gold design."
+        },
+        {
+          "era": "Agent",
+          "title": "Modern",
+          "detail": "Sleek black-and-green magical attire."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Regal and trickster elements continue to evolve."
+        }
+      ]
+    }
   },
   {
     "name": "Agatha Harkness",
@@ -3118,7 +5007,54 @@ window.COMIC_VAULT_CHARACTERS = [
       "Fantastic Four #94",
       "Vision and the Scarlet Witch",
       "Scarlet Witch"
-    ]
+    ],
+    "imageSlug": "agatha-harkness",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1970",
+          "title": "Debut",
+          "detail": "Agatha is introduced as Franklin Richards' governess."
+        },
+        {
+          "era": "1970s",
+          "title": "Mystic Mentor",
+          "detail": "Her magical history and role as Wanda's teacher expand."
+        },
+        {
+          "era": "1980s",
+          "title": "Scarlet Witch Legacy",
+          "detail": "Agatha becomes deeply connected to Wanda's magical development."
+        },
+        {
+          "era": "2020s",
+          "title": "Renewed Prominence",
+          "detail": "New stories revisit Agatha's history, covens and ambitions."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1970",
+          "title": "Classic Elder Witch",
+          "detail": "Dark robes and ornate jewelry."
+        },
+        {
+          "era": "Modern",
+          "title": "Contemporary Witch",
+          "detail": "Younger and more stylized magical interpretations appear."
+        },
+        {
+          "era": "Current",
+          "title": "Mystic",
+          "detail": "Designs vary widely with story and magical era."
+        }
+      ]
+    }
   },
   {
     "name": "Abomination",
@@ -3196,7 +5132,49 @@ window.COMIC_VAULT_CHARACTERS = [
       "Tales to Astonish #90",
       "Incredible Hulk",
       "Immortal Hulk"
-    ]
+    ],
+    "imageSlug": "abomination",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1967",
+          "title": "Debut",
+          "detail": "Blonsky becomes the Abomination and battles Hulk."
+        },
+        {
+          "era": "1970s",
+          "title": "Recurring Rival",
+          "detail": "Abomination becomes a long-term gamma antagonist."
+        },
+        {
+          "era": "2000s",
+          "title": "Modern Gamma Stories",
+          "detail": "His origin and relationship with Banner are repeatedly revisited."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1967",
+          "title": "Classic",
+          "detail": "Green reptilian gamma form."
+        },
+        {
+          "era": "Modern",
+          "title": "Modern Abomination",
+          "detail": "More monstrous scales and body proportions."
+        },
+        {
+          "era": "Current",
+          "title": "Gamma Variants",
+          "detail": "Appearance changes with gamma transformations."
+        }
+      ]
+    }
   },
   {
     "name": "Absorbing Man",
@@ -3271,7 +5249,44 @@ window.COMIC_VAULT_CHARACTERS = [
       "Journey into Mystery #114",
       "Avengers",
       "Immortal Hulk"
-    ]
+    ],
+    "imageSlug": "absorbing-man",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1965",
+          "title": "Debut",
+          "detail": "Creel receives his powers through Loki's magic and battles Thor."
+        },
+        {
+          "era": "1970s",
+          "title": "Avengers Villain",
+          "detail": "He becomes a recurring enemy of major Marvel heroes."
+        },
+        {
+          "era": "Modern",
+          "title": "Complex Creel",
+          "detail": "Later stories add more humanity and antiheroic moments."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1965",
+          "title": "Classic",
+          "detail": "Prison-striped pants and ball-and-chain weapon."
+        },
+        {
+          "era": "Modern",
+          "title": "Absorbed Forms",
+          "detail": "His appearance changes to match stone, steel and other substances."
+        }
+      ]
+    }
   },
   {
     "name": "Adam Strange",
@@ -3353,7 +5368,49 @@ window.COMIC_VAULT_CHARACTERS = [
       "Mystery in Space",
       "Adam Strange: Planet Heist",
       "Strange Adventures"
-    ]
+    ],
+    "imageSlug": "adam-strange",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1958",
+          "title": "Debut",
+          "detail": "Adam Strange appears in Showcase."
+        },
+        {
+          "era": "1960s",
+          "title": "Mystery in Space",
+          "detail": "Rann becomes the setting for classic science-fiction adventures."
+        },
+        {
+          "era": "2000s",
+          "title": "Rann-Thanagar",
+          "detail": "Adam plays a major role in DC's cosmic conflicts."
+        },
+        {
+          "era": "2020",
+          "title": "Strange Adventures",
+          "detail": "A modern miniseries reexamines his heroic reputation."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1958",
+          "title": "Classic",
+          "detail": "Red suit, finned helmet and jet pack."
+        },
+        {
+          "era": "Modern",
+          "title": "Updated Rann Gear",
+          "detail": "Contemporary armor preserves the classic red silhouette."
+        }
+      ]
+    }
   },
   {
     "name": "Amanda Waller",
@@ -3434,7 +5491,49 @@ window.COMIC_VAULT_CHARACTERS = [
       "Suicide Squad by John Ostrander",
       "Checkmate",
       "Absolute Power"
-    ]
+    ],
+    "imageSlug": "amanda-waller",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1986",
+          "title": "Debut",
+          "detail": "Waller is introduced during Legends."
+        },
+        {
+          "era": "1987",
+          "title": "Suicide Squad",
+          "detail": "She becomes the defining director of Task Force X."
+        },
+        {
+          "era": "2000s",
+          "title": "Checkmate",
+          "detail": "Waller's intelligence and political roles expand."
+        },
+        {
+          "era": "2020s",
+          "title": "Absolute Power Era",
+          "detail": "Her conflict with the superhero community escalates dramatically."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1986",
+          "title": "The Wall",
+          "detail": "Business suits and government attire establish her grounded presence."
+        },
+        {
+          "era": "Modern",
+          "title": "Director",
+          "detail": "Contemporary tactical/business styling."
+        }
+      ]
+    }
   },
   {
     "name": "Apocalypse",
@@ -3527,7 +5626,59 @@ window.COMIC_VAULT_CHARACTERS = [
       "Age of Apocalypse",
       "The Twelve",
       "X of Swords"
-    ]
+    ],
+    "imageSlug": "apocalypse",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "1986",
+          "title": "Debut",
+          "detail": "Apocalypse emerges as X-Factor's major enemy."
+        },
+        {
+          "era": "1990s",
+          "title": "Age of Apocalypse",
+          "detail": "An alternate timeline shows a world conquered by Apocalypse."
+        },
+        {
+          "era": "2000s",
+          "title": "Celestial Legacy",
+          "detail": "Stories expand his ancient history and technology."
+        },
+        {
+          "era": "2019",
+          "title": "Krakoa",
+          "detail": "Apocalypse joins mutant society on Krakoa and his motivations gain new context."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "1986",
+          "title": "Classic",
+          "detail": "Blue-gray armor with massive collar and tubing."
+        },
+        {
+          "era": "1990s",
+          "title": "Age of Apocalypse",
+          "detail": "Heavier tyrannical armor."
+        },
+        {
+          "era": "2019",
+          "title": "Krakoa",
+          "detail": "Ancient mutant styling and ceremonial armor."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Celestial-tech armor remains central."
+        }
+      ]
+    }
   },
   {
     "name": "America Chavez",
@@ -3614,6 +5765,53 @@ window.COMIC_VAULT_CHARACTERS = [
       "Young Avengers",
       "Ultimates",
       "America"
-    ]
+    ],
+    "imageSlug": "america-chavez",
+    "aliases": [],
+    "family": [],
+    "gear": [],
+    "continuities": {
+      "Main Comics": [
+        {
+          "era": "2011",
+          "title": "Debut",
+          "detail": "America first appears in Vengeance."
+        },
+        {
+          "era": "2013",
+          "title": "Young Avengers",
+          "detail": "She joins the Young Avengers."
+        },
+        {
+          "era": "2015",
+          "title": "Ultimates",
+          "detail": "America becomes part of a cosmic problem-solving team."
+        },
+        {
+          "era": "2017",
+          "title": "Solo Series",
+          "detail": "Her background and dimensional abilities take center stage."
+        }
+      ]
+    },
+    "costumeCategories": {
+      "Main Comics": [
+        {
+          "era": "2011",
+          "title": "Early Look",
+          "detail": "Streetwear with star motifs."
+        },
+        {
+          "era": "Young Avengers",
+          "title": "Signature Jacket",
+          "detail": "Denim/hoodie styling with bold star imagery."
+        },
+        {
+          "era": "Current",
+          "title": "Modern",
+          "detail": "Street-fashion superhero design continues to evolve."
+        }
+      ]
+    }
   }
 ];

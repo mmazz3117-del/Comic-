@@ -17,6 +17,19 @@
 
   const esc = (s="") => String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 
+  const slugify = (s="") => String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  const savedFiles = new Set(JSON.parse(localStorage.getItem("comicVaultSavedFiles") || "[]"));
+
+  function artMarkup(c, cls="character-image"){
+    const slug = c.imageSlug || slugify(c.name);
+    return `
+      <picture class="${cls}">
+        <source srcset="assets/characters/${slug}.webp" type="image/webp">
+        <img src="assets/characters/${slug}.png" alt="${esc(c.name)} artwork"
+          onerror="this.closest('picture').classList.add('missing-art'); this.style.display='none';">
+      </picture>`;
+  }
+
   function byName(name){ return characters.find(c=>c.name.toLowerCase()===String(name).toLowerCase()); }
 
   function makeFeatured(){
@@ -37,8 +50,11 @@
     $("featuredName").textContent = c.name.toUpperCase();
     $("featuredReal").textContent = c.realName;
     $("featuredFirst").textContent = c.firstAppearance;
-    $("featuredArt").querySelector(".art-monogram").textContent = c.name.charAt(0);
-    $("featuredArt").querySelector(".art-name").textContent = c.name.toUpperCase();
+    $("featuredArt").innerHTML = `
+      <div class="art-glow"></div>
+      ${artMarkup(c,"featured-character-image")}
+      <div class="art-monogram">${esc(c.name.charAt(0))}</div>
+      <div class="art-name">${esc(c.name.toUpperCase())}</div>`;
     $("exploreFeatured").innerHTML = `EXPLORE ${esc(c.name.toUpperCase())} <span>↗</span>`;
     $("exploreFeatured").dataset.character = c.name;
   }
@@ -91,6 +107,7 @@
                 <span class="char-code">CV-${pubCode}${String(globalIndex).padStart(2,"0")}</span>
               </span>
               <span class="card-figure">
+                ${artMarkup(c,"card-character-image")}
                 <span class="card-monogram">${esc(c.name.charAt(0))}</span>
               </span>
               <span class="card-copy">
@@ -111,7 +128,8 @@
     $("profilePublisher").textContent = c.publisher;
     $("profileName").textContent = c.name.toUpperCase();
     $("profileRealName").textContent = c.realName;
-    $("profileVisual").querySelector(".profile-monogram").textContent = c.name.charAt(0);
+    $("profileVisual").innerHTML = `${artMarkup(c,"profile-character-image")}<div class="profile-monogram">${esc(c.name.charAt(0))}</div>`;
+    updateFavoriteButton();
     $("profileFacts").innerHTML = [
       ["FIRST APPEARANCE",c.firstAppearance],["ALIGNMENT",c.alignment],["BASE",c.base],["TEAMS",c.teams.slice(0,2).join(", ") || "—"]
     ].map(([l,v])=>`<div class="fact"><label>${esc(l)}</label><strong>${esc(v)}</strong></div>`).join("");
@@ -120,6 +138,23 @@
     document.body.style.overflow="hidden";
     setProfileTab(tab);
     setTimeout(()=>document.querySelector(".sheet-panel").scrollTop=0,10);
+  }
+
+  function updateFavoriteButton(){
+    const btn = $("favoriteBtn");
+    if(!btn || !activeCharacter) return;
+    const saved = savedFiles.has(activeCharacter.name);
+    btn.setAttribute("aria-pressed", saved ? "true" : "false");
+    btn.textContent = saved ? "★ SAVED FILE" : "☆ SAVE FILE";
+    btn.classList.toggle("saved", saved);
+  }
+
+  function toggleFavorite(){
+    if(!activeCharacter) return;
+    if(savedFiles.has(activeCharacter.name)) savedFiles.delete(activeCharacter.name);
+    else savedFiles.add(activeCharacter.name);
+    localStorage.setItem("comicVaultSavedFiles", JSON.stringify([...savedFiles]));
+    updateFavoriteButton();
   }
 
   function closeProfile(){
@@ -143,21 +178,32 @@
 
     const info = [
       ["OCCUPATION",c.occupation],["SPECIES",c.species],["BIRTHPLACE",c.birthplace],
-      ["HEIGHT",c.height],["EYES",c.eyes],["TEAMS",c.teams.join(", ") || "—"]
+      ["HEIGHT",c.height],["EYES",c.eyes],["TEAMS",c.teams.join(", ") || "—"],
+      ["ALIASES",(c.aliases || []).join(", ") || "—"],["FAMILY",(c.family || []).join(", ") || "—"]
     ].map(([l,v])=>`<div class="info-box"><label>${esc(l)}</label><span>${esc(v)}</span></div>`).join("");
 
     if(activeTab==="overview"){
       profileBody.innerHTML = `
-        <section class="body-section"><h3>Character Overview</h3><p>${esc(c.overview)}</p></section>
+        <section class="dossier-lead">
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())}</span>
+          <h3>${esc(c.name)} — Archive Summary</h3>
+          <p>${esc(c.overview)}</p>
+        </section>
         <section class="body-section"><h3>Identity File</h3><div class="info-grid">${info}</div></section>
-        <section class="body-section"><h3>Attributes</h3><div class="attribute-list">${attrs}</div></section>
-        <section class="body-section"><h3>Capabilities</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></section>`;
+        <section class="body-section"><h3>Attribute Matrix</h3><div class="attribute-list">${attrs}</div></section>
+        <section class="body-section"><h3>Primary Capabilities</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></section>`;
     } else if(activeTab==="history"){
+      const categories = Object.entries(c.continuities || {});
       profileBody.innerHTML = `
-        <section class="body-section"><h3>Character History Timeline</h3><p>Tap an event to expand it.</p>
-        <div class="timeline">${c.history.map(([year,title,copy])=>`
-          <div class="timeline-event"><button class="timeline-head"><span class="timeline-year">${esc(year)}</span><span class="timeline-title">${esc(title)}</span><span>＋</span></button><div class="timeline-copy">${esc(copy)}</div></div>
-        `).join("")}</div></section>`;
+        <section class="body-section">
+          <h3>Character History Timeline</h3>
+          <p>Continuities are separated so comic history never gets mixed with film, television, animation or game versions.</p>
+          <div class="continuity-tabs" id="continuityTabs">
+            ${categories.map(([name],i)=>`<button class="${i===0?"active":""}" data-continuity="${esc(name)}">${esc(name)}</button>`).join("")}
+          </div>
+          <div id="continuityTimeline"></div>
+        </section>`;
+      renderContinuity(categories[0]?.[0] || "Main Comics");
     } else if(activeTab==="powers"){
       profileBody.innerHTML = `
         <section class="body-section"><h3>Powers & Skills</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></section>
@@ -167,19 +213,67 @@
     } else if(activeTab==="enemies"){
       profileBody.innerHTML = relationSection("Known Enemies",c.enemies);
     } else if(activeTab==="costumes"){
+      const cats = Object.entries(c.costumeCategories || {"Main Comics":[]});
       profileBody.innerHTML = `
-        <section class="body-section"><h3>Costume / Form Timeline</h3>
-          <p>Main comic-continuity designs are separated here from film, television, animation and game versions. Those media galleries can be added as distinct categories later.</p>
-          <div class="costume-scroll">${c.costumes.map(([era,title,copy])=>`
-            <article class="costume-card"><div class="costume-art">${esc(c.name.charAt(0))}</div><div class="costume-copy"><strong>${esc(era)} — ${esc(title)}</strong><span>${esc(copy)}</span></div></article>
-          `).join("")}</div>
+        <section class="body-section"><h3>Costume & Form Archive</h3>
+          <p>Browse designs by continuity instead of mixing every interpretation into one timeline.</p>
+          <div class="continuity-tabs" id="costumeTabs">
+            ${cats.map(([name],i)=>`<button class="${i===0?"active":""}" data-costume-category="${esc(name)}">${esc(name)}</button>`).join("")}
+          </div>
+          <div id="costumeGallery"></div>
+        </section>`;
+      renderCostumes(cats[0]?.[0] || "Main Comics");
+    } else if(activeTab==="gear"){
+      const gear = c.gear || [];
+      profileBody.innerHTML = `
+        <section class="body-section"><h3>Gear, Weapons & Technology</h3>
+          <p>${gear.length ? "Key equipment associated with this character." : "No equipment archive has been added for this character yet."}</p>
+          <div class="gear-grid">
+            ${gear.map(g=>`
+              <article class="gear-card">
+                <span>${esc(g.type)}</span>
+                <strong>${esc(g.name)}</strong>
+                <p>${esc(g.detail)}</p>
+              </article>`).join("")}
+          </div>
         </section>`;
     } else if(activeTab==="comics"){
       profileBody.innerHTML = `
-        <section class="body-section"><h3>Recommended Comic Files</h3><p>A starter reading list. We can later add issue ranges, publication dates, writers/artists, continuity labels and personal reading status.</p>
+        <section class="body-section"><h3>Recommended Comic Files</h3><p>A curated starter reading list. Later we can add issue ranges, creators, publication dates, continuity labels and your personal reading status.</p>
           <div class="comic-list">${c.comics.map((x,i)=>`<div class="comic-item"><strong>${String(i+1).padStart(2,"0")} // ${esc(x)}</strong><span>Reading recommendation</span></div>`).join("")}</div>
         </section>`;
     }
+  }
+
+  function renderContinuity(name){
+    const host = $("continuityTimeline"); if(!host || !activeCharacter) return;
+    const items = (activeCharacter.continuities || {})[name] || [];
+    host.innerHTML = `<div class="timeline">${items.map(item=>`
+      <div class="timeline-event">
+        <button class="timeline-head">
+          <span class="timeline-year">${esc(item.era)}</span>
+          <span class="timeline-title">${esc(item.title)}</span>
+          <span>＋</span>
+        </button>
+        <div class="timeline-copy">${esc(item.detail)}</div>
+      </div>`).join("")}</div>`;
+  }
+
+  function renderCostumes(name){
+    const host = $("costumeGallery"); if(!host || !activeCharacter) return;
+    const items = (activeCharacter.costumeCategories || {})[name] || [];
+    host.innerHTML = `<div class="costume-scroll">${items.map((item,i)=>`
+      <article class="costume-card">
+        <div class="costume-art">
+          ${artMarkup(activeCharacter,"costume-character-image")}
+          <span>${esc(activeCharacter.name.charAt(0))}</span>
+          <b>${String(i+1).padStart(2,"0")}</b>
+        </div>
+        <div class="costume-copy">
+          <strong>${esc(item.era)} — ${esc(item.title)}</strong>
+          <span>${esc(item.detail)}</span>
+        </div>
+      </article>`).join("")}</div>`;
   }
 
   function relationSection(title,items){
@@ -201,7 +295,19 @@
     if(e.target.closest("[data-close-sheet]")) closeProfile();
     if(e.target.closest("[data-close-menu]")) closeMenu();
     const th = e.target.closest(".timeline-head");
-    if(th){ th.parentElement.classList.toggle("open"); th.querySelector("span:last-child").textContent = th.parentElement.classList.contains("open") ? "−" : "＋"; }
+    if(th){ th.parentElement.classList.toggle("open"); th.querySelector("span:last-child").textContent = th.parentElement.classList.contains("open") ? "−" : "＋"; return; }
+
+    const continuity = e.target.closest("[data-continuity]");
+    if(continuity){
+      document.querySelectorAll("[data-continuity]").forEach(b=>b.classList.toggle("active",b===continuity));
+      renderContinuity(continuity.dataset.continuity); return;
+    }
+
+    const costumeCat = e.target.closest("[data-costume-category]");
+    if(costumeCat){
+      document.querySelectorAll("[data-costume-category]").forEach(b=>b.classList.toggle("active",b===costumeCat));
+      renderCostumes(costumeCat.dataset.costumeCategory); return;
+    }
   });
 
   searchInput.addEventListener("input",()=>{ currentLetter="ALL"; document.querySelectorAll("#alphabet button").forEach(b=>b.classList.toggle("active",b.dataset.letter==="ALL")); renderArchive(); });
@@ -220,6 +326,7 @@
 
   $("exploreFeatured").addEventListener("click",e=>openProfile(e.currentTarget.dataset.character || "Batman"));
   $("randomBtn").addEventListener("click",randomCharacter);
+  $("favoriteBtn").addEventListener("click",toggleFavorite);
   $("menuRandom").addEventListener("click",()=>{closeMenu();randomCharacter();});
   $("menuBtn").addEventListener("click",()=>{sideMenu.classList.add("open");sideMenu.setAttribute("aria-hidden","false");document.body.style.overflow="hidden";});
   $("homeBtn").addEventListener("click",()=>window.scrollTo({top:0,behavior:"smooth"}));
