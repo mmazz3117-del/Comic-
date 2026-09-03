@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="7.9" />
+  <meta name="comic-vault-build" content="8.0" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v7.9: 400 CHARACTER MASTER — SIMPLIFIED ORBIT CORE BRANDING -->
+  <!-- Comic Vault v8.0: 400 CHARACTER MASTER — ORIGIN & BACKSTORY CORE DOSSIER SECTION -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -3770,6 +3770,112 @@ html.cv-pinch-zoom .card-character-image{
   }
 }
 
+
+/* ==========================================================
+   COMIC VAULT v8.0 — ORIGIN & BACKSTORY CORE DOSSIER SECTION
+   ========================================================== */
+.origin-dossier{
+  position:relative;
+  overflow:hidden;
+  padding:26px 26px 26px 42px;
+  border:1px solid #2a3848;
+  border-radius:12px;
+  background:
+    radial-gradient(circle at 92% 8%,rgba(231,76,157,.09),transparent 35%),
+    radial-gradient(circle at 9% 94%,rgba(65,158,255,.07),transparent 38%),
+    linear-gradient(140deg,rgba(45,118,194,.055),transparent 48%),
+    #090f16;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.20),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+.origin-dossier::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:20px;
+  bottom:20px;
+  width:3px;
+  border-radius:3px;
+  background:linear-gradient(180deg,#5eb0ff 0%,#747fe9 52%,#e45b9f 100%);
+  box-shadow:0 0 15px rgba(89,169,255,.15);
+}
+.origin-dossier .section-kicker{
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  margin:0 0 14px;
+  padding:6px 9px 5px;
+  border:1px solid rgba(106,175,247,.30);
+  border-radius:4px;
+  background:linear-gradient(90deg,rgba(74,154,237,.09),rgba(221,80,157,.07));
+  color:#79baff;
+}
+.origin-dossier h3{
+  margin:0 0 14px;
+  color:#f3f7fc;
+  font-size:30px;
+  line-height:1.04;
+}
+.origin-summary{
+  margin:0 0 20px !important;
+  max-width:70ch;
+  color:#b7c2d0 !important;
+  line-height:1.78 !important;
+}
+.origin-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.origin-fact{
+  min-width:0;
+  padding:14px 15px;
+  border:1px solid #263545;
+  background:rgba(12,20,29,.76);
+}
+.origin-fact span{
+  display:block;
+  margin-bottom:7px;
+  color:#718298;
+  font-size:8px;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.origin-fact strong{
+  display:block;
+  color:#cbd4df;
+  font-size:11px;
+  line-height:1.55;
+  font-weight:600;
+}
+.origin-wide{
+  grid-column:1 / -1;
+}
+@media(max-width:600px){
+  .origin-dossier{
+    padding:22px 17px 23px 36px;
+    border-radius:10px;
+  }
+  .origin-dossier::before{
+    left:14px;
+    top:16px;
+    bottom:16px;
+  }
+  .origin-dossier h3{
+    font-size:29px;
+  }
+  .origin-grid{
+    grid-template-columns:1fr;
+  }
+  .origin-wide{
+    grid-column:auto;
+  }
+  .origin-fact{
+    padding:13px 14px;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -3779,7 +3885,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v7.9</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.0</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4008,7 +4114,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v7.9</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.0</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -63306,6 +63412,57 @@ window.COMIC_VAULT_AUDIT_LOG = [
     renderProfileBody();
   }
 
+
+  function originEarlyPath(c){
+    const items = Array.isArray(c.history) ? c.history : [];
+    const details = items
+      .map(item=>Array.isArray(item) ? String(item[2] || "").trim() : "")
+      .filter(Boolean);
+
+    const generic = /enters publication history|first appears|appears in .+?#|debuts? in .+?#|launches? in .+?#/i;
+    return details.find(d=>!generic.test(d)) || details[0] || "";
+  }
+
+  function originRoots(c){
+    const roots = [];
+    if(c.birthplace && String(c.birthplace).trim() && !/^varies by continuity$/i.test(String(c.birthplace).trim())){
+      roots.push(String(c.birthplace).trim());
+    }
+    if(c.species && String(c.species).trim()){
+      roots.push(String(c.species).trim());
+    }
+    return roots.join(" • ") || "Background varies by continuity";
+  }
+
+  function originAbilityBasis(c){
+    const powers = Array.isArray(c.powers) ? c.powers.filter(Boolean) : [];
+    const species = String(c.species || "").trim();
+    const occupation = String(c.occupation || "").trim();
+
+    const parts = [];
+    if(species) parts.push(species);
+    if(occupation) parts.push(occupation);
+    if(powers.length) parts.push(powers.slice(0,5).join(", "));
+    return parts.join(" • ") || "Abilities and training are documented elsewhere in the dossier.";
+  }
+
+  function originContext(c){
+    const overview = String(c.overview || "").trim();
+    const early = originEarlyPath(c);
+    const note = String(c.continuityNote || "").trim();
+
+    // Use the audited overview as the primary origin statement. Add a continuity note
+    // only when it materially explains origin/power source and is not boilerplate.
+    const boilerplate = /core identity, debut, power origin|this profile was reviewed for identity|no major mantle\/identity correction/i;
+    const originSpecific = /(origin|power|powered|magic|mystic|artifact|technology|born|raised|sent from|transformed|accident|trained|created|clone|host|bond|starheart|totem|radiation)/i;
+
+    let text = overview || early || "Origin details are still being expanded in the archive.";
+    if(note && !boilerplate.test(note) && originSpecific.test(note) && !text.includes(note)){
+      text += " " + note;
+    }
+    return text;
+  }
+
   function renderProfileBody(){
     const c = activeCharacter;
     const attrs = Object.entries(c.attributes).map(([k,v])=>{
@@ -63314,6 +63471,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
       <div class="attribute-row" data-rating="${rating}" data-attribute="${esc(slugify(k))}"><label>${esc(k)}</label><div class="attribute-bar"><div class="attribute-fill" style="width:${rating*20}%"></div></div><div class="attribute-value">${rating}/5</div></div>
     `;
     }).join("");
+
+    const originSummary = originContext(c);
+    const originRootsText = originRoots(c);
+    const originAbilityText = originAbilityBasis(c);
+    const originEarlyText = originEarlyPath(c);
 
     const info = [
       ["OCCUPATION",c.occupation],["SPECIES",c.species],["BIRTHPLACE",c.birthplace],
@@ -63352,10 +63514,30 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v7.9</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.0</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
+        </section>
+
+        <section class="body-section origin-dossier">
+          <div class="section-kicker">ORIGIN FILE</div>
+          <h3>Origin & Backstory</h3>
+          <p class="origin-summary">${esc(originSummary)}</p>
+          <div class="origin-grid">
+            <article class="origin-fact">
+              <span>ROOTS</span>
+              <strong>${esc(originRootsText)}</strong>
+            </article>
+            <article class="origin-fact">
+              <span>ABILITY / SKILL BASIS</span>
+              <strong>${esc(originAbilityText)}</strong>
+            </article>
+            <article class="origin-fact origin-wide">
+              <span>EARLY PATH</span>
+              <strong>${esc(originEarlyText || "Early-history details are being expanded.")}</strong>
+            </article>
+          </div>
         </section>
 
         <section class="body-section archive-classification">
