@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v7.2: 400 CHARACTER MASTER — 300 DC + 100 MARVEL; DEEP AUDIT 400/400 COMPLETE; iPHONE ZOOM STABILITY -->
+  <!-- Comic Vault v7.3: 400 CHARACTER MASTER — 300 DC + 100 MARVEL; DEEP AUDIT 400/400 COMPLETE; iPHONE ZOOM STABILITY + CANON NOTES POLISH -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1174,7 +1174,7 @@ button{
 }
 
 
-/* Comic Vault v7.2 visible build marker */
+/* Comic Vault v7.3 visible build marker */
 .brand-meta{
   display:flex;
   align-items:center;
@@ -1206,7 +1206,7 @@ button{
 }
 
 
-/* Comic Vault v7.2 — aliases + family dossier expansion */
+/* Comic Vault v7.3 — aliases + family dossier expansion */
 .identity-connections{
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -1296,7 +1296,7 @@ button{
 }
 
 
-/* Comic Vault v7.2 — 200 character archive */
+/* Comic Vault v7.3 — 200 character archive */
 .archive-total-badge{
   display:inline-flex;
   align-items:center;
@@ -1317,7 +1317,7 @@ button{
 }
 
 
-/* Comic Vault v7.2 — robust dossier overview */
+/* Comic Vault v7.3 — robust dossier overview */
 .dossier-number b{
   color:#7abaff;
   font-weight:900;
@@ -1485,7 +1485,7 @@ button{
 }
 
 
-/* Comic Vault v7.2 — installed artwork count */
+/* Comic Vault v7.3 — installed artwork count */
 .art-count-badge{
   display:inline-flex;align-items:center;min-height:20px;padding:0 7px;
   border:1px solid #315881;background:#0a131c;color:#68acf1;
@@ -1493,7 +1493,7 @@ button{
 }
 @media(max-width:430px){.art-count-badge{min-height:18px;padding:0 6px;font-size:6px}}
 
-/* Comic Vault v7.2 — iPhone featured artwork + linked family */
+/* Comic Vault v7.3 — iPhone featured artwork + linked family */
 .family-row{
   width:100%;
   appearance:none;
@@ -1577,7 +1577,7 @@ button{
 }
 
 
-/* Comic Vault v7.2 — safe-fit character artwork */
+/* Comic Vault v7.3 — safe-fit character artwork */
 @media (max-width:600px){
   /* Featured-file artwork: preserve the whole silhouette. */
   .character-art{
@@ -1639,7 +1639,7 @@ button{
 }
 
 
-/* Comic Vault v7.2 — larger dossier artwork + full-view viewer */
+/* Comic Vault v7.3 — larger dossier artwork + full-view viewer */
 .profile-art-trigger{
   cursor:zoom-in;
   outline:none;
@@ -1844,7 +1844,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v7.2 — HOMEPAGE GATEWAY REVAMP
+   COMIC VAULT v7.3 — HOMEPAGE GATEWAY REVAMP
    Original UI artwork only: gradients, rings, grid and glow.
    ========================================================== */
 
@@ -2291,7 +2291,7 @@ button{
 }
 
 
-/* Comic Vault v7.2 — portal monogram + clearer encyclopedia identity */
+/* Comic Vault v7.3 — portal monogram + clearer encyclopedia identity */
 .gateway-core{
   overflow:visible;
 }
@@ -2335,7 +2335,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v7.2 — APP PAGES + LARGER ANIMATED GATEWAY
+   COMIC VAULT v7.3 — APP PAGES + LARGER ANIMATED GATEWAY
    ========================================================== */
 
 .app-page{display:none !important}
@@ -2591,7 +2591,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v7.2 — iPHONE ORBIT ANIMATION FIX
+   COMIC VAULT v7.3 — iPHONE ORBIT ANIMATION FIX
    ========================================================== */
 
 .gateway-orbit{
@@ -2626,7 +2626,7 @@ button{
 }
 
 /*
-  v7.2 no longer silently disables the portal because of the system
+  v7.3 no longer silently disables the portal because of the system
   reduced-motion preference. The app instead uses slower motion below.
 */
 @media (prefers-reduced-motion:reduce){
@@ -2646,7 +2646,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v7.2 — FIRST-SCREEN MOBILE ENTRY
+   COMIC VAULT v7.3 — FIRST-SCREEN MOBILE ENTRY
    Goal: headline + identity + portal + DC/Marvel on one phone screen.
    ========================================================== */
 
@@ -2799,7 +2799,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v7.2 — ENCYCLOPEDIA NAVIGATION
+   COMIC VAULT v7.3 — ENCYCLOPEDIA NAVIGATION
    Favorites + collections + Groups & Leagues
    ========================================================== */
 
@@ -3029,7 +3029,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v7.2 — DEEP AUDIT UI
+   COMIC VAULT v7.3 — DEEP AUDIT UI
    ========================================================== */
 
 .audit-badge{
@@ -3100,20 +3100,55 @@ button{
 }
 
 .canon-note{
-  border-left:3px solid #a84688 !important;
+  position:relative;
+  overflow:hidden;
+  padding:26px 28px 28px 46px;
+  border:1px solid #263443 !important;
+  border-radius:12px;
   background:
-    radial-gradient(circle at 92% 12%,rgba(216,64,153,.08),transparent 35%),
-    #090e15 !important;
+    radial-gradient(circle at 92% 8%,rgba(216,64,153,.10),transparent 36%),
+    linear-gradient(135deg,rgba(168,70,136,.055),transparent 42%),
+    #090f16 !important;
+  box-shadow:
+    0 14px 34px rgba(0,0,0,.22),
+    inset 0 1px 0 rgba(255,255,255,.025);
+}
+.canon-note::before{
+  content:"";
+  position:absolute;
+  left:18px;
+  top:20px;
+  bottom:20px;
+  width:3px;
+  border-radius:3px;
+  background:linear-gradient(180deg,#ed69b0 0%,#b94b91 56%,#7d55c8 100%);
+  box-shadow:0 0 16px rgba(226,99,170,.18);
 }
 .canon-note .section-kicker{
-  color:#e263aa;
+  display:inline-flex;
+  align-items:center;
+  width:max-content;
+  margin:0 0 13px;
+  padding:6px 9px 5px;
+  border:1px solid rgba(226,99,170,.34);
+  border-radius:4px;
+  background:rgba(226,99,170,.07);
+  color:#ef72b8;
+  font-size:8px;
+  line-height:1;
+  letter-spacing:.19em;
+}
+.canon-note h3{
+  margin:0 0 14px;
+  color:#f1f5fb;
+  line-height:1.02;
 }
 .canon-note p{
   margin:0;
-  max-width:850px;
-  color:#a8b3c1;
+  max-width:62ch;
+  color:#aeb9c8;
   font-size:13px;
-  line-height:1.75;
+  line-height:1.78;
 }
 
 @media(max-width:600px){
@@ -3123,15 +3158,31 @@ button{
   .audit-badge{
     margin-top:11px;
   }
+  .canon-note{
+    padding:22px 18px 24px 40px;
+    border-radius:10px;
+  }
+  .canon-note::before{
+    left:14px;
+    top:17px;
+    bottom:17px;
+  }
+  .canon-note .section-kicker{
+    margin-bottom:12px;
+  }
+  .canon-note h3{
+    margin-bottom:13px;
+  }
   .canon-note p{
+    max-width:none;
     font-size:12px;
-    line-height:1.7;
+    line-height:1.72;
   }
 }
 
 
 /* ==========================================================
-   COMIC VAULT v7.2 — HIERARCHICAL COLLECTIONS
+   COMIC VAULT v7.3 — HIERARCHICAL COLLECTIONS
    Heroes/Villains > origin/type
    ========================================================== */
 
@@ -3237,7 +3288,7 @@ button{
 
 
 /* ==========================================================
-   COMIC VAULT v7.2 — iPHONE PINCH-ZOOM STABILITY
+   COMIC VAULT v7.3 — iPHONE PINCH-ZOOM STABILITY
    Keep accessibility zoom enabled while reducing Safari's
    off-screen raster/compositor workload in the 400-file archive.
    ========================================================== */
@@ -3283,7 +3334,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v7.2</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v7.3</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -3513,7 +3564,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v7.2</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v7.3</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -62623,7 +62674,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
 
   function makeFeatured(){
-    // v7.2: numbered featured carousel removed in favor of a single lower-page spotlight.
+    // v7.3: numbered featured carousel removed in favor of a single lower-page spotlight.
   }
 
   function setFeatured(name){
@@ -62854,7 +62905,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v7.2</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v7.3</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -63173,7 +63224,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   
 
   /* ========================================================
-     v7.2 iPhone/Safari pinch-zoom stability
+     v7.3 iPhone/Safari pinch-zoom stability
      visualViewport.scale changes during pinch zoom on iOS.
      This never blocks zoom; it only suspends decorative GPU work.
      ======================================================== */
