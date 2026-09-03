@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="8.1" />
+  <meta name="comic-vault-build" content="8.2" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.1: 400 CHARACTER MASTER — EXPANDED ORIGIN / LOSS / MOTIVATION STANDARD -->
+  <!-- Comic Vault v8.2: 400 CHARACTER MASTER — FAMILY / RELATIONSHIP FOUNDATION -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -3878,7 +3878,7 @@ html.cv-pinch-zoom .card-character-image{
 
 
 /* ==========================================================
-   COMIC VAULT v8.1 — EXPANDED ORIGIN / LOSS / MOTIVATION
+   COMIC VAULT v8.2 — FAMILY / RELATIONSHIP FOUNDATION
    Standard fields: Origin, Loss & Motivation / Power Origin /
    Important People / Core Drive / Continuity.
    ========================================================== */
@@ -3966,6 +3966,72 @@ html.cv-pinch-zoom .card-character-image{
   .origin-standard-card.origin-drive,
   .origin-standard-card.origin-continuity{grid-column:auto;}
 }
+
+
+/* ==========================================================
+   COMIC VAULT v8.2 — FAMILY / RELATIONSHIP FOUNDATION
+   ========================================================== */
+.family-foundation-panel{
+  background:
+    radial-gradient(circle at 92% 8%,rgba(230,78,158,.07),transparent 34%),
+    radial-gradient(circle at 8% 96%,rgba(75,163,255,.07),transparent 36%),
+    linear-gradient(145deg,rgba(55,149,255,.055),transparent 52%),
+    #0b1118;
+}
+.family-foundation-note{
+  margin:-4px 0 17px !important;
+  color:#7f8ea2 !important;
+  font-size:10px !important;
+  line-height:1.65 !important;
+}
+.family-subgroup + .family-subgroup{
+  margin-top:18px;
+  padding-top:16px;
+  border-top:1px solid #1d2936;
+}
+.family-subgroup-label{
+  display:inline-flex;
+  align-items:center;
+  min-height:24px;
+  margin-bottom:8px;
+  padding:0 8px;
+  border:1px solid #2c4764;
+  background:#0d1926;
+  color:#6eb4ff;
+  font-size:7px;
+  font-weight:900;
+  letter-spacing:.15em;
+}
+.origin-person-link{
+  width:100%;
+  appearance:none;
+  -webkit-appearance:none;
+  text-align:left;
+  cursor:pointer;
+  display:flex !important;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  font:inherit;
+}
+.origin-person-link b{
+  flex:0 0 auto;
+  color:#65adfa;
+  font-size:7px;
+  letter-spacing:.12em;
+  white-space:nowrap;
+}
+.origin-person-link:active,
+.origin-person-link:hover{
+  border-color:#3d78af !important;
+  color:#f4f8fd !important;
+}
+@media(max-width:600px){
+  .family-foundation-note{font-size:9.5px !important}
+  .origin-person-link{align-items:flex-start}
+  .origin-person-link b{padding-top:2px}
+}
+
 </style>
 </head>
 <body>
@@ -3975,7 +4041,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.1</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.2</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4204,7 +4270,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.1</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.2</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -8198,7 +8264,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "DC Database — Bruce Wayne Prime Earth physical reference"
     ],
     "originProfile": {
-      "originLossMotivation": "Bruce Wayne's life is divided by the night his parents, Thomas and Martha Wayne, were murdered in front of him after the family left a theater in Gotham. The trauma did more than create a desire for revenge: Bruce turned grief into a lifelong vow that no child should be left as powerless as he felt in that alley. He spent years training his body and mind—criminology, detective work, martial arts, escape artistry, science, languages and strategy—before returning to Gotham and choosing the bat as a symbol meant to frighten those who prey on others. His mission repeatedly costs him intimacy and peace. The deaths of allies, especially Jason Todd and later Alfred Pennyworth, and the damage done to Barbara Gordon and other members of his family reinforce his fear that anyone close to him may become a target. At the same time, the Bat-Family proves the mission does not have to remain an act of solitary grief. Bruce's central conflict is whether Batman is a promise to save people or an obsession that consumes the life he is trying to protect.",
+      "originLossMotivation": "Bruce Wayne's life is divided by the night his parents, Thomas and Martha Wayne, were murdered in front of him after the family left a theater in Gotham. The trauma did more than create a desire for revenge: Bruce turned grief into a lifelong vow that no child should be left as powerless as he felt in that alley. He spent years training his body and mind—criminology, detective work, martial arts, escape artistry, science, languages and strategy—before returning to Gotham and choosing the bat as a symbol meant to frighten those who prey on others. His mission repeatedly costs him intimacy and peace. The deaths of allies, especially Jason Todd and later Alfred Pennyworth, and the damage done to Barbara Gordon and other members of his family reinforce his fear that anyone close to him may become a target. At the same time, the family Bruce builds around the mission—Dick Grayson, Jason Todd, Tim Drake, Cassandra Cain, Damian Wayne, Alfred Pennyworth and others—proves Batman does not have to remain an act of solitary grief. Bruce's central conflict is whether Batman is a promise to save people or an obsession that consumes the life he is trying to protect.",
       "powerOrigin": {
         "type": "Training / No Innate Powers + Technology",
         "detail": "Bruce has no innate superhuman abilities. His effectiveness comes from elite physical and mental training, detective skill, tactical preparation, wealth, advanced equipment and a lifetime spent mastering disciplines relevant to crime-fighting."
@@ -8209,7 +8275,8 @@ window.COMIC_VAULT_CHARACTERS = [
         "Alfred Pennyworth — surrogate father and moral anchor",
         "Dick Grayson / Nightwing — first Robin and adopted son",
         "Jason Todd / Red Hood — adopted son whose death profoundly affected Bruce",
-        "Tim Drake / Red Robin — protégé and family",
+        "Tim Drake / Red Robin — son / ward relationship varies by continuity",
+        "Cassandra Cain — daughter / protégé relationship varies by continuity",
         "Damian Wayne — biological son",
         "Selina Kyle / Catwoman — central romantic relationship"
       ],
@@ -70133,6 +70200,43 @@ window.COMIC_VAULT_AUDIT_LOG = [
     return String(text || "").split(/\n\s*\n/).filter(Boolean).map(p=>`<p>${esc(p)}</p>`).join("");
   }
 
+
+  function relationshipGroupFoundation(c){
+    const groups = c && c.relationshipGroups && typeof c.relationshipGroups === "object" ? c.relationshipGroups : {};
+    const familyLike = {};
+    const other = {};
+    const familyLabel = /(family|adopt|ward|parent|child|children|sibling|spouse|partner|romantic|marriage)/i;
+    Object.entries(groups).forEach(([group,entries])=>{
+      if(!Array.isArray(entries) || !entries.length) return;
+      (familyLabel.test(group) ? familyLike : other)[group] = entries;
+    });
+    return {familyLike, other};
+  }
+
+  function relationshipEntryMarkup(entry){
+    const target = resolveCharacterReference(entry);
+    return target
+      ? `<button class="family-row family-link" data-related="${esc(target.name)}"><span>${esc(entry)}</span><b>OPEN FILE ↗</b></button>`
+      : `<div class="family-row"><span>${esc(entry)}</span></div>`;
+  }
+
+  function relationshipSubgroupMarkup(label,entries){
+    if(!Array.isArray(entries) || !entries.length) return "";
+    return `<div class="family-subgroup"><span class="family-subgroup-label">${esc(label)}</span><div class="family-list">${entries.map(relationshipEntryMarkup).join("")}</div></div>`;
+  }
+
+  function originPeopleMarkup(people){
+    if(!Array.isArray(people) || !people.length){
+      return `<div class="origin-person">No single relationship is currently indexed as defining this character's origin.</div>`;
+    }
+    return people.map(person=>{
+      const target = resolveCharacterReference(person);
+      return target
+        ? `<button class="origin-person origin-person-link" data-related="${esc(target.name)}">${esc(person)}<b>OPEN FILE ↗</b></button>`
+        : `<div class="origin-person">${esc(person)}</div>`;
+    }).join("");
+  }
+
   function renderProfileBody(){
     const c = activeCharacter;
     const attrs = Object.entries(c.attributes).map(([k,v])=>{
@@ -70147,6 +70251,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
     const originAbilityText = originAbilityBasis(c);
     const originEarlyText = originEarlyPath(c);
     const originDeep = originProfileFor(c);
+    const relationshipFoundation = relationshipGroupFoundation(c);
+    const familyRelationshipGroups = relationshipFoundation.familyLike;
+    const otherRelationshipGroups = relationshipFoundation.other;
 
     const info = [
       ["OCCUPATION",c.occupation],["SPECIES",c.species],["BIRTHPLACE",c.birthplace],
@@ -70185,7 +70292,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.1</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.2</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -70203,7 +70310,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
             </article>
             <article class="origin-standard-card origin-people">
               <span class="origin-standard-label">IMPORTANT PEOPLE</span>
-              <div class="origin-people-list">${originDeep.people.length ? originDeep.people.map(person=>`<div class="origin-person">${esc(person)}</div>`).join("") : `<div class="origin-person">No single relationship is currently indexed as defining this character's origin.</div>`}</div>
+              <div class="origin-people-list">${originPeopleMarkup(originDeep.people)}</div>
             </article>
             <article class="origin-standard-card origin-drive">
               <span class="origin-standard-label">CORE DRIVE</span>
@@ -70230,32 +70337,25 @@ window.COMIC_VAULT_AUDIT_LOG = [
             <div class="connection-heading"><span>AKA</span><h3>Known Aliases</h3></div>
             <div class="connection-tags">${(c.aliases || []).length ? c.aliases.map(x=>`<span class="connection-chip">${esc(x)}</span>`).join("") : `<span class="connection-empty">No additional aliases currently indexed.</span>`}</div>
           </div>
-          <div class="connection-panel family-panel">
-            <div class="connection-heading"><span>FAMILY</span><h3>Notable Family</h3></div>
-            <div class="family-list">${(c.family || []).length ? c.family.map(entry=>{
-              const target = resolveCharacterReference(entry);
-              return target
-                ? `<button class="family-row family-link" data-related="${esc(target.name)}"><span>${esc(entry)}</span><b>OPEN FILE ↗</b></button>`
-                : `<div class="family-row"><span>${esc(entry)}</span></div>`;
-            }).join("") : `<span class="connection-empty">No notable family relationships currently indexed.</span>`}</div>
+          <div class="connection-panel family-panel family-foundation-panel">
+            <div class="connection-heading"><span>FAMILY</span><h3>Family & Chosen Family</h3></div>
+            <p class="family-foundation-note">Biological, legal, adopted, chosen and continuity-dependent relationships are kept distinct whenever the audited record supports that distinction.</p>
+            ${(c.family || []).length ? relationshipSubgroupMarkup("INDEXED FAMILY",c.family) : ""}
+            ${Object.entries(familyRelationshipGroups).map(([group,entries])=>relationshipSubgroupMarkup(group,entries)).join("")}
+            ${!(c.family || []).length && !Object.keys(familyRelationshipGroups).length ? `<span class="connection-empty">No family or chosen-family relationships are currently indexed.</span>` : ""}
           </div>
         </section>
 
-        ${c.relationshipGroups && Object.keys(c.relationshipGroups).length ? `
+        ${Object.keys(otherRelationshipGroups).length ? `
         <section class="body-section extended-relationships">
           <div class="section-kicker">RELATIONSHIP CLASSIFICATION</div>
           <h3>Extended Connections</h3>
-          <p class="section-intro">Relationships that matter to the character but do not belong in the biological / legal family field.</p>
+          <p class="section-intro">Mentors, teams, rivals and other defining connections that sit outside the family record.</p>
           <div class="extended-relationship-grid">
-            ${Object.entries(c.relationshipGroups).map(([group,entries])=>`
+            ${Object.entries(otherRelationshipGroups).map(([group,entries])=>`
               <article class="extended-relationship-card">
                 <h4>${esc(group)}</h4>
-                <div class="family-list">${entries.map(entry=>{
-                  const target = resolveCharacterReference(entry);
-                  return target
-                    ? `<button class="family-row family-link" data-related="${esc(target.name)}"><span>${esc(entry)}</span><b>OPEN FILE ↗</b></button>`
-                    : `<div class="family-row"><span>${esc(entry)}</span></div>`;
-                }).join("")}</div>
+                <div class="family-list">${entries.map(relationshipEntryMarkup).join("")}</div>
               </article>`).join("")}
           </div>
         </section>` : ""}
