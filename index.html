@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.11: 400 CHARACTER MASTER — PROFILE HEADER SPACING + COPY CLEANUP + TEAM LINKS + TRUE BACK NAVIGATION -->
+  <!-- Comic Vault v8.12: 400 CHARACTER MASTER — MOBILE CARD SCALE PASS + PROFILE HEADER SPACING + COPY CLEANUP -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4052,6 +4052,69 @@ html.cv-pinch-zoom .card-character-image{
   .origin-person-link b{padding-top:2px}
 }
 
+
+/* ==========================================================
+   COMIC VAULT v8.12 — MOBILE CHARACTER CARD SCALE PASS
+   Preserve original artwork; tune only card presentation.
+   Normal <=600px scale: .94 | Normal <=390px scale: .92
+   ========================================================== */
+
+/* Tablet / larger phones */
+@media (max-width:600px){
+  /* Current B-section visual balance */
+  .card-character-image[data-art-slug="batman"] img{transform:scale(1.04) !important}
+  .card-character-image[data-art-slug="batgirl"] img{transform:scale(1.00) !important}
+  .card-character-image[data-art-slug="bat-mite"] img{transform:scale(.82) !important}
+
+  /* Clearly small-stature characters */
+  .card-character-image[data-art-slug="rocket-raccoon"] img{transform:scale(.83) !important}
+  .card-character-image[data-art-slug="mister-mxyzptlk"] img{transform:scale(.85) !important}
+
+  /* Clearly massive / tall silhouettes — modest increases only */
+  .card-character-image[data-art-slug="groot"] img,
+  .card-character-image[data-art-slug="galactus"] img{transform:scale(1.00) !important}
+
+  .card-character-image[data-art-slug="darkseid"] img,
+  .card-character-image[data-art-slug="hulk"] img,
+  .card-character-image[data-art-slug="juggernaut"] img,
+  .card-character-image[data-art-slug="doomsday"] img{transform:scale(.99) !important}
+
+  .card-character-image[data-art-slug="apocalypse"] img,
+  .card-character-image[data-art-slug="thanos"] img,
+  .card-character-image[data-art-slug="killer-croc"] img,
+  .card-character-image[data-art-slug="solomon-grundy"] img{transform:scale(.98) !important}
+
+  .card-character-image[data-art-slug="colossus"] img{transform:scale(.97) !important}
+}
+
+/* Typical iPhone portrait width */
+@media (max-width:390px){
+  /* Requested visible fixes */
+  .card-character-image[data-art-slug="batman"] img{transform:scale(1.02) !important}
+  .card-character-image[data-art-slug="batgirl"] img{transform:scale(.98) !important}
+  .card-character-image[data-art-slug="bat-mite"] img{transform:scale(.80) !important}
+
+  /* Small-stature outliers */
+  .card-character-image[data-art-slug="rocket-raccoon"] img{transform:scale(.80) !important}
+  .card-character-image[data-art-slug="mister-mxyzptlk"] img{transform:scale(.82) !important}
+
+  /* Large-stature outliers */
+  .card-character-image[data-art-slug="groot"] img,
+  .card-character-image[data-art-slug="galactus"] img{transform:scale(.98) !important}
+
+  .card-character-image[data-art-slug="darkseid"] img,
+  .card-character-image[data-art-slug="hulk"] img,
+  .card-character-image[data-art-slug="juggernaut"] img,
+  .card-character-image[data-art-slug="doomsday"] img{transform:scale(.97) !important}
+
+  .card-character-image[data-art-slug="apocalypse"] img,
+  .card-character-image[data-art-slug="thanos"] img,
+  .card-character-image[data-art-slug="killer-croc"] img,
+  .card-character-image[data-art-slug="solomon-grundy"] img{transform:scale(.96) !important}
+
+  .card-character-image[data-art-slug="colossus"] img{transform:scale(.95) !important}
+}
+
 </style>
 </head>
 <body>
@@ -4061,7 +4124,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.11</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.12</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4291,7 +4354,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.11</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.12</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -70860,7 +70923,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     const isArchiveCard = String(cls).includes("card-character-image");
     const loading = isArchiveCard ? 'loading="lazy" fetchpriority="low"' : 'loading="eager"';
     return `
-      <picture class="${cls}">
+      <picture class="${cls}" data-art-slug="${esc(slug)}">
         <img src="assets/characters/${slug}.webp" alt="${esc(c.name)} artwork"
           width="1074" height="1600" ${loading} decoding="async"
           data-png-fallback="assets/characters/${slug}.png"
@@ -71555,7 +71618,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.11</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.12</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
