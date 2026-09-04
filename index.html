@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.13: 400 CHARACTER MASTER — MOBILE CARD SCALE REFINEMENT + PROFILE HEADER SPACING + COPY CLEANUP -->
+  <!-- Comic Vault v8.14: 400 CHARACTER MASTER — BATMAN/BAT-MITE CARD SCALE FIX + MOBILE CARD SCALE REFINEMENT -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4062,9 +4062,9 @@ html.cv-pinch-zoom .card-character-image{
 /* Tablet / larger phones */
 @media (max-width:600px){
   /* Current B-section visual balance */
-  .card-character-image[data-art-slug="batman"] img{transform:scale(1.08) !important}
+  .card-character-image[data-art-slug="batman"] img{transform:scale(1.24) !important}
   .card-character-image[data-art-slug="batgirl"] img{transform:scale(1.00) !important}
-  .card-character-image[data-art-slug="bat-mite"] img{transform:scale(.93) !important}
+  .card-character-image[data-art-slug="bat-mite"] img{transform:scale(.78) !important}
 
   /* Clearly small-stature characters */
   .card-character-image[data-art-slug="rocket-raccoon"] img{transform:scale(.83) !important}
@@ -4090,9 +4090,9 @@ html.cv-pinch-zoom .card-character-image{
 /* Typical iPhone portrait width */
 @media (max-width:390px){
   /* Requested visible fixes */
-  .card-character-image[data-art-slug="batman"] img{transform:scale(1.07) !important}
+  .card-character-image[data-art-slug="batman"] img{transform:scale(1.23) !important}
   .card-character-image[data-art-slug="batgirl"] img{transform:scale(.98) !important}
-  .card-character-image[data-art-slug="bat-mite"] img{transform:scale(.91) !important}
+  .card-character-image[data-art-slug="bat-mite"] img{transform:scale(.77) !important}
 
   /* Small-stature outliers */
   .card-character-image[data-art-slug="rocket-raccoon"] img{transform:scale(.80) !important}
@@ -4115,6 +4115,30 @@ html.cv-pinch-zoom .card-character-image{
   .card-character-image[data-art-slug="colossus"] img{transform:scale(.95) !important}
 }
 
+
+/* v8.14 — explicit card framing overrides based on live phone screenshots */
+@media (max-width:600px){
+  .card-character-image[data-art-slug="batman"]{
+    inset:46px 0 6px !important;
+    overflow:visible;
+  }
+  .card-character-image[data-art-slug="batman"] img{
+    transform-origin:center center !important;
+  }
+
+  .card-character-image[data-art-slug="bat-mite"]{
+    inset:58px 12px 18px !important;
+  }
+}
+@media (max-width:390px){
+  .card-character-image[data-art-slug="batman"]{
+    inset:44px 0 6px !important;
+  }
+  .card-character-image[data-art-slug="bat-mite"]{
+    inset:58px 12px 18px !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4124,7 +4148,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.13</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.14</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4354,7 +4378,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.13</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.14</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -71618,7 +71642,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.13</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.14</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
