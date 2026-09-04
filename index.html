@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.10: 400 CHARACTER MASTER — PROFILE COPY CLEANUP + TEAM LINKS + TRUE BACK NAVIGATION -->
+  <!-- Comic Vault v8.11: 400 CHARACTER MASTER — PROFILE HEADER SPACING + COPY CLEANUP + TEAM LINKS + TRUE BACK NAVIGATION -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -234,9 +234,9 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--blue-2);outline
   background:#151b24;border:1px solid #2c3541;font-size:26px;cursor:pointer;
 }
 .profile-back{
-  position:absolute;left:16px;top:18px;z-index:6;min-height:42px;padding:0 14px;
+  position:absolute;left:16px;top:18px;z-index:6;min-height:38px;padding:0 12px;
   border:1px solid #2d5278;border-radius:999px;background:#0d1722;color:#72b7ff;
-  font-size:10px;font-weight:900;letter-spacing:.12em;cursor:pointer;
+  font-size:9px;font-weight:900;letter-spacing:.11em;cursor:pointer;
 }
 .profile-back:hover,.profile-back:focus-visible{border-color:#55aaff;color:#fff;outline:none}
 .team-links{display:flex;flex-wrap:wrap;gap:7px}
@@ -258,7 +258,7 @@ button:focus-visible,input:focus-visible{outline:2px solid var(--blue-2);outline
   border-bottom:1px solid #202733;
 }
 .profile-publisher{
-  position:absolute;left:22px;top:34px;border:1px solid #34506e;color:#6db0ff;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.18em;
+  position:absolute;left:22px;top:78px;border:1px solid #34506e;color:#6db0ff;padding:7px 10px;font-size:10px;font-weight:900;letter-spacing:.18em;
 }
 .profile-visual{position:absolute;right:0;top:0;width:58%;height:100%;display:grid;place-items:center}
 .profile-monogram{
@@ -1195,6 +1195,9 @@ button{
   .profile-hero{
     min-height:340px;
     padding-bottom:22px;
+  }
+  .profile-publisher{
+    top:74px;
   }
   .profile-visual{
     width:64%;
@@ -4058,7 +4061,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.10</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.11</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4288,7 +4291,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.10</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.11</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -71552,7 +71555,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.10</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.11</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
