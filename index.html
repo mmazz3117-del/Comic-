@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.28: 400 CHARACTER MASTER — DOCTOR SIVANA CARD/PROFILE SCALE REFINEMENT + CHARACTER SCALE BALANCE -->
+  <!-- Comic Vault v8.29: 400 CHARACTER MASTER — SWEEP 1 DATA CORRECTIONS + CHARACTER SCALE BALANCE -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4498,7 +4498,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.28</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.29</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4728,7 +4728,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.28</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.29</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -5216,7 +5216,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Alanna Strange",
-      "Hawkman",
+      "Hawkman / Carter Hall",
       "Green Lantern / Hal Jordan"
     ],
     "enemies": [
@@ -5388,7 +5388,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "name": "Adam Warlock",
     "realName": "Adam Warlock",
     "publisher": "MARVEL",
-    "firstAppearance": "Fantastic Four #66–67 (1967) as Him; Marvel Premiere #1 (1972) as Warlock",
+    "firstAppearance": "Fantastic Four #66–67 (as Him, 1967); Marvel Premiere #1 (as Warlock, 1972)",
     "alignment": "Hero / cosmic entity",
     "base": "Mobile / Soulworld / formerly Knowhere",
     "teams": [
@@ -5564,7 +5564,7 @@ window.COMIC_VAULT_CHARACTERS = [
         "Goddess — separated benevolent aspect"
       ]
     },
-    "continuityNote": "Magus and Goddess are manifestations/counterparts of Warlock rather than ordinary aliases or relatives. Infinity Stone ownership changes frequently and is treated as historical equipment, not a permanent possession.",
+    "continuityNote": "Him's creation/debut spans Fantastic Four #66–67, while Marvel Premiere #1 is the clear debut of the revamped Warlock identity. Different references count the 'first appearance' differently.",
     "audit": {
       "status": "Deep audited",
       "batch": "A1",
@@ -7143,8 +7143,8 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Aqualad",
-    "realName": "Jackson Hyde / Kaldur'ahm",
+    "name": "Aqualad / Jackson Hyde",
+    "realName": "Jackson Hyde",
     "publisher": "DC",
     "firstAppearance": "Brightest Day #4 (2010)",
     "alignment": "Hero",
@@ -7187,7 +7187,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 4
     },
     "allies": [
-      "Aquaman",
+      "Aquaman / Arthur Curry",
       "Mera",
       "Teen Titans"
     ],
@@ -7284,7 +7284,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "weight": "190 lbs",
     "hair": "Black with blond coloration in some eras",
     "identity": "Publicly known",
-    "continuityNote": "The animated Young Justice character Kaldur'ahm inspired elements of the comic-book Jackson Hyde, but the TV and comics versions have different biographies. This dossier follows the primary DC comics Jackson.",
+    "continuityNote": "This profile represents the comics character Jackson Hyde. Kaldur'ahm is the closely related Young Justice animated incarnation/name and should be treated as adaptation/continuity context, not as Jackson's primary civilian name.",
     "audit": {
       "status": "Deep audited",
       "batch": "A1",
@@ -7321,11 +7321,16 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Aquaman",
-    "realName": "Arthur Curry / Orin",
+    "name": "Aquaman / Arthur Curry",
+    "realName": "Arthur Curry",
     "publisher": "DC",
     "firstAppearance": "More Fun Comics #73 (1941)",
     "alignment": "Hero",
@@ -7370,8 +7375,8 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Mera",
-      "Aqualad",
-      "Wonder Woman",
+      "Aqualad / Jackson Hyde",
+      "Wonder Woman / Diana",
       "Superman"
     ],
     "enemies": [
@@ -7564,6 +7569,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -7592,28 +7602,28 @@ window.COMIC_VAULT_CHARACTERS = [
       "Energy manipulation"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 4,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 5,
+      "Fighting Ability": 5,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 5,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 3,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": null,
-      "Energy Projection": 5,
-      "Magic / Mystical Mastery": 3,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 4
+      "Speed": 4,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 4,
+      "Healing / Recovery": 4,
+      "Energy Projection": 4,
+      "Magic / Mystical Mastery": 4,
+      "Senses / Awareness": 4,
+      "Skill / Technology": 4,
+      "Power Versatility": 5
     },
     "allies": [
       "Olympian gods"
     ],
     "enemies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Athena",
       "Amazons"
     ],
@@ -7758,11 +7768,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -7794,24 +7804,24 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "attributes": {
       "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 4,
-      "Willpower": 3,
+      "Tactical Ability": 4,
+      "Fighting Ability": 5,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 3,
-      "Stamina": 2,
+      "Strength": 4,
+      "Speed": 4,
+      "Durability": 4,
+      "Stamina": 5,
       "Agility / Reflexes": 5,
       "Healing / Recovery": null,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 3,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 4,
+      "Power Versatility": 3
     },
     "allies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Red Hood / Jason Todd",
       "Bizarro"
     ],
@@ -7980,11 +7990,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -8455,8 +8465,8 @@ window.COMIC_VAULT_CHARACTERS = [
     "allies": [
       "Batman",
       "Nightwing",
-      "Black Canary",
-      "Huntress"
+      "Black Canary / Dinah Laurel Lance",
+      "Huntress / Helena Bertinelli"
     ],
     "enemies": [
       "Joker",
@@ -8717,7 +8727,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Robin / Damian Wayne",
       "Batgirl / Barbara Gordon",
       "Superman",
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Commissioner Gordon"
     ],
     "enemies": [
@@ -9088,8 +9098,8 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Batwoman",
-    "realName": "Katherine Rebecca 'Kate' Kane",
+    "name": "Batwoman / Kate Kane",
+    "realName": "Kate Kane",
     "publisher": "DC",
     "firstAppearance": "52 #7 (2006) as Kate Kane; Batwoman mantle debuted Detective Comics #233 (1956)",
     "alignment": "Hero",
@@ -9315,6 +9325,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -9349,21 +9364,21 @@ window.COMIC_VAULT_CHARACTERS = [
       "Exceptional manual and pedal dexterity"
     ],
     "attributes": {
-      "Intelligence": 4,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 5,
+      "Tactical Ability": 4,
+      "Fighting Ability": 4,
+      "Willpower": 4,
       "Psychic Power": null,
       "Strength": 4,
-      "Speed": 2,
-      "Durability": 4,
-      "Stamina": 3,
+      "Speed": 4,
+      "Durability": 3,
+      "Stamina": 4,
       "Agility / Reflexes": 5,
-      "Healing / Recovery": 4,
+      "Healing / Recovery": 2,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 4,
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
       "Power Versatility": 3
     },
     "allies": [
@@ -9551,11 +9566,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -9584,10 +9599,10 @@ window.COMIC_VAULT_CHARACTERS = [
       "Enhanced recovery through shapeshifting"
     ],
     "attributes": {
-      "Intelligence": 4,
+      "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 3,
+      "Willpower": 4,
       "Psychic Power": null,
       "Strength": 4,
       "Speed": 4,
@@ -9597,8 +9612,8 @@ window.COMIC_VAULT_CHARACTERS = [
       "Healing / Recovery": 3,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 4,
+      "Senses / Awareness": 4,
+      "Skill / Technology": 2,
       "Power Versatility": 5
     },
     "allies": [
@@ -9767,11 +9782,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -9933,7 +9948,7 @@ window.COMIC_VAULT_CHARACTERS = [
         "Bizarro duplicates — constructed society"
       ]
     },
-    "continuityNote": "Bizarro is not one continuous individual across all DC continuity. The 1958 Superboy Bizarro, classic Earth-One Bizarro, post-Crisis duplicates, New 52 Subject B-Zero and Rebirth-era Bizarro are distinct or substantially rewritten incarnations. Physical statistics therefore apply only approximately to modern versions.",
+    "continuityNote": "Bizarro is an incarnation-dependent identity rather than one perfectly continuous individual. The Superboy #68 Bizarro and later Superman/Bizarro World versions should not be blended without context.",
     "audit": {
       "status": "Deep audited",
       "batch": "B1",
@@ -9972,6 +9987,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -10023,7 +10043,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 5
     },
     "allies": [
-      "Isis",
+      "Isis / Adrianna Tomaz",
       "Justice Society (at times)"
     ],
     "enemies": [
@@ -10200,7 +10220,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Black Canary",
+    "name": "Black Canary / Dinah Laurel Lance",
     "realName": "Dinah Laurel Lance",
     "publisher": "DC",
     "firstAppearance": "Justice League of America #75 (1969) as Dinah Laurel Lance; Black Canary mantle debuted Flash Comics #86 (1947)",
@@ -10248,7 +10268,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "allies": [
       "Green Arrow / Oliver Queen",
       "Oracle",
-      "Huntress"
+      "Huntress / Helena Bertinelli"
     ],
     "enemies": [
       "Lady Shiva",
@@ -10431,6 +10451,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -10478,7 +10503,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Mary Jane Watson"
     ],
     "enemies": [
@@ -10662,30 +10687,30 @@ window.COMIC_VAULT_CHARACTERS = [
       "Tactical intelligence"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 4,
       "Tactical Ability": 4,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 4,
+      "Willpower": 4,
       "Psychic Power": null,
-      "Strength": 3,
-      "Speed": 2,
-      "Durability": 3,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
+      "Strength": 4,
+      "Speed": 3,
+      "Durability": 4,
+      "Stamina": 4,
+      "Agility / Reflexes": 3,
       "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Energy Projection": 4,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 4,
-      "Power Versatility": 2
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 4
     },
     "allies": [
       "Manta operatives"
     ],
     "enemies": [
-      "Aquaman",
+      "Aquaman / Arthur Curry",
       "Mera",
-      "Aqualad"
+      "Aqualad / Jackson Hyde"
     ],
     "history": [
       [
@@ -10839,11 +10864,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -10896,7 +10921,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Batman",
-      "Catwoman",
+      "Catwoman / Selina Kyle",
       "Red Hood / Jason Todd"
     ],
     "history": [
@@ -11059,7 +11084,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Black Panther",
+    "name": "Black Panther / T'Challa",
     "realName": "T'Challa",
     "publisher": "MARVEL",
     "firstAppearance": "Fantastic Four #52 (1966)",
@@ -11306,6 +11331,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -11339,22 +11369,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Multilingual intelligence work"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 5,
       "Fighting Ability": 5,
-      "Willpower": 3,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
-      "Speed": 2,
-      "Durability": 3,
-      "Stamina": 2,
-      "Agility / Reflexes": 4,
+      "Speed": 3,
+      "Durability": 2,
+      "Stamina": 4,
+      "Agility / Reflexes": 5,
       "Healing / Recovery": null,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 3,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 3
     },
     "allies": [
       "Hawkeye / Clint Barton",
@@ -11552,11 +11582,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -12276,22 +12306,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Advanced weapons"
     ],
     "attributes": {
-      "Intelligence": 4,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
-      "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 4,
-      "Stamina": 3,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Intelligence": 5,
+      "Tactical Ability": 5,
+      "Fighting Ability": 3,
+      "Willpower": 5,
+      "Psychic Power": 4,
+      "Strength": 4,
+      "Speed": 4,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 3,
+      "Healing / Recovery": 4,
+      "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 4,
-      "Power Versatility": 1
+      "Senses / Awareness": 5,
+      "Skill / Technology": 5,
+      "Power Versatility": 5
     },
     "allies": [
       "Brainiac drones"
@@ -12484,11 +12514,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -12521,22 +12551,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Enhanced physical conditioning"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 4,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 5,
+      "Fighting Ability": 5,
+      "Willpower": 5,
       "Psychic Power": 4,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Strength": 3,
+      "Speed": 3,
+      "Durability": 4,
+      "Stamina": 4,
+      "Agility / Reflexes": 4,
+      "Healing / Recovery": 2,
+      "Energy Projection": 4,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 5
     },
     "allies": [
       "Deadpool",
@@ -12746,11 +12776,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -12783,7 +12813,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Indomitable will"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 4,
       "Tactical Ability": 5,
       "Fighting Ability": 5,
       "Willpower": 5,
@@ -12793,12 +12823,12 @@ window.COMIC_VAULT_CHARACTERS = [
       "Durability": 3,
       "Stamina": 5,
       "Agility / Reflexes": 5,
-      "Healing / Recovery": null,
+      "Healing / Recovery": 2,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 4,
+      "Power Versatility": 3
     },
     "allies": [
       "Bucky Barnes",
@@ -13010,11 +13040,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -13278,7 +13308,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "The Flash",
-      "Reverse-Flash"
+      "Reverse-Flash / Eobard Thawne"
     ],
     "history": [
       [
@@ -13462,22 +13492,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Cosmic awareness / energy perception in some eras"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 4,
+      "Fighting Ability": 4,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 4,
-      "Speed": 3,
-      "Durability": 3,
-      "Stamina": 3,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": null,
-      "Energy Projection": 3,
+      "Strength": 5,
+      "Speed": 5,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 4,
+      "Healing / Recovery": 3,
+      "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 5,
-      "Skill / Technology": 3,
-      "Power Versatility": 4
+      "Senses / Awareness": 4,
+      "Skill / Technology": 4,
+      "Power Versatility": 5
     },
     "allies": [
       "Monica Rambeau",
@@ -13659,18 +13689,18 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
     "name": "Carnage",
     "realName": "Cletus Cortland Kasady bonded with the Carnage symbiote",
     "publisher": "MARVEL",
-    "firstAppearance": "The Amazing Spider-Man #344 (1991) as Cletus Kasady; The Amazing Spider-Man #361 (1992) as Carnage",
+    "firstAppearance": "The Amazing Spider-Man #344 (Cletus Kasady, 1991); Carnage emerges in #360–361 (1992)",
     "alignment": "Villain",
     "base": "Mobile / New York; frequently imprisoned at Ravencroft",
     "teams": [
@@ -13697,15 +13727,15 @@ window.COMIC_VAULT_CHARACTERS = [
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 4,
+      "Willpower": 4,
       "Psychic Power": null,
-      "Strength": 3,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
+      "Strength": 4,
+      "Speed": 4,
+      "Durability": 5,
+      "Stamina": 5,
       "Agility / Reflexes": 5,
-      "Healing / Recovery": 4,
+      "Healing / Recovery": 5,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 4,
@@ -13716,7 +13746,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Carnage symbiote"
     ],
     "enemies": [
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Venom / Eddie Brock"
     ],
     "history": [
@@ -13838,7 +13868,7 @@ window.COMIC_VAULT_CHARACTERS = [
         "Frances Barrison / Shriek — recurring partner and lover"
       ]
     },
-    "continuityNote": "Cletus Kasady and the Carnage symbiote are distinct organisms and have not always been bonded. Cletus first appeared in The Amazing Spider-Man #344 (1991); the fully formed Carnage identity debuted in #361 (1992). Height and weight vary substantially when the symbiote changes his body.",
+    "continuityNote": "Cletus Kasady appears before the Carnage identity fully emerges. References vary on whether #360's reveal or #361's full story is treated as Carnage's first full appearance.",
     "audit": {
       "status": "Deep audited",
       "batch": "C1",
@@ -13873,15 +13903,20 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Carol Ferris",
+    "name": "Star Sapphire / Carol Ferris",
     "realName": "Carol Ferris",
     "publisher": "DC",
     "firstAppearance": "Showcase #22 (1959); first became Star Sapphire in Green Lantern #16 (1962)",
@@ -14101,6 +14136,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -14134,21 +14174,21 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "attributes": {
       "Intelligence": 3,
-      "Tactical Ability": 4,
+      "Tactical Ability": 5,
       "Fighting Ability": 5,
-      "Willpower": 3,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
-      "Speed": 2,
+      "Speed": 4,
       "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 4,
+      "Stamina": 4,
+      "Agility / Reflexes": 5,
       "Healing / Recovery": null,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 5,
       "Skill / Technology": 3,
-      "Power Versatility": 1
+      "Power Versatility": 2
     },
     "allies": [
       "Batman",
@@ -14320,15 +14360,15 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Catwoman",
+    "name": "Catwoman / Selina Kyle",
     "realName": "Selina Kyle",
     "publisher": "DC",
     "firstAppearance": "Batman #1 (1940)",
@@ -14577,10 +14617,15 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Cheetah",
+    "name": "Cheetah / Barbara Ann Minerva",
     "realName": "Dr. Barbara Ann Minerva",
     "publisher": "DC",
     "firstAppearance": "Wonder Woman #7 (1987) as Barbara Ann Minerva; Cheetah mantle debuted Wonder Woman #6 (1943)",
@@ -14609,27 +14654,27 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "attributes": {
       "Intelligence": 4,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Tactical Ability": 4,
+      "Fighting Ability": 4,
+      "Willpower": 4,
       "Psychic Power": null,
       "Strength": 4,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 3,
+      "Speed": 5,
+      "Durability": 4,
+      "Stamina": 4,
       "Agility / Reflexes": 5,
-      "Healing / Recovery": null,
+      "Healing / Recovery": 3,
       "Energy Projection": null,
       "Magic / Mystical Mastery": 3,
-      "Senses / Awareness": 3,
-      "Skill / Technology": 2,
-      "Power Versatility": 2
+      "Senses / Awareness": 5,
+      "Skill / Technology": 3,
+      "Power Versatility": 4
     },
     "allies": [
       "Wonder Woman (complex)"
     ],
     "enemies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Steve Trevor"
     ],
     "history": [
@@ -14787,15 +14832,20 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Clayface",
+    "name": "Clayface / Basil Karlo",
     "realName": "Basil Karlo",
     "publisher": "DC",
     "firstAppearance": "Detective Comics #40 (1940) as Basil Karlo / first Clayface; powered Basil developed later",
@@ -14824,20 +14874,20 @@ window.COMIC_VAULT_CHARACTERS = [
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 3,
+      "Willpower": 4,
       "Psychic Power": null,
-      "Strength": 3,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": 4,
+      "Strength": 4,
+      "Speed": 3,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 3,
+      "Healing / Recovery": 5,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 3,
       "Skill / Technology": 2,
-      "Power Versatility": 4
+      "Power Versatility": 5
     },
     "allies": [
       "Batman Family (temporary)"
@@ -14995,11 +15045,16 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -15744,22 +15799,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Resistance to his own optic energy"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 4,
-      "Fighting Ability": 3,
-      "Willpower": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 5,
+      "Fighting Ability": 4,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
-      "Speed": 2,
+      "Speed": 3,
       "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
+      "Stamina": 4,
+      "Agility / Reflexes": 4,
       "Healing / Recovery": null,
-      "Energy Projection": 3,
+      "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 4,
       "Skill / Technology": 3,
-      "Power Versatility": 1
+      "Power Versatility": 3
     },
     "allies": [
       "Jean Grey",
@@ -15988,11 +16043,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -16020,10 +16075,10 @@ window.COMIC_VAULT_CHARACTERS = [
       "Legal expertise"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 4,
-      "Willpower": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 5,
+      "Fighting Ability": 5,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
       "Speed": 3,
@@ -16034,13 +16089,13 @@ window.COMIC_VAULT_CHARACTERS = [
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 5,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Skill / Technology": 3,
+      "Power Versatility": 2
     },
     "allies": [
       "Foggy Nelson",
       "Elektra",
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Luke Cage"
     ],
     "enemies": [
@@ -16216,11 +16271,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -16663,22 +16718,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Marksmanship"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 5,
       "Tactical Ability": 5,
-      "Fighting Ability": 4,
-      "Willpower": 3,
+      "Fighting Ability": 5,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 3,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
+      "Speed": 4,
+      "Durability": 4,
+      "Stamina": 4,
       "Agility / Reflexes": 5,
-      "Healing / Recovery": null,
+      "Healing / Recovery": 3,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 3,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 4
     },
     "allies": [
       "Wintergreen",
@@ -16839,11 +16894,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -17297,7 +17352,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Sinister Six"
     ],
     "enemies": [
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Green Goblin"
     ],
     "history": [
@@ -17486,7 +17541,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "allies": [
       "Wong",
       "Clea",
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Scarlet Witch"
     ],
     "enemies": [
@@ -17891,7 +17946,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 3
     },
     "allies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Nightwing",
       "Titans"
     ],
@@ -18263,7 +18318,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Sinister Six"
     ],
     "enemies": [
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Daredevil"
     ],
     "history": [
@@ -20075,22 +20130,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Regeneration"
     ],
     "attributes": {
-      "Intelligence": 4,
+      "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 4,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": 4,
-      "Energy Projection": null,
-      "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 1,
-      "Power Versatility": 1
+      "Strength": 5,
+      "Speed": 4,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 4,
+      "Healing / Recovery": 5,
+      "Energy Projection": 5,
+      "Magic / Mystical Mastery": 5,
+      "Senses / Awareness": 4,
+      "Skill / Technology": 3,
+      "Power Versatility": 5
     },
     "allies": [
       "Blade",
@@ -20238,15 +20293,15 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Giganta",
+    "name": "Giganta / Doris Zuel",
     "realName": "Dr. Doris Zuel",
     "publisher": "DC",
     "firstAppearance": "Wonder Woman (vol. 2) #126 (1997) as Doris Zuel; Giganta mantle debuted Wonder Woman #9 (1944)",
@@ -20290,7 +20345,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Secret Six"
     ],
     "enemies": [
-      "Wonder Woman"
+      "Wonder Woman / Diana"
     ],
     "history": [
       [
@@ -20407,6 +20462,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -20618,7 +20678,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Black Canary",
+      "Black Canary / Dinah Laurel Lance",
       "Roy Harper",
       "Justice League"
     ],
@@ -20840,7 +20900,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Harry Osborn (complex)"
     ],
     "enemies": [
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Gwen Stacy",
       "Avengers"
     ],
@@ -21258,20 +21318,20 @@ window.COMIC_VAULT_CHARACTERS = [
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 4,
+      "Willpower": 4,
       "Psychic Power": null,
-      "Strength": 4,
+      "Strength": 5,
       "Speed": 2,
-      "Durability": 2,
-      "Stamina": 3,
+      "Durability": 5,
+      "Stamina": 5,
       "Agility / Reflexes": 2,
-      "Healing / Recovery": 4,
+      "Healing / Recovery": 5,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 3,
       "Skill / Technology": 2,
-      "Power Versatility": 2
+      "Power Versatility": 4
     },
     "allies": [
       "Rocket Raccoon",
@@ -21402,11 +21462,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -21644,7 +21704,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Poison Ivy",
-      "Catwoman",
+      "Catwoman / Selina Kyle",
       "Birds of Prey"
     ],
     "enemies": [
@@ -22210,7 +22270,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Hawkgirl",
+    "name": "Hawkgirl / Kendra Saunders",
     "realName": "Kendra Saunders",
     "publisher": "DC",
     "firstAppearance": "JSA Secret Files and Origins #1 (1999)",
@@ -22251,7 +22311,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 2
     },
     "allies": [
-      "Hawkman",
+      "Hawkman / Carter Hall",
       "Justice Society",
       "Justice League"
     ],
@@ -22401,10 +22461,15 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Hawkman",
+    "name": "Hawkman / Carter Hall",
     "realName": "Carter Hall",
     "publisher": "DC",
     "firstAppearance": "Flash Comics #1 (1940)",
@@ -22446,7 +22511,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 2
     },
     "allies": [
-      "Hawkgirl",
+      "Hawkgirl / Kendra Saunders",
       "Justice Society",
       "Atom"
     ],
@@ -22596,6 +22661,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -22878,7 +22948,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Mister Fantastic",
       "Invisible Woman",
       "Thing",
-      "Spider-Man"
+      "Spider-Man / Peter Parker"
     ],
     "enemies": [
       "Wizard",
@@ -23042,7 +23112,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Huntress",
+    "name": "Huntress / Helena Bertinelli",
     "realName": "Helena Bertinelli",
     "publisher": "DC",
     "firstAppearance": "The Huntress #1 (1989)",
@@ -23083,7 +23153,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Black Canary",
+      "Black Canary / Dinah Laurel Lance",
       "Oracle",
       "Batman"
     ],
@@ -23229,6 +23299,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -26252,22 +26327,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Strategic genius"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 5,
       "Tactical Ability": 5,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 3,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
+      "Strength": 3,
+      "Speed": 3,
       "Durability": 4,
-      "Stamina": 3,
-      "Agility / Reflexes": 2,
+      "Stamina": 4,
+      "Agility / Reflexes": 3,
       "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Energy Projection": 4,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 5
     },
     "allies": [
       "Variants of Kang"
@@ -26401,11 +26476,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -26992,7 +27067,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Daredevil",
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Punisher"
     ],
     "history": [
@@ -27394,8 +27469,8 @@ window.COMIC_VAULT_CHARACTERS = [
       "Kravinoff family"
     ],
     "enemies": [
-      "Spider-Man",
-      "Black Panther"
+      "Spider-Man / Peter Parker",
+      "Black Panther / T'Challa"
     ],
     "history": [
       [
@@ -30084,7 +30159,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Aunt May",
       "Black Cat"
     ],
@@ -30600,7 +30675,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Mirror Master",
+    "name": "Mirror Master / Sam Scudder",
     "realName": "Sam Scudder",
     "publisher": "DC",
     "firstAppearance": "The Flash #105 (1959)",
@@ -30761,6 +30836,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -31374,22 +31454,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Energy projection"
     ],
     "attributes": {
-      "Intelligence": 4,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 5,
+      "Tactical Ability": 4,
+      "Fighting Ability": 3,
+      "Willpower": 5,
       "Psychic Power": 4,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": 4,
-      "Energy Projection": 3,
+      "Strength": 4,
+      "Speed": 3,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 3,
+      "Healing / Recovery": 5,
+      "Energy Projection": 4,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 4,
-      "Power Versatility": 4
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 5
     },
     "allies": [
       "Sinister clones"
@@ -31523,11 +31603,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -32151,7 +32231,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Sinister Six"
     ],
     "enemies": [
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Daredevil"
     ],
     "history": [
@@ -33536,7 +33616,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Hippolyta",
       "Amazons"
     ],
@@ -33877,7 +33957,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Batman",
-      "Catwoman",
+      "Catwoman / Selina Kyle",
       "Commissioner Gordon"
     ],
     "history": [
@@ -34047,20 +34127,20 @@ window.COMIC_VAULT_CHARACTERS = [
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 3,
+      "Willpower": 4,
       "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": 4,
+      "Strength": 4,
+      "Speed": 3,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 4,
+      "Healing / Recovery": 5,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 3,
       "Skill / Technology": 2,
-      "Power Versatility": 4
+      "Power Versatility": 5
     },
     "allies": [
       "Justice League",
@@ -34180,11 +34260,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -34231,7 +34311,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Harley Quinn",
-      "Catwoman",
+      "Catwoman / Selina Kyle",
       "Swamp Thing"
     ],
     "enemies": [
@@ -34616,7 +34696,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Justice Society",
-      "Huntress",
+      "Huntress / Helena Bertinelli",
       "Superman"
     ],
     "enemies": [
@@ -35123,7 +35203,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "This dossier now follows Kwannon because Comic Vault's current Psylocke artwork and modern comics identity are Kwannon. Betsy Braddock was Marvel's Psylocke for decades and remains historically essential, but she now primarily operates as Captain Britain. Their biographies must not be merged.",
+    "continuityNote": "This profile represents Kwannon as Psylocke. Betsy Braddock historically used the Psylocke identity but is a distinct character and should not have her biography merged into Kwannon's dossier.",
     "auditCorrections": [
       "Replaced the outdated Betsy Braddock dossier with Kwannon to match the modern Psylocke identity and approved artwork.",
       "Separated Betsy's Captain Britain history from Kwannon's current Psylocke history."
@@ -35167,6 +35247,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -35193,22 +35278,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "Surveillance"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 5,
+      "Fighting Ability": 4,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
-      "Speed": 2,
+      "Speed": 3,
       "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
+      "Stamina": 4,
+      "Agility / Reflexes": 4,
       "Healing / Recovery": null,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 3,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 3
     },
     "allies": [
       "Microchip (historic)"
@@ -35374,11 +35459,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -36541,7 +36626,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Reverse-Flash",
+    "name": "Reverse-Flash / Eobard Thawne",
     "realName": "Eobard Thawne",
     "publisher": "DC",
     "firstAppearance": "The Flash #139 (1963)",
@@ -36730,6 +36815,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -37913,26 +38003,26 @@ window.COMIC_VAULT_CHARACTERS = [
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 3,
+      "Willpower": 4,
       "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": 4,
+      "Strength": 4,
+      "Speed": 3,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 3,
+      "Healing / Recovery": 5,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 3,
       "Skill / Technology": 2,
-      "Power Versatility": 4
+      "Power Versatility": 5
     },
     "allies": [
       "Silver Sable in some eras"
     ],
     "enemies": [
-      "Spider-Man",
+      "Spider-Man / Peter Parker",
       "Fantastic Four"
     ],
     "history": [
@@ -38067,11 +38157,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -38722,7 +38812,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 4
     },
     "allies": [
-      "Mary Marvel",
+      "Mary Marvel / Mary Bromfield",
       "Freddy Freeman",
       "Superman"
     ],
@@ -39627,7 +39717,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Spider-Man",
+    "name": "Spider-Man / Peter Parker",
     "realName": "Peter Parker",
     "publisher": "MARVEL",
     "firstAppearance": "Amazing Fantasy #15 (1962)",
@@ -39870,6 +39960,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -40649,7 +40744,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Etta Candy"
     ],
     "enemies": [
@@ -40832,7 +40927,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Wolverine",
       "Jean Grey",
       "Cyclops",
-      "Black Panther",
+      "Black Panther / T'Challa",
       "Nightcrawler"
     ],
     "enemies": [
@@ -41280,7 +41375,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Batman",
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Lois Lane",
       "Supergirl / Kara Zor-El",
       "Steel",
@@ -41521,20 +41616,20 @@ window.COMIC_VAULT_CHARACTERS = [
     "attributes": {
       "Intelligence": 4,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 3,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 4,
+      "Strength": 5,
       "Speed": 2,
-      "Durability": 2,
-      "Stamina": 3,
+      "Durability": 5,
+      "Stamina": 5,
       "Agility / Reflexes": 2,
-      "Healing / Recovery": 4,
-      "Energy Projection": null,
-      "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 2
+      "Healing / Recovery": 5,
+      "Energy Projection": 4,
+      "Magic / Mystical Mastery": 4,
+      "Senses / Awareness": 5,
+      "Skill / Technology": 3,
+      "Power Versatility": 5
     },
     "allies": [
       "Abby Arcane",
@@ -41691,11 +41786,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -42311,10 +42406,10 @@ window.COMIC_VAULT_CHARACTERS = [
       "Kid Flash"
     ],
     "enemies": [
-      "Reverse-Flash",
+      "Reverse-Flash / Eobard Thawne",
       "Captain Cold",
       "Gorilla Grodd",
-      "Mirror Master",
+      "Mirror Master / Sam Scudder",
       "Zoom"
     ],
     "history": [
@@ -44970,7 +45065,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Wonder Woman",
+    "name": "Wonder Woman / Diana",
     "realName": "Diana of Themyscira",
     "publisher": "DC",
     "firstAppearance": "All Star Comics #8 (1941)",
@@ -45020,11 +45115,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "Nubia"
     ],
     "enemies": [
-      "Cheetah",
+      "Cheetah / Barbara Ann Minerva",
       "Ares",
       "Circe",
       "Doctor Psycho",
-      "Giganta"
+      "Giganta / Doris Zuel"
     ],
     "history": [
       [
@@ -45188,6 +45283,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -46260,7 +46360,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Arsenal",
+    "name": "Arsenal / Roy Harper",
     "realName": "Roy William Harper Jr.",
     "publisher": "DC",
     "firstAppearance": "More Fun Comics #73 (1941) as Roy Harper / Speedy; later used Arsenal and Red Arrow",
@@ -46432,6 +46532,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -46600,7 +46705,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Atomic Skull",
+    "name": "Atomic Skull / Joseph Martin",
     "realName": "Joseph Martin",
     "publisher": "DC",
     "firstAppearance": "The Adventures of Superman #483 (1991) as Joseph Martin; Action Comics #670 (1991) as Atomic Skull",
@@ -46749,6 +46854,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -47572,22 +47682,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "enhanced reflexes"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 4,
+      "Fighting Ability": 4,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 4,
-      "Stamina": 3,
+      "Strength": 3,
+      "Speed": 3,
+      "Durability": 3,
+      "Stamina": 4,
       "Agility / Reflexes": 4,
       "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 3,
+      "Power Versatility": 4
     },
     "allies": [
       "Thunder",
@@ -47709,11 +47819,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -48806,8 +48916,8 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Captain Atom",
-    "realName": "Nathaniel Christopher Adam",
+    "name": "Captain Atom / Nathaniel Adam",
+    "realName": "Nathaniel Adam",
     "publisher": "DC",
     "firstAppearance": "Space Adventures #33 (1960) — Charlton Captain Atom; Captain Atom #1 (1987) — Nathaniel Adam DC continuity",
     "alignment": "Hero",
@@ -48978,6 +49088,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -49181,7 +49296,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Various gods and sorcerers"
     ],
     "enemies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Amazons"
     ],
     "history": [
@@ -49485,8 +49600,8 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Green Arrow / Oliver Queen",
-      "Arsenal",
-      "Black Canary"
+      "Arsenal / Roy Harper",
+      "Black Canary / Dinah Laurel Lance"
     ],
     "enemies": [
       "Merlyn",
@@ -49646,7 +49761,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Green Arrow / Oliver Queen",
-      "Black Canary"
+      "Black Canary / Dinah Laurel Lance"
     ],
     "history": [
       [
@@ -50866,7 +50981,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Doctor Light (Kimiyo Hoshi)",
+    "name": "Doctor Light / Kimiyo Hoshi",
     "realName": "Dr. Kimiyo Hoshi",
     "publisher": "DC",
     "firstAppearance": "Crisis on Infinite Earths #4 (1985)",
@@ -50887,7 +51002,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "scientific genius"
     ],
     "attributes": {
-      "Intelligence": 5,
+      "Intelligence": 4,
       "Tactical Ability": 3,
       "Fighting Ability": 2,
       "Willpower": 3,
@@ -50898,11 +51013,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "Stamina": 2,
       "Agility / Reflexes": 2,
       "Healing / Recovery": null,
-      "Energy Projection": 3,
+      "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 1,
       "Skill / Technology": 5,
-      "Power Versatility": 2
+      "Power Versatility": 4
     },
     "allies": [
       "Justice League",
@@ -50983,7 +51098,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Dr. Kimiyo Hoshi is the heroic Doctor Light introduced during Crisis on Infinite Earths. She is completely separate from Arthur Light, the earlier criminal Doctor Light, despite sharing the same codename.",
+    "continuityNote": "This profile represents Doctor Light / Kimiyo Hoshi, the heroic DC character.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -51020,10 +51135,15 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Doctor Light (Arthur Light)",
+    "name": "Doctor Light / Arthur Light",
     "realName": "Dr. Arthur Light",
     "publisher": "DC",
     "firstAppearance": "Justice League of America #12 (1962)",
@@ -51043,7 +51163,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "scientific genius"
     ],
     "attributes": {
-      "Intelligence": 5,
+      "Intelligence": 4,
       "Tactical Ability": 3,
       "Fighting Ability": 2,
       "Willpower": 3,
@@ -51054,10 +51174,10 @@ window.COMIC_VAULT_CHARACTERS = [
       "Stamina": 2,
       "Agility / Reflexes": 2,
       "Healing / Recovery": null,
-      "Energy Projection": 3,
+      "Energy Projection": 4,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 1,
-      "Skill / Technology": 5,
+      "Skill / Technology": 4,
       "Power Versatility": 1
     },
     "allies": [
@@ -51138,7 +51258,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Dr. Arthur Light is the villainous Doctor Light and predates Kimiyo Hoshi by more than twenty years. His identity, crimes and history should not be merged with the heroic Kimiyo Hoshi.",
+    "continuityNote": "This profile represents Doctor Light / Arthur Light, the DC villain.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -51174,6 +51294,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -51216,7 +51341,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Justice Society",
-      "Hourman"
+      "Hourman / Rex Tyler"
     ],
     "enemies": [
       "JSA villains"
@@ -51377,7 +51502,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Various Wonder Woman villains"
     ],
     "enemies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Amazons"
     ],
     "history": [
@@ -51527,7 +51652,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Aquaman",
+      "Aquaman / Arthur Curry",
       "Tempest",
       "Mera"
     ],
@@ -52121,7 +52246,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Elasti-Woman",
+    "name": "Elasti-Woman / Rita Farr",
     "realName": "Rita Farr",
     "publisher": "DC",
     "firstAppearance": "My Greatest Adventure #80 (1963)",
@@ -52273,6 +52398,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -53060,7 +53190,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Fire",
+    "name": "Fire / Beatriz da Costa",
     "realName": "Beatriz Bonilla da Costa",
     "publisher": "DC",
     "firstAppearance": "Super Friends #25 (1979) as Green Fury; later integrated into mainstream DC continuity as Beatriz da Costa",
@@ -53215,6 +53345,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -53393,21 +53528,21 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "attributes": {
       "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 4,
-      "Willpower": 3,
+      "Tactical Ability": 4,
+      "Fighting Ability": 5,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 4,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 3,
-      "Agility / Reflexes": 4,
-      "Healing / Recovery": 4,
+      "Strength": 5,
+      "Speed": 3,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 3,
+      "Healing / Recovery": 5,
       "Energy Projection": null,
-      "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 2
+      "Magic / Mystical Mastery": 3,
+      "Senses / Awareness": 4,
+      "Skill / Technology": 4,
+      "Power Versatility": 4
     },
     "allies": [
       "Bride of Frankenstein",
@@ -53518,11 +53653,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -53891,8 +54026,8 @@ window.COMIC_VAULT_CHARACTERS = [
       "Occasional supernatural villains"
     ],
     "enemies": [
-      "Hawkman",
-      "Hawkgirl",
+      "Hawkman / Carter Hall",
+      "Hawkgirl / Kendra Saunders",
       "Batman"
     ],
     "history": [
@@ -54357,7 +54492,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Darkseid at times"
     ],
     "enemies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Justice League"
     ],
     "history": [
@@ -55139,7 +55274,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Nubia",
       "Amazons"
     ],
@@ -55266,7 +55401,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Hourman",
+    "name": "Hourman / Rex Tyler",
     "realName": "Rex Tyler",
     "publisher": "DC",
     "firstAppearance": "Adventure Comics #48 (1940)",
@@ -55420,6 +55555,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -55617,7 +55757,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Batman",
-      "Catwoman"
+      "Catwoman / Selina Kyle"
     ],
     "history": [
       [
@@ -55768,7 +55908,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Fire",
+      "Fire / Beatriz da Costa",
       "Guy Gardner",
       "Justice League International"
     ],
@@ -56370,7 +56510,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Isis",
+    "name": "Isis / Adrianna Tomaz",
     "realName": "Adrianna Tomaz",
     "publisher": "DC",
     "firstAppearance": "52 #3 (2006) as Adrianna Tomaz; later transformed into Isis during 52",
@@ -56528,6 +56668,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -57050,7 +57195,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Teen Titans",
-      "Ravager"
+      "Ravager / Rose Wilson"
     ],
     "enemies": [
       "Deathstroke at times",
@@ -57853,7 +57998,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "allies": [
       "Batman",
       "Outsiders",
-      "Black Canary"
+      "Black Canary / Dinah Laurel Lance"
     ],
     "enemies": [
       "Yakuza",
@@ -57984,7 +58129,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Kid Flash (Wallace West)",
+    "name": "Kid Flash / Wallace West",
     "realName": "Wallace Rudolph West III",
     "publisher": "DC",
     "firstAppearance": "The Flash Annual #3 (2014)",
@@ -58143,6 +58288,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -58321,29 +58471,29 @@ window.COMIC_VAULT_CHARACTERS = [
       "powerful bite"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 2,
+      "Tactical Ability": 2,
+      "Fighting Ability": 4,
+      "Willpower": 4,
       "Psychic Power": null,
-      "Strength": 4,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 3,
-      "Agility / Reflexes": 2,
+      "Strength": 5,
+      "Speed": 4,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 4,
       "Healing / Recovery": 4,
       "Energy Projection": null,
-      "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 3,
-      "Skill / Technology": 2,
-      "Power Versatility": 2
+      "Magic / Mystical Mastery": 3,
+      "Senses / Awareness": 5,
+      "Skill / Technology": 1,
+      "Power Versatility": 3
     },
     "allies": [
       "Suicide Squad members"
     ],
     "enemies": [
       "Superboy",
-      "Aquaman",
+      "Aquaman / Arthur Curry",
       "oceanic heroes"
     ],
     "history": [
@@ -58449,11 +58599,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -58659,7 +58809,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Batman",
-      "Black Canary",
+      "Black Canary / Dinah Laurel Lance",
       "various martial artists"
     ],
     "history": [
@@ -59265,21 +59415,21 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "attributes": {
       "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 4,
+      "Tactical Ability": 4,
+      "Fighting Ability": 5,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
-      "Healing / Recovery": 4,
+      "Strength": 5,
+      "Speed": 4,
+      "Durability": 5,
+      "Stamina": 5,
+      "Agility / Reflexes": 4,
+      "Healing / Recovery": 5,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 4,
+      "Power Versatility": 4
     },
     "allies": [
       "Space Dolphins",
@@ -59395,11 +59545,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -59871,7 +60021,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Mary Marvel",
+    "name": "Mary Marvel / Mary Bromfield",
     "realName": "Mary Bromfield; historically Mary Batson",
     "publisher": "DC",
     "firstAppearance": "Captain Marvel Adventures #18 (1942)",
@@ -60030,6 +60180,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -60391,7 +60546,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 2
     },
     "allies": [
-      "Aquaman",
+      "Aquaman / Arthur Curry",
       "Andrina Curry",
       "Atlantis"
     ],
@@ -61798,7 +61953,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Robotman",
-      "Elasti-Woman",
+      "Elasti-Woman / Rita Farr",
       "Doom Patrol"
     ],
     "enemies": [
@@ -62433,7 +62588,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Atlantean loyalists"
     ],
     "enemies": [
-      "Aquaman",
+      "Aquaman / Arthur Curry",
       "Mera"
     ],
     "history": [
@@ -62549,7 +62704,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Omen",
+    "name": "Omen / Lilith Clay",
     "realName": "Lilith Clay",
     "publisher": "DC",
     "firstAppearance": "Teen Titans #25 (1970) as Lilith Clay; Teen Titans (vol. 2) #1 (1996) as Omen",
@@ -62705,6 +62860,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -63055,21 +63215,21 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "attributes": {
       "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Tactical Ability": 4,
+      "Fighting Ability": 4,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
-      "Speed": 2,
+      "Speed": 3,
       "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
+      "Stamina": 4,
+      "Agility / Reflexes": 4,
       "Healing / Recovery": null,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 3
     },
     "allies": [
       "Suicide Squad members"
@@ -63186,11 +63346,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 400
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -64430,7 +64590,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Question",
+    "name": "Question / Vic Sage",
     "realName": "Charles Victor Szasz / Vic Sage",
     "publisher": "DC",
     "firstAppearance": "Blue Beetle #1 (1967, Charlton Comics)",
@@ -64471,7 +64631,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "allies": [
       "Renee Montoya",
       "Batman",
-      "Huntress"
+      "Huntress / Helena Bertinelli"
     ],
     "enemies": [
       "Corrupt officials",
@@ -64593,6 +64753,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -64753,7 +64918,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Ravager",
+    "name": "Ravager / Rose Wilson",
     "realName": "Rose Wilson",
     "publisher": "DC",
     "firstAppearance": "Deathstroke the Terminator #15 (1992) as Rose Wilson; later became Ravager",
@@ -64916,10 +65081,15 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
-    "name": "Red Tornado",
+    "name": "Red Tornado / John Smith",
     "realName": "John Smith / Red Tornado",
     "publisher": "DC",
     "firstAppearance": "Justice League of America #64 (1968)",
@@ -65078,6 +65248,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -65101,22 +65276,22 @@ window.COMIC_VAULT_CHARACTERS = [
       "hand-to-hand combat"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 5,
+      "Fighting Ability": 4,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
-      "Speed": 2,
+      "Speed": 3,
       "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 2,
+      "Stamina": 4,
+      "Agility / Reflexes": 4,
       "Healing / Recovery": null,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Senses / Awareness": 4,
+      "Skill / Technology": 4,
+      "Power Versatility": 2
     },
     "allies": [
       "Amanda Waller at times",
@@ -65229,11 +65404,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 400
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -65437,7 +65612,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Elasti-Woman",
+      "Elasti-Woman / Rita Farr",
       "Negative Man",
       "Crazy Jane"
     ],
@@ -65555,7 +65730,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Sandman (Wesley Dodds)",
+    "name": "Sandman / Wesley Dodds",
     "realName": "Wesley Bernard Dodds",
     "publisher": "DC",
     "firstAppearance": "Adventure Comics #40 (1939)",
@@ -65716,6 +65891,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -66651,7 +66831,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Spectre",
+    "name": "Spectre / Jim Corrigan",
     "realName": "Jim Corrigan / the Spectre",
     "publisher": "DC",
     "firstAppearance": "More Fun Comics #52 (1940)",
@@ -66811,6 +66991,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -67317,7 +67502,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Starman (Jack Knight)",
+    "name": "Starman / Jack Knight",
     "realName": "Jack Knight",
     "publisher": "DC",
     "firstAppearance": "Zero Hour #1 (1994)",
@@ -67482,6 +67667,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -67643,7 +67833,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Superboy (Conner Kent)",
+    "name": "Superboy / Conner Kent",
     "realName": "Kon-El / Conner Kent",
     "publisher": "DC",
     "firstAppearance": "Adventures of Superman #500 (1993)",
@@ -67806,6 +67996,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -68147,21 +68342,21 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "attributes": {
       "Intelligence": 3,
-      "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Tactical Ability": 4,
+      "Fighting Ability": 5,
+      "Willpower": 4,
       "Psychic Power": null,
       "Strength": 3,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
-      "Agility / Reflexes": 4,
+      "Speed": 4,
+      "Durability": 4,
+      "Stamina": 5,
+      "Agility / Reflexes": 5,
       "Healing / Recovery": 4,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 2
+      "Senses / Awareness": 4,
+      "Skill / Technology": 4,
+      "Power Versatility": 3
     },
     "allies": [
       "Court of Owls"
@@ -68275,11 +68470,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 400
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -68322,7 +68517,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 4
     },
     "allies": [
-      "Aquaman",
+      "Aquaman / Arthur Curry",
       "Dolphin",
       "Titans"
     ],
@@ -69069,7 +69264,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Trickster (James Jesse)",
+    "name": "Trickster / James Jesse",
     "realName": "Giovanni Giuseppe / James Jesse",
     "publisher": "DC",
     "firstAppearance": "The Flash #113 (1960)",
@@ -69217,6 +69412,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -69714,21 +69914,21 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "attributes": {
       "Intelligence": 5,
-      "Tactical Ability": 3,
-      "Fighting Ability": 4,
-      "Willpower": 4,
+      "Tactical Ability": 5,
+      "Fighting Ability": 5,
+      "Willpower": 5,
       "Psychic Power": null,
-      "Strength": 2,
-      "Speed": 2,
-      "Durability": 2,
-      "Stamina": 2,
+      "Strength": 4,
+      "Speed": 3,
+      "Durability": 5,
+      "Stamina": 5,
       "Agility / Reflexes": 4,
-      "Healing / Recovery": 4,
+      "Healing / Recovery": 5,
       "Energy Projection": null,
-      "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
-      "Skill / Technology": 4,
-      "Power Versatility": 1
+      "Magic / Mystical Mastery": 3,
+      "Senses / Awareness": 4,
+      "Skill / Technology": 5,
+      "Power Versatility": 4
     },
     "allies": [
       "Various descendants and villain alliances"
@@ -69841,11 +70041,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 400
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "method": "Manual forensic correction from v8.28 Sweep 1 findings",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.29"
     }
   },
   {
@@ -69889,7 +70089,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Doctor Cyber and other Wonder Woman villains at times"
     ],
     "enemies": [
-      "Wonder Woman"
+      "Wonder Woman / Diana"
     ],
     "history": [
       [
@@ -70648,7 +70848,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Justice Society",
-      "Black Canary",
+      "Black Canary / Dinah Laurel Lance",
       "Batman"
     ],
     "enemies": [
@@ -70921,7 +71121,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Wonder Girl (Cassie Sandsmark)",
+    "name": "Wonder Girl / Cassie Sandsmark",
     "realName": "Cassandra Sandsmark",
     "publisher": "DC",
     "firstAppearance": "Wonder Woman #105 (1996)",
@@ -70961,7 +71161,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 2
     },
     "allies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Donna Troy",
       "Superboy",
       "Young Justice"
@@ -71085,6 +71285,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -71126,7 +71331,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 4
     },
     "allies": [
-      "Wonder Woman",
+      "Wonder Woman / Diana",
       "Amazons",
       "Esquecida"
     ],
@@ -71245,7 +71450,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Zoom (Hunter Zolomon)",
+    "name": "Zoom / Hunter Zolomon",
     "realName": "Hunter Zolomon",
     "publisher": "DC",
     "firstAppearance": "The Flash: Secret Files & Origins #3 (2001)",
@@ -71394,6 +71599,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -73739,7 +73949,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "White Witch",
+    "name": "White Witch / Mysa Nal",
     "realName": "Mysa Nal",
     "publisher": "DC",
     "firstAppearance": "Adventure Comics #350 (1966) as the Hag/Mysa; Adventure Comics #351 (1966) as White Witch",
@@ -73894,6 +74104,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 1 Corrected",
+      "date": "2026-09-05",
+      "version": "v8.29"
     }
   },
   {
@@ -75503,7 +75718,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Green Arrow / Oliver Queen",
-      "Black Canary",
+      "Black Canary / Dinah Laurel Lance",
       "Teen Titans"
     ],
     "enemies": [
@@ -75826,7 +76041,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Green Arrow / Oliver Queen",
-      "Black Canary"
+      "Black Canary / Dinah Laurel Lance"
     ],
     "history": [
       [
@@ -76286,7 +76501,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Shazam",
-      "Mary Marvel"
+      "Mary Marvel / Mary Bromfield"
     ],
     "enemies": [
       "Doctor Sivana",
@@ -77058,7 +77273,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Elasti-Woman",
+      "Elasti-Woman / Rita Farr",
       "Beast Boy",
       "Doom Patrol"
     ],
@@ -78418,7 +78633,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.28</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.29</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
