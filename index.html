@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.21: 400 CHARACTER MASTER — INVISIBLE KID IDENTITY CORRECTION + LEGACY NAME CLARITY -->
+  <!-- Comic Vault v8.22: 400 CHARACTER MASTER — CONCISE LEGACY NAMES + LONG-TITLE LAYOUT FIX -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4237,6 +4237,32 @@ html.cv-pinch-zoom .card-character-image{
   color:#7fc0ff;font-size:8px;font-weight:900;letter-spacing:.15em;background:#0b1722;
 }
 
+
+/* v8.22 — concise legacy names + long-title handling */
+.character-name,
+.card-name,
+.archive-card h3,
+.character-card h3{
+  overflow-wrap:normal;
+  word-break:normal;
+  hyphens:none;
+}
+.character-name.long-name,
+.card-name.long-name,
+.archive-card h3.long-name,
+.character-card h3.long-name{
+  font-size:clamp(20px,4.7vw,32px)!important;
+  line-height:.94!important;
+}
+@media (max-width:390px){
+  .character-name.long-name,
+  .card-name.long-name,
+  .archive-card h3.long-name,
+  .character-card h3.long-name{
+    font-size:clamp(18px,5.6vw,28px)!important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4246,7 +4272,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.21</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.22</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4476,7 +4502,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.21</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.22</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -6406,7 +6432,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Ant-Man / Dr. Henry 'Hank' Pym",
+    "name": "Ant-Man / Hank Pym",
     "realName": "Dr. Henry 'Hank' Pym",
     "publisher": "MARVEL",
     "firstAppearance": "Tales to Astonish #27 (1962) as Hank Pym; #35 (1962) as Ant-Man",
@@ -11057,7 +11083,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Black Widow / Natalia Alianovna Romanova / Natasha Romanoff",
+    "name": "Black Widow / Natasha Romanoff",
     "realName": "Natalia Alianovna Romanova / Natasha Romanoff",
     "publisher": "MARVEL",
     "firstAppearance": "Tales of Suspense #52 (1964)",
@@ -11106,7 +11132,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Hawkeye / Clint Barton",
-      "Captain America / Steven Grant 'Steve' Rogers",
+      "Captain America / Steve Rogers",
       "Winter Soldier",
       "Daredevil"
     ],
@@ -12502,7 +12528,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Captain America / Steven Grant 'Steve' Rogers",
+    "name": "Captain America / Steve Rogers",
     "realName": "Steven Grant 'Steve' Rogers",
     "publisher": "MARVEL",
     "firstAppearance": "Captain America Comics #1 (1941)",
@@ -13181,7 +13207,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Captain Marvel / Carol Susan Jane Danvers",
+    "name": "Captain Marvel / Carol Danvers",
     "realName": "Carol Susan Jane Danvers",
     "publisher": "MARVEL",
     "firstAppearance": "Marvel Super-Heroes #13 (1968) as Carol Danvers; Ms. Marvel #1 (1977) as Ms. Marvel; Captain Marvel identity adopted in 2012",
@@ -13465,7 +13491,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Spider-Man",
-      "Venom / Edward Charles 'Eddie' Brock bonded with the Venom symbiote"
+      "Venom / Eddie Brock"
     ],
     "history": [
       [
@@ -18753,7 +18779,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 2
     },
     "allies": [
-      "Captain America / Steven Grant 'Steve' Rogers",
+      "Captain America / Steve Rogers",
       "Redwing",
       "Avengers"
     ],
@@ -21793,7 +21819,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Kate Bishop",
-      "Black Widow / Natalia Alianovna Romanova / Natasha Romanoff",
+      "Black Widow / Natasha Romanoff",
       "Mockingbird",
       "Avengers"
     ],
@@ -23647,7 +23673,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "allies": [
       "War Machine",
       "Pepper Potts",
-      "Captain America / Steven Grant 'Steve' Rogers",
+      "Captain America / Steve Rogers",
       "Thor",
       "Avengers"
     ],
@@ -25833,7 +25859,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 4
     },
     "allies": [
-      "Captain Marvel / Carol Susan Jane Danvers",
+      "Captain Marvel / Carol Danvers",
       "Miles Morales",
       "Champions"
     ],
@@ -36157,7 +36183,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Hydra"
     ],
     "enemies": [
-      "Captain America / Steven Grant 'Steve' Rogers",
+      "Captain America / Steve Rogers",
       "Avengers"
     ],
     "history": [
@@ -39427,7 +39453,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "enemies": [
       "Green Goblin",
       "Doctor Octopus",
-      "Venom / Edward Charles 'Eddie' Brock bonded with the Venom symbiote",
+      "Venom / Eddie Brock",
       "Mysterio",
       "Kraven",
       "Kingpin"
@@ -41492,7 +41518,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "enemies": [
       "Avengers",
       "Deadpool",
-      "Black Widow / Natalia Alianovna Romanova / Natasha Romanoff"
+      "Black Widow / Natasha Romanoff"
     ],
     "history": [
       [
@@ -42470,7 +42496,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Loki (sometimes)",
       "Sif",
       "Beta Ray Bill",
-      "Captain America / Steven Grant 'Steve' Rogers",
+      "Captain America / Steve Rogers",
       "Iron Man"
     ],
     "enemies": [
@@ -43047,7 +43073,7 @@ window.COMIC_VAULT_CHARACTERS = [
     }
   },
   {
-    "name": "Venom / Edward Charles 'Eddie' Brock bonded with the Venom symbiote",
+    "name": "Venom / Eddie Brock",
     "realName": "Edward Charles 'Eddie' Brock bonded with the Venom symbiote",
     "publisher": "MARVEL",
     "firstAppearance": "The Amazing Spider-Man #298–299 (1988) Eddie Brock / Venom build-up; The Amazing Spider-Man #300 (1988) first full Venom",
@@ -43909,7 +43935,7 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Iron Man",
-      "Captain Marvel / Carol Susan Jane Danvers"
+      "Captain Marvel / Carol Danvers"
     ],
     "enemies": [
       "A.I.M.",
@@ -44099,7 +44125,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Ant-Man / Dr. Henry 'Hank' Pym",
+      "Ant-Man / Hank Pym",
       "Avengers"
     ],
     "enemies": [
@@ -44311,8 +44337,8 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Captain America / Steven Grant 'Steve' Rogers",
-      "Black Widow / Natalia Alianovna Romanova / Natasha Romanoff"
+      "Captain America / Steve Rogers",
+      "Black Widow / Natasha Romanoff"
     ],
     "enemies": [
       "Hydra",
@@ -61860,7 +61886,7 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "enemies": [
       "Justice League",
-      "Captain Marvel / Carol Susan Jane Danvers",
+      "Captain Marvel / Carol Danvers",
       "supernatural heroes"
     ],
     "history": [
@@ -78166,7 +78192,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.21</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.22</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
