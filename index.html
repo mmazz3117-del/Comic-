@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.22: 400 CHARACTER MASTER — CONCISE LEGACY NAMES + LONG-TITLE LAYOUT FIX -->
+  <!-- Comic Vault v8.23: 400 CHARACTER MASTER — CENTERED CARD LAYOUT + SAFE LONG-NAME WRAPPING -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4263,6 +4263,99 @@ html.cv-pinch-zoom .card-character-image{
   }
 }
 
+
+/* ==========================================================
+   Comic Vault v8.23 — centered archive cards + safe long names
+   ========================================================== */
+.card-copy{
+  text-align:center !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+}
+
+.card-role,
+.card-title,
+.card-real{
+  width:100% !important;
+  text-align:center !important;
+}
+
+.card-role{
+  max-width:100% !important;
+}
+
+.card-title{
+  overflow-wrap:normal !important;
+  word-break:normal !important;
+  hyphens:none !important;
+  white-space:normal !important;
+  text-wrap:balance;
+  letter-spacing:-.015em;
+}
+
+.card-title.long-name{
+  font-size:clamp(24px,5.7vw,31px) !important;
+  line-height:.94 !important;
+}
+
+.card-title.single-long-name{
+  font-size:clamp(22px,5.3vw,29px) !important;
+  letter-spacing:-.03em !important;
+  white-space:nowrap !important;
+}
+
+/* Keep identity subtitles centered and readable. */
+.card-real{
+  line-height:1.35 !important;
+  max-width:95% !important;
+  margin-left:auto !important;
+  margin-right:auto !important;
+}
+
+/* Center card imagery horizontally without changing character-specific scale rules. */
+.card-figure{
+  display:flex !important;
+  justify-content:center !important;
+  align-items:center !important;
+}
+
+@media (max-width:560px){
+  .card-copy{
+    left:12px !important;
+    right:12px !important;
+  }
+  .card-title{
+    font-size:clamp(25px,6.4vw,31px) !important;
+  }
+  .card-title.long-name{
+    font-size:clamp(21px,5.4vw,27px) !important;
+  }
+  .card-title.single-long-name{
+    font-size:clamp(19px,4.9vw,25px) !important;
+  }
+  .card-role{
+    font-size:9px !important;
+    line-height:1.45 !important;
+    margin-bottom:16px !important;
+  }
+  .card-real{
+    font-size:10px !important;
+  }
+}
+
+@media (max-width:390px){
+  .card-title{
+    font-size:clamp(24px,6.2vw,29px) !important;
+  }
+  .card-title.long-name{
+    font-size:clamp(20px,5.2vw,25px) !important;
+  }
+  .card-title.single-long-name{
+    font-size:clamp(18px,4.8vw,23px) !important;
+  }
+}
+
 </style>
 </head>
 <body>
@@ -4272,7 +4365,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.22</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.23</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4502,7 +4595,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.22</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.23</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -77889,7 +77982,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
               </span>
               <span class="card-copy">
                 <span class="card-role">${String(globalIndex).padStart(2,"0")} // ${esc(role)} · ${esc(occupation || "Archive File")}</span>
-                <span class="card-title">${esc(c.name)}</span>
+                <span class="card-title${c.name.length>20 ? " long-name" : ""}${(!c.name.includes(" ") && c.name.length>=10) ? " single-long-name" : ""}">${esc(c.name)}</span>
                 <span class="card-real">${esc(c.realName)}</span>
               </span>
             </button>`;
@@ -78192,7 +78285,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.22</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.23</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
