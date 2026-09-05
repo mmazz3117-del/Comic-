@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.29: 400 CHARACTER MASTER — SWEEP 1 DATA CORRECTIONS + CHARACTER SCALE BALANCE -->
+  <!-- Comic Vault v8.30: 400 CHARACTER MASTER — SWEEP 2 CORRECTIONS + CONTINUITY QA -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4498,7 +4498,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.29</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.30</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4728,7 +4728,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.29</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.30</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -9948,7 +9948,7 @@ window.COMIC_VAULT_CHARACTERS = [
         "Bizarro duplicates — constructed society"
       ]
     },
-    "continuityNote": "Bizarro is an incarnation-dependent identity rather than one perfectly continuous individual. The Superboy #68 Bizarro and later Superman/Bizarro World versions should not be blended without context.",
+    "continuityNote": "Bizarro is an incarnation-dependent identity rather than one perfectly continuous individual. Different Bizarros across Superboy, Superman, and Bizarro World stories should be kept context-specific.",
     "audit": {
       "status": "Deep audited",
       "batch": "B1",
@@ -9989,9 +9989,9 @@ window.COMIC_VAULT_CHARACTERS = [
       "version": "v8.19"
     },
     "dataAudit": {
-      "status": "Sweep 1 Corrected",
+      "status": "Sweep 2 Reviewed",
       "date": "2026-09-05",
-      "version": "v8.29"
+      "version": "v8.30"
     }
   },
   {
@@ -18050,7 +18050,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Donna Troy's origin has been repeatedly rewritten—rescued orphan, Amazon-raised sister, Titan-created duplicate and other explanations have all appeared. Her stable core is her Wonder Girl/Troia legacy and founding bond with the Titans; origin details must be read by era.",
+    "continuityNote": "Donna Troy's origin has been repeatedly revised across DC continuity. No single origin should be presented as universally definitive across all eras.",
     "auditCorrections": [
       "Existing core dossier reviewed; no major identity-level correction required.",
       "Continuity note refined during final 200/200 reconciliation pass."
@@ -18095,6 +18095,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -18842,16 +18847,16 @@ window.COMIC_VAULT_CHARACTERS = [
       "Intelligence": 3,
       "Tactical Ability": 3,
       "Fighting Ability": 2,
-      "Willpower": 3,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
       "Speed": 2,
-      "Durability": 5,
+      "Durability": 4,
       "Stamina": 3,
       "Agility / Reflexes": 2,
       "Healing / Recovery": 4,
-      "Energy Projection": null,
-      "Magic / Mystical Mastery": 4,
+      "Energy Projection": 4,
+      "Magic / Mystical Mastery": 5,
       "Senses / Awareness": 3,
       "Skill / Technology": 1,
       "Power Versatility": 4
@@ -19011,11 +19016,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -21826,7 +21831,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Harley Quinn originated in animation before entering comics. The Batman Adventures #12 (1993) is her first comic-book appearance but belongs to the animated continuity; Batman: Harley Quinn #1 (1999) introduced a version into the main DC comics continuity.",
+    "continuityNote": "Harley Quinn originated in Batman: The Animated Series before entering DC Comics. Keep her animated debut, first comic appearance, and later mainstream DC-continuity integration distinct.",
     "auditCorrections": [
       "Separated animation debut, first comic appearance and main-continuity comics debut."
     ],
@@ -21868,6 +21873,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -24721,7 +24731,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Core identity, debut, power origin, major family relationships and principal continuity were reviewed for the Comic Vault deep audit. No major mantle/identity correction was required for this record; era-specific retcons remain labeled in the history where applicable.",
+    "continuityNote": "Jessica Cruz's first appearance as a character is separate from the point at which she formally becomes a Green Lantern. This dossier should preserve that distinction.",
     "auditCorrections": [
       "Existing core dossier reviewed; no major identity-level correction required."
     ],
@@ -24763,6 +24773,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -25371,8 +25386,8 @@ window.COMIC_VAULT_CHARACTERS = [
       "High pain tolerance"
     ],
     "attributes": {
-      "Intelligence": 3,
-      "Tactical Ability": 3,
+      "Intelligence": 4,
+      "Tactical Ability": 4,
       "Fighting Ability": 2,
       "Willpower": 3,
       "Psychic Power": null,
@@ -25551,11 +25566,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -26254,7 +26269,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Kamala's original powers emerged after Terrigenesis and she remains an Inhuman. After her 2023 death and Krakoan resurrection, Marvel revealed that she also possesses an X-gene, making her both an Inhuman and a mutant. Her dormant mutant power is distinct from the polymorphic abilities activated by Terrigen.",
+    "continuityNote": "Kamala Khan's debut history includes a brief/cameo appearance before her first full starring appearance. Both should remain distinguished in first-appearance notes.",
     "auditCorrections": [
       "Updated species to reflect Marvel's current status: both Inhuman and mutant.",
       "Separated cameo from first full appearance."
@@ -26301,6 +26316,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -29288,7 +29308,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Illyana debuted as a child years before becoming the sorceress Magik. Her accelerated childhood in Limbo, Soulsword, Darkchylde aspects and repeated death/resurrection history should be read as later development, not part of her 1975 debut state.",
+    "continuityNote": "Illyana Rasputin appears before she adopts the Magik identity. Her first appearance as Illyana and her later emergence as Magik should remain separate.",
     "auditCorrections": [
       "Separated Illyana's child debut from her later Magik identity."
     ],
@@ -29332,6 +29352,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -31203,7 +31228,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "The 1959 villain was originally Mr. Zero and did not possess the now-famous Victor-and-Nora Fries backstory. Batman: The Animated Series' 'Heart of Ice' reinvented him as Victor Fries trying to save Nora; DC comics subsequently adopted that characterization into main continuity.",
+    "continuityNote": "The character began in comics as Mr. Zero. The tragic Nora Fries backstory was popularized by Batman: The Animated Series and later incorporated into comic continuity; those stages should not be presented as one unchanged origin.",
     "auditCorrections": [
       "Separated the 1959 Mr. Zero debut from the later Victor Fries/Nora characterization."
     ],
@@ -31243,6 +31268,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -35203,7 +35233,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "This profile represents Kwannon as Psylocke. Betsy Braddock historically used the Psylocke identity but is a distinct character and should not have her biography merged into Kwannon's dossier.",
+    "continuityNote": "This profile represents Kwannon as Psylocke. Betsy Braddock historically used the Psylocke identity but is a distinct character; their biographies, relationships, and milestones should remain separate.",
     "auditCorrections": [
       "Replaced the outdated Betsy Braddock dossier with Kwannon to match the modern Psylocke identity and approved artwork.",
       "Separated Betsy's Captain Britain history from Kwannon's current Psylocke history."
@@ -35249,9 +35279,9 @@ window.COMIC_VAULT_CHARACTERS = [
       "version": "v8.19"
     },
     "dataAudit": {
-      "status": "Sweep 1 Corrected",
+      "status": "Sweep 2 Reviewed",
       "date": "2026-09-05",
-      "version": "v8.29"
+      "version": "v8.30"
     }
   },
   {
@@ -36473,7 +36503,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Occasional enhanced bodies / Cosmic Cube access"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 4,
       "Tactical Ability": 5,
       "Fighting Ability": 2,
       "Willpower": 3,
@@ -36618,11 +36648,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -38918,7 +38948,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Billy Batson was historically called Captain Marvel for most of his publication life. DC increasingly used 'Shazam' as the character's superhero name beginning with the New 52, while 'Shazam' had previously referred primarily to the wizard and Billy's magic word.",
+    "continuityNote": "Billy Batson historically operated as Captain Marvel before DC increasingly standardized the superhero name Shazam. The dossier should preserve that naming transition rather than treating 'Shazam' as timeless.",
     "auditCorrections": [
       "Separated the historic Captain Marvel identity from the modern Shazam naming convention."
     ],
@@ -38964,6 +38994,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -39531,10 +39566,10 @@ window.COMIC_VAULT_CHARACTERS = [
       "Strategic genius"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 4,
       "Tactical Ability": 5,
       "Fighting Ability": 2,
-      "Willpower": 4,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
       "Speed": 3,
@@ -39709,11 +39744,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -43562,7 +43597,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Venom is a partnership between host and symbiote, not a single organism. Eddie Brock appeared during the build-up in Amazing Spider-Man #298–299, with the full Venom debut conventionally credited to #300. The symbiote itself appeared earlier as Spider-Man's alien costume.",
+    "continuityNote": "Eddie Brock appears before Venom's full debut. Keep Eddie's pre-Venom appearances distinct from the first full appearance of Venom.",
     "auditCorrections": [
       "Separated Eddie, the symbiote and the full Venom identity; added cameo/build-up distinction."
     ],
@@ -43608,6 +43643,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -44437,13 +44477,13 @@ window.COMIC_VAULT_CHARACTERS = [
       "Speed": 3,
       "Durability": 2,
       "Stamina": 2,
-      "Agility / Reflexes": 2,
+      "Agility / Reflexes": 5,
       "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Energy Projection": 3,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 1,
       "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Power Versatility": 4
     },
     "allies": [
       "Ant-Man / Hank Pym",
@@ -44608,11 +44648,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -49044,7 +49084,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "The original Charlton Captain Atom was Allen Adam. DC's post-Crisis reinvention introduced Nathaniel Adam in Captain Atom #1 (1987), retaining the hero concept but rebuilding the biography around the U.S. Air Force, the alien-metal Dilustel shell and quantum energy. This dossier centers Nathaniel Adam while preserving the historical mantle debut.",
+    "continuityNote": "Captain Atom has separate publication/continuity histories: the Charlton-era Allen Adam concept and DC's Nathaniel Adam incarnation. This profile represents Nathaniel Adam and should keep those histories distinct.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -49090,9 +49130,9 @@ window.COMIC_VAULT_CHARACTERS = [
       "version": "v8.19"
     },
     "dataAudit": {
-      "status": "Sweep 1 Corrected",
+      "status": "Sweep 2 Reviewed",
       "date": "2026-09-05",
-      "version": "v8.29"
+      "version": "v8.30"
     }
   },
   {
@@ -49834,7 +49874,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Pre-Flashpoint stories generally identify the Vlatavan noble as Werner Vertigo; Prime Earth reintroduced him as Werner Zytle. Both versions use technology associated with the inner ear to create the disorienting Vertigo effect, but their family and national histories differ.",
+    "continuityNote": "Count Vertigo's civilian-name and continuity details vary across eras, including Werner Vertigo / Werner Zytle variants. Use continuity-sensitive wording rather than forcing every version into one biography.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -49874,6 +49914,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -55734,9 +55779,9 @@ window.COMIC_VAULT_CHARACTERS = [
       "hand-to-hand combat"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 5,
       "Tactical Ability": 4,
-      "Fighting Ability": 2,
+      "Fighting Ability": 4,
       "Willpower": 3,
       "Psychic Power": null,
       "Strength": 2,
@@ -55748,7 +55793,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 1,
-      "Skill / Technology": 3,
+      "Skill / Technology": 5,
       "Power Versatility": 1
     },
     "allies": [
@@ -55862,11 +55907,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -57600,7 +57645,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Jimmy's publication debut is unusual. An unnamed office boy in Action Comics #6 was retroactively identified as Jimmy Olsen; Superman #13 later established the named supporting character. Post-Crisis continuity reintroduced him again in The Man of Steel era.",
+    "continuityNote": "Jimmy Olsen's first-appearance history is complicated by earlier unnamed office-boy appearances. Keep the named debut distinction explicit.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -57638,6 +57683,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -57663,7 +57713,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 4,
-      "Fighting Ability": 2,
+      "Fighting Ability": 4,
       "Willpower": 3,
       "Psychic Power": null,
       "Strength": 2,
@@ -57674,7 +57724,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Healing / Recovery": null,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 4,
       "Skill / Technology": 3,
       "Power Versatility": 1
     },
@@ -57789,11 +57839,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -59267,15 +59317,15 @@ window.COMIC_VAULT_CHARACTERS = [
       "Psychic Power": null,
       "Strength": 2,
       "Speed": 2,
-      "Durability": 2,
+      "Durability": 4,
       "Stamina": 2,
       "Agility / Reflexes": 2,
       "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 1,
       "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Power Versatility": 4
     },
     "allies": [
       "Various Superman villains"
@@ -59355,7 +59405,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Livewire originated in animation, then appeared in the DCAU tie-in comic Superman Adventures before Gail Simone and John Byrne introduced Leslie Willis into mainstream DC continuity in Action Comics #835. Those versions should not be treated as one uninterrupted biography.",
+    "continuityNote": "Livewire originated in Superman: The Animated Series before entering DC Comics. Her animated debut, comic debut, and integration into mainstream continuity should remain distinguished.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -59386,11 +59436,16 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -60308,7 +60363,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Max originally appeared under the name Quicksilver decades before Marvel's speedster of that name. DC revived and renamed him Max Mercury in the 1990s, developing him into a mentor and spiritual explorer of the Speed Force.",
+    "continuityNote": "The character's publication history includes the earlier Quicksilver identity before the later Max Mercury identity. Keep that transition explicit.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -60346,6 +60401,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -60785,7 +60845,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Mercy originated as Lex Luthor's bodyguard in animation. The first main-DC-comics Mercy appeared in Detective Comics #735 and was not initially identical in background to the DCAU version; subsequent continuities have repeatedly reworked her origins.",
+    "continuityNote": "Mercy Graves originated in Superman: The Animated Series before being incorporated into DC Comics. Keep animation and comics debuts distinct.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -60821,6 +60881,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -61479,10 +61544,10 @@ window.COMIC_VAULT_CHARACTERS = [
       "alien technology"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 5,
       "Tactical Ability": 4,
       "Fighting Ability": 2,
-      "Willpower": 3,
+      "Willpower": 4,
       "Psychic Power": 4,
       "Strength": 2,
       "Speed": 2,
@@ -61603,11 +61668,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 300
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -63153,7 +63218,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Owlman is a multiversal identity, most famously the Earth-3/Crime Syndicate counterpart to Batman. His parentage and even civilian identity vary between versions; Thomas Wayne Jr. is common but should not be projected onto every Owlman incarnation.",
+    "continuityNote": "Owlman is an incarnation-dependent Crime Syndicate identity. Thomas Wayne Jr. is not universal across every version, so this dossier should identify which continuity is being described whenever origin details become specific.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -63191,6 +63256,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -67349,7 +67419,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "flight via metal disc"
     ],
     "attributes": {
-      "Intelligence": 3,
+      "Intelligence": 4,
       "Tactical Ability": 3,
       "Fighting Ability": 2,
       "Willpower": 3,
@@ -67360,11 +67430,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "Stamina": 2,
       "Agility / Reflexes": 2,
       "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 1,
-      "Skill / Technology": 2,
-      "Power Versatility": 1
+      "Skill / Technology": 4,
+      "Power Versatility": 5
     },
     "allies": [
       "Icon",
@@ -67494,11 +67564,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 400
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -68913,7 +68983,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Paula Brooks originally appeared in publication as the villainous Huntress in 1947. Roy Thomas later retconned her younger wartime career under the name Tigress in Young All-Stars. She is unrelated to Zatara's much earlier enemy called the Tigress; her daughter Artemis Crock later also uses Tigress.",
+    "continuityNote": "Paula Brooks' Huntress/Tigress publication history is continuity-sensitive. Keep her earlier Huntress material distinct from later Tigress identity history.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -68953,6 +69023,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -72554,7 +72629,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "attributes": {
       "Intelligence": 4,
       "Tactical Ability": 4,
-      "Fighting Ability": 2,
+      "Fighting Ability": 3,
       "Willpower": 3,
       "Psychic Power": 4,
       "Strength": 2,
@@ -72565,7 +72640,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Healing / Recovery": null,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 5,
       "Skill / Technology": 4,
       "Power Versatility": 1
     },
@@ -72678,11 +72753,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "profileUpdatedThrough": 400
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
-      "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "status": "Sweep 2 Corrected",
+      "date": "2026-09-05",
+      "method": "Residual forensic correction after v8.29 Sweep 2 audit",
+      "scale": "1–5; N/A used when the character does not possess the capability",
+      "version": "v8.30"
     }
   },
   {
@@ -76888,7 +76963,7 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Sabbac is a magical mantle empowered by infernal beings rather than one uninterrupted individual. Timothy Karnes is the Golden Age original; Ishmael Gregor is a later, more demonic successor widely used in modern stories.",
+    "continuityNote": "This dossier represents Timothy Karnes as Sabbac. Ishmael Gregor is a later/successor Sabbac and should not be merged into Timothy's biography.",
     "auditCorrections": [],
     "audit": {
       "status": "Deep audited",
@@ -76923,6 +76998,11 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
       "version": "v8.19"
+    },
+    "dataAudit": {
+      "status": "Sweep 2 Reviewed",
+      "date": "2026-09-05",
+      "version": "v8.30"
     }
   },
   {
@@ -78633,7 +78713,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.29</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.30</b></span>
           ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
