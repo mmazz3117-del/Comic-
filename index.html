@@ -4664,9 +4664,10 @@ html.cv-pinch-zoom .card-character-image{
 }
 
 
+
 /* ==========================================================
-   Comic Vault v8.42 — Indigo-1 dark-hair separation
-   HTML/CSS only; source artwork unchanged.
+   Comic Vault v8.43 — Indigo-1 dark-hair separation restored
+   Preserves the v8.42 contrast treatment; source artwork unchanged.
    ========================================================== */
 .card-character-image[data-art-slug="indigo-1"] img,
 .profile-character-image[data-art-slug="indigo-1"] img,
@@ -4686,7 +4687,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.42</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">173 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.43</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4746,7 +4747,7 @@ html.cv-pinch-zoom .card-character-image{
         <div class="hero-v66-stats" aria-label="Archive statistics">
           <div><strong>400</strong><span>CHARACTER FILES</span></div>
           <i></i>
-          <div><strong>143</strong><span>ARTWORKS ONLINE</span></div>
+          <div><strong>294</strong><span>ARTWORKS ONLINE</span></div>
           <i></i>
           <div><strong>2</strong><span>CONNECTED UNIVERSES</span></div>
         </div>
@@ -4916,7 +4917,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.42</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.43</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -79820,7 +79821,9 @@ window.COMIC_VAULT_CHARACTERS = [
       ]
     ],
     "comics": [
-      "Action Comics #267 (1960)"
+      "Legion of Super-Heroes Annual Vol. 2 #1 (1982)",
+      "Legion of Super-Heroes Vol. 2 #290–294 (1982)",
+      "Who's Who: The Definitive Directory of the DC Universe #11 (1986)"
     ],
     "imageSlug": "chameleon-boy",
     "aliases": [
@@ -80855,28 +80858,28 @@ window.COMIC_VAULT_CHARACTERS = [
     "continuities": {
       "Main Comics": [
         {
-          "era": "1960",
-          "title": "First Appearance",
-          "detail": "Invisible Kid enters publication history in Action Comics #267 (1960)."
+          "era": "1982",
+          "title": "Jacques Foccart Debuts",
+          "detail": "Jacques Foccart first appears and becomes the second Invisible Kid in Legion of Super-Heroes Annual Vol. 2 #1 (1982), after using the invisibility serum associated with his predecessor Lyle Norg while trying to save his sister Danielle."
         },
         {
-          "era": "Defining Era",
-          "title": "Role & Legacy",
-          "detail": "Lyle's scientific background and legacy later inspired additional Legionnaires to carry the Invisible Kid name."
+          "era": "1980s–1990s",
+          "title": "Legionnaire & Earth Leadership",
+          "detail": "Jacques develops as a distinct Legionnaire rather than a replacement for Lyle Norg, eventually moving from covert superhero work into major civic leadership on Earth."
         },
         {
-          "era": "Modern",
-          "title": "Current Continuity",
-          "detail": "Modern DC stories continue to develop Invisible Kid while balancing legacy material, reboots and the character's established role in Legion of Super-Heroes."
+          "era": "Reboot / Later Legion Continuities",
+          "title": "Continuity Variants",
+          "detail": "Later Legion continuities substantially revise Jacques's relationship to Lyle, the source and limits of his invisibility, and even his homeworld. These versions should be treated as separate continuity interpretations rather than folded into his original 1982 biography."
         }
       ]
     },
     "costumeCategories": {
       "Main Comics": [
         {
-          "era": "1960",
-          "title": "Classic / Debut Presentation",
-          "detail": "The early visual identity of Invisible Kid establishes the silhouette, costume language or defining physical concept associated with the character."
+          "era": "1982",
+          "title": "Jacques Foccart / Invisible Kid",
+          "detail": "Jacques's classic Invisible Kid presentation belongs to his own Legion career beginning in 1982; it should not be labeled as Lyle Norg's 1960 debut costume."
         }
       ]
     },
@@ -86380,25 +86383,37 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
   function byName(name){ return characters.find(c=>c.name.toLowerCase()===String(name).toLowerCase()); }
 
+  function relationshipEntryText(reference){
+    if(reference && typeof reference === "object"){
+      const name = String(reference.name || reference.character || reference.person || "").trim();
+      const role = String(reference.role || reference.relationship || reference.detail || "").trim();
+      return [name, role].filter(Boolean).join(" — ");
+    }
+    return String(reference || "").trim();
+  }
+
   function resolveCharacterReference(reference){
-    const raw = String(reference || "").trim();
+    const raw = relationshipEntryText(reference);
     if(!raw) return null;
-
-    // Family entries are stored like "Bruce Wayne — cousin" or
-    // "Superman / Clark Kent — father".  Resolve the person/identity portion.
     const identityPart = raw.split(/\s+—\s+/)[0].trim();
-    const candidates = identityPart
-      .split(/\s*\/\s*/)
-      .map(x=>x.trim())
-      .filter(Boolean);
+    const key = identityPart.toLowerCase();
 
+    let match = characters.find(c=>c.name.toLowerCase()===key);
+    if(match) return match;
+    match = characters.find(c=>String(c.realName || "").toLowerCase()===key);
+    if(match) return match;
+
+    const candidates = identityPart.split(/\s*\/\s*/).map(x=>x.trim()).filter(Boolean);
     for(const candidate of candidates){
-      const key = candidate.toLowerCase();
-      const match = characters.find(c=>{
-        if(c.name.toLowerCase()===key) return true;
-        if(String(c.realName || "").toLowerCase()===key) return true;
-        return (c.aliases || []).some(a=>String(a).toLowerCase()===key);
-      });
+      const candidateKey = candidate.toLowerCase();
+      match = characters.find(c=>c.name.toLowerCase()===candidateKey);
+      if(match) return match;
+      match = characters.find(c=>String(c.realName || "").toLowerCase()===candidateKey);
+      if(match) return match;
+    }
+    for(const candidate of candidates){
+      const candidateKey = candidate.toLowerCase();
+      match = characters.find(c=>(c.aliases || []).some(a=>String(a).toLowerCase()===candidateKey));
       if(match) return match;
     }
     return null;
@@ -86733,16 +86748,38 @@ window.COMIC_VAULT_AUDIT_LOG = [
     });
   }
 
+  function searchNormalize(value){
+    return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g," ").trim().replace(/\s+/g," ");
+  }
+
+  function searchScore(c,q){
+    if(!q) return 0;
+    const name = searchNormalize(c.name);
+    const real = searchNormalize(c.realName);
+    const aliases = (c.aliases || []).map(searchNormalize);
+    const tokens = q.split(" ").filter(Boolean);
+    const primary = [name,real,...aliases];
+    if(primary.includes(q)) return 1000;
+    if(name.startsWith(q)) return 900;
+    if(real.startsWith(q)) return 850;
+    if(aliases.some(a=>a.startsWith(q))) return 800;
+    if(tokens.every(t=>primary.some(v=>v.includes(t)))) return 700;
+    const hay = searchNormalize([c.name,c.realName,...(c.aliases||[]),c.publisher,c.base,c.occupation,c.species,...c.teams,...c.powers].join(" "));
+    if(tokens.every(t=>hay.includes(t))) return 300;
+    return -1;
+  }
+
   function filtered(){
-    const q = searchInput.value.trim().toLowerCase();
-    return characters.filter(c=>{
-      const pubOK = currentPublisher==="ALL" || c.publisher===currentPublisher;
-      const letterOK = currentLetter==="ALL" || c.name.toUpperCase().startsWith(currentLetter);
-      const hay = [c.name,c.realName,c.publisher,c.base,c.occupation,c.species,...c.teams,...c.powers].join(" ").toLowerCase();
-      const searchOK = !q || hay.includes(q);
-      const collectionOK = matchesCollection(c);
-      return pubOK && letterOK && searchOK && collectionOK;
-    });
+    const q = searchNormalize(searchInput.value);
+    return characters
+      .map(c=>({c,score:searchScore(c,q)}))
+      .filter(({c,score})=>{
+        const pubOK = currentPublisher==="ALL" || c.publisher===currentPublisher;
+        const letterOK = currentLetter==="ALL" || c.name.toUpperCase().startsWith(currentLetter);
+        return pubOK && letterOK && (!q || score>=0) && matchesCollection(c);
+      })
+      .sort((a,b)=>q ? (b.score-a.score || a.c.name.localeCompare(b.c.name)) : 0)
+      .map(x=>x.c);
   }
 
   function renderArchive(){
@@ -86785,8 +86822,12 @@ window.COMIC_VAULT_AUDIT_LOG = [
     `).join("");
   }
 
+  let profileReturnFocus = null;
+  let artReturnFocus = null;
+
   function openProfile(name, tab="overview", options={}){
     const c = byName(name); if(!c) return;
+    profileReturnFocus = document.activeElement;
     if(options.remember !== false) rememberCurrentLocation();
     activeCharacter = c; activeTab = tab;
     $("profilePublisher").textContent = c.publisher;
@@ -86802,12 +86843,17 @@ window.COMIC_VAULT_AUDIT_LOG = [
     profileSheet.setAttribute("aria-hidden","false");
     document.body.style.overflow="hidden";
     setProfileTab(tab);
-    setTimeout(()=>document.querySelector(".sheet-panel").scrollTop=0,10);
+    setTimeout(()=>{
+      document.querySelector(".sheet-panel").scrollTop=0;
+      const first = profileSheet.querySelector("button, [href], input, [tabindex]:not([tabindex='-1'])");
+      if(first) first.focus({preventScroll:true});
+    },10);
   }
 
 
   function openArtViewer(){
     if(!activeCharacter || !artViewer) return;
+    artReturnFocus = document.activeElement;
     $("artViewerPublisher").textContent = activeCharacter.publisher;
     $("artViewerName").textContent = activeCharacter.name.toUpperCase();
     $("artViewerStage").innerHTML = `
@@ -86815,12 +86861,15 @@ window.COMIC_VAULT_AUDIT_LOG = [
       <div class="art-viewer-monogram">${esc(activeCharacter.name.charAt(0))}</div>`;
     artViewer.classList.add("open");
     artViewer.setAttribute("aria-hidden","false");
+    const first = artViewer.querySelector("button, [href], [tabindex]:not([tabindex='-1'])");
+    if(first) first.focus({preventScroll:true});
   }
 
   function closeArtViewer(){
     if(!artViewer) return;
     artViewer.classList.remove("open");
     artViewer.setAttribute("aria-hidden","true");
+    if(artReturnFocus && typeof artReturnFocus.focus === "function") artReturnFocus.focus({preventScroll:true});
   }
 
   function updateFavoriteButton(){
@@ -86881,6 +86930,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     profileSheet.classList.remove("open");
     profileSheet.setAttribute("aria-hidden","true");
     document.body.style.overflow="";
+    if(profileReturnFocus && typeof profileReturnFocus.focus === "function") profileReturnFocus.focus({preventScroll:true});
   }
 
   function setProfileTab(tab){
@@ -86992,8 +87042,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function relationshipEntryMarkup(entry){
     const target = resolveCharacterReference(entry);
     return target
-      ? `<button class="family-row family-link" data-related="${esc(target.name)}"><span>${esc(entry)}</span><b>OPEN FILE ↗</b></button>`
-      : `<div class="family-row"><span>${esc(entry)}</span></div>`;
+      ? `<button class="family-row family-link" data-related="${esc(target.name)}"><span>${esc(relationshipEntryText(entry))}</span><b>OPEN FILE ↗</b></button>`
+      : `<div class="family-row"><span>${esc(relationshipEntryText(entry))}</span></div>`;
   }
 
   function relationshipSubgroupMarkup(label,entries){
@@ -87006,10 +87056,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
       return `<div class="origin-person">No single relationship is currently indexed as defining this character's origin.</div>`;
     }
     return people.map(person=>{
+      const text = relationshipEntryText(person);
       const target = resolveCharacterReference(person);
       return target
-        ? `<button class="origin-person origin-person-link" data-related="${esc(target.name)}">${esc(person)}<b>OPEN FILE ↗</b></button>`
-        : `<div class="origin-person">${esc(person)}</div>`;
+        ? `<button class="origin-person origin-person-link" data-related="${esc(target.name)}">${esc(text)}<b>OPEN FILE ↗</b></button>`
+        : `<div class="origin-person">${esc(text)}</div>`;
     }).join("");
   }
 
@@ -87355,9 +87406,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
   document.addEventListener("keydown",e=>{
     if(e.key==="Escape" && artViewer?.classList.contains("open")){
+      e.preventDefault();
+      e.stopImmediatePropagation();
       closeArtViewer();
     }
-  });
+  }, true);
 
   function browsePublisher(pub){
     currentCollection = "all";
@@ -87428,7 +87481,18 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function closeMenu(){ sideMenu.classList.remove("open");sideMenu.setAttribute("aria-hidden","true");document.body.style.overflow=""; }
 
   document.addEventListener("keydown",e=>{
-    if(e.key==="Escape"){ if(profileSheet.classList.contains("open")) closeProfile(); if(sideMenu.classList.contains("open")) closeMenu(); }
+    if(e.key==="Escape"){
+      if(artViewer?.classList.contains("open")) closeArtViewer();
+      else if(profileSheet.classList.contains("open")) closeProfile();
+      else if(sideMenu.classList.contains("open")) closeMenu();
+    }
+    if((e.metaKey || e.ctrlKey) && e.key.toLowerCase()==="k"){
+      e.preventDefault();
+      if(profileSheet.classList.contains("open")) closeProfile();
+      if(sideMenu.classList.contains("open")) closeMenu();
+      showPage("archive");
+      setTimeout(()=>searchInput.focus(),0);
+    }
   });
 
   makeFeatured();
