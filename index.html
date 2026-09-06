@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.45: GOLD-STANDARD ORIGIN EXPANSION — RESEARCH BATCH R1 -->
+  <!-- Comic Vault v8.47: SOURCE-REVIEWED CHARACTER DOSSIERS — RESEARCH BATCH R2 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4688,6 +4688,31 @@ html.cv-pinch-zoom .card-character-image{
     .research-source-list a span{font-size:10px;letter-spacing:.12em;color:var(--blue);white-space:nowrap}
     @media(max-width:620px){.research-source-list a{align-items:flex-start;flex-direction:column;gap:5px}}
 </style>
+
+<style id="cv-research-r2-styles">
+.cv-dossier-scope{display:grid;gap:8px;margin:20px 0 2px;padding:14px 16px;border-left:2px solid #559ecb;background:rgba(42,76,105,.12);line-height:1.6}
+.cv-dossier-scope strong,.cv-evidence-kind{font-size:11px;letter-spacing:.08em;color:#9dbbd0}
+.cv-dossier-scope span{font-size:13px;color:#c2d0dc;overflow-wrap:anywhere}
+.cv-source-cites{display:inline-flex;gap:4px;flex-wrap:wrap;vertical-align:baseline;font-size:11px;white-space:normal}
+.cv-source-cites a{color:#85bddf;text-decoration:none;min-height:26px;display:inline-flex;align-items:center;padding:0 3px}
+.cv-source-cites a:hover{text-decoration:underline}
+.cv-source-cites a:focus-visible,.cv-evidence-item a:focus-visible,.cv-research-evidence summary:focus-visible{outline:2px solid #a5d9f6;outline-offset:3px}
+.cv-research-blocks{display:grid;gap:14px;margin-top:22px}
+.cv-research-block{padding:18px;border:1px solid rgba(125,165,196,.2);background:rgba(33,56,78,.12);border-radius:10px;min-width:0}
+.cv-research-block h4{font-size:17px;line-height:1.35;color:#e4edf5;margin:5px 0 10px;overflow-wrap:anywhere}
+.cv-research-block p{margin:0;font-size:14px;line-height:1.75;color:#c0ccdb;overflow-wrap:anywhere}
+.cv-evidence-kind{display:block;margin-bottom:6px;line-height:1.5}
+.cv-research-evidence{margin-top:26px;border:1px solid rgba(125,165,196,.24);border-radius:10px;padding:16px;min-width:0}
+.cv-research-evidence summary{cursor:pointer;font-size:15px;font-weight:700;line-height:1.6;color:#dbe8f2}
+.cv-research-evidence summary span{display:block;margin:5px 0 0 18px;font-size:11px;font-weight:400;color:#9db2c7}
+.cv-research-limit,.cv-attribute-context{font-size:12px!important;line-height:1.6!important;color:#aebed0!important}
+.cv-evidence-list{display:grid;gap:12px;margin-top:14px}
+.cv-evidence-item{padding:14px 0;border-top:1px solid rgba(125,165,196,.18);min-width:0;overflow-wrap:anywhere}
+.cv-evidence-item a{display:block;color:#90c6e7;font-size:14px;line-height:1.5;text-decoration:none}
+.cv-evidence-item p{font-size:12px;line-height:1.65;margin:7px 0;color:#b6c7d8}
+.cv-evidence-item small{font-size:11px;line-height:1.5;color:#94a6b9;display:block}
+@media(max-width:500px){.cv-research-block{padding:15px}.cv-research-block h4{font-size:16px}.cv-dossier-scope{padding:12px}.cv-research-evidence{padding:13px}}
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -4696,7 +4721,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.45</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.47</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4926,7 +4951,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.45</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.47</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -10378,8 +10403,8 @@ window.COMIC_VAULT_CHARACTERS = [
     "name": "Bizarro",
     "realName": "Bizarro; incarnation-dependent",
     "publisher": "DC",
-    "firstAppearance": "Superboy #68 (1958) — first Bizarro",
-    "alignment": "Villain / antihero / tragic duplicate",
+    "firstAppearance": "Superboy #68 (1958): first Bizarro; Action Comics #254 (1959): adult Superman counterpart",
+    "alignment": "Villain / antihero — varies by incarnation",
     "base": "Bizarro World / Htrae / mobile, depending incarnation",
     "teams": [
       "Outlaws (modern incarnation)",
@@ -10391,15 +10416,14 @@ window.COMIC_VAULT_CHARACTERS = [
     "birthplace": "Artificially created; origin varies by incarnation",
     "height": "Approximately 6'3\" in modern incarnations",
     "eyes": "Black in many modern incarnations; varies",
-    "overview": "Bizarro is not one perfectly continuous person but a recurring Superman counter-concept: an imperfect duplicate, distorted mirror or inhabitant of Bizarro World whose body, powers, speech and values often invert expectations. The first comic-book Bizarro appears as a Superboy duplicate in 1958; an adult Superman duplicate follows in Action Comics #254 in 1959. Later continuities introduce new scientific clones and the Bizarros of Earth-29. Because individual versions range from destructive villain to confused outsider to loyal antihero, Bizarro is best understood incarnation by incarnation rather than assigned one universal personality.",
+    "overview": "Bizarro is the name given to several distorted counterparts of Superman and Superboy. Some are laboratory creations; others belong to a world with its own reversed customs. They can be dangerous without sharing one motive or intelligence level. The Outlaws’ Bizarro, in particular, builds a life alongside Red Hood and Artemis rather than existing only as Superman’s opponent.",
     "powers": [
       "Super strength",
+      "Enhanced durability",
       "Flight",
-      "Super speed",
-      "Extreme durability",
-      "Flame breath in many versions",
-      "Arctic / freeze vision in many versions",
-      "Superhuman hearing"
+      "Super-speed",
+      "Cold vision — incarnation-dependent",
+      "Flame breath — incarnation-dependent"
     ],
     "attributes": {
       "Intelligence": 3,
@@ -10413,7 +10437,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Stamina": 3,
       "Agility / Reflexes": 3,
       "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Energy Projection": 3,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 1,
       "Skill / Technology": 2,
@@ -10421,38 +10445,41 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Red Hood / Jason Todd",
-      "Artemis",
-      "Superman (sometimes)"
+      "Artemis of Bana-Mighdall"
     ],
     "enemies": [
-      "Superman (sometimes)",
-      "Lex Luthor"
+      "Superman"
     ],
     "history": [
       [
-        "1958",
-        "First Comic-Book Bizarro",
-        "Superboy #68 introduces a flawed duplicate of Superboy created by a duplicating ray. This first version establishes the tragic “imperfect copy” idea but is not a biography that cleanly continues through every later Bizarro story."
+        "Superboy duplicate",
+        "A separate first life",
+        "The first Bizarro is a Superboy duplicate; later adult counterparts are not simply this character grown up."
       ],
       [
-        "1959",
-        "Adult Superman Bizarro",
-        "Action Comics #254 introduces an adult Bizarro duplicate of Superman and helps establish the mythology that expands into Bizarro-Lois and the backwards society of Bizarro World."
+        "Classic Bizarro World",
+        "A home among counterparts",
+        "The adult duplicate’s stories establish a society and relationships of their own."
       ],
       [
-        "Post-Crisis",
-        "New Scientific Duplicates",
-        "After Crisis on Infinite Earths, DC uses newly created Bizarro clones rather than treating the Silver Age figure as one uninterrupted individual, reinforcing that “Bizarro” functions as a recurring type as much as a single identity."
+        "1986 clone",
+        "Lucy Lane and a short life",
+        "The unstable copy’s destruction restores Lucy’s sight; this event belongs to that clone."
       ],
       [
-        "Rebirth Era",
-        "Red Hood and the Outlaws",
-        "A Lex Luthor-created Bizarro joins Red Hood and Artemis. This incarnation develops intelligence, loyalty and genuine affection for his teammates, becoming one of the clearest examples of Bizarro as tragic antihero rather than simple villain."
+        "Outlaws",
+        "A place beside Jason and Artemis",
+        "A Superman clone becomes a member of the team, not merely an adversary to defeat."
       ],
       [
-        "Modern",
-        "Earth-29 and Clone Versions Coexist",
-        "DC distinguishes the Bizarros of Earth-29/Bizarro World from separate imperfect Superman clones. Modern appearances therefore require incarnation-specific identification before motives, relationships or history are assigned."
+        "Bizarro Reborn",
+        "Power and intelligence change the team",
+        "Recovery creates new strengths and new questions about his decisions."
+      ],
+      [
+        "Earth-29",
+        "Another incarnation’s adventures",
+        "I, Bizarro is not the next chapter of the Outlaws clone’s personal biography."
       ]
     ],
     "costumes": [
@@ -10468,45 +10495,109 @@ window.COMIC_VAULT_CHARACTERS = [
       ]
     ],
     "comics": [
-      "Superboy #68 (1958)",
-      "Action Comics #254–255 (1959)",
-      "Superman: Tales of the Bizarro World",
-      "Superman: Escape from Bizarro World",
-      "Red Hood and the Outlaws (Rebirth era)"
+      "Superboy #68; Action Comics #254",
+      "The Man of Steel #5 (1986)",
+      "Red Hood and the Outlaws Vol. 1: Dark Trinity",
+      "Red Hood and the Outlaws Vol. 3: Bizarro Reborn",
+      "Action Comics #1061–1063 — I, Bizarro",
+      "Forever Evil #1–7"
     ],
     "imageSlug": "bizarro",
     "aliases": [
       "Bizarro Superman",
       "Bizarro No. 1"
     ],
-    "family": [],
+    "family": [
+      "Bizarro Lois Lane — spouse in classic Bizarro World stories, not a universal relationship"
+    ],
     "gear": [],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "1958",
-          "title": "First Comic-Book Bizarro",
-          "detail": "Superboy #68 introduces a flawed duplicate of Superboy created by a duplicating ray. This first version establishes the tragic “imperfect copy” idea but is not a biography that cleanly continues through every later Bizarro story."
+          "era": "Superboy duplicate",
+          "title": "A separate first life",
+          "detail": "The first Bizarro is a Superboy duplicate; later adult counterparts are not simply this character grown up.",
+          "sourceIds": [
+            "B10"
+          ]
         },
         {
-          "era": "1959",
-          "title": "Adult Superman Bizarro",
-          "detail": "Action Comics #254 introduces an adult Bizarro duplicate of Superman and helps establish the mythology that expands into Bizarro-Lois and the backwards society of Bizarro World."
+          "era": "Classic Bizarro World",
+          "title": "A home among counterparts",
+          "detail": "The adult duplicate’s stories establish a society and relationships of their own.",
+          "sourceIds": [
+            "B10"
+          ]
         },
         {
-          "era": "Post-Crisis",
-          "title": "New Scientific Duplicates",
-          "detail": "After Crisis on Infinite Earths, DC uses newly created Bizarro clones rather than treating the Silver Age figure as one uninterrupted individual, reinforcing that “Bizarro” functions as a recurring type as much as a single identity."
+          "era": "1986 clone",
+          "title": "Lucy Lane and a short life",
+          "detail": "The unstable copy’s destruction restores Lucy’s sight; this event belongs to that clone.",
+          "sourceIds": [
+            "B11"
+          ]
         },
         {
-          "era": "Rebirth Era",
-          "title": "Red Hood and the Outlaws",
-          "detail": "A Lex Luthor-created Bizarro joins Red Hood and Artemis. This incarnation develops intelligence, loyalty and genuine affection for his teammates, becoming one of the clearest examples of Bizarro as tragic antihero rather than simple villain."
+          "era": "Outlaws",
+          "title": "A place beside Jason and Artemis",
+          "detail": "A Superman clone becomes a member of the team, not merely an adversary to defeat.",
+          "sourceIds": [
+            "B03"
+          ]
         },
         {
-          "era": "Modern",
-          "title": "Earth-29 and Clone Versions Coexist",
-          "detail": "DC distinguishes the Bizarros of Earth-29/Bizarro World from separate imperfect Superman clones. Modern appearances therefore require incarnation-specific identification before motives, relationships or history are assigned."
+          "era": "Bizarro Reborn",
+          "title": "Power and intelligence change the team",
+          "detail": "Recovery creates new strengths and new questions about his decisions.",
+          "sourceIds": [
+            "B04",
+            "B05"
+          ]
+        },
+        {
+          "era": "Earth-29",
+          "title": "Another incarnation’s adventures",
+          "detail": "I, Bizarro is not the next chapter of the Outlaws clone’s personal biography.",
+          "sourceIds": [
+            "B02",
+            "B08"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Debuts",
+          "title": "First concept versus adult counterpart",
+          "detail": "Superboy #68 (1958) introduces the first comic-book Bizarro; Action Comics #254 (1959) introduces the adult Superman counterpart.",
+          "sourceIds": [
+            "B01",
+            "B10"
+          ]
+        },
+        {
+          "era": "Main incarnations",
+          "title": "Clone and counterpart are not synonyms",
+          "detail": "A manufactured clone on Superman’s Earth and a native counterpart from Earth-29 have different origins. The Outlaws member is one of the clones.",
+          "sourceIds": [
+            "B02"
+          ]
+        },
+        {
+          "era": "Later status",
+          "title": "Do not move the Outlaw into every new story",
+          "detail": "DC’s December 2024 recap places the Outlaw in Hell after that series and identifies I, Bizarro’s lead as Earth-29’s Bizarro. This is a dated reference, not a claim about every subsequent issue.",
+          "sourceIds": [
+            "B02"
+          ]
+        },
+        {
+          "era": "Capabilities",
+          "title": "Inversion is not an all-purpose rule",
+          "detail": "Flame breath and cold vision are familiar inversions; it does not follow that every weakness, moral quality or mental ability must be Superman’s opposite.",
+          "sourceIds": [
+            "B01",
+            "B05"
+          ]
         }
       ]
     },
@@ -10528,52 +10619,84 @@ window.COMIC_VAULT_CHARACTERS = [
     "hair": "Black",
     "identity": "Public / no conventional secret identity",
     "relationshipGroups": {
-      "GENETIC / TEMPLATE CONNECTIONS": [
-        "Superman / Kal-El — template / 'perfect' counterpart"
+      "OUTLAWS CONNECTIONS": [
+        "Red Hood / Jason Todd — teammate and protector in the Outlaws incarnation",
+        "Artemis of Bana-Mighdall — Amazon teammate, not Artemis Crock"
       ],
-      "CLASSIC BIZARRO WORLD": [
-        "Bizarro Lois Lane — spouse in classic continuity",
-        "Bizarro duplicates — constructed society"
+      "TEMPLATE & CREATOR CONNECTIONS": [
+        "Superman / Kal-El — genetic template or counterpart, depending on the incarnation",
+        "Lex Luthor — creator or manipulator of particular clones; not a universal father"
       ]
     },
-    "continuityNote": "Bizarro is explicitly incarnation-dependent. DC currently distinguishes imperfect Superman clones—often created through science or by Lex Luthor—from the Bizarros of Earth-29/Bizarro World. The Red Hood and the Outlaws Bizarro is not automatically the same individual as every later Bizarro antagonist. Relationship, origin and alignment claims should identify which version they describe.",
+    "continuityNote": "This dossier keeps the character’s life separate from publication and origin revisions. Open History → Continuity File for the applicable versions and debut distinctions.",
     "audit": {
-      "status": "Deep audited",
-      "batch": "B1",
-      "date": "2026-09-02",
-      "method": "Publisher-first research with continuity/reference cross-check"
+      "status": "Source-reviewed dossier",
+      "batch": "R2",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks."
     },
     "auditSources": [
-      "DC — Bizarro official character page",
+      "DC — Bizarro: official character profile",
       "DC — Who Created Bizarro and Where Did He First Appear?",
-      "DC — Earth-29 official character page",
-      "Grand Comics Database / DCU Guide — Action Comics #254"
+      "DC — Red Hood and the Outlaws: Dark Trinity",
+      "DC — Red Hood and the Outlaws: Bizarro Reborn",
+      "DC — Red Hood and the Outlaws #14",
+      "DC — Red Hood and the Outlaws #15",
+      "DC — Red Hood and the Outlaws #18",
+      "DC — I, Bizarro: Action Comics #1061–1063",
+      "DC — Forever Evil",
+      "Bizarro — early-incarnation chronology cross-check",
+      "The Man of Steel #5 — issue recap"
     ],
     "originProfile": {
-      "originLossMotivation": "There is no single Bizarro psychology because there is no single Bizarro biography. The original comic-book concept begins with a failed duplicate of Superboy: a being created to resemble a hero but physically marked as wrong, rejected by the world he has just entered, and unable to navigate ordinary expectations. The adult Bizarro stories expand that idea into inversion—backwards language, backwards values and eventually an entire Bizarro World where imperfection is treated as normal.\n\nPost-Crisis and modern stories repeatedly create new Bizarros, allowing writers to emphasize different parts of the concept. Some are dangerous because their reasoning is inverted or unstable. Some desperately want to be recognized as Superman’s equal or opposite. The Bizarro who joins Red Hood and Artemis is capable of loyalty, tenderness and sacrifice, demonstrating that a Bizarro can become heroic without becoming “normal.” Earth-29 versions, meanwhile, belong to a deliberately inverted universe and should not be merged with laboratory-created clones.\n\nThe common emotional thread is not conquest. It is distorted identity and the pain of being measured against an impossible template. Bizarro is most compelling when his resemblance to Superman creates the expectation that he should be Superman, while his imperfect nature guarantees that he experiences the world differently.\n\nThe Rebirth-era Bizarro who joins Jason Todd and Artemis in Red Hood and the Outlaws shows why the character cannot be reduced to a simple villain profile. This Bizarro forms genuine bonds, protects vulnerable people and becomes capable of sacrifice. His death and restoration, followed by a period of enhanced intelligence and the fear of losing it, turn the usual Bizarro joke into a question about selfhood. DC has specifically distinguished this Outlaws Bizarro from the Bizarros of Earth-29, so those appearances should not be flattened into one biography.\n\nEarth-29 represents another branch of the concept: an entire inverted universe rather than merely a failed laboratory Superman. Across these incarnations, the useful common theme is identity under comparison. Bizarro is created, named and judged in relation to Superman, yet his most sympathetic stories ask whether an imperfect copy is allowed to become a person on his own terms. Sometimes the answer is comic, sometimes dangerous and sometimes unexpectedly heroic.",
+      "originLossMotivation": "A Bizarro can enter the world already being judged against someone else. The familiar face and emblem suggest Superman, while the chalk-white appearance, speech or behavior make people react as though something has gone wrong. That reaction does not explain the individual inside the resemblance. Across incarnations, attempts to help can end in harm, and apparent hostility can coexist with a desire for acceptance. Behind the familiar emblem is a being whose loyalties and intentions do not necessarily match the assumptions made about him. Some Bizarros want to protect people even when they struggle to understand them.\n\nThe earliest Superboy duplicate is a separate, short-lived being, not the childhood of every adult Bizarro. A later Superman duplicate belongs to the stories that grow into Bizarro World, with a Bizarro Lois and a society of counterparts. There, a relationship or custom that seems absurd to an outsider can be ordinary to the people living it. This Bizarro has a community and a place within it. His life cannot be explained entirely through the standards of the Earth that produced Superman.\n\nThe clone in The Man of Steel has a different beginning. Created through Luthor’s attempt to copy Superman, he is physically unstable and carries an imperfect connection to the life he resembles. Lucy Lane’s blindness becomes central to the encounter: material from his deteriorating body can restore her sight. His destruction ends with that restoration. His final collision with Superman ends his own brief existence while leaving Lucy able to see. Superman is left to consider whether the confused being he fought deliberately gave his life to help her.\n\nThe Outlaws’ clone finds a different kind of future. Jason Todd and Artemis become his teammates in a group operating in the uncomfortable space between accepted heroism and criminal methods. He is physically formidable, but belonging to this team makes him more than a weapon or a failed substitute for Superman. When his life is endangered, the others try to save him. Their response gives his survival value beyond whatever force he can bring to the next fight.\n\nHis recovery changes that balance. The Bizarro Reborn period gives him extraordinary intelligence as well as enhanced physical capabilities. He starts taking a more controlling approach to the team’s work, while Jason and Artemis question what is happening. Artemis’s suspicions make trust an active problem rather than a sentimental assumption. Intelligence does not automatically make him morally better, just as a simpler manner of expression never made him worthless. The new situation asks whether the person solving everyone’s problems is also allowing them to make their own choices.\n\nEarth-29’s Bizarro belongs to Bizarro World, a place distinct from the Earth on which the Outlaws’ clone was created. His encounters with Superman arise from that separate existence. The Outlaw, meanwhile, reaches a position of rule in Hell at the end of his own series. One counterpart’s later appearance is not the return of the other. They have separate attachments and destinations, even though each must live with a resemblance that makes outsiders think they already know who he is.",
       "powerOrigin": {
-        "type": "Incarnation-Dependent Duplicate / Bizarro Physiology",
-        "detail": "Many Bizarros are artificial duplicates of Superman and possess comparable Kryptonian-scale strength, speed, flight and durability, but their secondary powers are often reversed: flame breath and freezing/arctic vision are classic examples. Other versions arise through different science, magic or the inverted cosmology of Bizarro World/Earth-29. The exact source and power behavior should therefore be attached to the specific incarnation rather than generalized as one fixed origin."
+        "type": "Artificial duplication or alternate-world counterpart",
+        "detail": "Laboratory clones and Bizarro World/Earth-29 counterparts do not share one birth story. Familiar physical and reversed-energy abilities are representative, not an exhaustive combined power set."
       },
       "importantPeople": [
-        "Superman / Kal-El — template, counterpart or rival depending incarnation",
-        "Bizarro Lois Lane — partner in classic Bizarro World stories",
-        "Red Hood / Jason Todd — defining ally of the Outlaws incarnation",
-        "Artemis — defining ally of the Outlaws incarnation",
-        "Lex Luthor — creator of multiple Bizarro clones in different continuities"
+        "Superman / Kal-El — counterpart or template",
+        "Red Hood / Jason Todd — Outlaws teammate",
+        "Artemis of Bana-Mighdall — Outlaws teammate",
+        "Bizarro Lois Lane — classic-world spouse"
       ],
-      "coreDrive": "To make sense of an identity defined as an imperfect copy. Depending on the incarnation, that need can become hostility, imitation, backwards heroism, loneliness or fierce loyalty—but it should not be reduced to a universal desire for domination.",
-      "standard": "Comic Vault Expanded Origin Standard v2 — Researched",
+      "coreDrive": "Incarnation-dependent: acceptance, loyalty, imitation or opposition may drive a particular Bizarro. A single universal motive would misrepresent these separate lives.",
+      "standard": "Character-first dossier / source-reviewed R2",
       "manualDeepDive": true,
-      "profilePass": "R1-Expanded",
-      "profileUpdatedThrough": 400
+      "profilePass": "R2 — v8.47",
+      "profileUpdatedThrough": 400,
+      "paragraphSources": [
+        [
+          "B01"
+        ],
+        [
+          "B10"
+        ],
+        [
+          "B10",
+          "B11"
+        ],
+        [
+          "B03",
+          "B04"
+        ],
+        [
+          "B05",
+          "B06",
+          "B07"
+        ],
+        [
+          "B02",
+          "B08"
+        ]
+      ]
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
+      "status": "Editorial estimate / selected contradictions corrected",
+      "date": "2026-09-06",
+      "method": "No full re-ranking. Donna recovery, Billy champion durability and Bizarro energy projection corrected where the displayed capabilities contradicted N/A or low values; all other numerical ratings retained pending a separate rubric audit.",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "version": "v8.47"
     },
     "dataAudit": {
       "status": "Sweep 2 Reviewed",
@@ -10589,27 +10712,192 @@ window.COMIC_VAULT_CHARACTERS = [
     "auditCorrections": [
       "v8.44 research pass replaced the generic “dominance and control” motivation, which did not fit Bizarro across incarnations.",
       "Separated the 1958 Superboy duplicate, 1959 adult Superman duplicate, post-Crisis clones and modern Earth-29/Outlaws versions.",
-      "Expanded the reading file around incarnation-defining stories rather than treating Bizarro as one seamless biography."
+      "Expanded the reading file around incarnation-defining stories rather than treating Bizarro as one seamless biography.",
+      "v8.47: character-first R2; life timeline, scoped powers and relationships, separate continuity file, annotated reading and traceable source IDs."
     ],
     "researchSources": [
       {
-        "label": "DC — Bizarro official character page",
-        "url": "https://www.dc.com/characters/bizarro"
+        "id": "B01",
+        "label": "DC — Bizarro: official character profile",
+        "url": "https://www.dc.com/characters/bizarro",
+        "kind": "Publisher reference",
+        "note": "Different origins, heroic impulses, debut and familiar power inversions.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       },
       {
+        "id": "B02",
         "label": "DC — Who Created Bizarro and Where Did He First Appear?",
-        "url": "https://www.dc.com/blog/2024/12/04/who-created-bizarro-and-where-did-he-first-appear"
+        "url": "https://www.dc.com/blog/2024/12/04/who-created-bizarro-and-where-did-he-first-appear",
+        "kind": "Publisher editorial",
+        "note": "Separates clone Bizarros from Earth-29 and the Outlaws incarnation.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       },
       {
-        "label": "DC — Earth-29",
-        "url": "https://www.dc.com/characters/earth-29"
+        "id": "B03",
+        "label": "DC — Red Hood and the Outlaws: Dark Trinity",
+        "url": "https://www.dc.com/graphic-novels/red-hood-and-the-outlaws-2016/red-hood-and-the-outlaws-vol-1-dark-trinity",
+        "kind": "Publisher catalog",
+        "note": "The Jason Todd / Artemis / clone-Bizarro team and collection contents.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       },
       {
-        "label": "Grand Comics Database — Action Comics #254",
-        "url": "https://www.comics.org/issue/15091/"
+        "id": "B04",
+        "label": "DC — Red Hood and the Outlaws: Bizarro Reborn",
+        "url": "https://www.dc.com/graphic-novels/red-hood-and-the-outlaws-2016/red-hood-and-the-outlaws-vol-3-bizarro-reborn",
+        "kind": "Publisher catalog",
+        "note": "Bizarro’s failing health and the group’s effort to save him.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "B05",
+        "label": "DC — Red Hood and the Outlaws #14",
+        "url": "https://www.dc.com/comics/red-hood-and-the-outlaws-2016/red-hood-and-the-outlaws-14",
+        "kind": "Publisher catalog",
+        "note": "Explicitly describes the transformed Bizarro as a genius.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "B06",
+        "label": "DC — Red Hood and the Outlaws #15",
+        "url": "https://www.dc.com/comics/red-hood-and-the-outlaws-2016/red-hood-and-the-outlaws-15",
+        "kind": "Publisher catalog",
+        "note": "His altered approach to crime creates conflict within the team.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "B07",
+        "label": "DC — Red Hood and the Outlaws #18",
+        "url": "https://www.dc.com/comics/red-hood-and-the-outlaws-2016/red-hood-and-the-outlaws-18",
+        "kind": "Publisher catalog",
+        "note": "Artemis’s suspicion of his new intelligence.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "B08",
+        "label": "DC — I, Bizarro: Action Comics #1061–1063",
+        "url": "https://www.dc.com/blog/2023/10/10/nycc-2023-superman-superstars-take-over-action-comics-in-2024",
+        "kind": "Publisher announcement",
+        "note": "Story range for the Jason Aaron / John Timms arc; incarnation identified separately by B02.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "B09",
+        "label": "DC — Forever Evil",
+        "url": "https://www.dc.com/graphic-novels/forever-evil-2013/forever-evil",
+        "kind": "Publisher catalog",
+        "note": "Seven-issue event and Luthor’s fight against the Crime Syndicate; not a full account of Bizarro’s individual scenes.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "B10",
+        "label": "Bizarro — early-incarnation chronology cross-check",
+        "url": "https://en.wikipedia.org/wiki/Bizarro",
+        "kind": "Secondary reference",
+        "note": "Used narrowly for the early Superboy and Superman duplicates, Bizarro World, and the 1986 clone; not a universal power list.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "B11",
+        "label": "The Man of Steel #5 — issue recap",
+        "url": "https://buttondown.com/superman86to99/archive/the-man-of-steel-5-december-1986/",
+        "kind": "Secondary issue recap",
+        "note": "Lucy Lane and the clone’s death; interpretation of intent is distinguished from the resulting restoration of sight.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       }
     ],
-    "researchUpdated": "2026-09-06"
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Incarnation dossier, not one uninterrupted biography. The classic duplicates, the 1986 clone, the Outlaws clone and Earth-29 Bizarro are explicitly separated below.",
+    "powerDetails": [
+      {
+        "title": "Physical power",
+        "detail": "The familiar Bizarro package includes enormous strength, durability, speed and flight. A lab origin does not imply low physical capability; exact limits belong to the incarnation and story.",
+        "sourceIds": [
+          "B01"
+        ]
+      },
+      {
+        "title": "Reversed energy abilities",
+        "detail": "Cold or arctic vision and flame breath reverse two familiar Superman abilities. They are active powers, so the energy-projection category should not be marked not applicable for this representative portrayal.",
+        "sourceIds": [
+          "B01"
+        ]
+      },
+      {
+        "title": "Intelligence is not fixed",
+        "detail": "The Bizarro Reborn incarnation becomes a genius. A single rating cannot describe both that period and every simpler or differently thinking Bizarro; this dossier’s numbers are representative editorial estimates only.",
+        "sourceIds": [
+          "B05",
+          "B07"
+        ]
+      },
+      {
+        "title": "No universal medical or weakness rule",
+        "detail": "The 1986 clone’s unstable body and effect on Lucy are specific to that story. Do not transfer those traits to Earth-29 or the Outlaws clone without evidence.",
+        "sourceIds": [
+          "B11"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "Superboy #68; Action Comics #254",
+        "scope": "Early incarnations",
+        "why": "Compare the first Superboy duplicate with the later adult counterpart.",
+        "sourceIds": [
+          "B10"
+        ]
+      },
+      {
+        "title": "The Man of Steel #5 (1986)",
+        "scope": "Post-Crisis clone / tragic story",
+        "why": "Read one self-contained Bizarro life rather than a composite biography.",
+        "sourceIds": [
+          "B11"
+        ]
+      },
+      {
+        "title": "Red Hood and the Outlaws Vol. 1: Dark Trinity",
+        "scope": "Outlaws starting point",
+        "why": "Meet the clone’s relationship with Jason Todd and Artemis.",
+        "sourceIds": [
+          "B03"
+        ]
+      },
+      {
+        "title": "Red Hood and the Outlaws Vol. 3: Bizarro Reborn",
+        "scope": "Outlaws continuation",
+        "why": "Follow the health crisis, recovery and changes to the team dynamic.",
+        "sourceIds": [
+          "B04",
+          "B05"
+        ]
+      },
+      {
+        "title": "Action Comics #1061–1063 — I, Bizarro",
+        "scope": "Earth-29 incarnation",
+        "why": "A different Bizarro story; do not read it as an Outlaws sequel.",
+        "sourceIds": [
+          "B08",
+          "B02"
+        ]
+      },
+      {
+        "title": "Forever Evil #1–7",
+        "scope": "Separate New 52 event context",
+        "why": "An optional wider route into Luthor’s conflict with the Crime Syndicate.",
+        "sourceIds": [
+          "B09"
+        ]
+      }
+    ],
+    "researchReview": {
+      "batch": "R2",
+      "version": "v8.47",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Reading-path choices and motivation synthesis are Comic Vault editorial interpretation. Source check date does not mean every issue released by that date is covered."
+    },
+    "attributeContext": "Comic Vault editorial estimates, not official measurements or definitive battle rankings. Ratings describe a representative portrayal; temporary peaks, altered forms and continuity changes can differ."
   },
   {
     "name": "Black Adam",
@@ -19082,16 +19370,18 @@ window.COMIC_VAULT_CHARACTERS = [
       "Justice League"
     ],
     "occupation": "Hero, photographer",
-    "species": "Amazon / magically altered human varies",
+    "species": "Human raised and empowered among Amazons; origin varies by era",
     "birthplace": "Varies by continuity",
     "height": "Varies by continuity",
     "eyes": "Varies by continuity",
-    "overview": "Donna Troy is one of the foundational Titans and one of DC's defining legacy heroes. She first entered Teen Titans history as Wonder Girl before the comics had fully established who she was; Teen Titans #22 later named her Donna Troy and supplied the first origin for her as a separate character. Repeated continuity revisions have changed the details of her birth and upbringing, but her enduring identity is built around the Titans, chosen family, and the struggle to define herself beyond any single version of her past.",
+    "overview": "Donna Troy is an Amazon-raised hero, photographer and veteran Titan. As Wonder Girl and later Troia, she grew into a protector whose strength lies as much in loyalty and judgment as in physical power. Diana is her sister and mentor; the Titans are the friends with whom she built an adult life of her own.",
     "powers": [
       "Super strength",
-      "Flight",
       "Enhanced durability",
-      "Combat training"
+      "Flight",
+      "Enhanced agility and recovery",
+      "Amazon combat training",
+      "Team leadership"
     ],
     "attributes": {
       "Intelligence": 3,
@@ -19104,7 +19394,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Durability": 3,
       "Stamina": 3,
       "Agility / Reflexes": 2,
-      "Healing / Recovery": null,
+      "Healing / Recovery": 2,
       "Energy Projection": null,
       "Magic / Mystical Mastery": null,
       "Senses / Awareness": 1,
@@ -19114,6 +19404,8 @@ window.COMIC_VAULT_CHARACTERS = [
     "allies": [
       "Wonder Woman / Diana",
       "Nightwing",
+      "The Flash / Wally West",
+      "Starfire",
       "Titans"
     ],
     "enemies": [
@@ -19122,29 +19414,39 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "history": [
       [
-        "1965",
-        "Wonder Girl Joins the Titans",
-        "The Brave and the Bold #60 presents Wonder Girl as a distinct member of the emerging Teen Titans. This is treated as Donna Troy’s character debut even though the name Donna Troy had not yet been created."
+        "Childhood",
+        "A home with the Amazons",
+        "A rescued child grows up with Diana and the Amazons; training and belonging precede her life as Wonder Girl."
       ],
       [
-        "1969",
-        "Donna Troy Gets a Name and Origin",
-        "Teen Titans #22 identifies Wonder Girl as Donna Troy and gives her the first detailed individual origin: a human child rescued from a fire, raised on Paradise Island, and empowered to stand alongside the Amazons."
+        "Titans years",
+        "Friends become an adult support system",
+        "Donna’s early team grows into the community that knows her beyond her connection to Wonder Woman."
       ],
       [
-        "1984",
-        "Who Is Donna Troy?",
-        "The New Teen Titans #38 turns Donna’s uncertain past into a defining character story as Dick Grayson investigates her origins and uncovers the human family history behind the fire that separated her from her birth mother."
+        "Adult life",
+        "Photography and marriage",
+        "Her career and marriage to Terry Long give her responsibilities and aspirations outside costumed adventures."
       ],
       [
-        "1988–1989",
-        "Titans of Myth Revision",
-        "After Crisis on Infinite Earths made the earlier Wonder Woman connection difficult to reconcile, The New Titans #50–54 rebuilt Donna as a child rescued and empowered by the Titans of Myth, making the instability of her origin part of the character’s ongoing continuity."
+        "Troia era",
+        "Beyond Wonder Girl",
+        "The Titans of Myth history leads into her independent Troia identity. This belongs to the older continuity layer."
       ],
       [
-        "Modern",
-        "Legacy Beyond a Single Origin",
-        "Later stories continue to revise pieces of Donna’s history, but her place among the Titans and her bonds with the people who grew up beside her remain the most stable through-line across eras."
+        "Darkstar era",
+        "Service without her old powers",
+        "After giving up her powers, Donna continues as an armored Darkstar."
+      ],
+      [
+        "Return era",
+        "Recovered life, renewed responsibilities",
+        "Her return reunites her with the Titans’ world; she subsequently carries the Wonder Woman identity during Diana’s absence."
+      ],
+      [
+        "2025 stories",
+        "Leader and daughter",
+        "Donna leads the Titans while a separate family investigation brings her back to questions about her father."
       ]
     ],
     "costumes": [
@@ -19165,11 +19467,12 @@ window.COMIC_VAULT_CHARACTERS = [
       ]
     ],
     "comics": [
-      "The Brave and the Bold #60 (1965)",
-      "Teen Titans #22 (1969)",
-      "The New Teen Titans #38 — “Who Is Donna Troy?”",
-      "The New Titans #50–54 — Titans of Myth origin",
-      "The New Teen Titans: Who Is Donna Troy? (collection)"
+      "The New Teen Titans #38 — Who Is Donna Troy?",
+      "Tales of the Teen Titans #50",
+      "The New Titans #50–55",
+      "DC Special: The Return of Donna Troy #1–4",
+      "Titans 2025 Annual #1",
+      "Titans Vol. 3: Hard Feelings"
     ],
     "imageSlug": "donna-troy",
     "aliases": [
@@ -19177,36 +19480,115 @@ window.COMIC_VAULT_CHARACTERS = [
       "Troia"
     ],
     "family": [
-      "Wonder Woman — sister/mentor",
-      "Hippolyta — maternal figure"
+      "Wonder Woman / Diana — Amazon sister and mentor",
+      "Hippolyta — Amazon maternal figure",
+      "Terry Long — former husband; deceased in pre-Flashpoint history",
+      "Robert Long — son; deceased in pre-Flashpoint history",
+      "Jennifer Long — stepdaughter; deceased in pre-Flashpoint history"
     ],
-    "gear": [],
+    "gear": [
+      {
+        "type": "ERA-SPECIFIC TECHNOLOGY",
+        "name": "Darkstar exo-mantle",
+        "detail": "Protective armor, flight and offensive energy systems during her Darkstar service; not the source of all her other incarnations’ powers."
+      }
+    ],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "1965",
-          "title": "Wonder Girl Joins the Titans",
-          "detail": "The Brave and the Bold #60 presents Wonder Girl as a distinct member of the emerging Teen Titans. This is treated as Donna Troy’s character debut even though the name Donna Troy had not yet been created."
+          "era": "Childhood",
+          "title": "A home with the Amazons",
+          "detail": "A rescued child grows up with Diana and the Amazons; training and belonging precede her life as Wonder Girl.",
+          "sourceIds": [
+            "D01"
+          ]
         },
         {
-          "era": "1969",
-          "title": "Donna Troy Gets a Name and Origin",
-          "detail": "Teen Titans #22 identifies Wonder Girl as Donna Troy and gives her the first detailed individual origin: a human child rescued from a fire, raised on Paradise Island, and empowered to stand alongside the Amazons."
+          "era": "Titans years",
+          "title": "Friends become an adult support system",
+          "detail": "Donna’s early team grows into the community that knows her beyond her connection to Wonder Woman.",
+          "sourceIds": [
+            "D03"
+          ]
         },
         {
-          "era": "1984",
-          "title": "Who Is Donna Troy?",
-          "detail": "The New Teen Titans #38 turns Donna’s uncertain past into a defining character story as Dick Grayson investigates her origins and uncovers the human family history behind the fire that separated her from her birth mother."
+          "era": "Adult life",
+          "title": "Photography and marriage",
+          "detail": "Her career and marriage to Terry Long give her responsibilities and aspirations outside costumed adventures.",
+          "sourceIds": [
+            "D04",
+            "D05"
+          ]
         },
         {
-          "era": "1988–1989",
-          "title": "Titans of Myth Revision",
-          "detail": "After Crisis on Infinite Earths made the earlier Wonder Woman connection difficult to reconcile, The New Titans #50–54 rebuilt Donna as a child rescued and empowered by the Titans of Myth, making the instability of her origin part of the character’s ongoing continuity."
+          "era": "Troia era",
+          "title": "Beyond Wonder Girl",
+          "detail": "The Titans of Myth history leads into her independent Troia identity. This belongs to the older continuity layer.",
+          "sourceIds": [
+            "D03"
+          ]
         },
         {
-          "era": "Modern",
-          "title": "Legacy Beyond a Single Origin",
-          "detail": "Later stories continue to revise pieces of Donna’s history, but her place among the Titans and her bonds with the people who grew up beside her remain the most stable through-line across eras."
+          "era": "Darkstar era",
+          "title": "Service without her old powers",
+          "detail": "After giving up her powers, Donna continues as an armored Darkstar.",
+          "sourceIds": [
+            "D10"
+          ]
+        },
+        {
+          "era": "Return era",
+          "title": "Recovered life, renewed responsibilities",
+          "detail": "Her return reunites her with the Titans’ world; she subsequently carries the Wonder Woman identity during Diana’s absence.",
+          "sourceIds": [
+            "D06",
+            "D07"
+          ]
+        },
+        {
+          "era": "2025 stories",
+          "title": "Leader and daughter",
+          "detail": "Donna leads the Titans while a separate family investigation brings her back to questions about her father.",
+          "sourceIds": [
+            "D08",
+            "D09"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Debut",
+          "title": "Donna is not every Wonder Girl",
+          "detail": "Donna’s standard character debut is The Brave and the Bold #60 (1965). Teen Titans #22 (1969) supplies her name and individual origin; young-Diana Wonder Girl stories are a different identity.",
+          "sourceIds": [
+            "D01",
+            "D02"
+          ]
+        },
+        {
+          "era": "Older origins",
+          "title": "Separate explanations, not consecutive childhoods",
+          "detail": "The rescued child, Rhea’s ward and the magically created double are different accounts. The Dark Angel story should not be quietly inserted into the original Amazon-science origin.",
+          "sourceIds": [
+            "D02"
+          ]
+        },
+        {
+          "era": "2010s",
+          "title": "Weapon and false-memory account",
+          "detail": "The usurper origin and false memories belong to the New 52/Rebirth treatment, not every version of Donna.",
+          "sourceIds": [
+            "D11"
+          ]
+        },
+        {
+          "era": "2025–2026 reference",
+          "title": "A return to the rescued-child foundation",
+          "detail": "DC’s July 2026 editorial recap describes Titans 2025 Annual as largely restoring the earlier fire-rescue origin. That does not automatically reconcile every older event.",
+          "sourceIds": [
+            "D02",
+            "D08"
+          ]
         }
       ]
     },
@@ -19229,51 +19611,93 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Donna Troy is exceptionally continuity-sensitive. The 1965 Wonder Girl who joins the Titans is treated as Donna’s debut, but she is not named Donna Troy or given an individual origin until Teen Titans #22 in 1969. Her pre-Crisis Amazon-raised history, post-Crisis Titans of Myth origin, and later revisions should be presented as distinct continuity layers rather than compressed into one seamless biography.",
+    "continuityNote": "This dossier keeps the character’s life separate from publication and origin revisions. Open History → Continuity File for the applicable versions and debut distinctions.",
     "auditCorrections": [
       "v8.44 research pass separated character debut from the first use of the Donna Troy name and first individual origin.",
       "Expanded the timeline to distinguish the 1969 origin, New Teen Titans #38 investigation, and post-Crisis Titans of Myth revision.",
-      "Replaced formulaic origin/motivation prose with continuity-specific character writing."
+      "Replaced formulaic origin/motivation prose with continuity-specific character writing.",
+      "v8.47: character-first R2; life timeline, scoped powers and relationships, separate continuity file, annotated reading and traceable source IDs."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
     "identity": "Public or secret status varies by era",
     "audit": {
-      "status": "Deep audited",
-      "batch": "D1",
-      "date": "2026-09-02",
-      "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
+      "status": "Source-reviewed dossier",
+      "batch": "R2",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks."
     },
     "auditSources": [
+      "DC — Donna Troy: official character profile",
+      "DC — Donna Troy origin chronology (July 2026 Q&A)",
       "DC — The New Teen Titans: Who Is Donna Troy?",
-      "Grand Comics Database — Donna Troy character record",
-      "DC editorial continuity research — Donna Troy origin chronology"
+      "DC — Wonder Woman in 1984 / Donna’s wedding",
+      "DC — Donna’s photographic career and public identity",
+      "DC — The Return of Donna Troy #1",
+      "DC — Wonder Woman: Who Is Wonder Woman?",
+      "DC — Titans 2025 Annual #1",
+      "DC — Titans Vol. 3: Hard Feelings",
+      "Donna Troy — historical chronology cross-check",
+      "DC — Donna Troy’s 2017 revelation"
     ],
     "originProfile": {
-      "originLossMotivation": "Donna’s history begins with an unusual publication problem that became a character strength: Wonder Girl joined the Titans before DC had clearly established her as a person separate from a younger Wonder Woman. Teen Titans #22 gave that heroine the name Donna Troy and a life of her own, while later stories repeatedly rebuilt the details of where she came from. The acclaimed “Who Is Donna Troy?” story made that uncertainty personal by having Dick Grayson investigate the human life that had been lost to her. After Crisis on Infinite Earths, the Titans of Myth origin rewrote her again.\n\nWhat survives those revisions is Donna’s chosen family. The Titans are not simply a team affiliation; they are the people with whom she grew up, formed adult relationships, endured loss, and repeatedly rebuilt her sense of home. Her connection to Wonder Woman and the Amazons changes in detail across continuities, but the desire for family and belonging remains central.\n\nDonna’s defining conflict is therefore not just discovering which origin is “correct.” It is deciding who she is when history keeps trying to redefine her. Her strongest stories turn continuity instability into a theme of self-authorship: Donna can honor Wonder Woman, the Titans, and the many families attached to her past without allowing any one explanation to erase the person she has become.\n\nDonna’s adult history reinforces that the origin mystery is only one part of her story. She grows beyond Wonder Girl into Troia, becomes a wife and mother in major eras, endures profound personal loss, repeatedly serves as a senior Titan, and even carries the Wonder Woman mantle for a period. The star-field Troia identity is particularly meaningful because it marks an attempt to define herself without relying on a junior version of Diana’s name. Her relationship with the Amazons matters, but the Titans remain the most consistent witnesses to the life Donna has actually lived.\n\nThat is why the recurring question “Who is Donna Troy?” cannot be answered by choosing one continuity and discarding the rest. Her best stories turn instability into resilience. New revelations may alter the explanation for her birth or powers, but they do not erase her friendships, sacrifices or choices. Donna’s identity is ultimately self-authored: she can honor Diana, the Amazons, the Titans of Myth and the many families attached to her history without allowing any one origin to define the whole person.",
+      "originLossMotivation": "Before she was Wonder Girl, Donna was a child who needed a home. Diana rescued her from a fire and brought her to Paradise Island, where she was raised among the Amazons. Their training taught her to fight, but it also gave her a community and a model of responsibility. Diana became an older sister as well as a hero to follow. Donna’s extraordinary abilities made service possible; the people who raised her gave that service its meaning.\n\nLeaving the island did not mean leaving that family behind. As Wonder Girl, Donna joined other young heroes who understood what it meant to live beside a famous mentor. With Dick Grayson, Wally West and their fellow Titans, she learned to make decisions as a teammate rather than wait for an adult to lead. Those friendships survived changes of name and costume. Among the Titans, she could be Donna first—not simply someone standing in Wonder Woman’s place.\n\nAway from the team, Donna built a career as a photographer. Looking closely at other people’s lives went alongside a persistent question about her own: who had loved her before the fire? Dick helped her investigate her human past. The search was not a rejection of the Amazons; it was an attempt to understand an earlier part of herself. Finding an explanation could not give her back her childhood, but it made the people she had lost more than a blank space in her memory.\n\nMarriage to Terry Long opened another part of Donna’s adult life. Her friends gathered for the wedding, and Diana’s support connected her Amazon family with the home she was making beyond the island. In her pre-Flashpoint history, she became Robert’s mother and Jennifer’s stepmother. The marriage later ended. Terry, Robert and Jennifer died in a car accident. Donna survived the family she had helped build, carrying that grief back into a life in which her friends still depended on her. Her bereavement was personal: she had lost a child, a stepchild and a man she had once loved.\n\nDuring her Titans of Myth years, Donna learned of a childhood with Rhea and other children gathered from across the cosmos. Taking the name Troia marked a life no longer organized around being Wonder Girl. Later, learning of a future in which her son became the tyrant Lord Chaos, she relinquished her powers to change that future. She then served as a Darkstar using an armored exo-mantle. Without her former abilities, she continued protecting others through a different organization and a different source of strength.\n\nDeath did not finish Donna’s story either. Following the events of Graduation Day, she reappeared among the Titans of Myth as Troia, with an altered understanding of who she was. The life she was being asked to accept did not sit comfortably with the person her friends remembered. Their search for her brought the Titans and Outsiders into that conflict. Later, when Diana stepped away, Donna served as Wonder Woman herself—an act of trust and service, not the erasure of her own years as a Titan.\n\nDonna eventually takes leadership of the Titans, carrying responsibility for friends whose strengths and vulnerabilities she has known for years. Her renewed search for her father also brings unresolved family questions into her adult life. Commanding a team does not stop her from needing answers about the people who came before the Amazons. She remains both a public protector and a woman with a private history: her responsibilities as a leader stand beside her life as a sister, friend, mother and photographer.",
       "powerOrigin": {
-        "type": "Continuity-Dependent Divine / Amazon / Titans of Myth Empowerment",
-        "detail": "Donna’s powers cannot be assigned to one universal origin. In the 1969 account she was a human child raised on Paradise Island and granted Wonder Woman-like abilities through Amazon science. Post-Crisis stories instead tied her empowerment to the Titans of Myth. Later continuities have revised those details again. Across most major versions she retains high-tier superhuman strength, durability, flight, and extensive combat experience, but the source and exact limits of those abilities should be read in the context of the era being discussed."
+        "type": "Amazon / mythic empowerment, depending on era",
+        "detail": "Her familiar super-powered form combines physical enhancement, flight and Amazon training. The Darkstar period instead uses equipment; the Continuity File separates competing accounts of her childhood."
       },
       "importantPeople": [
-        "Wonder Woman / Diana — sister, mentor or legacy connection depending continuity",
-        "Hippolyta — maternal / Amazon family connection in multiple eras",
-        "Nightwing / Dick Grayson — lifelong Titan and trusted friend",
-        "Titans — Donna’s most consistent chosen family",
-        "Dark Angel — major continuity-linked adversary"
+        "Wonder Woman / Diana — Amazon sister and mentor",
+        "Hippolyta — Amazon maternal figure",
+        "Nightwing / Dick Grayson — friend who helps investigate her human past",
+        "Terry Long and Robert Long — marriage, motherhood and bereavement"
       ],
-      "coreDrive": "To define herself on her own terms while preserving the family bonds that remain real even when continuity changes around her. Donna’s recurring question is not merely “Who was I?” but “Who do I choose to be now?”",
-      "standard": "Comic Vault Expanded Origin Standard v2 — Researched",
+      "coreDrive": "Build and protect a life whose relationships are real, even when her memories and beginnings are challenged.",
+      "standard": "Character-first dossier / source-reviewed R2",
       "manualDeepDive": true,
-      "profilePass": "R1-Expanded",
-      "profileUpdatedThrough": 400
+      "profilePass": "R2 — v8.47",
+      "profileUpdatedThrough": 400,
+      "paragraphSources": [
+        [
+          "D01",
+          "D02"
+        ],
+        [
+          "D01",
+          "D03"
+        ],
+        [
+          "D05",
+          "D03",
+          "D02"
+        ],
+        [
+          "D04",
+          "D10"
+        ],
+        [
+          "D02",
+          "D03",
+          "D10"
+        ],
+        [
+          "D06",
+          "D07"
+        ],
+        [
+          "D08",
+          "D09",
+          "D04",
+          "D05"
+        ]
+      ]
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
+      "status": "Editorial estimate / selected contradictions corrected",
+      "date": "2026-09-06",
+      "method": "No full re-ranking. Donna recovery, Billy champion durability and Bizarro energy projection corrected where the displayed capabilities contradicted N/A or low values; all other numerical ratings retained pending a separate rubric audit.",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "version": "v8.47"
     },
     "dataAudit": {
       "status": "Sweep 2 Reviewed",
@@ -19287,35 +19711,199 @@ window.COMIC_VAULT_CHARACTERS = [
       "focus": "Identity, continuity, overview/history depth, relationships, reading, equipment, attributes, and internal consistency."
     },
     "relationshipGroups": {
-      "FAMILY & CLOSE RELATIONS": [
-        "Wonder Woman — sister/mentor",
-        "Hippolyta — maternal figure"
+      "MENTORS & TRUSTED ALLIES": [
+        "Nightwing / Dick Grayson — lifelong friend and investigator of Donna’s past",
+        "The Flash / Wally West — fellow founding-era Titan",
+        "Titans — teammates and enduring community"
       ],
-      "KEY ALLIES": [
-        "Wonder Woman / Diana",
-        "Nightwing",
-        "Titans"
-      ],
-      "KEY RIVALS / ENEMIES": [
-        "Dark Angel",
-        "Deathstroke"
+      "ADVERSARIES": [
+        "Dark Angel — tormentor in the magical-double history",
+        "Deathstroke — recurring Titans adversary"
       ]
     },
     "researchSources": [
       {
+        "id": "D01",
+        "label": "DC — Donna Troy: official character profile",
+        "url": "https://www.dc.com/characters/donna-troy",
+        "kind": "Publisher reference",
+        "note": "Identity, Amazon upbringing, leadership and broad capabilities.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "D02",
+        "label": "DC — Donna Troy origin chronology (July 2026 Q&A)",
+        "url": "https://www.dc.com/blog/2026-07-07/how-often-does-batman-actually-crawl-through-vents",
+        "kind": "Publisher editorial",
+        "note": "The Donna Troy question appears after the Batman/Talia questions. Useful retcon chronology, not a guarantee that every statement is error-free.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "D03",
         "label": "DC — The New Teen Titans: Who Is Donna Troy?",
-        "url": "https://www.dc.com/graphic-novels/the-new-teen-titans-1980/the-new-teen-titans-who-is-donna-troy"
+        "url": "https://www.dc.com/graphic-novels/the-new-teen-titans-1980/the-new-teen-titans-who-is-donna-troy",
+        "kind": "Publisher catalog",
+        "note": "Collection contents, including #38, the wedding and New Titans #50–55; not full issue text.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       },
       {
-        "label": "Grand Comics Database — Donna Troy",
-        "url": "https://www.comics.org/character/5996/"
+        "id": "D04",
+        "label": "DC — Wonder Woman in 1984 / Donna’s wedding",
+        "url": "https://www.dc.com/blog/2020/12/21/what-was-wonder-woman-really-up-to-in-1984",
+        "kind": "Publisher editorial",
+        "note": "Terry Long wedding, Diana’s blessing and the wedding-era relationship.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       },
       {
-        "label": "Grand Comics Database — Teen Titans #22",
-        "url": "https://www.comics.org/issue/22890/"
+        "id": "D05",
+        "label": "DC — Donna’s photographic career and public identity",
+        "url": "https://www.dc.com/blog/2022/12/01/unmasked-six-heroes-who-are-really-bad-at-secret-identities",
+        "kind": "Publisher editorial",
+        "note": "Professional photography and secret-identity context.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "D06",
+        "label": "DC — The Return of Donna Troy #1",
+        "url": "https://www.dc.com/comics/dc-special-the-return-of-donna-troy-2005/dc-special-the-return-of-donna-troy-1",
+        "kind": "Publisher catalog",
+        "note": "Resurrection-era setting, Troia and the Titans of Myth; catalog synopsis, not full issue text.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "D07",
+        "label": "DC — Wonder Woman: Who Is Wonder Woman?",
+        "url": "https://www.dc.com/graphic-novels/wonder-woman-2006/wonder-woman-who-is-wonder-woman-new-edition",
+        "kind": "Publisher catalog",
+        "note": "Donna’s service as Wonder Woman after Diana steps away.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "D08",
+        "label": "DC — Titans 2025 Annual #1",
+        "url": "https://www.dc.com/comics/titans-2023/titans-2025-annual-1",
+        "kind": "Publisher catalog",
+        "note": "Donna’s family investigation; synopsis does not itself reveal every outcome.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "D09",
+        "label": "DC — Titans Vol. 3: Hard Feelings",
+        "url": "https://www.dc.com/graphic-novels/titans-2023/titans-vol-3-hard-feelings",
+        "kind": "Publisher catalog",
+        "note": "Donna’s leadership in this Titans era.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "D10",
+        "label": "Donna Troy — historical chronology cross-check",
+        "url": "https://en.wikipedia.org/wiki/Donna_Troy",
+        "kind": "Secondary reference",
+        "note": "Used narrowly for the Darkstar period, family bereavement and era-specific abilities; these detailed older events merit future issue-level checking.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "D11",
+        "label": "DC — Donna Troy’s 2017 revelation",
+        "url": "https://www.dc.com/blog/2017/03/31/this-just-happened-donna-troys-shocking-secret",
+        "kind": "Publisher story recap",
+        "note": "The weapon/usurper and implanted-memory account belongs to its own era.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       }
     ],
-    "researchUpdated": "2026-09-06"
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Main comics, with the rescued-child/Amazon upbringing as the narrative starting point. Troia, Darkstar and other earlier experiences are identified by era rather than forced into one unchanged origin.",
+    "powerDetails": [
+      {
+        "title": "Strength and resilience",
+        "detail": "Donna possesses superhuman strength and durability, supported by enhanced agility and recovery. Her body can withstand threats an ordinary human cannot; that does not make every injury harmless or establish an unlimited healing rate.",
+        "sourceIds": [
+          "D01"
+        ]
+      },
+      {
+        "title": "Aerial movement and combat",
+        "detail": "Flight is part of her familiar super-powered portrayal. Amazon training adds practiced combat skills to that mobility; she is not merely a strong person relying on punches. Equipment-based flight in a Darkstar period is a different mechanism.",
+        "sourceIds": [
+          "D01",
+          "D10"
+        ]
+      },
+      {
+        "title": "Source of power",
+        "detail": "Amazon empowerment and Titans of Myth empowerment are alternate explanations. Troia-era mystical additions and Darkstar equipment should be evaluated in the corresponding story, not treated as permanently simultaneous abilities.",
+        "sourceIds": [
+          "D02",
+          "D10"
+        ]
+      },
+      {
+        "title": "Judgment and leadership",
+        "detail": "Donna’s team experience, ability to support others and willingness to take responsibility are important skills in their own right. They should not be confused with mind control or an unspecified psychic power.",
+        "sourceIds": [
+          "D01",
+          "D09"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "The New Teen Titans #38 — Who Is Donna Troy?",
+        "scope": "Personal history / pre-Crisis",
+        "why": "Start with Donna’s search for her human roots and Dick’s friendship.",
+        "sourceIds": [
+          "D03"
+        ]
+      },
+      {
+        "title": "Tales of the Teen Titans #50",
+        "scope": "Wedding / classic Titans",
+        "why": "Read for the relationships surrounding Donna and Terry’s wedding.",
+        "sourceIds": [
+          "D04"
+        ]
+      },
+      {
+        "title": "The New Titans #50–55",
+        "scope": "Titans of Myth / Troia",
+        "why": "A deeper route into the mythic origin and the move beyond Wonder Girl.",
+        "sourceIds": [
+          "D03"
+        ]
+      },
+      {
+        "title": "DC Special: The Return of Donna Troy #1–4",
+        "scope": "Resurrection-era story",
+        "why": "Follow the struggle between her remembered identity and her cosmic role.",
+        "sourceIds": [
+          "D06"
+        ]
+      },
+      {
+        "title": "Titans 2025 Annual #1",
+        "scope": "Family investigation / later continuity",
+        "why": "A later personal story about family, memory and the need for answers.",
+        "sourceIds": [
+          "D08"
+        ]
+      },
+      {
+        "title": "Titans Vol. 3: Hard Feelings",
+        "scope": "Modern team role",
+        "why": "See Donna operating as the team’s leader, not only as its subject of mystery.",
+        "sourceIds": [
+          "D09"
+        ]
+      }
+    ],
+    "researchReview": {
+      "batch": "R2",
+      "version": "v8.47",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Reading-path choices and motivation synthesis are Comic Vault editorial interpretation. Source check date does not mean every issue released by that date is covered."
+    },
+    "attributeContext": "Comic Vault editorial estimates, not official measurements or definitive battle rankings. Ratings describe a representative portrayal; temporary peaks, altered forms and continuity changes can differ."
   },
   {
     "name": "Drax",
@@ -38579,9 +39167,9 @@ window.COMIC_VAULT_CHARACTERS = [
     "name": "Psylocke",
     "realName": "Kwannon",
     "publisher": "MARVEL",
-    "firstAppearance": "Uncanny X-Men #256 (1989) — character/body later identified as Kwannon; current Psylocke identity reclaimed after 2018",
+    "firstAppearance": "Uncanny X-Men #256 (1989): body later identified as Kwannon’s; X-Men #17 (1993): Revanche’s separate debut",
     "alignment": "Hero",
-    "base": "Krakoa / Britain",
+    "base": "Mobile; Japan and X-Men operations, depending on era",
     "teams": [
       "X-Men",
       "Hellions",
@@ -38593,14 +39181,13 @@ window.COMIC_VAULT_CHARACTERS = [
     "birthplace": "Varies by continuity",
     "height": "Varies by continuity",
     "eyes": "Varies by continuity",
-    "overview": "Kwannon is the mutant telepath, assassin and martial artist who now operates as Psylocke. For decades, her identity was obscured by one of the X-Men’s most complicated body-and-mind entanglements: Betsy Braddock lived in Kwannon’s body, while Kwannon later appeared in Betsy’s body as Revanche. After Betsy restored herself to her original body in 2018, Kwannon returned as a distinct person and eventually claimed the Psylocke name for herself. Modern stories focus on agency, the trauma of having her body and identity appropriated, her history with the Hand and Matsu’o Tsurayaba, and the difficult task of building a life that belongs to her rather than to the identity confusion surrounding Betsy.",
+    "overview": "Kwannon is Psylocke: a Japanese mutant psychic and highly trained assassin who has chosen a life with the X-Men. She is not Betsy Braddock, although their bodies and memories were once entangled. Her modern story follows a woman reclaiming control of her own life, grieving her daughter and deciding what to do with skills others trained her to use for killing.",
     "powers": [
       "Telepathy",
-      "Telekinesis",
-      "Psychic knife / psionic weapon formation",
-      "Elite martial arts",
-      "Assassin training",
-      "Psychic combat"
+      "Psychic blades",
+      "Martial arts",
+      "Stealth and infiltration",
+      "Weapons expertise"
     ],
     "attributes": {
       "Intelligence": 3,
@@ -38621,46 +39208,50 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Captain Britain / Betsy Braddock",
+      "Greycrow",
+      "Havok",
       "X-Men",
-      "Hellions",
-      "X-23 / Laura Kinney"
+      "Hellions"
     ],
     "enemies": [
-      "The Hand",
-      "Matsu’o Tsurayaba",
-      "Apoth"
+      "Apoth",
+      "The Hand"
     ],
     "history": [
       [
-        "1989",
-        "Kwannon Enters X-Men History",
-        "Marvel identifies Uncanny X-Men #256 as Kwannon’s debut: the story presents Betsy Braddock in the Japanese body later established as Kwannon’s after the Hand/Spiral manipulation that entangled the two women."
+        "Earlier life",
+        "Training under coercive masters",
+        "Assassin training gives Kwannon formidable skills at a serious personal cost."
       ],
       [
-        "1993",
+        "Nyoirin conflict",
+        "Love, loyalty and injury",
+        "Her relationship with Matsu’o is caught in competing allegiances."
+      ],
+      [
         "Revanche",
-        "Kwannon emerges in Betsy Braddock’s original body and takes the name Revanche. The two women share disrupted memories and psychic traits while trying to determine what was done to them and where each identity truly resides."
+        "An identity she cannot trust",
+        "The exchange brings her into the X-Men’s world in Betsy’s original body. Illness cuts that life short."
       ],
       [
-        "1990s",
-        "Legacy Virus and Death",
-        "Kwannon learns she has the Legacy Virus and eventually dies, while Betsy continues for years in Kwannon’s body under the Psylocke identity."
+        "Independent return",
+        "A life in her own body",
+        "Betsy’s restoration and Kwannon’s separate return end the assumption that they must share one bodily identity."
       ],
       [
-        "2018",
-        "Separate Bodies Restored",
-        "During Hunt for Wolverine: Mystery in Madripoor, Betsy reconstructs her original body. Kwannon subsequently returns in her own body, finally allowing the two women to exist separately again."
+        "Fallen Angels",
+        "A daughter and unfinished grief",
+        "The Apoth story makes motherhood and bereavement central to Kwannon’s decisions."
       ],
       [
-        "2019",
-        "Psylocke Reclaimed",
-        "With Betsy moving toward the Captain Britain identity, Kwannon takes the name Psylocke. Fallen Angels makes her uncertain place in mutant society and the resurfacing trauma of her past central to the story."
+        "Hellions",
+        "Judgment among difficult allies",
+        "Kwannon serves on the Krakoan team rather than becoming interchangeable with its earlier namesakes."
       ],
       [
-        "2020 onward",
-        "Hellions and a Separate Legacy",
-        "Kwannon serves with the Hellions and continues developing as a character independent of Betsy, using telepathy, psionic weaponry and assassin training while confronting the moral consequences of her past."
+        "Later X-Men era",
+        "Greycrow and independent missions",
+        "Her relationship and solo work develop a life beyond the body-exchange story."
       ]
     ],
     "costumes": [
@@ -38681,50 +39272,122 @@ window.COMIC_VAULT_CHARACTERS = [
       ]
     ],
     "comics": [
-      "Uncanny X-Men #256 (1989)",
-      "X-Men (1991) — Revanche storyline",
-      "Hunt for Wolverine: Mystery in Madripoor (2018)",
+      "X-Men #17 (1993) and the Revanche storyline",
+      "Hunt for Wolverine: Mystery in Madripoor",
       "Fallen Angels (2019)",
-      "Hellions (2020)"
+      "Hellions (2020)",
+      "X-Men: Blood Hunt — Psylocke #1 (2024)",
+      "Psylocke (2024) — Alyssa Wong and Vincenzo Carratù"
     ],
     "imageSlug": "psylocke",
     "aliases": [
       "Psylocke",
       "Revanche"
     ],
-    "family": [],
+    "family": [
+      "Unnamed daughter — taken from Kwannon; loss central to Fallen Angels"
+    ],
     "gear": [],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "1989",
-          "title": "Kwannon Enters X-Men History",
-          "detail": "Marvel identifies Uncanny X-Men #256 as Kwannon’s debut: the story presents Betsy Braddock in the Japanese body later established as Kwannon’s after the Hand/Spiral manipulation that entangled the two women."
+          "era": "Earlier life",
+          "title": "Training under coercive masters",
+          "detail": "Assassin training gives Kwannon formidable skills at a serious personal cost.",
+          "sourceIds": [
+            "K08"
+          ]
         },
         {
-          "era": "1993",
-          "title": "Revanche",
-          "detail": "Kwannon emerges in Betsy Braddock’s original body and takes the name Revanche. The two women share disrupted memories and psychic traits while trying to determine what was done to them and where each identity truly resides."
+          "era": "Nyoirin conflict",
+          "title": "Love, loyalty and injury",
+          "detail": "Her relationship with Matsu’o is caught in competing allegiances.",
+          "sourceIds": [
+            "K03",
+            "K04"
+          ]
         },
         {
-          "era": "1990s",
-          "title": "Legacy Virus and Death",
-          "detail": "Kwannon learns she has the Legacy Virus and eventually dies, while Betsy continues for years in Kwannon’s body under the Psylocke identity."
+          "era": "Revanche",
+          "title": "An identity she cannot trust",
+          "detail": "The exchange brings her into the X-Men’s world in Betsy’s original body. Illness cuts that life short.",
+          "sourceIds": [
+            "K01",
+            "K11"
+          ]
         },
         {
-          "era": "2018",
-          "title": "Separate Bodies Restored",
-          "detail": "During Hunt for Wolverine: Mystery in Madripoor, Betsy reconstructs her original body. Kwannon subsequently returns in her own body, finally allowing the two women to exist separately again."
+          "era": "Independent return",
+          "title": "A life in her own body",
+          "detail": "Betsy’s restoration and Kwannon’s separate return end the assumption that they must share one bodily identity.",
+          "sourceIds": [
+            "K11",
+            "K12"
+          ]
         },
         {
-          "era": "2019",
-          "title": "Psylocke Reclaimed",
-          "detail": "With Betsy moving toward the Captain Britain identity, Kwannon takes the name Psylocke. Fallen Angels makes her uncertain place in mutant society and the resurfacing trauma of her past central to the story."
+          "era": "Fallen Angels",
+          "title": "A daughter and unfinished grief",
+          "detail": "The Apoth story makes motherhood and bereavement central to Kwannon’s decisions.",
+          "sourceIds": [
+            "K05",
+            "K07"
+          ]
         },
         {
-          "era": "2020 onward",
-          "title": "Hellions and a Separate Legacy",
-          "detail": "Kwannon serves with the Hellions and continues developing as a character independent of Betsy, using telepathy, psionic weaponry and assassin training while confronting the moral consequences of her past."
+          "era": "Hellions",
+          "title": "Judgment among difficult allies",
+          "detail": "Kwannon serves on the Krakoan team rather than becoming interchangeable with its earlier namesakes.",
+          "sourceIds": [
+            "K09"
+          ]
+        },
+        {
+          "era": "Later X-Men era",
+          "title": "Greycrow and independent missions",
+          "detail": "Her relationship and solo work develop a life beyond the body-exchange story.",
+          "sourceIds": [
+            "K08",
+            "K10"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Debut distinction",
+          "title": "Body appearance versus Revanche",
+          "detail": "Uncanny X-Men #256 (1989) is associated with the body later identified as Kwannon’s, while Betsy is occupying it. X-Men #17 (1993) introduces Revanche as the separate woman.",
+          "sourceIds": [
+            "K12",
+            "K13"
+          ]
+        },
+        {
+          "era": "Shared mantle",
+          "title": "Psylocke does not always mean Kwannon",
+          "detail": "Classic Psylocke stories often concern Betsy. Check the person and era before attributing a relationship, power feat or costume to this record.",
+          "sourceIds": [
+            "K01",
+            "K11"
+          ]
+        },
+        {
+          "era": "Modern identity",
+          "title": "The Captain Britain boundary",
+          "detail": "Betsy’s Captain Britain career is not a Kwannon alias or costume era. The modern independent Psylocke narrative follows Kwannon.",
+          "sourceIds": [
+            "K08",
+            "K12"
+          ]
+        },
+        {
+          "era": "Research boundary",
+          "title": "Powers must follow the person",
+          "detail": "This pass centers documented psychic blades, telepathy and combat skill. Additional psychic manifestations need a Kwannon-specific story reference, not a feat copied from Betsy’s profile.",
+          "sourceIds": [
+            "K01",
+            "K02"
+          ]
         }
       ]
     },
@@ -38747,51 +39410,94 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "This profile is Kwannon, the current Psylocke. Most classic stories published under the name Psylocke before 2018 primarily follow Betsy Braddock—even when Betsy is physically using Kwannon’s body. Those experiences should not be reassigned to Kwannon simply because the body is the same. Betsy Braddock / Captain Britain is a distinct person and should remain separately indexed.",
+    "continuityNote": "This dossier keeps the character’s life separate from publication and origin revisions. Open History → Continuity File for the applicable versions and debut distinctions.",
     "auditCorrections": [
       "v8.44 research pass removed Betsy Braddock costume/history material that was still embedded in Kwannon’s profile.",
       "Removed the self-referential ally entry “Kwannon” and replaced it with distinct relationships appropriate to this record.",
-      "Expanded the body-swap/restoration chronology and rewrote the origin around Kwannon’s agency rather than generic Psylocke history."
+      "Expanded the body-swap/restoration chronology and rewrote the origin around Kwannon’s agency rather than generic Psylocke history.",
+      "v8.47: character-first R2; life timeline, scoped powers and relationships, separate continuity file, annotated reading and traceable source IDs."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
     "identity": "Identity status varies by era",
     "audit": {
-      "status": "Deep audited",
-      "batch": "P1",
-      "date": "2026-09-02",
-      "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
+      "status": "Source-reviewed dossier",
+      "batch": "R2",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks."
     },
     "auditSources": [
+      "Marvel — Kwannon / Psylocke (Revanche profile)",
+      "Marvel — Meet Psylocke, Mutantkind’s Deadliest Psychic Assassin",
+      "Marvel — Matsu’o Tsurayaba",
+      "Marvel — The Hand",
+      "Marvel — How Fallen Angels Redefined Psylocke",
+      "Marvel — Unearthing Psylocke’s Past in Fallen Angels #2",
+      "Marvel — What Fallen Angels #3 Reveals About Psylocke’s Past",
+      "Marvel — Psylocke’s 2024 solo-series announcement",
+      "Marvel — The History of the Hellions",
+      "Marvel — X-Men: Blood Hunt — Psylocke #1",
+      "Marvel — Uncanny X-Men #1: team update (2018)",
       "Marvel — Meet the Hellions",
-      "Marvel — Betsy Braddock / Psylocke history",
-      "Marvel — Fallen Angels #3 background on Kwannon"
+      "Kwannon — debut and chronology cross-check"
     ],
     "originProfile": {
-      "originLossMotivation": "Kwannon’s history is inseparable from the violation of identity that connected her to Betsy Braddock, but it should not be reduced to Betsy’s biography. Kwannon was a Japanese mutant and highly trained assassin tied to Matsu’o Tsurayaba and the Hand. After she was left near death, the manipulation carried out through Spiral’s Body Shoppe entangled the two women’s minds and bodies. Betsy lived for years in Kwannon’s body; Kwannon later surfaced in Betsy’s original body as Revanche, with memories and psychic traits blurred between them.\n\nKwannon’s death from the Legacy Virus seemed to close her story while Betsy continued as Psylocke. The 2018 restoration of Betsy’s original body changed that. Kwannon could exist separately again, and when Betsy moved on to the Captain Britain mantle, Kwannon reclaimed Psylocke as a name she could define for herself. Fallen Angels and Hellions shift the emphasis from identity confusion to agency: what does a woman trained to kill, deprived of control over her own body, and burdened by fragmented history choose to become when she finally owns her future?\n\nHer modern arc is therefore about more than revenge. Kwannon remains dangerous and pragmatic, but her relationships with other mutants—including younger fighters she mentors—force her to decide which parts of her assassin training are tools and which parts are chains. The Psylocke identity now functions as a reclamation rather than a continuation of Betsy Braddock’s life.\n\nFallen Angels and Hellions develop the consequences of that separation. Kwannon is not a clean-slate hero who simply happens to use psychic blades; she is an assassin trying to decide what to do with a life returned to her after years in which other people exercised control over her body and identity. Her telepathy and psionic weaponry are formidable, but so are her discipline, martial training and willingness to make difficult choices. Modern stories increasingly allow her to have relationships and responsibilities that are hers rather than extensions of Betsy’s history.\n\nAgency is therefore the key to modern Kwannon. Her past includes coercion, death, resurrection and the literal appropriation of her body, while her future is about deciding what belongs to her. Comic Vault separates Kwannon’s dossier from Betsy Braddock’s even when older publications used the same Psylocke name and appearance. The historical connection remains important, but Kwannon’s defining modern journey is turning an identity once shaped by what was done to her into one shaped by what she chooses to do next.",
+      "originLossMotivation": "Kwannon was trained to be useful to people who valued obedience and lethal skill. Her upbringing in the assassin world left her able to read danger, move quietly and end a confrontation with devastating efficiency. Those skills later made her formidable among the X-Men, but they were not acquired in the safety of a hero’s apprenticeship. She carries a past in which other people tried to decide what she was for. Choosing how to use her abilities is therefore inseparable from choosing who controls her life.\n\nHer relationship with Matsu’o Tsurayaba brought affection into a life organized around rival loyalties. When a conflict involving her employer Nyoirin put them on opposing sides, the consequences left Kwannon gravely injured. Matsu’o’s attempt to save her became entangled with manipulation involving Betsy Braddock. Instead of a straightforward recovery, two women’s identities, memories and bodies became confused. For Kwannon, survival came at the cost of losing confidence that the face, past and abilities she carried still formed one knowable self.\n\nAs Revanche, she arrived among the X-Men in Betsy’s original body, believing that the other woman had stolen her identity. This was not a conventional rivalry over a codename: both women had reasons to doubt the evidence of their own memories. Kwannon then contracted the Legacy Virus. Her illness and death ended that early attempt to establish an independent place among the team, while Betsy continued living and operating in the body that had originally belonged to Kwannon. Their histories remained connected, but they were never the same person.\n\nWhen Betsy restored a body of her own, Kwannon returned separately. Adopting Psylocke did not make the years she had lost harmless, nor did it turn Betsy’s earlier adventures into experiences Kwannon had personally lived. She had an opportunity to act in her own name and on her own terms. That independence is the starting point for her modern life: not an imitation of the woman who had occupied her body, but a survivor deciding what she would do next.\n\nKrakoa offered many mutants the promise of home, but belonging did not come easily to Kwannon. Her daughter’s fate and the threat of Apoth drew her toward a mission that could not be solved by simply accepting that promise. Her daughter had been taken from her, leaving Kwannon with a bond she could not freely live and questions she could not set aside. A new home could not restore those lost years. Pursuing answers also forced Kwannon to decide whether violence was serving her choices or continuing to dictate them.\n\nHer time with the Hellions placed her beside mutants whose damaged histories did not fit a polished picture of heroic respectability. The work was dangerous and the people difficult, yet it gave her a setting in which judgment mattered alongside force. Her relationship with Greycrow later added intimacy with someone who also knew violence and regret. They travel together in Japan, where supernatural threats bring her back into danger. With him she has a relationship outside the people who manipulated her identity, although their violent histories still follow them.\n\nAs an independent Psylocke, Kwannon still undertakes missions that demand precision and a willingness to confront ugly threats. The difference is that those abilities no longer have to make her somebody else’s instrument. She can care about people without pretending to be harmless, and she can choose to protect rather than accept the role of disposable killer. Her experiences have made control and trust difficult, but they have also made her protective of her independence. She works beside people she chooses, carrying a name she has made her own and refusing to return to unquestioning obedience.",
       "powerOrigin": {
-        "type": "Natural / Mutant Psionics + Elite Assassin Training",
-        "detail": "Kwannon is a mutant telepath whose psychic abilities are commonly expressed through telepathy, mental combat and psionic weapon forms such as a psychic blade. Her effectiveness is amplified by extensive martial-arts and assassination training. Because her mind was once entangled with Betsy Braddock’s, older stories can blur which psychic capabilities belonged to whom; modern Kwannon stories should be treated as the clearest guide to her independent power set."
+        "type": "Mutant psychic ability and assassin training",
+        "detail": "Her psychic capabilities and learned combat skills are distinct. The body-exchange history complicates attribution, so modern Kwannon-specific evidence takes priority over generic Psylocke power lists."
       },
       "importantPeople": [
-        "Captain Britain / Betsy Braddock — the woman whose identity and body were entangled with Kwannon’s",
-        "Matsu’o Tsurayaba — former lover and Hand figure central to her original tragedy",
-        "X-23 / Laura Kinney — ally and younger mutant fighter she guides in Fallen Angels",
-        "Hellions — team through which Kwannon develops a separate modern identity",
-        "The Hand — organization tied to her assassin past"
+        "Unnamed daughter — motherhood and grief",
+        "Greycrow / John Greycrow — partner",
+        "Betsy Braddock / Captain Britain — separate identity and entangled past",
+        "Matsu’o Tsurayaba — former lover"
       ],
-      "coreDrive": "Agency. Kwannon’s defining modern struggle is to own her body, name, choices and moral direction after years in which other people literally rewrote or occupied parts of her identity.",
-      "standard": "Comic Vault Expanded Origin Standard v2 — Researched",
+      "coreDrive": "Choose what her skills are used for and refuse to remain an instrument of the people who controlled her.",
+      "standard": "Character-first dossier / source-reviewed R2",
       "manualDeepDive": true,
-      "profilePass": "R1-Expanded",
-      "profileUpdatedThrough": 400
+      "profilePass": "R2 — v8.47",
+      "profileUpdatedThrough": 400,
+      "paragraphSources": [
+        [
+          "K02",
+          "K08"
+        ],
+        [
+          "K03",
+          "K04"
+        ],
+        [
+          "K01",
+          "K11",
+          "K13"
+        ],
+        [
+          "K11",
+          "K12"
+        ],
+        [
+          "K05",
+          "K06",
+          "K07"
+        ],
+        [
+          "K09",
+          "K08",
+          "K10"
+        ],
+        [
+          "K02",
+          "K08"
+        ]
+      ]
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
+      "status": "Editorial estimate / selected contradictions corrected",
+      "date": "2026-09-06",
+      "method": "No full re-ranking. Donna recovery, Billy champion durability and Bizarro energy projection corrected where the displayed capabilities contradicted N/A or low values; all other numerical ratings retained pending a separate rubric audit.",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "version": "v8.47"
     },
     "dataAudit": {
       "status": "Sweep 2 Reviewed",
@@ -38805,31 +39511,222 @@ window.COMIC_VAULT_CHARACTERS = [
       "focus": "Identity, continuity, overview/history depth, relationships, reading, equipment, attributes, and internal consistency."
     },
     "relationshipGroups": {
-      "KEY ALLIES": [
-        "Captain Britain",
-        "X-Men",
-        "Kwannon"
+      "ROMANTIC & PERSONAL CONNECTIONS": [
+        "Greycrow / John Greycrow — partner",
+        "Matsu’o Tsurayaba — former lover; injury and body-exchange history"
       ],
-      "KEY RIVALS / ENEMIES": [
-        "Shadow King",
-        "The Hand"
+      "IDENTITY CONNECTION": [
+        "Betsy Braddock / Captain Britain — separate woman whose body and memories were entangled with Kwannon’s"
+      ],
+      "ADVERSARIAL CONNECTIONS": [
+        "Apoth — threat tied to the daughter’s story",
+        "The Hand — coercive assassin network"
       ]
     },
     "researchSources": [
       {
-        "label": "Marvel — Meet the Hellions (Kwannon / Psylocke)",
-        "url": "https://www.marvel.com/articles/comics/meet-the-hellions"
+        "id": "K01",
+        "label": "Marvel — Kwannon / Psylocke (Revanche profile)",
+        "url": "https://www.marvel.com/characters/revanche",
+        "kind": "Publisher reference",
+        "note": "Identity, body-exchange history and later independent career. Do not confuse this with the Betsy profile at /characters/psylocke.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
       },
       {
-        "label": "Marvel — Betsy Braddock history and the Kwannon body entanglement",
-        "url": "https://www.marvel.com/characters/psylocke"
+        "id": "K02",
+        "label": "Marvel — Meet Psylocke, Mutantkind’s Deadliest Psychic Assassin",
+        "url": "https://www.marvel.com/articles/comics/meet-psylocke-deadliest-psychic-assassin-xmen",
+        "kind": "Publisher reference",
+        "note": "December 2024 character recap: training, bereavement and independent Psylocke identity.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
       },
       {
+        "id": "K03",
+        "label": "Marvel — Matsu’o Tsurayaba",
+        "url": "https://www.marvel.com/characters/matsu-o-tsurayaba",
+        "kind": "Publisher reference",
+        "note": "Relationship with Kwannon and the attempted rescue/body manipulation.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K04",
+        "label": "Marvel — The Hand",
+        "url": "https://www.marvel.com/teams-and-groups/hand",
+        "kind": "Publisher reference",
+        "note": "Nyoirin conflict and the circumstances preceding the exchange.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K05",
+        "label": "Marvel — How Fallen Angels Redefined Psylocke",
+        "url": "https://www.marvel.com/articles/comics/how-fallen-angels-redefined-psylocke",
+        "kind": "Publisher reference",
+        "note": "Her daughter and her difficulty settling into Krakoan life.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K06",
+        "label": "Marvel — Unearthing Psylocke’s Past in Fallen Angels #2",
+        "url": "https://www.marvel.com/articles/comics/unearthing-psylocke-s-past-in-fallen-angels-2",
+        "kind": "Publisher reference",
+        "note": "Past family connection and Apoth.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K07",
         "label": "Marvel — What Fallen Angels #3 Reveals About Psylocke’s Past",
-        "url": "https://www.marvel.com/articles/comics/what-fallen-angels-3-reveals-about-psylocke-s-past"
+        "url": "https://www.marvel.com/articles/comics/what-fallen-angels-3-reveals-about-psylocke-s-past",
+        "kind": "Publisher reference",
+        "note": "Daughter and the emotional stakes of the Apoth story.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K08",
+        "label": "Marvel — Psylocke’s 2024 solo-series announcement",
+        "url": "https://www.marvel.com/articles/comics/psylocke-alyssa-wong-vincenzo-carratu-sdcc-2024",
+        "kind": "Publisher reference",
+        "note": "Her choice to be an X-Man, assassin upbringing and relationship with Greycrow.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K09",
+        "label": "Marvel — The History of the Hellions",
+        "url": "https://www.marvel.com/articles/comics/the-history-of-the-hellions",
+        "kind": "Publisher reference",
+        "note": "The Krakoan team, not the original young Hellions roster.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K10",
+        "label": "Marvel — X-Men: Blood Hunt — Psylocke #1",
+        "url": "https://www.marvel.com/comics/issue/114292/x-men_blood_hunt_-_psylocke_2024_1",
+        "kind": "Publisher reference",
+        "note": "Publisher issue entry for the 2024 Japan adventure with Greycrow.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K11",
+        "label": "Marvel — Uncanny X-Men #1: team update (2018)",
+        "url": "https://www.marvel.com/articles/comics/uncanny-x-men-1-get-up-to-date-with-the-latest-x-men-team",
+        "kind": "Publisher reference",
+        "note": "Betsy’s body restoration and the earlier Legacy Virus death.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K12",
+        "label": "Marvel — Meet the Hellions",
+        "url": "https://www.marvel.com/articles/comics/meet-the-hellions",
+        "kind": "Publisher reference",
+        "note": "Kwannon / Revanche and the independent post-restoration Psylocke.",
+        "access": "Search-indexed publisher excerpts; full page retrieval unavailable in this review"
+      },
+      {
+        "id": "K13",
+        "label": "Kwannon — debut and chronology cross-check",
+        "url": "https://en.wikipedia.org/wiki/Kwannon_%28character%29",
+        "kind": "Secondary reference",
+        "note": "Narrow use for the 1989 body appearance versus 1993 Revanche debut and the early illness chronology.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       }
     ],
-    "researchUpdated": "2026-09-06"
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Earth-616 Kwannon. Revanche and her independent modern Psylocke career belong here; Betsy Braddock’s earlier life and Captain Britain career do not.",
+    "powerDetails": [
+      {
+        "title": "Telepathy",
+        "detail": "Telepathy lets Kwannon establish mental contact rather than rely on speech or physical touch. Her earlier psychic empathy and later telepathic abilities belong to an evolving personal history; the body exchange complicates how those abilities developed.",
+        "sourceIds": [
+          "K01"
+        ]
+      },
+      {
+        "title": "Psychic blades",
+        "detail": "Kwannon concentrates psionic energy into blade-like weapons, combining close-range psychic attack with her trained fighting technique. Their mental or physical effects depend on the manifestation; these are not simply ordinary steel knives.",
+        "sourceIds": [
+          "K02"
+        ]
+      },
+      {
+        "title": "Assassin’s skill",
+        "detail": "She is trained in martial arts, swordsmanship, stealth and infiltration. Footwork, timing and tactical judgment allow her to approach or disable an opponent without relying on superhuman strength. These learned skills are separate from her mutant psychic abilities.",
+        "sourceIds": [
+          "K08"
+        ]
+      },
+      {
+        "title": "Limits and separate histories",
+        "detail": "She is not immune to injury or manipulation. Her death from the Legacy Virus is part of her history. The dossier does not automatically grant her every transformation or psychic feat associated with the Psylocke name.",
+        "sourceIds": [
+          "K11",
+          "K13"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "X-Men #17 (1993) and the Revanche storyline",
+        "scope": "Identity history / complicated entry",
+        "why": "Read for the original two-woman mystery, with the continuity notes beside it.",
+        "sourceIds": [
+          "K13"
+        ]
+      },
+      {
+        "title": "Hunt for Wolverine: Mystery in Madripoor",
+        "scope": "Separation context",
+        "why": "Useful background for Betsy’s restoration and the return of an independent Kwannon.",
+        "sourceIds": [
+          "K11"
+        ]
+      },
+      {
+        "title": "Fallen Angels (2019)",
+        "scope": "Kwannon-centered character story",
+        "why": "The best route here into her daughter, grief and uneasy place on Krakoa.",
+        "sourceIds": [
+          "K05",
+          "K06"
+        ]
+      },
+      {
+        "title": "Hellions (2020)",
+        "scope": "Team life / Krakoan era",
+        "why": "Follow Kwannon among colleagues whose histories complicate simple labels of hero and villain.",
+        "sourceIds": [
+          "K09",
+          "K12"
+        ]
+      },
+      {
+        "title": "X-Men: Blood Hunt — Psylocke #1 (2024)",
+        "scope": "Focused adventure / Japan",
+        "why": "See her operating with Greycrow outside the original body-exchange plot.",
+        "sourceIds": [
+          "K10"
+        ]
+      },
+      {
+        "title": "Psylocke (2024) — Alyssa Wong and Vincenzo Carratù",
+        "scope": "Independent solo identity",
+        "why": "A later starting point focused on her choice to be more than an assassin.",
+        "sourceIds": [
+          "K08"
+        ]
+      }
+    ],
+    "researchReview": {
+      "batch": "R2",
+      "version": "v8.47",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Reading-path choices and motivation synthesis are Comic Vault editorial interpretation. Source check date does not mean every issue released by that date is covered."
+    },
+    "attributeContext": "Comic Vault editorial estimates, not official measurements or definitive battle rankings. Ratings describe a representative portrayal; temporary peaks, altered forms and continuity changes can differ.",
+    "unlinkedRelationshipIdentities": [
+      "Betsy Braddock / Captain Britain",
+      "Greycrow / John Greycrow",
+      "Matsu’o Tsurayaba"
+    ]
   },
   {
     "name": "Punisher",
@@ -42815,7 +43712,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "publisher": "DC",
     "firstAppearance": "Whiz Comics #2 (1940) as Captain Marvel; Shazam hero-name usage adopted in DC's New 52 era",
     "alignment": "Hero",
-    "base": "Fawcett City / Philadelphia",
+    "base": "Philadelphia in the modern foster-family era; Fawcett City in classic accounts",
     "teams": [
       "Shazam Family",
       "Justice League"
@@ -42825,14 +43722,15 @@ window.COMIC_VAULT_CHARACTERS = [
     "birthplace": "Fawcett City continuity varies",
     "height": "Varies",
     "eyes": "Blue",
-    "overview": "Billy Batson is a child chosen by the Wizard Shazam to become a magically empowered adult champion. First published by Fawcett Comics in 1940 as Captain Marvel, Billy became one of the Golden Age’s defining superheroes before eventually joining DC’s universe. Modern DC uses Shazam as his principal hero name, but the older Captain Marvel identity remains essential to understanding his publication history. Beneath the magical spectacle, Billy’s core premise is simple and enduring: enormous adult power is entrusted to a young person who must decide what kind of man—and what kind of family member—he wants to become.",
+    "overview": "Billy Batson is a young person entrusted with the power of the Wizard Shazam. Speaking the magic word can transform him into an adult champion with extraordinary strength, speed and magical lightning. Whether called Captain Marvel, Shazam or the Captain, the hero remains Billy—a child learning how to carry enormous responsibility without losing his capacity for kindness.",
     "powers": [
-      "Magic lightning",
+      "Magical transformation",
       "Super strength",
-      "Flight",
-      "Super speed",
-      "Wisdom",
-      "Durability"
+      "Exceptional stamina",
+      "Magical lightning",
+      "Enhanced durability",
+      "Super-speed and flight",
+      "Wisdom of Solomon"
     ],
     "attributes": {
       "Intelligence": 4,
@@ -42842,7 +43740,7 @@ window.COMIC_VAULT_CHARACTERS = [
       "Psychic Power": null,
       "Strength": 4,
       "Speed": 4,
-      "Durability": 2,
+      "Durability": 4,
       "Stamina": 3,
       "Agility / Reflexes": 3,
       "Healing / Recovery": null,
@@ -42864,34 +43762,34 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "history": [
       [
-        "1940",
-        "Captain Marvel Debut",
-        "Whiz Comics #2 introduces orphan Billy Batson, the Wizard Shazam, Doctor Sivana and the transformation that turns Billy into the hero historically known as Captain Marvel."
+        "Before the magic",
+        "A boy looking for stability",
+        "Orphanhood or foster-care insecurity forms the human foundation, depending on the era."
       ],
       [
-        "1940s–1950s",
-        "Fawcett Phenomenon",
-        "Captain Marvel becomes one of the era’s most successful superheroes and expands into the Marvel Family before Fawcett ultimately stops publishing the line after its long legal conflict with DC’s predecessor over Superman similarities."
+        "The Rock of Eternity",
+        "Chosen as a champion",
+        "The Wizard gives Billy a transformation and the obligation to decide how to use it."
       ],
       [
-        "1970s",
-        "DC Revival",
-        "DC licenses and revives the Fawcett characters under the SHAZAM! title, bringing Billy, Mary, Freddy and their supporting mythology into DC publication while the hero is still called Captain Marvel in-story."
+        "Classic family",
+        "Mary and Freddy",
+        "His twin sister and injured friend become fellow champions in the older account."
       ],
       [
-        "1990s",
-        "The Power of Shazam!",
-        "Jerry Ordway’s era rebuilds Billy and the Marvel Family for post-Crisis continuity, preserving the child-to-adult magical transformation while modernizing the surrounding world."
+        "Modern family",
+        "A shared home and shared power",
+        "The Vasquez household becomes a superhero family without ceasing to be a household."
       ],
       [
-        "2011 onward",
-        "Shazam Becomes the Hero Name",
-        "Beginning with the New 52 era, DC increasingly uses Shazam as Billy’s superhero name rather than Captain Marvel. Geoff Johns and Gary Frank also recast Billy within a foster family whose members can share in the magic."
+        "Academy era",
+        "An unreliable connection",
+        "Power disruption sends Billy toward the problems surrounding the Rock of Eternity."
       ],
       [
-        "Modern",
-        "Family as the Center",
-        "Recent Shazam stories continue to treat the Rock of Eternity, magical realms and the Shazam Family as central, making Billy’s growth within a chosen family as important as the scale of his powers."
+        "The Captain era",
+        "The patrons intervene",
+        "The gods’ competing demands threaten his independence and the world around him."
       ]
     ],
     "costumes": [
@@ -42912,52 +43810,112 @@ window.COMIC_VAULT_CHARACTERS = [
       ]
     ],
     "comics": [
-      "Whiz Comics #2 (1940)",
+      "Shazam!: Origins — Geoff Johns and Gary Frank",
+      "Classic Captain Marvel stories / Shazam Archives",
       "The Power of Shazam!",
-      "Shazam!: Origins (Justice League backup stories)",
-      "Shazam! and the Seven Magic Lands"
+      "Shazam! (2021) #1–4",
+      "Shazam! Vol. 1: Meet the Captain! — #1–6"
     ],
     "imageSlug": "shazam",
     "aliases": [
-      "Captain Marvel"
+      "Captain Marvel",
+      "The Captain"
     ],
     "family": [
-      "Mary Bromfield — foster sister",
-      "Freddy Freeman — foster brother/friend",
-      "Victor and Rosa Vasquez — foster parents"
+      "Victor and Rosa Vasquez — modern foster parents",
+      "Mary Bromfield — foster sister in modern continuity; biological twin in classic accounts",
+      "Freddy Freeman — foster brother in modern continuity; friend and fellow champion in classic accounts",
+      "Darla Dudley — foster sister",
+      "Pedro Peña — foster brother",
+      "Eugene Choi — foster brother"
     ],
     "gear": [],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "1940",
-          "title": "Captain Marvel Debut",
-          "detail": "Whiz Comics #2 introduces orphan Billy Batson, the Wizard Shazam, Doctor Sivana and the transformation that turns Billy into the hero historically known as Captain Marvel."
+          "era": "Before the magic",
+          "title": "A boy looking for stability",
+          "detail": "Orphanhood or foster-care insecurity forms the human foundation, depending on the era.",
+          "sourceIds": [
+            "S01",
+            "S03"
+          ]
         },
         {
-          "era": "1940s–1950s",
-          "title": "Fawcett Phenomenon",
-          "detail": "Captain Marvel becomes one of the era’s most successful superheroes and expands into the Marvel Family before Fawcett ultimately stops publishing the line after its long legal conflict with DC’s predecessor over Superman similarities."
+          "era": "The Rock of Eternity",
+          "title": "Chosen as a champion",
+          "detail": "The Wizard gives Billy a transformation and the obligation to decide how to use it.",
+          "sourceIds": [
+            "S02"
+          ]
         },
         {
-          "era": "1970s",
-          "title": "DC Revival",
-          "detail": "DC licenses and revives the Fawcett characters under the SHAZAM! title, bringing Billy, Mary, Freddy and their supporting mythology into DC publication while the hero is still called Captain Marvel in-story."
+          "era": "Classic family",
+          "title": "Mary and Freddy",
+          "detail": "His twin sister and injured friend become fellow champions in the older account.",
+          "sourceIds": [
+            "S04",
+            "S05"
+          ]
         },
         {
-          "era": "1990s",
-          "title": "The Power of Shazam!",
-          "detail": "Jerry Ordway’s era rebuilds Billy and the Marvel Family for post-Crisis continuity, preserving the child-to-adult magical transformation while modernizing the surrounding world."
+          "era": "Modern family",
+          "title": "A shared home and shared power",
+          "detail": "The Vasquez household becomes a superhero family without ceasing to be a household.",
+          "sourceIds": [
+            "S03",
+            "S11"
+          ]
         },
         {
-          "era": "2011 onward",
-          "title": "Shazam Becomes the Hero Name",
-          "detail": "Beginning with the New 52 era, DC increasingly uses Shazam as Billy’s superhero name rather than Captain Marvel. Geoff Johns and Gary Frank also recast Billy within a foster family whose members can share in the magic."
+          "era": "Academy era",
+          "title": "An unreliable connection",
+          "detail": "Power disruption sends Billy toward the problems surrounding the Rock of Eternity.",
+          "sourceIds": [
+            "S10"
+          ]
         },
         {
-          "era": "Modern",
-          "title": "Family as the Center",
-          "detail": "Recent Shazam stories continue to treat the Rock of Eternity, magical realms and the Shazam Family as central, making Billy’s growth within a chosen family as important as the scale of his powers."
+          "era": "The Captain era",
+          "title": "The patrons intervene",
+          "detail": "The gods’ competing demands threaten his independence and the world around him.",
+          "sourceIds": [
+            "S08"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "1940 debut",
+          "title": "Billy, not Marvel’s later Captain Marvel",
+          "detail": "Whiz Comics #2 introduces Billy’s hero as Captain Marvel. The historic name belongs in his aliases without merging him with Marvel characters.",
+          "sourceIds": [
+            "S01"
+          ]
+        },
+        {
+          "era": "Family continuity",
+          "title": "Twin sister versus foster sister",
+          "detail": "Mary’s biological relationship in classic stories and her modern foster-sibling role are distinct accounts. Neither should silently overwrite the other.",
+          "sourceIds": [
+            "S04"
+          ]
+        },
+        {
+          "era": "Naming eras",
+          "title": "Magic word and hero name",
+          "detail": "Captain Marvel, Shazam and the Captain identify different naming periods. The Wizard Shazam is still a separate character.",
+          "sourceIds": [
+            "S09"
+          ]
+        },
+        {
+          "era": "Transformation rules",
+          "title": "Intent is era-dependent",
+          "detail": "Some versions distinguish saying the word from intending to transform. Treat that as a story rule rather than a universally reliable loophole.",
+          "sourceIds": [
+            "S09"
+          ]
         }
       ]
     },
@@ -42980,53 +43938,93 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "Billy Batson was historically called Captain Marvel from 1940 through most of his publishing history. DC began using Shazam as the hero’s in-story name in the New 52 era; the Wizard Shazam remains a separate character. Origins also vary by continuity, particularly Billy’s family background and whether power is shared with a broader foster-family team.",
+    "continuityNote": "This dossier keeps the character’s life separate from publication and origin revisions. Open History → Continuity File for the applicable versions and debut distinctions.",
     "auditCorrections": [
       "v8.44 research pass expanded the Fawcett-to-DC publication history and distinguished the Captain Marvel name from the modern Shazam hero name.",
       "Replaced generic family-protection prose with a Billy-specific child/adult-power and chosen-family motivation.",
-      "Expanded the power-origin explanation to identify the traditional mythic sources represented by the SHAZAM acronym."
+      "Expanded the power-origin explanation to identify the traditional mythic sources represented by the SHAZAM acronym.",
+      "v8.47: character-first R2; life timeline, scoped powers and relationships, separate continuity file, annotated reading and traceable source IDs."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
     "identity": "Public or secret status varies by era",
     "audit": {
-      "status": "Deep audited",
-      "batch": "S1",
-      "date": "2026-09-02",
-      "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
+      "status": "Source-reviewed dossier",
+      "batch": "R2",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks."
     },
     "auditSources": [
-      "DC — Shazam official character page",
-      "DC — The Strange and Super-Powered History of Superman and Shazam",
+      "DC — Shazam: official character profile",
+      "DC — Shazam!: Origins",
+      "DC — Who’s Who in the Shazam Family",
+      "DC — Meet Mary Bromfield",
+      "DC — Meet Freddy Freeman",
+      "DC — Shazam!: What’s in a Name?",
+      "DC — Is Black Adam Irredeemable?",
+      "DC — Shazam! Vol. 1: Meet the Captain!",
       "DC — How Does Shazam Tell People His Name?",
-      "DC — Shazam!: Origins"
+      "DC — Shazam’s 2021 limited series",
+      "DC — The Shazam Family: official profile",
+      "DC — Shazam Archives Vol. 3"
     ],
     "originProfile": {
-      "originLossMotivation": "Billy Batson’s fantasy is deliberately enormous: a child speaks one word and becomes a seemingly ideal adult superhero. In the original Fawcett version, the Wizard Shazam chooses the orphaned Billy and grants him the powers represented by the wizard’s name. That transformation creates the central tension of the character. Billy may look like the “World’s Mightiest Mortal,” but the judgment directing that power is still being formed by a young person.\n\nAcross continuities, Billy repeatedly begins from some form of isolation—an orphan, a child without reliable family, or a guarded foster kid—and discovers that power does not eliminate the need to trust other people. Mary, Freddy and later the larger foster-family version of the Shazam Family turn the premise from solitary wish fulfillment into a story about sharing power, responsibility and belonging. Black Adam provides the clearest warning of what a magical champion can become when power and grievance overtake compassion.\n\nBilly’s defining strength is therefore not that the magic makes him an adult. It is that he gradually learns heroism without pretending childhood, fear or family no longer matter. The best Shazam stories preserve the contrast between cosmic-scale magical power and the emotional perspective of a kid still learning what responsibility means.\n\nThat lesson becomes clearest when Billy shares the magic. Mary, Freddy and the modern foster siblings turn the power of Shazam from solitary wish fulfillment into a family responsibility. Billy could use transformation as an escape—becoming an invulnerable adult whenever being a vulnerable child hurts—but his stronger stories insist that maturity cannot be summoned by lightning. Black Adam serves as a warning of what a magical champion can become when enormous power is separated from humility, while Sivana represents the desire to master a magical world through intellect and control.\n\nBilly’s losses do not disappear when he transforms; they are part of why his decision to remain kind matters. The magic grants strength, speed, flight and living lightning, but it cannot manufacture character. Whether a story calls the transformed hero Captain Marvel or Shazam, Billy is responsible for the choices of both identities. His central journey is learning that becoming a man is not the same thing as looking like one—and that one of the strongest proofs of worthiness is his willingness to share power, protect a family and retain wonder without letting wonder become irresponsibility.",
+      "originLossMotivation": "Billy’s life begins with insecurity rather than power. In his classic history he is an orphan trying to survive; in the modern foster-family account he arrives with good reason to distrust promises that a new home will last. Becoming a champion does not remove that history. The boy beneath the transformed body still has to decide whom to trust, how much of himself to reveal and whether accepting help means risking another disappointment. His toughness can protect him, but it can also keep people at a distance.\n\nThe encounter with the Wizard changes the scale of his choices. At the Rock of Eternity, Billy receives access to a power that becomes visible in a flash of magical lightning. Speaking “Shazam” gives him an adult champion’s body and abilities, but the person making decisions is still the young Billy. He must learn what the power can do and when using it is right. Black Adam’s presence makes the danger concrete: extraordinary gifts do not ensure that the person wielding them will act with restraint or compassion.\n\nFamily gives that responsibility faces and names. In the modern story, Victor and Rosa Vasquez provide a home shared with Mary, Freddy, Darla, Pedro and Eugene. Living with them demands something a spectacular rescue cannot settle: the patience to become a brother. When the others share the magic, they become partners rather than people he must always protect alone. The household is not simply a supply of additional costumes. It is where Billy’s wish to belong can become a relationship built through choices made every day.\n\nIn his classic life, Billy discovers that Mary is his lost twin sister. Their reunion gives him a surviving connection to the family he thought he had lost. Freddy, meanwhile, becomes a fellow champion after a devastating injury. In the separate pre-Flashpoint account, Theo Adam murdered Billy’s parents, connecting a dangerous enemy directly to his childhood bereavement. These older experiences give Billy different beginnings, but in each he must build relationships with the people still beside him while living with the absence of those he cannot bring back.\n\nHis powers also demand judgment. The Wisdom of Solomon is a real magical gift, not merely a flattering description of Billy, yet he still has to draw on it rather than assume every impulse is wise. Enormous strength can solve one problem and create another. Sharing power introduces obligations toward the people who share it, while magical enemies can threaten the source itself. His task is not to pretend he has already become an infallible adult; it is to use help, knowledge and experience before a mistake harms someone else.\n\nAt Teen Titans Academy, Billy encounters a different crisis when access to his power becomes unreliable and his family’s connection is interrupted. The disruption at the Rock of Eternity threatens both his ability to transform and the support he shares with the other champions. Later, as the Captain, he faces interference from the very patrons associated with his gifts. Their competing demands reveal another risk of borrowed divine power. Having access to it does not necessarily mean he controls every condition attached to it.\n\nBilly’s courage is therefore not measured only by the size of the enemy he can hit. He has to remain answerable for what he does in a body strangers may assume belongs to an experienced adult. His family, the Wizard and his encounters with other champions give him guidance, but none can make every choice for him. He is still capable of excitement, bad decisions and the need for reassurance. Learning to be dependable means acknowledging those needs rather than hiding permanently inside the champion’s body. The life waiting after a battle—his siblings, home and unfinished childhood—remains part of what he is fighting to protect.",
       "powerOrigin": {
-        "type": "Magic / Champion of the Wizard Shazam",
-        "detail": "Billy transforms by invoking the Wizard Shazam. Traditionally the name represents the wisdom of Solomon, strength of Hercules, stamina of Atlas, power of Zeus, courage of Achilles and speed of Mercury. The transformation also grants flight, extreme durability and magical lightning. Exact mechanics vary by era, including whether Billy and his transformed self are presented as one continuous personality and how power is shared among members of the Shazam Family."
+        "type": "The Wizard’s magical empowerment",
+        "detail": "The traditional SHAZAM gifts are Solomon’s wisdom, Hercules’ strength, Atlas’s stamina, Zeus’s power, Achilles’ courage and Mercury’s speed. Their source and exact operating rules can be altered in particular eras."
       },
       "importantPeople": [
-        "Wizard Shazam — source of Billy’s magical champion role",
-        "Mary Bromfield — sister / foster sister and fellow champion depending continuity",
-        "Freddy Freeman — close friend / foster brother and fellow champion",
-        "Victor and Rosa Vasquez — foster parents in modern continuity",
-        "Black Adam — magical counterpart and recurring ideological rival",
-        "Doctor Sivana — enemy present from Billy’s first published adventure"
+        "The Wizard Shazam — mentor and separate identity",
+        "Mary Bromfield and Freddy Freeman — family and fellow champions",
+        "Victor and Rosa Vasquez — modern foster parents",
+        "Darla, Pedro and Eugene — foster siblings"
       ],
-      "coreDrive": "To become worthy of the power he was given without losing the child, brother and friend underneath it. Billy’s heroism is ultimately about growing into responsibility and learning that family is something he can trust and share power with.",
-      "standard": "Comic Vault Expanded Origin Standard v2 — Researched",
+      "coreDrive": "Use the power to protect people while learning to trust and belong to a family.",
+      "standard": "Character-first dossier / source-reviewed R2",
       "manualDeepDive": true,
-      "profilePass": "R1-Expanded",
-      "profileUpdatedThrough": 400
+      "profilePass": "R2 — v8.47",
+      "profileUpdatedThrough": 400,
+      "paragraphSources": [
+        [
+          "S01",
+          "S02",
+          "S03"
+        ],
+        [
+          "S02",
+          "S01"
+        ],
+        [
+          "S03",
+          "S11"
+        ],
+        [
+          "S04",
+          "S05",
+          "S07"
+        ],
+        [
+          "S06",
+          "S11"
+        ],
+        [
+          "S10",
+          "S08"
+        ],
+        [
+          "S01",
+          "S02",
+          "S08"
+        ]
+      ]
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
+      "status": "Editorial estimate / selected contradictions corrected",
+      "date": "2026-09-06",
+      "method": "No full re-ranking. Donna recovery, Billy champion durability and Bizarro energy projection corrected where the displayed capabilities contradicted N/A or low values; all other numerical ratings retained pending a separate rubric audit.",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "version": "v8.47"
     },
     "dataAudit": {
       "status": "Sweep 2 Reviewed",
@@ -43040,41 +44038,210 @@ window.COMIC_VAULT_CHARACTERS = [
       "focus": "Identity, continuity, overview/history depth, relationships, reading, equipment, attributes, and internal consistency."
     },
     "relationshipGroups": {
-      "FAMILY & CLOSE RELATIONS": [
-        "Mary Bromfield — foster sister",
-        "Freddy Freeman — foster brother/friend",
-        "Victor and Rosa Vasquez — foster parents"
+      "MENTORS & CHAMPIONS": [
+        "The Wizard Shazam — separate person who grants the power",
+        "Mary Bromfield and Freddy Freeman — fellow champions"
       ],
-      "KEY ALLIES": [
-        "Mary Marvel / Mary Bromfield",
-        "Freddy Freeman",
-        "Superman"
-      ],
-      "KEY RIVALS / ENEMIES": [
-        "Black Adam",
-        "Doctor Sivana",
-        "Mister Mind"
+      "ADVERSARIES": [
+        "Black Adam — rival champion; relationship varies by era",
+        "Doctor Sivana — recurring enemy",
+        "Mister Mind — recurring enemy"
       ]
     },
     "researchSources": [
       {
-        "label": "DC — Shazam official character page",
-        "url": "https://www.dc.com/characters/shazam"
+        "id": "S01",
+        "label": "DC — Shazam: official character profile",
+        "url": "https://www.dc.com/characters/shazam",
+        "kind": "Publisher reference",
+        "note": "Billy, transformation, identity and first appearance.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       },
       {
-        "label": "DC — The Strange and Super-Powered History of Superman and Shazam",
-        "url": "https://www.dc.com/blog/2019/04/26/the-strange-and-super-powered-history-of-superman-and-shazam"
-      },
-      {
-        "label": "DC — How Does Shazam Tell People His Name?",
-        "url": "https://www.dc.com/blog/2024/09/04/how-does-shazam-tell-people-his-name"
-      },
-      {
+        "id": "S02",
         "label": "DC — Shazam!: Origins",
-        "url": "https://www.dc.com/graphic-novels/justice-league-2011/shazam-origins"
+        "url": "https://www.dc.com/graphic-novels/justice-league-2011/shazam-origins",
+        "kind": "Publisher catalog",
+        "note": "Johns/Frank origin, Black Adam and exact collected issue contents.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S03",
+        "label": "DC — Who’s Who in the Shazam Family",
+        "url": "https://www.dc.com/blog/2019/04/19/whos-who-in-the-shazam-family",
+        "kind": "Publisher editorial",
+        "note": "The modern foster family and its members.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S04",
+        "label": "DC — Meet Mary Bromfield",
+        "url": "https://www.dc.com/blog/2023/03/16/meet-mary-bromfield-shazam-s-even-cooler-sister",
+        "kind": "Publisher editorial",
+        "note": "Biological twin in classic accounts versus later foster-family history.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S05",
+        "label": "DC — Meet Freddy Freeman",
+        "url": "https://www.dc.com/blog/2023/03/15/meet-freddy-freeman-shazam-s-right-hand-man",
+        "kind": "Publisher editorial",
+        "note": "Freddy’s classic rescue and later foster-family position.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S06",
+        "label": "DC — Shazam!: What’s in a Name?",
+        "url": "https://www.dc.com/blog/2021/10/07/shazam-whats-in-a-name",
+        "kind": "Publisher editorial",
+        "note": "Six traditional gifts, active wisdom and magical study requirements.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S07",
+        "label": "DC — Is Black Adam Irredeemable?",
+        "url": "https://www.dc.com/blog/2022/06/24/is-black-adam-irredeemable",
+        "kind": "Publisher editorial",
+        "note": "Theo Adam’s role in the older Batson-family tragedy; not a universal modern origin.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S08",
+        "label": "DC — Shazam! Vol. 1: Meet the Captain!",
+        "url": "https://www.dc.com/graphic-novels/shazam-2023/shazam-vol-1-meet-the-captain",
+        "kind": "Publisher catalog",
+        "note": "2023 #1–6, gods’ interference and the Captain identity.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S09",
+        "label": "DC — How Does Shazam Tell People His Name?",
+        "url": "https://www.dc.com/blog/2024/09/04/how-does-shazam-tell-people-his-name",
+        "kind": "Publisher editorial",
+        "note": "Transforming by intent varies; Captain Marvel / Shazam / Captain naming eras.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S10",
+        "label": "DC — Shazam’s 2021 limited series",
+        "url": "https://www.dc.com/blog/2021/04/20/new-shazam-limited-series-arrives-july-20",
+        "kind": "Publisher announcement",
+        "note": "Teen Titans Academy, interrupted power and the Rock of Eternity.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S11",
+        "label": "DC — The Shazam Family: official profile",
+        "url": "https://www.dc.com/characters/shazam-family",
+        "kind": "Publisher reference",
+        "note": "Shared family power and modern group identity.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "S12",
+        "label": "DC — Shazam Archives Vol. 3",
+        "url": "https://www.dc.com/graphic-novels/the-shazam-archives-1992/shazam-archives-vol-3",
+        "kind": "Publisher catalog",
+        "note": "Classic power-set and original-era reading context.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       }
     ],
-    "researchUpdated": "2026-09-06"
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Main comics Billy Batson. The modern foster-family story leads; classic Fawcett and pre-Flashpoint family details are labelled separately. The Wizard is a different person.",
+    "powerDetails": [
+      {
+        "title": "Solomon — wisdom",
+        "detail": "A magical source of knowledge and insight that Billy must actually consult; it does not make every impulsive decision correct.",
+        "sourceIds": [
+          "S06"
+        ]
+      },
+      {
+        "title": "Hercules and Atlas — strength and stamina",
+        "detail": "Strength supplies physical force; stamina supports sustained exertion. These are distinct gifts, not two labels for invulnerability.",
+        "sourceIds": [
+          "S06",
+          "S12"
+        ]
+      },
+      {
+        "title": "Zeus — magical power",
+        "detail": "Lightning enables transformation and magical attacks. Broader spell use requires learning and control, not an automatic mastery of every form of sorcery.",
+        "sourceIds": [
+          "S06"
+        ]
+      },
+      {
+        "title": "Achilles and Mercury — defense, speed and flight",
+        "detail": "Courage is associated with powerful physical defenses; Mercury supports exceptional movement, reflexes and flight. Exact feats vary with the story.",
+        "sourceIds": [
+          "S06",
+          "S12"
+        ]
+      },
+      {
+        "title": "What can go wrong",
+        "detail": "Billy’s ordinary form remains vulnerable. Magic can disrupt his access, and divine patrons can interfere. His champion’s power should not be mistaken for unconditional control over its source.",
+        "sourceIds": [
+          "S01",
+          "S08",
+          "S10"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "Shazam!: Origins — Geoff Johns and Gary Frank",
+        "scope": "Modern foster-family starting point",
+        "why": "A complete entry into the Wizard, family and conflict with Black Adam.",
+        "sourceIds": [
+          "S02"
+        ]
+      },
+      {
+        "title": "Classic Captain Marvel stories / Shazam Archives",
+        "scope": "Original-era comparison",
+        "why": "Read the older champion on his own terms before comparing origins.",
+        "sourceIds": [
+          "S12"
+        ]
+      },
+      {
+        "title": "The Power of Shazam!",
+        "scope": "Pre-Flashpoint origin and family",
+        "why": "Use for the older family tragedy, with continuity distinctions in mind.",
+        "sourceIds": [
+          "S07"
+        ]
+      },
+      {
+        "title": "Shazam! (2021) #1–4",
+        "scope": "Power limitations / Academy era",
+        "why": "A focused story about losing reliable access to the magic.",
+        "sourceIds": [
+          "S10"
+        ]
+      },
+      {
+        "title": "Shazam! Vol. 1: Meet the Captain! — #1–6",
+        "scope": "Later character and magical conflict",
+        "why": "See Billy confronting the patrons of the powers he carries.",
+        "sourceIds": [
+          "S08"
+        ]
+      }
+    ],
+    "researchReview": {
+      "batch": "R2",
+      "version": "v8.47",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Reading-path choices and motivation synthesis are Comic Vault editorial interpretation. Source check date does not mean every issue released by that date is covered."
+    },
+    "attributeContext": "Comic Vault editorial estimates, not official measurements or definitive battle rankings. Ratings describe a representative portrayal; temporary peaks, altered forms and continuity changes can differ.",
+    "unlinkedRelationshipIdentities": [
+      "The Wizard Shazam"
+    ]
   },
   {
     "name": "She-Hulk",
@@ -48812,7 +49979,7 @@ window.COMIC_VAULT_CHARACTERS = [
     "realName": "Wally West",
     "imageSlug": "wally-west",
     "publisher": "DC",
-    "firstAppearance": "The Flash #110 (1959) as Kid Flash; becomes the Flash in Crisis on Infinite Earths #12 (1985)",
+    "firstAppearance": "The Flash #110 (1959) as Kid Flash; succeeds Barry as the Flash in Crisis on Infinite Earths #12",
     "alignment": "Hero",
     "base": "Central City / Keystone City",
     "teams": [
@@ -48825,13 +49992,13 @@ window.COMIC_VAULT_CHARACTERS = [
     "birthplace": "Varies by continuity",
     "height": "Varies by continuity",
     "eyes": "Varies by continuity",
-    "overview": "Wally West begins as Barry Allen’s young admirer and Kid Flash, but his defining achievement is growing beyond the sidekick role to become the Flash in his own right. After Barry’s death in Crisis on Infinite Earths, Wally inherits the mantle, helps establish the modern mythology of the Speed Force, builds a life with Linda Park, and becomes the Flash for a generation of readers. His history is fundamentally a legacy story: admiration becomes responsibility, insecurity becomes confidence, and the student ultimately proves that carrying a mentor’s symbol does not require becoming a copy of the mentor.",
+    "overview": "Wally West is the Flash, a former Kid Flash who became a hero in his own right rather than a permanent substitute for Barry Allen. A veteran Titan and exceptionally accomplished speedster, he is also Linda Park’s husband and the father of Jai, Irey and Wade. His most important race is often the one back to the people he loves.",
     "powers": [
-      "Super speed",
-      "Speed Force",
-      "Phasing",
-      "Time/dimensional travel",
-      "Speed lending/stealing"
+      "Super-speed",
+      "Accelerated reactions",
+      "Speed Force connection",
+      "Vibrational phasing",
+      "Temporal and dimensional travel — conditional"
     ],
     "attributes": {
       "Intelligence": 3,
@@ -48852,8 +50019,10 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 5
     },
     "allies": [
-      "Barry Allen",
-      "Linda Park",
+      "The Flash / Barry Allen",
+      "Nightwing",
+      "Donna Troy",
+      "Max Mercury",
       "Titans"
     ],
     "enemies": [
@@ -48863,34 +50032,39 @@ window.COMIC_VAULT_CHARACTERS = [
     ],
     "history": [
       [
-        "1959",
-        "Kid Flash Debut",
-        "The Flash #110 introduces Wally West. A laboratory accident deliberately echoes Barry Allen’s origin, giving Wally super-speed and beginning his career as Kid Flash."
+        "Childhood",
+        "Barry’s young partner",
+        "An extraordinary accident leads to Kid Flash, with Iris and Barry providing a crucial connection to a new life."
       ],
       [
-        "1985",
-        "The Flash Lives Again",
-        "Crisis on Infinite Earths #12 ends with Wally taking up the Flash identity after Barry Allen’s sacrifice, turning a former sidekick into the principal Flash of the post-Crisis era."
+        "Teen Titans",
+        "A generation grows together",
+        "Wally builds lasting friendships outside his apprenticeship to Barry."
       ],
       [
-        "1992",
-        "Born to Run",
-        "The Flash #62–65 retells Wally’s beginnings as a coming-of-age story and establishes the emotional foundation for Mark Waid’s long run: hero worship must mature into an identity of his own."
+        "After the Crisis",
+        "The Flash in his own right",
+        "He accepts Barry’s mantle while confronting grief and initially restricted speed."
       ],
       [
-        "1994–1995",
-        "The Speed Force",
-        "The Flash #91 introduces the Speed Force concept during Wally’s tenure, and subsequent stories deepen his connection to it. In The Flash #100, Wally returns from the Speed Force because his love for Linda Park anchors him to his life."
+        "Early Flash career",
+        "The Return of Barry Allen",
+        "An unsettling apparent return tests Wally’s confidence and responsibility."
       ],
       [
-        "2016",
-        "DC Rebirth Return",
-        "DC Universe: Rebirth #1 restores the original Wally after he had been lost from the timeline and trapped in the Speed Force, making his return a major symbol of DC’s restored legacy relationships."
+        "Speed Force era",
+        "A way home",
+        "Linda becomes an emotional connection to the life beyond the Speed Force."
       ],
       [
-        "Modern",
-        "Family and Legacy",
-        "Wally’s adult identity increasingly centers on Linda, Jai and Irey alongside the wider Flash Family, allowing his stories to explore what it means to be a spouse, father, mentor and veteran hero while still carrying the Flash mantle."
+        "Rebirth",
+        "Rescued, but not fully restored",
+        "Barry brings him back; lost memories still complicate his reunion with loved ones."
+      ],
+      [
+        "Family era",
+        "A household of five",
+        "Wally and Linda’s family includes Jai, Irey and Wade; ordinary work and parenting continue alongside heroism."
       ]
     ],
     "costumes": [
@@ -48911,12 +50085,12 @@ window.COMIC_VAULT_CHARACTERS = [
       ]
     ],
     "comics": [
-      "The Flash #110 (1959)",
-      "Crisis on Infinite Earths #12 (1985)",
-      "The Flash: Born to Run (The Flash #62–65)",
-      "The Flash by Mark Waid",
-      "The Flash by Geoff Johns",
-      "DC Universe: Rebirth #1 (2016)"
+      "The Flash: Born to Run — #62–65",
+      "The Flash by Mark Waid Book Two",
+      "The Flash by Mark Waid Book Four",
+      "DC Universe: Rebirth #1; Titans (2016)",
+      "The Flash #772 onward — Jeremy Adams era",
+      "The Flash Vol. 1: Strange Attractor"
     ],
     "aliases": [
       "Kid Flash",
@@ -48925,40 +50099,108 @@ window.COMIC_VAULT_CHARACTERS = [
     "family": [
       "Linda Park — wife",
       "Jai West — son",
-      "Irey West — daughter"
+      "Irey West — daughter",
+      "Wade West — youngest son",
+      "Iris West — aunt",
+      "The Flash / Barry Allen — uncle by marriage and mentor",
+      "Kid Flash / Wallace West — cousin; a separate mantle holder"
     ],
     "gear": [],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "1959",
-          "title": "Kid Flash Debut",
-          "detail": "The Flash #110 introduces Wally West. A laboratory accident deliberately echoes Barry Allen’s origin, giving Wally super-speed and beginning his career as Kid Flash."
+          "era": "Childhood",
+          "title": "Barry’s young partner",
+          "detail": "An extraordinary accident leads to Kid Flash, with Iris and Barry providing a crucial connection to a new life.",
+          "sourceIds": [
+            "W02"
+          ]
         },
         {
-          "era": "1985",
-          "title": "The Flash Lives Again",
-          "detail": "Crisis on Infinite Earths #12 ends with Wally taking up the Flash identity after Barry Allen’s sacrifice, turning a former sidekick into the principal Flash of the post-Crisis era."
+          "era": "Teen Titans",
+          "title": "A generation grows together",
+          "detail": "Wally builds lasting friendships outside his apprenticeship to Barry.",
+          "sourceIds": [
+            "W01"
+          ]
         },
         {
-          "era": "1992",
-          "title": "Born to Run",
-          "detail": "The Flash #62–65 retells Wally’s beginnings as a coming-of-age story and establishes the emotional foundation for Mark Waid’s long run: hero worship must mature into an identity of his own."
+          "era": "After the Crisis",
+          "title": "The Flash in his own right",
+          "detail": "He accepts Barry’s mantle while confronting grief and initially restricted speed.",
+          "sourceIds": [
+            "W03"
+          ]
         },
         {
-          "era": "1994–1995",
-          "title": "The Speed Force",
-          "detail": "The Flash #91 introduces the Speed Force concept during Wally’s tenure, and subsequent stories deepen his connection to it. In The Flash #100, Wally returns from the Speed Force because his love for Linda Park anchors him to his life."
+          "era": "Early Flash career",
+          "title": "The Return of Barry Allen",
+          "detail": "An unsettling apparent return tests Wally’s confidence and responsibility.",
+          "sourceIds": [
+            "W05"
+          ]
         },
         {
-          "era": "2016",
-          "title": "DC Rebirth Return",
-          "detail": "DC Universe: Rebirth #1 restores the original Wally after he had been lost from the timeline and trapped in the Speed Force, making his return a major symbol of DC’s restored legacy relationships."
+          "era": "Speed Force era",
+          "title": "A way home",
+          "detail": "Linda becomes an emotional connection to the life beyond the Speed Force.",
+          "sourceIds": [
+            "W04",
+            "W06"
+          ]
         },
         {
-          "era": "Modern",
-          "title": "Family and Legacy",
-          "detail": "Wally’s adult identity increasingly centers on Linda, Jai and Irey alongside the wider Flash Family, allowing his stories to explore what it means to be a spouse, father, mentor and veteran hero while still carrying the Flash mantle."
+          "era": "Rebirth",
+          "title": "Rescued, but not fully restored",
+          "detail": "Barry brings him back; lost memories still complicate his reunion with loved ones.",
+          "sourceIds": [
+            "W07",
+            "W08"
+          ]
+        },
+        {
+          "era": "Family era",
+          "title": "A household of five",
+          "detail": "Wally and Linda’s family includes Jai, Irey and Wade; ordinary work and parenting continue alongside heroism.",
+          "sourceIds": [
+            "W09",
+            "W11"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Debuts",
+          "title": "Person, sidekick and mantle",
+          "detail": "The Flash #110 (1959) introduces Wally as Kid Flash. His assumption of the Flash identity belongs to Crisis on Infinite Earths #12, not his first appearance.",
+          "sourceIds": [
+            "W01",
+            "W03"
+          ]
+        },
+        {
+          "era": "Identity",
+          "title": "Wally and Wallace are distinct",
+          "detail": "The original Wally and the younger Wallace are cousins. A shared first name in earlier descriptions does not justify merging their families or adventures.",
+          "sourceIds": [
+            "W07"
+          ]
+        },
+        {
+          "era": "Restoration",
+          "title": "Rebirth is not a universal reset button",
+          "detail": "His 2016 rescue and recovery of family life happen in stages. Do not write every relationship as fully restored at the instant Barry remembers him.",
+          "sourceIds": [
+            "W08"
+          ]
+        },
+        {
+          "era": "Alternate world",
+          "title": "Absolute Flash is not this biography",
+          "detail": "Absolute Universe Wally has a different teenage life and setting. Its origin should be read independently.",
+          "sourceIds": [
+            "W12"
+          ]
         }
       ]
     },
@@ -48981,52 +50223,93 @@ window.COMIC_VAULT_CHARACTERS = [
         }
       ]
     },
-    "continuityNote": "This profile is the original Wally West, who debuted in 1959 and later became the Flash. Wallace West, the younger speedster introduced during the New 52 era and later known as Kid Flash, is a separate character and should not be merged into this record. Wally’s 2016 return restored relationships and history that had been removed or altered after Flashpoint.",
+    "continuityNote": "This dossier keeps the character’s life separate from publication and origin revisions. Open History → Continuity File for the applicable versions and debut distinctions.",
     "auditCorrections": [
       "v8.44 research pass clarified Wally’s Kid Flash debut and first assumption of the Flash mantle in Crisis on Infinite Earths #12.",
       "Added the documented 1994 introduction of the Speed Force concept during Wally’s Flash era and the Linda Park anchor milestone.",
-      "Replaced generic family-protection origin prose with a legacy-specific account of Wally’s growth from admirer to successor."
+      "Replaced generic family-protection origin prose with a legacy-specific account of Wally’s growth from admirer to successor.",
+      "v8.47: character-first R2; life timeline, scoped powers and relationships, separate continuity file, annotated reading and traceable source IDs."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
     "identity": "Public or secret status varies by era",
     "audit": {
-      "status": "Deep audited",
-      "batch": "W1",
-      "date": "2026-09-02",
-      "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
+      "status": "Source-reviewed dossier",
+      "batch": "R2",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks."
     },
     "auditSources": [
-      "DC — The Flash: Born to Run",
+      "DC — The Flash: official character profile",
+      "DC — Wally West Comes of Age in Born to Run",
+      "DC — Catching Up with the Flashes",
       "DC — The Speed Force Explained",
-      "DC — Return of a Long-Lost Flash / DC Universe: Rebirth"
+      "DC — The Flash by Mark Waid Book Two",
+      "DC — The Flash by Mark Waid Book Four",
+      "DC — Who Is Wallace West?",
+      "DC — The Man Who Made Wally West Disappear",
+      "DC — The Sensational Character Finds of 2023",
+      "DC — The Flash: Strange Attractor",
+      "DC — The Flash #772",
+      "DC — Absolute Flash: Of Two Worlds",
+      "DC — The Flash: Born to Run collection"
     ],
     "originProfile": {
-      "originLossMotivation": "Wally begins as a fan before he becomes a successor. As a boy visiting Barry Allen, he experiences a near-repeat of Barry’s laboratory accident and becomes Kid Flash, gaining not only speed but direct access to the hero he idolizes. That relationship gives Wally confidence and purpose, but Barry’s death in Crisis on Infinite Earths removes the safety of being the junior partner. Taking the Flash name means accepting a legacy that initially feels larger than he is.\n\nWally’s post-Crisis career is therefore a prolonged coming-of-age story. He has to stop measuring himself against an idealized Barry and learn that honoring his mentor does not mean reproducing him. Mark Waid’s run makes that growth central and, during Wally’s era, introduces the Speed Force as the larger source and mythology behind speedsters. Wally’s connection to it becomes both physical and emotional: when he is pulled beyond ordinary life, Linda Park is the person who gives him a reason to return.\n\nHis later marriage to Linda and life with Jai and Irey expand the same idea. Wally is at his best when speed is not an escape from ordinary attachments but a way to protect a life he genuinely wants to remain part of. His legacy is the transformation of a sidekick into a peer—and eventually into a mentor and family patriarch within the Flash line.\n\nLinda Park becomes essential to that maturation. Their relationship gives Wally an emotional anchor outside superhero succession, and stories such as Terminal Velocity make the bond literal when his connection to Linda helps pull him back from the Speed Force. Marriage and the arrival of Jai and Irey transform him again—from sidekick to successor to husband, father and mentor. Wally’s speed can separate him from ordinary time, but the people he loves repeatedly give him a reason to remain part of ordinary life.\n\nBarry’s eventual return creates a final test of Wally’s independence: the mentor whose death forced him to grow is alive again. Later continuity changes even remove Wally from the world and from the memories of those closest to him, making his Rebirth return a story about recognition and belonging as much as superhero continuity. Wally’s legacy is therefore larger than “the Flash who replaced Barry.” He proves that a successor can inherit a mantle, transform its mythology and become a defining version of the hero without diminishing the person who came before.",
+      "originLossMotivation": "Wally grew up in Blue Valley looking toward a world that seemed larger and kinder than the one he knew at home. His aunt Iris brought him to Central City, where meeting the Flash turned a childhood fascination into something personal. Barry Allen was not simply an exciting figure in a red suit: he was an adult who made room for Wally. When lightning and chemicals gave the boy super-speed, Barry’s guidance helped turn an impossible accident into the beginning of a life as Kid Flash.\n\nBeing Kid Flash meant learning more than how to run. Wally had to think about the people around him, work beside a mentor and accept that excitement did not excuse carelessness. His life with the Teen Titans widened that education. With young heroes such as Dick Grayson and Donna Troy, he belonged to a generation growing beyond its sidekick roles. Barry remained his inspiration, but friends who knew his doubts helped give Wally a sense of himself outside the older hero’s shadow.\n\nBarry’s death during the Crisis left Wally with grief and a responsibility he did not initially feel ready to carry. Taking the Flash name meant protecting people who expected the familiar symbol to mean safety, while living with the absence of the man who had made it matter to him. His early speed was more restricted than Barry’s. Becoming the Flash was therefore not a simple costume change: he had to learn what he could do, survive his mistakes and stop treating growth as disloyalty to his mentor.\n\nThe apparent return of Barry tested that progress. Instead of offering uncomplicated reassurance, the returning figure behaved in ways that forced Wally to question what he was seeing. Facing that crisis helped establish that the younger Flash could defend the legacy rather than merely inherit it. Other speedsters, including Max Mercury, helped him understand the Speed Force as something deeper than a set of fast muscles. Wally’s increasing mastery came through difficult experiences, not an automatic promise that every race or fight would be easy.\n\nLinda Park became central to the life he wanted to return to. Their relationship gave his adventures a destination beyond victory: a future with another person. His connection to her is bound up with his ability to return from the Speed Force, where running farther can mean losing touch with ordinary life. As their family grew, protecting the world also meant protecting the conditions in which their children could grow up. Wally’s responsibilities expanded from following a mentor to being someone his own children could rely on.\n\nWhen Wally was lost outside the altered timeline, the pain was not simply being absent from a team. People he remembered loving could no longer remember the life they had shared. Barry recognized and rescued him, but that did not immediately restore everything. Returning to friends and to a Linda who did not remember their marriage demanded a different kind of endurance. The Titans helped investigate what had happened, while Wally tried to recover a place among people whose missing memories he could not simply outrun.\n\nHis later life again includes Linda, their twins Jai and Irey, and their youngest child, Wade. Fatherhood and work remain real obligations even when extraordinary threats interrupt them. More recent Speed Force experiences also take him beyond familiar ideas about speed and distance, leaving him to solve problems raw acceleration cannot explain. Wally’s identity is strongest when those sides of his life stay connected: a hero capable of astonishing movement, a husband who must listen, and a father whose presence matters as much as his power.",
       "powerOrigin": {
-        "type": "Accident / Speed Force Connection",
-        "detail": "Wally originally gains super-speed through a lightning-and-chemicals accident modeled on Barry Allen’s origin. Later Flash mythology connects that power to the Speed Force, a plane and energy source first explicitly introduced during Wally’s tenure as the Flash. His mature abilities extend well beyond running speed and include vibration/phasing, accelerated perception, Speed Force travel, and—in some stories—the ability to transfer or drain kinetic speed from others."
+        "type": "Lightning / chemicals and the Speed Force",
+        "detail": "The childhood accident gives Wally access to super-speed. Later experience deepens his Speed Force connection; maximum feats and temporary restrictions belong to particular stories."
       },
       "importantPeople": [
-        "The Flash / Barry Allen — mentor, uncle by marriage and predecessor",
-        "Linda Park — wife and emotional anchor",
-        "Jai West — son",
-        "Irey West — daughter and speedster legacy",
-        "Nightwing / Dick Grayson — lifelong Titan peer",
-        "Titans — formative chosen family"
+        "The Flash / Barry Allen — mentor, family and fellow Flash",
+        "Iris West — aunt and childhood support",
+        "Linda Park — wife",
+        "Jai, Irey and Wade West — children",
+        "Donna Troy and Nightwing — enduring Titans friendships"
       ],
-      "coreDrive": "To honor the people who inspired him without living as their imitation. Wally’s defining growth comes from accepting that he deserves the Flash name as himself, while remaining emotionally connected to Linda, his children, the Titans and the wider Flash Family.",
-      "standard": "Comic Vault Expanded Origin Standard v2 — Researched",
+      "coreDrive": "Protect his community without losing the family and friendships that make returning home matter.",
+      "standard": "Character-first dossier / source-reviewed R2",
       "manualDeepDive": true,
-      "profilePass": "R1-Expanded",
-      "profileUpdatedThrough": 400
+      "profilePass": "R2 — v8.47",
+      "profileUpdatedThrough": 400,
+      "paragraphSources": [
+        [
+          "W02",
+          "W13"
+        ],
+        [
+          "W01",
+          "W13"
+        ],
+        [
+          "W03"
+        ],
+        [
+          "W05",
+          "W04"
+        ],
+        [
+          "W04",
+          "W06",
+          "W11"
+        ],
+        [
+          "W07",
+          "W08"
+        ],
+        [
+          "W09",
+          "W10",
+          "W11"
+        ]
+      ]
     },
     "attributeAudit": {
-      "status": "Deep Vetted",
-      "date": "2026-09-04",
-      "method": "Second-pass capability audit: direct power wording, physical-tier normalization, N/A validation, cross-attribute consistency, and curated canon anchors",
+      "status": "Editorial estimate / selected contradictions corrected",
+      "date": "2026-09-06",
+      "method": "No full re-ranking. Donna recovery, Billy champion durability and Bizarro energy projection corrected where the displayed capabilities contradicted N/A or low values; all other numerical ratings retained pending a separate rubric audit.",
       "scale": "1–5; N/A reserved for capabilities the character does not possess",
-      "version": "v8.19"
+      "version": "v8.47"
     },
     "dataAudit": {
       "status": "Sweep 3 structural QA checked",
@@ -49041,37 +50324,219 @@ window.COMIC_VAULT_CHARACTERS = [
       "focus": "Identity, continuity, overview/history depth, relationships, reading, equipment, attributes, and internal consistency."
     },
     "relationshipGroups": {
-      "FAMILY & CLOSE RELATIONS": [
-        "Linda Park — wife",
-        "Jai West — son",
-        "Irey West — daughter"
+      "MENTORS & COLLEAGUES": [
+        "The Flash / Barry Allen — mentor and fellow Flash",
+        "Max Mercury — Speed Force mentor",
+        "Nightwing / Dick Grayson — longtime Titan and friend"
       ],
-      "KEY ALLIES": [
-        "Barry Allen",
-        "Linda Park",
-        "Titans"
-      ],
-      "KEY RIVALS / ENEMIES": [
-        "Zoom",
-        "The Rogues",
-        "Savitar"
+      "ADVERSARIES": [
+        "Zoom / Hunter Zolomon — personal adversary",
+        "Savitar — Speed Force adversary",
+        "The Rogues — recurring criminal opponents"
       ]
     },
     "researchSources": [
       {
-        "label": "DC — The Flash: Born to Run",
-        "url": "https://www.dc.com/graphic-novels/the-flash-1987/the-flash-born-to-run"
+        "id": "W01",
+        "label": "DC — The Flash: official character profile",
+        "url": "https://www.dc.com/characters/the-flash",
+        "kind": "Publisher reference",
+        "note": "Legacy and broad speedster abilities; distinguishes Barry and Wally in its biography.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       },
       {
+        "id": "W02",
+        "label": "DC — Wally West Comes of Age in Born to Run",
+        "url": "https://www.dc.com/blog/2026-05-15/wally-west-comes-of-age-in-the-flash-born-to-run",
+        "kind": "Publisher editorial",
+        "note": "Childhood, Iris, Barry and the origin story in The Flash #62–65.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W03",
+        "label": "DC — Catching Up with the Flashes",
+        "url": "https://www.dc.com/blog/2014/10/02/catching-up-with-the-flashes",
+        "kind": "Publisher editorial",
+        "note": "Used only for classic succession and early limitations. Its then-current New 52 identity discussion is superseded by the separately cited Wallace explanation.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W04",
         "label": "DC — The Speed Force Explained",
-        "url": "https://www.dc.com/blog/2023/04/11/the-speed-force-explained"
+        "url": "https://www.dc.com/blog/2023/04/11/the-speed-force-explained",
+        "kind": "Publisher editorial",
+        "note": "Speed Force connection and Linda’s role; theoretical origins vary by era.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       },
       {
-        "label": "DC — The Return of a Long-Lost Flash",
-        "url": "https://www.dc.com/blog/2016/05/23/the-return-of-a-long-lost-flash-to-the-dc-universe"
+        "id": "W05",
+        "label": "DC — The Flash by Mark Waid Book Two",
+        "url": "https://www.dc.com/graphic-novels/the-flash-by-mark-waid-2016/the-flash-by-mark-waid-book-two",
+        "kind": "Publisher catalog",
+        "note": "The Return of Barry Allen era and collection range.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W06",
+        "label": "DC — The Flash by Mark Waid Book Four",
+        "url": "https://www.dc.com/graphic-novels/the-flash-by-mark-waid-2016/the-flash-by-mark-waid-book-four",
+        "kind": "Publisher catalog",
+        "note": "Terminal Velocity-era collection, Flash #0 and #95–105 plus Annual #8.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W07",
+        "label": "DC — Who Is Wallace West?",
+        "url": "https://www.dc.com/blog/2022/02/23/who-is-wallace-west-a-k-a-why-are-there-two-wally-wests",
+        "kind": "Publisher editorial",
+        "note": "Separate cousins and the original Wally’s Rebirth rescue.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W08",
+        "label": "DC — The Man Who Made Wally West Disappear",
+        "url": "https://www.dc.com/blog/2016/07/29/this-just-happened-the-man-who-made-wally-west-disappear",
+        "kind": "Publisher story recap",
+        "note": "Wally’s return, the Titans’ investigation and Linda’s missing memories.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W09",
+        "label": "DC — The Sensational Character Finds of 2023",
+        "url": "https://www.dc.com/blog/2023/12/21/the-sensational-character-finds-of-2023",
+        "kind": "Publisher editorial",
+        "note": "Wade West, the third child, and the pregnancy-era story.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W10",
+        "label": "DC — The Flash: Strange Attractor",
+        "url": "https://www.dc.com/blog/2024/08/02/super-speed-induces-vertigo-in-the-flash-strange-attractor",
+        "kind": "Publisher editorial",
+        "note": "Reunited family, newer Speed Force problems and the changing domestic situation.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W11",
+        "label": "DC — The Flash #772",
+        "url": "https://www.dc.com/comics/the-flash-2016/the-flash-772",
+        "kind": "Publisher catalog",
+        "note": "Wally’s return to everyday work and family life.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W12",
+        "label": "DC — Absolute Flash: Of Two Worlds",
+        "url": "https://www.dc.com/blog/2026-01-23/absolute-flash-vol-1-of-two-worlds-will-leave-your-heart-racing",
+        "kind": "Publisher editorial",
+        "note": "The Absolute Universe Wally is a separate continuity, not another childhood for this record.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
+      },
+      {
+        "id": "W13",
+        "label": "DC — The Flash: Born to Run collection",
+        "url": "https://www.dc.com/graphic-novels/the-flash-1987/the-flash-born-to-run",
+        "kind": "Publisher catalog",
+        "note": "Origin collection and the boy-to-successor arc.",
+        "access": "Public page text or search-indexed extract; full comics not accessed in this review"
       }
     ],
-    "researchUpdated": "2026-09-06"
+    "researchUpdated": "2026-09-06",
+    "researchScope": "The original main-universe Wally West. Wallace West / Kid Flash and Absolute Universe Wally are separate people or continuity versions, not interchangeable biographies.",
+    "powerDetails": [
+      {
+        "title": "Super-speed and reactions",
+        "detail": "His speed affects movement, perception and coordinated action. He can respond and perform tasks on timescales ordinary people cannot follow; a single fixed miles-per-hour statistic would misrepresent the range of stories.",
+        "sourceIds": [
+          "W01"
+        ]
+      },
+      {
+        "title": "Speed Force techniques",
+        "detail": "Wally’s connection permits extraordinary movement beyond conventional running. Phasing, dimensional or temporal travel and manipulation of motion require the relevant circumstances; they are not interchangeable with physical invulnerability.",
+        "sourceIds": [
+          "W01",
+          "W04"
+        ]
+      },
+      {
+        "title": "Experience before spectacle",
+        "detail": "He has operated under reduced powers as well as at extraordinary peaks. His practical knowledge of rescue work and opponents matters when access, control or circumstances prevent a simple maximum-speed solution.",
+        "sourceIds": [
+          "W03",
+          "W10"
+        ]
+      },
+      {
+        "title": "Protection and limitations",
+        "detail": "Speedster durability is not the same as Superman’s body. This dossier treats protection associated with high-speed movement separately from immunity to every attack. Family ties are important to his story, not a guarantee that he can always escape the Speed Force.",
+        "sourceIds": [
+          "W04",
+          "W10"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "The Flash: Born to Run — #62–65",
+        "scope": "Origin / accessible starting point",
+        "why": "Meet Wally as a child and understand what Barry and Iris mean to him.",
+        "sourceIds": [
+          "W02",
+          "W13"
+        ]
+      },
+      {
+        "title": "The Flash by Mark Waid Book Two",
+        "scope": "Legacy / Return of Barry Allen",
+        "why": "Follow the test of whether Wally can stand as the Flash himself.",
+        "sourceIds": [
+          "W05"
+        ]
+      },
+      {
+        "title": "The Flash by Mark Waid Book Four",
+        "scope": "Speed Force / Terminal Velocity era",
+        "why": "Move deeper into his powers and his connection to Linda.",
+        "sourceIds": [
+          "W06"
+        ]
+      },
+      {
+        "title": "DC Universe: Rebirth #1; Titans (2016)",
+        "scope": "Return / altered memories",
+        "why": "Read the rescue and its aftermath as a sequence, not a clean restoration of everything.",
+        "sourceIds": [
+          "W07",
+          "W08"
+        ]
+      },
+      {
+        "title": "The Flash #772 onward — Jeremy Adams era",
+        "scope": "Family and everyday life",
+        "why": "A useful route into Wally as a working hero, husband and father.",
+        "sourceIds": [
+          "W11",
+          "W09"
+        ]
+      },
+      {
+        "title": "The Flash Vol. 1: Strange Attractor",
+        "scope": "Later era / unusual Speed Force threats",
+        "why": "A less conventional follow-up once the family and legacy foundations are familiar.",
+        "sourceIds": [
+          "W10"
+        ]
+      }
+    ],
+    "researchReview": {
+      "batch": "R2",
+      "version": "v8.47",
+      "date": "2026-09-06",
+      "method": "Character-first biography, capability explanations, scoped relationships and continuity; publisher references and catalog checks.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Reading-path choices and motivation synthesis are Comic Vault editorial interpretation. Source check date does not mean every issue released by that date is covered."
+    },
+    "attributeContext": "Comic Vault editorial estimates, not official measurements or definitive battle rankings. Ratings describe a representative portrayal; temporary peaks, altered forms and continuity changes can differ."
   },
   {
     "name": "War Machine",
@@ -86560,6 +88025,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(!raw) return null;
     const identityPart = raw.split(/\s+—\s+/)[0].trim();
     const key = identityPart.toLowerCase();
+    if(activeCharacter?.unlinkedRelationshipIdentities?.some(x=>x.toLowerCase()===key)) return null;
 
     let match = characters.find(c=>c.name.toLowerCase()===key);
     if(match) return match;
@@ -87235,6 +88701,58 @@ window.COMIC_VAULT_AUDIT_LOG = [
     ).join("")}</span>`;
   }
 
+
+  // R2 additions are opt-in per dossier. Legacy records retain their existing rendering.
+  function researchSourceLinks(c, ids){
+    if(!Array.isArray(ids) || !ids.length) return "";
+    const sources = new Map((c.researchSources || []).map(x=>[x.id,x]));
+    const links = [...new Set(ids)].map(id=>{
+      const source=sources.get(id);
+      if(!source || !/^https?:\/\//i.test(source.url || "")) return "";
+      return `<a href="${esc(source.url)}" target="_blank" rel="noopener noreferrer" title="${esc(source.label)}" aria-label="${esc('Reference '+id+': '+source.label+' (opens in a new tab)')}">[${esc(id)}]</a>`;
+    }).join(" ");
+    return links ? `<span class="cv-source-cites">${links}</span>` : "";
+  }
+
+  function researchedOriginMarkup(c, text){
+    if(!c.researchReview) return storyParagraphs(text);
+    const ids=c.originProfile?.paragraphSources || [];
+    return String(text || "").split(/\n\s*\n/).filter(Boolean)
+      .map((p,i)=>`<p>${esc(p)} ${researchSourceLinks(c,ids[i])}</p>`).join("");
+  }
+
+  function researchSourcePanel(c){
+    if(!Array.isArray(c.researchSources) || !c.researchSources.length) return "";
+    if(!c.researchReview){
+      return `<div class="research-source-panel"><h3>Research Sources</h3><div class="research-source-list">${c.researchSources.map(src=>`<a href="${esc(src.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(src.label)}</strong><span>OPEN SOURCE ↗</span></a>`).join("")}</div></div>`;
+    }
+    return `<details class="cv-research-evidence">
+      <summary>Research sources & scope <span>${c.researchSources.length} references · checked ${esc(c.researchUpdated)}</span></summary>
+      <p class="cv-research-limit">${esc(c.researchReview.limits)}</p>
+      <div class="cv-evidence-list">${c.researchSources.map(src=>`
+        <article class="cv-evidence-item">
+          <span class="cv-evidence-kind">${esc(src.id)} // ${esc(src.kind)}</span>
+          <a href="${esc(src.url)}" target="_blank" rel="noopener noreferrer">${esc(src.label)} ↗</a>
+          <p>${esc(src.note)}</p><small>${esc(src.access)}</small>
+        </article>`).join("")}</div>
+    </details>`;
+  }
+
+  function researchedPowersMarkup(c){
+    if(!Array.isArray(c.powerDetails)) return "";
+    return `<div class="cv-research-blocks">${c.powerDetails.map(p=>`
+      <article class="cv-research-block"><h4>${esc(p.title)}</h4><p>${esc(p.detail)} ${researchSourceLinks(c,p.sourceIds)}</p></article>`).join("")}</div>`;
+  }
+
+  function researchedReadingMarkup(c){
+    return `<section class="body-section"><div class="section-kicker">CURATED READING PATH</div>
+      <h3>Start Reading</h3><p>Choose a starting point by interest and era. These reading-path choices are Comic Vault recommendations, not a claim that every issue has been reviewed in full.</p>
+      <div class="cv-research-blocks">${c.readingGuide.map((r,i)=>`
+        <article class="cv-research-block"><span class="cv-evidence-kind">${String(i+1).padStart(2,"0")} // ${esc(r.scope)}</span>
+        <h4>${esc(r.title)}</h4><p>${esc(r.why)} ${researchSourceLinks(c,r.sourceIds)}</p></article>`).join("")}</div>
+    </section>`;
+  }
+
   function renderProfileBody(){
     const c = activeCharacter;
     const attributeGroups = [
@@ -87309,16 +88827,17 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.45</b></span>
-          ${c.audit ? `<div class="audit-badge"><span>✓ DEEP AUDITED + ORIGIN EXPANDED</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.47</b></span>
+          ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "✓ DEEP AUDITED + ORIGIN EXPANDED"}</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
+          ${c.researchScope ? `<div class="cv-dossier-scope"><strong>DOSSIER SCOPE</strong><span>${esc(c.researchScope)}</span></div>` : ""}
         </section>
 
         <section class="body-section origin-dossier origin-dossier-v81">
-          <div class="section-kicker">EXPANDED ORIGIN FILE // v1 STANDARD</div>
+          <div class="section-kicker">${c.researchReview ? "CHARACTER FILE // LIFE & IDENTITY" : "EXPANDED ORIGIN FILE // v1 STANDARD"}</div>
           <h3>Origin, Loss & Motivation</h3>
-          <div class="origin-story-copy">${storyParagraphs(expandedOriginStory(c, originDeep.story))}</div>
+          <div class="origin-story-copy">${researchedOriginMarkup(c, expandedOriginStory(c, originDeep.story))}</div>
           <div class="origin-standard-grid">
             <article class="origin-standard-card origin-power">
               <span class="origin-standard-label">POWER ORIGIN</span>
@@ -87333,7 +88852,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
               <span class="origin-standard-label">CORE DRIVE</span>
               <p>${esc(originDeep.drive)}</p>
             </article>
-            ${c.continuityNote && !/core identity, debut, power origin|this profile was reviewed for identity|no major mantle\/identity correction/i.test(String(c.continuityNote)) ? `
+            ${!c.researchReview && c.continuityNote && !/core identity, debut, power origin|this profile was reviewed for identity|no major mantle\/identity correction/i.test(String(c.continuityNote)) ? `
             <article class="origin-standard-card origin-continuity">
               <span class="origin-standard-label">CONTINUITY NOTE</span>
               <p>${esc(c.continuityNote)}</p>
@@ -87377,7 +88896,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
           </div>
         </section>` : ""}
 
-        ${c.continuityNote && !/core identity, debut, power origin|this profile was reviewed for identity|no major mantle\/identity correction/i.test(String(c.continuityNote)) ? `
+        ${!c.researchReview && c.continuityNote && !/core identity, debut, power origin|this profile was reviewed for identity|no major mantle\/identity correction/i.test(String(c.continuityNote)) ? `
         <section class="body-section canon-note">
           <div class="section-kicker">CANON CONTROL</div>
           <h3>Continuity & Canon Notes</h3>
@@ -87395,7 +88914,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
         </section>
 
         <section class="body-section"><h3>Primary Capabilities</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></section>
-        <section class="body-section attribute-matrix-card"><h3>Attribute Matrix</h3><span class="attribute-audit-chip">✓ DEEP VETTED</span><div class="attribute-list">${attrs}</div></section>
+        <section class="body-section attribute-matrix-card"><h3>Attribute Matrix</h3><span class="attribute-audit-chip">${c.researchReview ? "EDITORIAL RATINGS" : "✓ DEEP VETTED"}</span>${c.attributeContext ? `<p class="cv-attribute-context">${esc(c.attributeContext)}</p>` : ""}<div class="attribute-list">${attrs}</div></section>
 
         <section class="body-section storyline-index">
           <div class="section-kicker">HISTORY SNAPSHOT</div>
@@ -87414,27 +88933,19 @@ window.COMIC_VAULT_AUDIT_LOG = [
       const categories = Object.entries(c.continuities || {});
       profileBody.innerHTML = `
         <section class="body-section">
-          <h3>Character History Timeline</h3>
-          <p>Continuities are separated so comic history never gets mixed with film, television, animation or game versions.</p>
+          <h3>${c.researchReview ? "Life, Career & Continuity" : "Character History Timeline"}</h3>
+          <p>${c.researchReview ? "Life & Career follows the character’s experiences. The Continuity File separately explains alternate origins, shared identities and publication distinctions." : "Continuities are separated so comic history never gets mixed with film, television, animation or game versions."}</p>
           <div class="continuity-tabs" id="continuityTabs">
             ${categories.map(([name],i)=>`<button class="${i===0?"active":""}" data-continuity="${esc(name)}">${esc(name)}</button>`).join("")}
           </div>
           <div id="continuityTimeline"></div>
-          ${Array.isArray(c.researchSources) && c.researchSources.length ? `
-          <div class="research-source-panel">
-            <div class="section-kicker">RESEARCH PROVENANCE // ${esc(c.researchUpdated || "")}</div>
-            <h3>Research Sources</h3>
-            <p>Primary publisher and bibliographic references used for this deep-profile pass.</p>
-            <div class="research-source-list">
-              ${c.researchSources.map(src=>`<a href="${esc(src.url)}" target="_blank" rel="noopener noreferrer"><strong>${esc(src.label)}</strong><span>OPEN SOURCE ↗</span></a>`).join("")}
-            </div>
-          </div>` : ``}
+          ${researchSourcePanel(c)}
         </section>`;
       renderContinuity(categories[0]?.[0] || "Main Comics");
     } else if(activeTab==="powers"){
       profileBody.innerHTML = `
-        <section class="body-section"><h3>Powers & Skills</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></section>
-        <section class="body-section attribute-matrix-card"><h3>Attribute Matrix</h3><div class="attribute-list">${attrs}</div></section>`;
+        <section class="body-section"><h3>Powers & Skills</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div>${researchedPowersMarkup(c)}</section>
+        <section class="body-section attribute-matrix-card"><h3>Attribute Matrix</h3>${c.attributeContext ? `<p class="cv-attribute-context">${esc(c.attributeContext)}</p>` : ""}<div class="attribute-list">${attrs}</div></section>`;
     } else if(activeTab==="allies"){
       profileBody.innerHTML = relationSection("Known Allies",c.allies);
     } else if(activeTab==="enemies"){
@@ -87443,7 +88954,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
       const cats = Object.entries(c.costumeCategories || {"Main Comics":[]});
       profileBody.innerHTML = `
         <section class="body-section"><h3>Costume & Form Archive</h3>
-          <p>Browse designs by continuity instead of mixing every interpretation into one timeline.</p>
+          <p>${c.researchReview ? "Era notes use the same approved representative artwork; these are not separate verified costume illustrations." : "Browse designs by continuity instead of mixing every interpretation into one timeline."}</p>
           <div class="continuity-tabs" id="costumeTabs">
             ${cats.map(([name],i)=>`<button class="${i===0?"active":""}" data-costume-category="${esc(name)}">${esc(name)}</button>`).join("")}
           </div>
@@ -87465,6 +88976,10 @@ window.COMIC_VAULT_AUDIT_LOG = [
           </div>
         </section>`;
     } else if(activeTab==="comics"){
+      if(Array.isArray(c.readingGuide)){
+        profileBody.innerHTML=researchedReadingMarkup(c);
+        return;
+      }
       profileBody.innerHTML = `
         <section class="body-section"><h3>Recommended Comic Files</h3><p>A curated starter reading list. Later we can add issue ranges, creators, publication dates, continuity labels and your personal reading status.</p>
           <div class="comic-list">${c.comics.map((x,i)=>`<div class="comic-item"><strong>${String(i+1).padStart(2,"0")} // ${esc(x)}</strong><span>Reading recommendation</span></div>`).join("")}</div>
@@ -87477,12 +88992,12 @@ window.COMIC_VAULT_AUDIT_LOG = [
     const items = (activeCharacter.continuities || {})[name] || [];
     host.innerHTML = `<div class="timeline">${items.map(item=>`
       <div class="timeline-event">
-        <button class="timeline-head">
+        <button class="timeline-head" type="button" aria-expanded="false">
           <span class="timeline-year">${esc(item.era)}</span>
           <span class="timeline-title">${esc(item.title)}</span>
           <span>＋</span>
         </button>
-        <div class="timeline-copy">${esc(item.detail)}</div>
+        <div class="timeline-copy">${esc(item.detail)} ${researchSourceLinks(activeCharacter,item.sourceIds)}</div>
       </div>`).join("")}</div>`;
   }
 
@@ -87506,8 +89021,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function relationSection(title,items){
     if(!items.length) return `<section class="body-section"><h3>${esc(title)}</h3><p>No relationship files have been added yet.</p></section>`;
     return `<section class="body-section"><h3>${esc(title)}</h3><p>Tap any character already in the archive to jump directly to that dossier.</p><div class="tag-list">${items.map(name=>{
-      const linked = !!byName(name);
-      return `<button class="tag ${linked?"link-tag":""}" ${linked?`data-related="${esc(name)}"`:""}>${esc(name)}</button>`;
+      const target = activeCharacter?.researchReview ? resolveCharacterReference(name) : byName(name);
+      const linked = !!target;
+      return `<button class="tag ${linked?"link-tag":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(name)}</button>`;
     }).join("")}</div></section>`;
   }
 
@@ -87540,7 +89056,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(e.target.closest("[data-close-sheet]")) closeProfile();
     if(e.target.closest("[data-close-menu]")) closeMenu();
     const th = e.target.closest(".timeline-head");
-    if(th){ th.parentElement.classList.toggle("open"); th.querySelector("span:last-child").textContent = th.parentElement.classList.contains("open") ? "−" : "＋"; return; }
+    if(th){ const expanded=th.parentElement.classList.toggle("open"); th.setAttribute("aria-expanded",String(expanded)); th.querySelector("span:last-child").textContent = expanded ? "−" : "＋"; return; }
 
     const continuity = e.target.closest("[data-continuity]");
     if(continuity){
