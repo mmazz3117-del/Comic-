@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.53: CHARACTER-FIRST RESEARCH BATCH R8 — 400 SOURCE-REVIEWED DOSSIERS -->
+  <!-- Comic Vault v8.54: CONNECTIONS & LEGACY PILOT — 15 DOSSIERS / 20 REVIEWED RELATIONSHIPS -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4735,6 +4735,96 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 @media(max-width:620px){.cv-reading-tools{margin:16px 18px 0;padding:10px 13px;gap:8px}}
 @media(prefers-reduced-motion:reduce){.cv-switch-track:before{transition:none}}
 </style>
+<style id="cvxStyles">
+/* v8.54: scoped Connections & Legacy UI. Existing art and layout rules unchanged. */
+.cvx-home-entry{display:flex;align-items:center;justify-content:center;gap:12px;width:min(100% - 36px,780px);margin:18px auto 0;padding:15px 18px;border:1px solid #30465c;border-radius:10px;background:linear-gradient(110deg,#101f31,#0c1520);color:#eff6ff;font:600 12px/1.4 Inter,system-ui,sans-serif;cursor:pointer;position:relative;z-index:2;text-align:left}
+.cvx-home-entry span{display:grid;gap:3px}.cvx-home-entry small{font-size:10px;color:#9eb5cc;font-weight:400}.cvx-home-entry b{color:#9cd3ff;font-size:20px}.cvx-home-entry em{margin-left:auto;font-size:9px;letter-spacing:.12em;font-style:normal;color:#a6c8e8}
+.cvx-dossier-entry{display:block;width:fit-content;max-width:100%;margin-top:10px;padding:10px 12px;min-height:44px;border:1px solid #466580;background:#101f30;border-radius:8px;font:600 10px/1.5 Inter,system-ui,sans-serif;letter-spacing:.04em;color:#c3e4ff;cursor:pointer;text-align:left}.cvx-dossier-entry[hidden]{display:none!important}
+.cvx-dialog,.cvx-preview{--cx-ink:#edf4fc;--cx-muted:#a1b3c8;--cx-line:#2e4358;--cx-panel:#111e2c;--cx-accent:#80c9ff;box-sizing:border-box;color:var(--cx-ink);font-family:Inter,system-ui,sans-serif;background:#09121d;border:1px solid #36516d;box-shadow:0 24px 100px #0009;padding:0}
+.cvx-dialog *, .cvx-preview *{box-sizing:border-box}
+.cvx-dialog{width:min(1240px,calc(100vw - 32px));height:min(980px,calc(100dvh - 32px));max-width:none;max-height:none;border-radius:20px;margin:auto;overflow:hidden}
+.cvx-dialog::backdrop{background:rgba(0,5,13,.85)}
+.cvx-dialog:not([open]),.cvx-preview:not([open]){display:none!important}
+.cvx-frame{height:100%;display:flex;flex-direction:column;min-height:0}
+.cvx-header{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 24px;border-bottom:1px solid #26394c;background:#0b1724;flex-shrink:0}
+.cvx-kicker{display:block;color:#94b7d5;font-size:10px;letter-spacing:.16em;font-weight:600;line-height:1.6}
+.cvx-header h2{font-family:'Barlow Condensed',Inter,sans-serif;font-weight:700;letter-spacing:.03em;font-size:30px;line-height:1.15;margin:3px 0 0;color:#f4f8ff}
+.cvx-close{flex-shrink:0;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid #33495f;background:#111e2b;border-radius:50%;color:#d9eafa;font-size:27px;line-height:1;cursor:pointer}
+.cvx-scroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;padding:22px 26px 28px;scrollbar-gutter:stable}
+.cvx-intro{margin:0 0 18px;color:var(--cx-muted);font-size:13px;line-height:1.7;max-width:740px}
+.cvx-toolbar{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.cvx-segment{display:inline-flex;gap:3px;border:1px solid #2f455b;padding:4px;border-radius:10px;background:#08111c;max-width:100%}
+.cvx-segment button{min-height:40px;padding:9px 17px;border:0;border-radius:7px;background:none;color:#adc0d4;font-size:12px;font-weight:600;font-family:inherit;cursor:pointer;line-height:1.3}
+.cvx-segment button[aria-pressed="true"]{color:#ecf8ff;background:#21435f;box-shadow:inset 0 0 0 1px #426a8a}
+.cvx-reading-toggle{display:inline-flex;align-items:center;gap:10px;color:#c7d7e8;font-size:12px;min-height:44px;cursor:pointer;position:relative}
+.cvx-reading-toggle input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;z-index:1}
+.cvx-toggle-track{width:36px;height:22px;border-radius:999px;border:1px solid #69829a;background:#2a3b4d;position:relative;flex-shrink:0}
+.cvx-toggle-track:after{content:'';position:absolute;left:3px;top:3px;width:14px;height:14px;border-radius:50%;background:#e7f3ff;transition:transform .15s ease}
+.cvx-reading-toggle input:checked+.cvx-toggle-track{background:#285c85;border-color:#8bc6f0}
+.cvx-reading-toggle input:checked+.cvx-toggle-track:after{transform:translateX(14px)}
+.cvx-reading-toggle input:focus-visible+.cvx-toggle-track{outline:3px solid #b5dfff;outline-offset:4px}
+.cvx-control-row{display:flex;align-items:end;justify-content:space-between;gap:14px;margin:10px 0 14px;flex-wrap:wrap}
+.cvx-select-label{display:grid;gap:6px;font-size:10px;letter-spacing:.1em;color:#9db5cc;font-weight:600;flex:1;max-width:340px;min-width:180px}
+.cvx-select-label select{min-height:44px;width:100%;padding:9px 32px 9px 12px;border:1px solid #3a536b;border-radius:9px;background:#111e2d;color:#f1f7ff;font:500 14px/1.4 Inter,system-ui,sans-serif;letter-spacing:0}
+.cvx-history{display:flex;gap:7px;flex-wrap:wrap;margin:0 0 15px}
+.cvx-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:44px;max-width:100%;padding:10px 14px;border:1px solid #3b5269;border-radius:9px;background:#14283a;color:#d9ecff;font:600 12px/1.4 Inter,system-ui,sans-serif;cursor:pointer;text-decoration:none}
+.cvx-btn:disabled{opacity:.4;cursor:default}.cvx-btn-subtle{background:transparent;border-color:#2b3e51;color:#bdd0e3}.cvx-btn-primary{background:#23527a;border-color:#4f8dbe;color:#fff}
+.cvx-trail{display:flex;flex-wrap:wrap;gap:5px;align-items:center;color:#9db6ce;font-size:11px;line-height:1.6;margin:0 0 16px}.cvx-trail button{font:inherit;color:#bfdbf3;border:0;background:none;padding:7px 5px;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.cvx-filters{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0 15px}
+.cvx-filter{min-height:38px;padding:8px 11px;border:1px solid #30475c;border-radius:999px;background:#0d1a28;color:#adc2d6;font:500 11px/1.4 Inter,system-ui,sans-serif;cursor:pointer}
+.cvx-filter[aria-pressed="true"]{border-color:#70b6eb;background:#163956;color:#f5fbff}.cvx-filter:disabled{opacity:.35;cursor:default}
+.cvx-status{color:#a2b8cd;font-size:11px;line-height:1.6;margin:12px 0}.cvx-status strong{color:#e5f2ff;font-weight:500}
+.cvx-map{position:relative;border:1px solid #293e53;border-radius:16px;padding:25px;background-color:#0b1724;background-image:radial-gradient(#25415a88 .8px,transparent .8px),radial-gradient(ellipse at center,#17354b66,transparent 67%);background-size:24px 24px,100% 100%;overflow:hidden;isolation:isolate}
+.cvx-lines{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;overflow:visible}
+.cvx-lines path{fill:none;stroke:#4f7fa5;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.cvx-lines path[data-category="family"]{stroke:#b297d3}.cvx-lines path[data-category="legacy"]{stroke:#c8ab67;stroke-dasharray:6 4}.cvx-lines path[data-category="rivals"]{stroke:#c98187}.cvx-lines path[data-category="mentors"]{stroke:#70ada3}
+.cvx-map-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(165px,auto));column-gap:38px;row-gap:35px;align-items:center;position:relative;z-index:1}
+.cvx-node{--node-tint:#73baf0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:0;width:100%;max-width:225px;min-height:176px;padding:12px 9px;justify-self:center;border:1px solid #38546c;border-top:2px solid var(--node-tint);border-radius:13px;color:#eaf4ff;background:linear-gradient(160deg,#162a3e,#0d1926 70%);cursor:pointer;font-family:inherit;text-align:center;position:relative;box-shadow:0 6px 20px #0005}
+.cvx-node:hover{border-color:var(--node-tint);background:#1a3046}.cvx-node[data-category="family"]{--node-tint:#bca1e0}.cvx-node[data-category="legacy"]{--node-tint:#d0b97b}.cvx-node[data-category="mentors"]{--node-tint:#7abbad}.cvx-node[data-category="rivals"]{--node-tint:#d48c94}
+.cvx-root{grid-column:2;grid-row:2;max-width:245px;min-height:215px;border-color:#7bbaf0;background:radial-gradient(ellipse at 50% 32%,#275675,#122539 65%);box-shadow:0 0 0 5px #6eb3eb0b,0 12px 30px #0004}
+.cvx-node-kicker{color:#a7c6df;font-size:9px;letter-spacing:.13em;line-height:1.5;font-weight:600}
+.cvx-node-art{display:block;width:100%;height:75px;position:relative;flex-shrink:0;background:radial-gradient(ellipse at bottom,#55759030,transparent 70%);isolation:isolate}
+.cvx-node-art picture{display:block;width:100%;height:100%;position:relative;z-index:1}
+.cvx-node-art img{display:block!important;width:100%!important;height:100%!important;object-fit:contain!important;object-position:center!important;filter:drop-shadow(0 4px 8px #0005);position:relative;z-index:1}
+.cvx-node-art .cvx-initials{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font:700 30px/1 'Barlow Condensed',Inter,sans-serif;color:#cbe3f7;letter-spacing:.06em}
+.cvx-node-art.cvx-art-missing picture{display:none}.cvx-node-art.cvx-art-missing .cvx-initials{display:flex}
+.cvx-root .cvx-node-art{height:105px}.cvx-node-name{display:block;font-size:14px;line-height:1.25;font-weight:650;overflow-wrap:anywhere}.cvx-node-person{display:block;color:#adc3d8;font-size:11px;font-weight:400;line-height:1.35}
+.cvx-node-relation{display:block;color:var(--node-tint);font-size:10px;line-height:1.4;margin-top:3px;padding:4px 7px;background:#091522;border:1px solid #2d4256;border-radius:6px;max-width:100%}
+.cvx-node-tap{font-size:10px;color:#b8d4eb;font-weight:400;line-height:1.4}
+.cvx-empty{padding:35px 18px;color:#c0d2e4;line-height:1.7;text-align:center;border:1px solid #334a5d;border-radius:12px}
+.cvx-list{display:grid;gap:10px}.cvx-list-item{display:grid;grid-template-columns:72px minmax(0,1fr) auto;align-items:center;gap:14px;width:100%;text-align:left;padding:14px;border-radius:12px;border:1px solid #344c62;border-left:3px solid #75b7e8;background:#112031;color:#ecf5ff;font:inherit;cursor:pointer}
+.cvx-list-item .cvx-node-art{height:76px}.cvx-list-item .cvx-node-relation{width:fit-content;margin:7px 0 0}.cvx-list-item .cvx-list-summary{display:block;color:#aec3d5;font-size:12px;line-height:1.6;margin-top:7px}.cvx-list-arrow{font-size:19px;color:#94c9ef}
+.cvx-legacy-intro{border-left:3px solid #c9ac71;padding:12px 16px;background:#182331;border-radius:0 10px 10px 0;margin:4px 0 20px;color:#d6e4f0;font-size:13px;line-height:1.7}.cvx-legacy-intro strong{color:#f7e3b8}
+.cvx-legacy-path{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;position:relative;padding:16px 0}.cvx-legacy-path:before{content:'';position:absolute;left:7%;right:7%;top:145px;border-top:1px dashed #aa955f}
+.cvx-legacy-step{position:relative;min-width:0}.cvx-legacy-link{min-height:40px;display:flex;align-items:center;justify-content:center;text-align:center;color:#d9bf88;font-size:9px;line-height:1.5;letter-spacing:.06em;padding:0 4px 8px}
+.cvx-legacy-step .cvx-node{max-width:none;min-height:250px}.cvx-legacy-step .cvx-node-art{height:110px}.cvx-legacy-step .cvx-node-relation{color:#e2c992}
+.cvx-legacy-note{font-size:11px;line-height:1.65;color:#b4c8da;margin:12px 2px 0}.cvx-legacy-companions{border-top:1px solid #30465b;margin-top:22px;padding-top:20px}.cvx-legacy-companions h3{font-size:16px;margin:0 0 8px;font-weight:600;color:#e4f1ff}.cvx-legacy-companions>p{font-size:12px;line-height:1.6;color:#b0c4d6;margin:0 0 14px}.cvx-companion-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.cvx-scope{margin-top:22px;border:1px solid #2d4358;border-radius:12px;padding:14px 16px;color:#adbed0;font-size:12px;line-height:1.7;background:#0d1a28}
+.cvx-scope summary{color:#c9e1f5;min-height:32px;cursor:pointer;font-weight:500}.cvx-scope p{margin:10px 0}.cvx-source-row{border-top:1px solid #2a3c50;padding:12px 0}.cvx-source-row a,.cvx-preview a{color:#a9d9ff;text-decoration:underline;text-underline-offset:3px;overflow-wrap:anywhere}.cvx-source-row small{display:block;color:#a4b9ca;font-size:11px;line-height:1.6;margin-top:5px}
+.cvx-preview{width:min(460px,calc(100vw - 28px));max-width:none;max-height:calc(100dvh - 28px);border-radius:18px;margin:auto;overflow:auto;overscroll-behavior:contain}
+.cvx-preview::backdrop{background:rgba(0,6,14,.62)}
+.cvx-preview-top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid #294052;position:sticky;top:0;background:#0e1d2c;z-index:3}
+.cvx-preview-body{padding:18px 22px 22px}.cvx-preview-identity{display:grid;grid-template-columns:95px minmax(0,1fr);gap:16px;align-items:center;margin-bottom:18px}.cvx-preview-identity .cvx-node-art{height:130px}.cvx-preview-identity h3{font-family:'Barlow Condensed',Inter,sans-serif;font-size:30px;margin:0 0 5px;line-height:1.1;font-weight:700;overflow-wrap:anywhere}.cvx-preview-identity p{font-size:13px;color:#aec6d9;margin:0;line-height:1.5}
+.cvx-preview-relation{font-size:12px;line-height:1.6;letter-spacing:.02em;color:#b9e0ff;margin:0 0 10px;font-weight:600}.cvx-preview-description{font-size:14px;line-height:1.8;color:#d3e0ed;margin:0 0 14px}
+.cvx-era{font-size:11px;line-height:1.6;color:#c4bda7;background:#211f1a;border:1px solid #494334;padding:10px 12px;border-radius:8px;margin:0 0 16px}.cvx-era strong{display:block;color:#f1ddb0;font-size:9px;letter-spacing:.1em;margin-bottom:4px}
+.cvx-preview-actions{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.cvx-preview .cvx-scope{margin-top:14px}.cvx-preview .cvx-scope summary{min-height:40px;line-height:1.6}.cvx-preview .cvx-source-row{font-size:12px;line-height:1.6}
+.cvx-sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+.cvx-dialog button:focus-visible,.cvx-preview button:focus-visible,.cvx-dialog select:focus-visible,.cvx-dialog input:focus-visible,.cvx-dialog a:focus-visible,.cvx-preview a:focus-visible,.cvx-home-entry:focus-visible,.cvx-dossier-entry:focus-visible{outline:3px solid #b5dfff;outline-offset:3px}
+.cvx-dialog [hidden],.cvx-preview [hidden]{display:none!important}
+@media(min-width:1080px){.cvx-preview{margin-right:max(34px,calc((100vw - 1190px)/2));}}
+@media(max-width:700px){
+ .cvx-dialog{width:100%;height:100dvh;border:0;border-radius:0;margin:0;}
+ .cvx-header{padding:13px 16px;padding-top:max(13px,env(safe-area-inset-top));gap:10px}.cvx-header h2{font-size:25px}.cvx-kicker{font-size:9px;letter-spacing:.1em}
+ .cvx-scroll{padding:17px 15px calc(24px + env(safe-area-inset-bottom));scrollbar-gutter:auto}.cvx-intro{font-size:12px;margin-bottom:12px}.cvx-toolbar{gap:8px;margin-bottom:7px}.cvx-segment button{font-size:11px;padding:8px 10px}.cvx-reading-toggle{font-size:10px;gap:6px}
+ .cvx-control-row{gap:10px}.cvx-select-label{max-width:none;min-width:160px}.cvx-select-label select{font-size:16px}.cvx-history{gap:6px}.cvx-history .cvx-btn{font-size:11px;padding:9px 10px}
+ .cvx-filters{gap:6px}.cvx-filter{font-size:10px;padding:8px 10px}.cvx-map{padding:20px 12px}.cvx-map-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:34px 26px;align-items:stretch}
+ .cvx-map-grid .cvx-node{grid-row:auto!important;grid-column:auto!important;min-height:170px;max-width:230px;padding:10px 7px}.cvx-map-grid .cvx-root{grid-column:1/-1!important;grid-row:1!important;min-height:207px;width:218px;max-width:100%;margin-bottom:2px}.cvx-node-name{font-size:12px;line-height:1.35}.cvx-node-person{font-size:10px;line-height:1.5}.cvx-node-relation{font-size:9px;padding:4px 5px}.cvx-node-art{height:76px}.cvx-root .cvx-node-art{height:96px}
+ .cvx-list-item{grid-template-columns:54px minmax(0,1fr) 12px;gap:10px;padding:12px 10px}.cvx-list-item .cvx-node-art{height:76px}.cvx-list-item .cvx-node-name{font-size:14px}.cvx-list-item .cvx-node-person{font-size:12px}.cvx-list-item .cvx-node-relation{font-size:10px}
+ .cvx-legacy-path{grid-template-columns:1fr;gap:18px;padding:0 0 12px}.cvx-legacy-path:before{top:20px;bottom:20px;left:50%;right:auto;border-top:0;border-left:1px dashed #ad955f}.cvx-legacy-step{max-width:100%;width:100%;padding:0 12px}.cvx-legacy-step .cvx-node{min-height:230px;max-width:290px;margin:auto}.cvx-legacy-link{padding:7px 10px;margin:0 auto 8px;width:fit-content;min-height:38px;background:#0c1825;border:1px solid #354353;border-radius:7px;font-size:9px}.cvx-legacy-note{position:relative;background:#0c1825;padding:10px;max-width:310px;margin:8px auto 0;border-radius:8px;font-size:12px}.cvx-legacy-intro{font-size:12px}.cvx-companion-grid{grid-template-columns:1fr}
+ .cvx-preview{width:100%;margin:auto 0 0;border-radius:18px 18px 0 0;max-height:88dvh;max-height:88vh;max-height:88dvh;border-bottom:0;padding-bottom:env(safe-area-inset-bottom)}.cvx-preview-body{padding:16px 18px 20px}.cvx-preview-top{padding:12px 16px}.cvx-preview-identity{grid-template-columns:74px minmax(0,1fr);gap:12px}.cvx-preview-identity .cvx-node-art{height:100px}.cvx-preview-identity h3{font-size:27px}.cvx-preview-description{font-size:13px}.cvx-preview-actions .cvx-btn{font-size:11px;padding:10px 7px}.cvx-source-row{padding:10px 0}
+}
+@media(prefers-reduced-motion:reduce){.cvx-dialog *,.cvx-preview *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -4743,7 +4833,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.53</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.54</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4807,6 +4897,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
           <i></i>
           <div><strong>2</strong><span>CONNECTED UNIVERSES</span></div>
         </div>
+        <button class="cvx-home-entry" type="button" data-cvx-open="dc:donna"><b aria-hidden="true">⌘</b><span>CONNECTIONS &amp; LEGACY<small>Follow Donna’s circle. Discover the Flash legacy.</small></span><em>PILOT ↗</em></button>
         <button class="home-feature-link" id="homeFeaturedLink">VIEW FEATURED FILE →</button>
       </section>
 
@@ -4932,6 +5023,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
             <h2 id="profileName">BATMAN</h2>
             <p id="profileRealName">Bruce Wayne</p>
             <button class="favorite-btn" id="favoriteBtn" type="button" aria-pressed="false">☆ ADD TO FAVORITES</button>
+            <button class="cvx-dossier-entry" id="connectionExploreBtn" type="button" data-cvx-open="active" hidden>⌘ EXPLORE CONNECTIONS ↗</button>
           </div>
         </div>
 
@@ -4977,13 +5069,14 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.53</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.54</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
           <button data-collection="all"><span>CHARACTER ARCHIVE</span><em>400</em></button>
           <button data-page="favorites"><span>FAVORITES</span><em id="menuFavoritesCount">0</em></button>
           <button data-page="spotlight"><span>FEATURED FILE</span></button>
+          <button type="button" data-cvx-open="dc:donna"><span>CONNECTIONS &amp; LEGACY</span><em>PILOT</em></button>
 
           <div class="menu-label">BROWSE COLLECTIONS</div>
 
@@ -5023,7 +5116,28 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
     </aside>
   </div>
 
-  <script>
+  <dialog class="cvx-dialog" id="cvConnections" aria-labelledby="cvxTitle" aria-describedby="cvxDescription">
+ <div class="cvx-frame">
+  <header class="cvx-header"><div><span class="cvx-kicker">COMIC VAULT / DISCOVERY PILOT · v8.54</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <div class="cvx-scroll" id="cvxScroll">
+   <p class="cvx-intro" id="cvxDescription">Tap a character to see the connection, open a dossier, or follow a new branch.</p>
+   <div class="cvx-toolbar">
+    <div class="cvx-segment" role="group" aria-label="Explorer mode"><button type="button" data-cvx-mode="connections" aria-pressed="true">Connections</button><button type="button" data-cvx-mode="legacy" aria-pressed="false">Flash legacy</button></div>
+    <label class="cvx-reading-toggle"><span>Citations</span><input type="checkbox" role="switch" id="cvxCitations" aria-label="Show inline citations in connections"><span class="cvx-toggle-track" aria-hidden="true"></span><span id="cvxCiteState" aria-hidden="true">OFF</span></label>
+   </div>
+   <div class="cvx-control-row" id="cvxCenterControls"><label class="cvx-select-label">CENTER ON A CHARACTER<select id="cvxCenterSelect" aria-label="Center on a mapped character"></select></label><div class="cvx-segment" role="group" aria-label="Relationship presentation"><button type="button" data-cvx-view="map" aria-pressed="true">Tree</button><button type="button" data-cvx-view="list" aria-pressed="false">List</button></div></div>
+   <div class="cvx-history"><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxBack">← Back a step</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxStart">↶ Starting character</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxDonna">Donna’s circle</button></div>
+   <nav class="cvx-trail" id="cvxTrail" aria-label="Exploration trail"></nav>
+   <div class="cvx-filters" id="cvxFilters" role="group" aria-label="Filter relationship types"></div>
+   <div id="cvxStatus" class="cvx-status" role="status" aria-live="polite"></div>
+   <div id="cvxCanvas"></div>
+   <details class="cvx-scope" id="cvxSources"><summary>About this pilot &amp; research sources</summary><p id="cvxScopeText"></p><p><strong>Read each line as a relationship, not an automatic family tie.</strong> Era notes distinguish historical romances, adopted bonds, mentorship, and mantle succession. The map uses existing archive artwork; a costume is not proof of an era.</p><div id="cvxSourceList"></div></details>
+  </div>
+ </div>
+</dialog>
+<dialog class="cvx-preview" id="cvxPreview" aria-labelledby="cvxPreviewName"><header class="cvx-preview-top"><span class="cvx-kicker">RELATIONSHIP FILE</span><button type="button" class="cvx-close" id="cvxPreviewClose" aria-label="Close relationship preview">×</button></header><div class="cvx-preview-body" id="cvxPreviewBody"></div></dialog>
+
+<script>
     window.addEventListener("error", function (event) {
       var existing = document.getElementById("cvBootError");
       if (existing) return;
@@ -154219,6 +154333,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
       }
       return;
     }
+    if(previous.kind === "connections"){
+      closeProfile();
+      window.ComicVaultConnections?.restore(previous.state);
+      return;
+    }
     if(previous.kind === "profile"){
       openProfile(previous.character,previous.tab || "overview",{remember:false});
     }else{
@@ -154755,6 +154874,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     profileSheet.setAttribute("aria-hidden","false");
     document.body.style.overflow="hidden";
     setProfileTab(tab);
+    window.dispatchEvent(new CustomEvent("cv:profile-opened",{detail:{slug:c.imageSlug}}));
     setTimeout(()=>{
       document.querySelector(".sheet-panel").scrollTop=0;
       const first = profileSheet.querySelector("button, [href], input, [tabindex]:not([tabindex='-1'])");
@@ -155110,7 +155230,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.53</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.54</b></span>
           ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -155372,6 +155492,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   });
 
   document.addEventListener("keydown",e=>{
+    if(window.ComicVaultConnections?.isOpen()) return;
     if(e.key==="Escape" && artViewer?.classList.contains("open")){
       e.preventDefault();
       e.stopImmediatePropagation();
@@ -155448,6 +155569,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function closeMenu(){ sideMenu.classList.remove("open");sideMenu.setAttribute("aria-hidden","true");document.body.style.overflow=""; }
 
   document.addEventListener("keydown",e=>{
+    if(window.ComicVaultConnections?.isOpen()) return;
     if(e.key==="Escape"){
       if(artViewer?.classList.contains("open")) closeArtViewer();
       else if(profileSheet.classList.contains("open")) closeProfile();
@@ -155459,6 +155581,29 @@ window.COMIC_VAULT_AUDIT_LOG = [
       if(sideMenu.classList.contains("open")) closeMenu();
       showPage("archive");
       setTimeout(()=>searchInput.focus(),0);
+    }
+  });
+
+  // v8.54: narrow bridge to the independent Connections pilot.
+  window.ComicVaultUI = Object.freeze({
+    getCitations: () => citationsVisible,
+    setCitations: value => applyCitationPreference(value,true),
+    activeSlug: () => activeCharacter?.imageSlug,
+    dismissMenu: () => { if(sideMenu.classList.contains("open")) closeMenu(); },
+    captureEntry: () => profileSheet.classList.contains("open") && activeCharacter
+      ? {kind:"profile",slug:activeCharacter.imageSlug,tab:activeTab,scroll:document.querySelector(".sheet-panel").scrollTop}
+      : {kind:"page"},
+    restoreEntry: entry => {
+      if(entry?.kind!=="profile") return;
+      const c=characters.find(c=>c.imageSlug===entry.slug);if(!c)return;
+      openProfile(c.name,entry.tab || "overview",{remember:false});
+      setTimeout(()=>{document.querySelector(".sheet-panel").scrollTop=entry.scroll || 0;},25);
+    },
+    openDossier: (slug,connectionState) => {
+      const c=characters.find(c=>c.imageSlug===slug);if(!c)return;
+      if(sideMenu.classList.contains("open"))closeMenu();
+      if(connectionState){navHistory.push({kind:"connections",state:connectionState});if(navHistory.length>80)navHistory.shift();}
+      openProfile(c.name,"overview",{remember:!connectionState});
     }
   });
 
@@ -155496,6 +155641,846 @@ window.COMIC_VAULT_AUDIT_LOG = [
     vv.addEventListener("scroll", sync, {passive:true});
     sync();
   })();
+
+</script>
+
+<script type="application/json" id="cvConnectionsData">
+{
+  "schemaVersion": 1,
+  "release": "8.54",
+  "pilot": true,
+  "scope": "Selected main-comics Donna Troy/Titans and Flash connections. Era labels are part of the relationship, not optional decoration. This is not a complete family tree or a complete map of all 400 dossiers.",
+  "nodes": {
+    "dc:donna": {
+      "id": "dc:donna",
+      "recordSlug": "donna-troy",
+      "hero": "Donna Troy",
+      "civilian": "",
+      "summary": "Amazon-raised Titan; Wonder Girl and Troia."
+    },
+    "dc:diana": {
+      "id": "dc:diana",
+      "recordSlug": "wonder-woman",
+      "hero": "Wonder Woman",
+      "civilian": "Diana",
+      "summary": "Amazon champion and Donna’s sister and mentor."
+    },
+    "dc:hippolyta": {
+      "id": "dc:hippolyta",
+      "recordSlug": "hippolyta",
+      "hero": "Hippolyta",
+      "civilian": "",
+      "summary": "Diana’s mother and a central figure of Amazon history."
+    },
+    "dc:dick": {
+      "id": "dc:dick",
+      "recordSlug": "nightwing",
+      "hero": "Nightwing",
+      "civilian": "Dick Grayson",
+      "summary": "The original Robin; an independent hero and veteran Titan."
+    },
+    "dc:wally": {
+      "id": "dc:wally",
+      "recordSlug": "wally-west",
+      "hero": "The Flash",
+      "civilian": "Wally West",
+      "summary": "Former Kid Flash who established his own life as the Flash."
+    },
+    "dc:roy": {
+      "id": "dc:roy",
+      "recordSlug": "arsenal",
+      "hero": "Arsenal",
+      "civilian": "Roy Harper",
+      "summary": "The original Speedy and a member of the early Titans circle."
+    },
+    "dc:garth": {
+      "id": "dc:garth",
+      "recordSlug": "tempest",
+      "hero": "Tempest",
+      "civilian": "Garth",
+      "summary": "The original Aqualad, distinct from Jackson Hyde."
+    },
+    "dc:kory": {
+      "id": "dc:kory",
+      "recordSlug": "starfire",
+      "hero": "Starfire",
+      "civilian": "Koriand’r",
+      "summary": "A member of the New Teen Titans alongside Donna and Dick."
+    },
+    "dc:slade": {
+      "id": "dc:slade",
+      "recordSlug": "deathstroke",
+      "hero": "Deathstroke",
+      "civilian": "Slade Wilson",
+      "summary": "Mercenary and recurring adversary of the Titans."
+    },
+    "dc:bruce": {
+      "id": "dc:bruce",
+      "recordSlug": "batman",
+      "hero": "Batman",
+      "civilian": "Bruce Wayne",
+      "summary": "Dick Grayson’s mentor during his first years as Robin."
+    },
+    "dc:barry": {
+      "id": "dc:barry",
+      "recordSlug": "the-flash",
+      "hero": "The Flash",
+      "civilian": "Barry Allen",
+      "summary": "Wally’s mentor and the Silver Age Flash."
+    },
+    "dc:jay": {
+      "id": "dc:jay",
+      "recordSlug": "jay-garrick",
+      "hero": "The Flash",
+      "civilian": "Jay Garrick",
+      "summary": "The Golden Age Flash; the inspiration for Barry’s heroic identity."
+    },
+    "dc:bart": {
+      "id": "dc:bart",
+      "recordSlug": "impulse",
+      "hero": "Impulse",
+      "civilian": "Bart Allen",
+      "summary": "Max Mercury’s protégé; also a former bearer of the Flash mantle."
+    },
+    "dc:max": {
+      "id": "dc:max",
+      "recordSlug": "max-mercury",
+      "hero": "Max Mercury",
+      "civilian": "Max Crandall",
+      "summary": "Veteran speedster and mentor to Bart Allen."
+    },
+    "dc:wallace": {
+      "id": "dc:wallace",
+      "recordSlug": "kid-flash-wallace-west",
+      "hero": "Kid Flash",
+      "civilian": "Wallace West",
+      "summary": "Wally’s cousin; a separate person with his own heroic career."
+    }
+  },
+  "edges": [
+    {
+      "id": "cx-donna-diana",
+      "a": "dc:donna",
+      "b": "dc:diana",
+      "tags": [
+        "family",
+        "mentors"
+      ],
+      "toB": "Sister & mentor",
+      "toA": "Sister & protégé",
+      "detail": "Diana is Donna’s Amazon sister and mentor in the rescued-child account. This describes an adoptive bond, not a claim that every origin makes them biological sisters.",
+      "era": "Classic rescued-child / Amazon upbringing; later origins differ.",
+      "sourceIds": [
+        "C01",
+        "C02"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx-donna-dick",
+      "a": "dc:donna",
+      "b": "dc:dick",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "Donna and Dick grew into independent heroes together in the Titans. Their team bond is shown here without assuming a romantic relationship.",
+      "era": "Original Teen Titans; renewed in Rebirth Titans.",
+      "sourceIds": [
+        "C03",
+        "C04"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx-donna-wally",
+      "a": "dc:donna",
+      "b": "dc:wally",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "Donna and Wally fought together as Wonder Girl and Kid Flash. Their reunion in the Rebirth era treats the Titans as a chosen family.",
+      "era": "Original Teen Titans and Rebirth Titans.",
+      "sourceIds": [
+        "C03",
+        "C04"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx-donna-roy",
+      "a": "dc:donna",
+      "b": "dc:roy",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Early Titans ally",
+      "toA": "Early Titans ally",
+      "detail": "Roy’s Speedy adventures overlap Donna’s early Titans years. This pilot maps their team connection rather than assigning a permanent romantic status.",
+      "era": "Early Teen Titans; team association across later eras.",
+      "sourceIds": [
+        "C03"
+      ],
+      "priority": 3
+    },
+    {
+      "id": "cx-donna-garth",
+      "a": "dc:donna",
+      "b": "dc:garth",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "Donna’s early Titans teammate Aqualad is Garth, later known as Tempest. The connection does not point to the separate Jackson Hyde record.",
+      "era": "Original Teen Titans.",
+      "sourceIds": [
+        "C03"
+      ],
+      "priority": 3
+    },
+    {
+      "id": "cx-donna-kory",
+      "a": "dc:donna",
+      "b": "dc:kory",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "New Titans teammate",
+      "toA": "New Titans teammate",
+      "detail": "Donna and Koriand’r served together in the New Teen Titans, bringing Amazon and Tamaranean experience to the same team.",
+      "era": "New Teen Titans era.",
+      "sourceIds": [
+        "C05"
+      ],
+      "priority": 4
+    },
+    {
+      "id": "cx-donna-slade",
+      "a": "dc:donna",
+      "b": "dc:slade",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Titans adversary",
+      "toA": "Opposing Titan",
+      "detail": "Slade’s conflicts with the Teen Titans put him in opposition to Donna and her team. A team-level rivalry is not the same as a family relationship.",
+      "era": "Teen Titans conflicts; alliances can vary by story.",
+      "sourceIds": [
+        "C06"
+      ],
+      "priority": 6
+    },
+    {
+      "id": "cx-diana-hippolyta",
+      "a": "dc:diana",
+      "b": "dc:hippolyta",
+      "tags": [
+        "family"
+      ],
+      "toB": "Mother",
+      "toA": "Daughter",
+      "detail": "Hippolyta is Diana’s mother. Accounts of Diana’s creation differ, but the maternal relationship is retained rather than choosing one biological explanation for all eras.",
+      "era": "Amazon mythology across distinct origin accounts.",
+      "sourceIds": [
+        "C07"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx-dick-bruce",
+      "a": "dc:dick",
+      "b": "dc:bruce",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "Mentor",
+      "toA": "Former protégé",
+      "detail": "Bruce trained Dick as Robin. Dick later became Nightwing, retaining that history while developing an independent identity.",
+      "era": "Dick Grayson’s Robin years and later Nightwing career.",
+      "sourceIds": [
+        "C08"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx-dick-kory",
+      "a": "dc:dick",
+      "b": "dc:kory",
+      "tags": [
+        "family",
+        "teammates"
+      ],
+      "toB": "Former partner",
+      "toA": "Former partner",
+      "detail": "Dick and Koriand’r have a romantic history as well as a Titans partnership. This link is historical: the 2008 Titans series explicitly deals with their breakup.",
+      "era": "New Teen Titans relationship; breakup referenced in Titans (2008) #16.",
+      "sourceIds": [
+        "C09",
+        "C05"
+      ],
+      "priority": 3
+    },
+    {
+      "id": "cx-dick-wally",
+      "a": "dc:dick",
+      "b": "dc:wally",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "Dick and Wally share the early Titans experience. The Rebirth reunion revisits that connection after Wally’s absence.",
+      "era": "Original Teen Titans and Rebirth Titans.",
+      "sourceIds": [
+        "C03",
+        "C04"
+      ],
+      "priority": 4
+    },
+    {
+      "id": "cx-dick-slade",
+      "a": "dc:dick",
+      "b": "dc:slade",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Titans adversary",
+      "toA": "Opposing Titan",
+      "detail": "Deathstroke’s feud with the Titans places him against Dick and his teammates. This pilot records the adversarial team connection.",
+      "era": "Teen Titans conflicts.",
+      "sourceIds": [
+        "C06"
+      ],
+      "priority": 6
+    },
+    {
+      "id": "cx-barry-wally",
+      "a": "dc:barry",
+      "b": "dc:wally",
+      "tags": [
+        "mentors",
+        "legacy"
+      ],
+      "toB": "Protégé & successor",
+      "toA": "Mentor & predecessor",
+      "detail": "Barry trained Wally as Kid Flash. After Barry’s sacrifice in Crisis on Infinite Earths, Wally took up the Flash mantle; Barry’s eventual return did not erase Wally’s independent career.",
+      "era": "Classic partnership and post-Crisis succession; later shared legacy.",
+      "sourceIds": [
+        "C10"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx-jay-barry",
+      "a": "dc:jay",
+      "b": "dc:barry",
+      "tags": [
+        "legacy"
+      ],
+      "toB": "Inspired a later Flash",
+      "toA": "Golden Age inspiration",
+      "detail": "Barry adopted the Flash identity after reading about Jay’s adventures. They subsequently met across parallel worlds: inspiration is not a parent-to-child relationship.",
+      "era": "Silver Age Flash of Two Worlds / Earth-Two context.",
+      "sourceIds": [
+        "C11",
+        "C12"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx-wally-wallace",
+      "a": "dc:wally",
+      "b": "dc:wallace",
+      "tags": [
+        "family"
+      ],
+      "toB": "Cousin",
+      "toA": "Cousin",
+      "detail": "Wally and Wallace are cousins in the Rebirth explanation. They are separate people, not two names for the same Kid Flash.",
+      "era": "Rebirth-era West family explanation.",
+      "sourceIds": [
+        "C13"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx-barry-wallace",
+      "a": "dc:barry",
+      "b": "dc:wallace",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "Younger protégé",
+      "toA": "Mentor",
+      "detail": "Barry offers Wallace guidance and friendship as the younger West enters the speedster world. His Kid Flash identity is separate from Wally’s earlier tenure.",
+      "era": "Wallace’s New 52 / Rebirth development.",
+      "sourceIds": [
+        "C13",
+        "C16"
+      ],
+      "priority": 3
+    },
+    {
+      "id": "cx-max-bart",
+      "a": "dc:max",
+      "b": "dc:bart",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "Protégé",
+      "toA": "Mentor",
+      "detail": "Max mentors Bart as he adjusts to life in the present. Their connection is grounded in the Impulse series, not inferred from matching powers alone.",
+      "era": "Impulse (1995) / Runs in the Family material.",
+      "sourceIds": [
+        "C14"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx-wally-bart",
+      "a": "dc:wally",
+      "b": "dc:bart",
+      "tags": [
+        "legacy",
+        "teammates"
+      ],
+      "toB": "Later Flash bearer",
+      "toA": "Fellow Flash bearer",
+      "detail": "Bart worked within Wally’s wider speedster circle and later held the Flash name himself. His Impulse dossier remains the same person’s record, not a new duplicate.",
+      "era": "Wally’s speedster circle; Bart’s 2006–07 Flash tenure.",
+      "sourceIds": [
+        "C10",
+        "C15"
+      ],
+      "priority": 4
+    },
+    {
+      "id": "cx-wally-jay",
+      "a": "dc:wally",
+      "b": "dc:jay",
+      "tags": [
+        "teammates",
+        "legacy"
+      ],
+      "toB": "Veteran ally",
+      "toA": "Fellow Flash",
+      "detail": "Jay helped form the speedster network around Wally. Their shared identity links different generations without making them relatives.",
+      "era": "Wally’s Flash Family network.",
+      "sourceIds": [
+        "C10",
+        "C17"
+      ],
+      "priority": 5
+    },
+    {
+      "id": "cx-wally-max",
+      "a": "dc:wally",
+      "b": "dc:max",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Speedster ally",
+      "toA": "Speedster ally",
+      "detail": "Max belongs to the circle of speedsters who supported Wally during his life as the Flash. This selected connection is an alliance, not a mantle handoff.",
+      "era": "Wally’s Flash Family network.",
+      "sourceIds": [
+        "C10"
+      ],
+      "priority": 5
+    }
+  ],
+  "sources": {
+    "C01": {
+      "title": "DC — Donna Troy",
+      "url": "https://www.dc.com/characters/donna-troy",
+      "note": "Donna’s Amazon upbringing and Diana’s mentorship. Publisher character overview; not a complete chronology.",
+      "id": "C01",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C02": {
+      "title": "DC — Donna Troy origin chronology",
+      "url": "https://www.dc.com/blog/2026-07-07/how-often-does-batman-actually-crawl-through-vents",
+      "note": "Use the Donna Troy question, not the Batman headline. Supports the rescued-child/Amazon-sister account and distinguishes revisions.",
+      "id": "C02",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C03": {
+      "title": "DC — The Silver Age Teen Titans Archives Vol. 1",
+      "url": "https://www.dc.com/graphic-novels/the-silver-age-teen-titans-archives-2003/the-silver-age-teen-titans-archives-vol-1",
+      "note": "Publisher collection synopsis identifies the early Titans and Speedy’s appearances.",
+      "id": "C03",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C04": {
+      "title": "DC — Titans: Whatever Happened to Wally West?",
+      "url": "https://www.dc.com/blog/2017/03/08/titans-whatever-happened-to-wally-west",
+      "note": "The Rebirth team’s reunion and its chosen-family relationship. An era-specific editorial recap.",
+      "id": "C04",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C05": {
+      "title": "DC — The New Teen Titans Archives Vol. 2",
+      "url": "https://www.dc.com/graphic-novels/the-new-teen-titans-archives-1999/the-new-teen-titans-archives-vol-2",
+      "note": "Publisher synopsis identifies Wonder Girl, Robin, Kid Flash, Starfire and their teammates.",
+      "id": "C05",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C06": {
+      "title": "DC — Deathstroke",
+      "url": "https://www.dc.com/characters/deathstroke",
+      "note": "Slade Wilson’s adversarial relationship with the Teen Titans.",
+      "id": "C06",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C07": {
+      "title": "DC — Hippolyta",
+      "url": "https://www.dc.com/characters/hippolyta",
+      "note": "Used only for Hippolyta’s relationship as Diana’s mother, not the page’s era-dependent present-day status.",
+      "id": "C07",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C08": {
+      "title": "DC — Nightwing",
+      "url": "https://www.dc.com/characters/nightwing",
+      "note": "Dick Grayson’s training as Robin under Bruce Wayne and independent Nightwing identity.",
+      "id": "C08",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C09": {
+      "title": "DC — Titans (2008) #16",
+      "url": "https://www.dc.com/comics/titans-2008/titans-2008-16",
+      "note": "Publisher synopsis explicitly describes Starfire and Dick Grayson’s breakup. Used as historical relationship evidence, not current relationship status.",
+      "id": "C09",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C10": {
+      "title": "DC — Relationship Roundup: Barry Allen and Wally West",
+      "url": "https://www.dc.com/blog/2018/04/24/relationship-roundup-barry-allen-and-wally-west",
+      "note": "Mentorship, the post-Crisis mantle transition and Wally’s speedster support network.",
+      "id": "C10",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C11": {
+      "title": "DC — What Makes the Flash the Hero of the Multiverse?",
+      "url": "https://www.dc.com/blog/2023/06/12/what-makes-the-flash-the-hero-of-the-multiverse",
+      "note": "Barry’s inspiration from stories about Jay and the crossing of their worlds. Not a biological lineage.",
+      "id": "C11",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C12": {
+      "title": "DC — The Flash of Two Worlds Deluxe Edition",
+      "url": "https://www.dc.com/graphic-novels/the-flash-of-two-worlds-deluxe-edition",
+      "note": "Publisher collection synopsis distinguishes Jay’s 1940s generation from Barry’s and identifies their parallel-world meeting.",
+      "id": "C12",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C13": {
+      "title": "DC — Who Is Wallace West?",
+      "url": "https://www.dc.com/blog/2022/02/23/who-is-wallace-west-a-k-a-why-are-there-two-wally-wests",
+      "note": "Explicitly identifies Wally and Wallace as cousins and describes Barry’s guidance of Wallace. Comics continuity, not television genealogy.",
+      "id": "C13",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C14": {
+      "title": "DC — Flash/Impulse: Runs in the Family",
+      "url": "https://www.dc.com/graphic-novels/flash/impulse-runs-in-the-family",
+      "note": "Publisher collection synopsis identifies Bart Allen as Impulse and Max Mercury as his mentor.",
+      "id": "C14",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C15": {
+      "title": "DC — The Flash: Fastest Man Alive #9",
+      "url": "https://www.dc.com/comics/the-flash-fastest-man-alive-2006/the-flash-fastest-man-alive-9",
+      "note": "Publisher issue synopsis explicitly identifies Bart Allen as the Flash in this series.",
+      "id": "C15",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C16": {
+      "title": "DC — Kid Flash",
+      "url": "https://www.dc.com/characters/kid-flash",
+      "note": "Wallace is a distinct holder of the Kid Flash mantle, not the older Wally West.",
+      "id": "C16",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "C17": {
+      "title": "DC — Jay Garrick",
+      "url": "https://www.dc.com/characters/jay-garrick",
+      "note": "The original Flash and his Golden Age identity.",
+      "id": "C17",
+      "publisher": "DC",
+      "reviewed": "2026-09-06",
+      "kind": "Publisher text / catalog",
+      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    }
+  },
+  "legacy": [
+    {
+      "nodeId": "dc:jay",
+      "era": "GOLDEN AGE",
+      "label": "The original Flash",
+      "detail": "Jay is the starting point of this selected Flash legacy. His adventures later inspired Barry’s choice of identity.",
+      "sourceIds": [
+        "C17",
+        "C11"
+      ]
+    },
+    {
+      "nodeId": "dc:barry",
+      "era": "SILVER AGE",
+      "label": "A new Flash, a different world",
+      "detail": "Barry’s identity was inspired by Jay. Their classic meeting crossed worlds; it was not a biological family handoff.",
+      "sourceIds": [
+        "C11",
+        "C12"
+      ],
+      "link": "INSPIRATION · NOT KINSHIP"
+    },
+    {
+      "nodeId": "dc:wally",
+      "era": "POST-CRISIS",
+      "label": "The protégé becomes the Flash",
+      "detail": "The former Kid Flash takes up Barry’s mantle and builds his own heroic life. Later eras can have more than one Flash.",
+      "sourceIds": [
+        "C10"
+      ],
+      "link": "MENTOR → SUCCESSOR"
+    },
+    {
+      "nodeId": "dc:bart",
+      "era": "2006–07 TENURE",
+      "label": "Another bearer of the mantle",
+      "detail": "Bart also served as the Flash. Open his Impulse dossier for the same individual; the artwork shown is his existing archive image, not a costume from every era.",
+      "sourceIds": [
+        "C14",
+        "C15"
+      ],
+      "link": "LATER MANTLE HOLDER"
+    }
+  ],
+  "legacyCompanions": [
+    "dc:wallace",
+    "dc:max"
+  ]
+}
+</script>
+<script id="cvConnectionsScript">
+/* Comic Vault v8.54 — Connections & Legacy pilot. No external graph library. */
+(() => {
+  'use strict';
+  const graph = JSON.parse(document.getElementById('cvConnectionsData').textContent);
+  const bridge = window.ComicVaultUI;
+  const $ = id => document.getElementById(id);
+  const dialog = $('cvConnections'), preview = $('cvxPreview'), scroller = $('cvxScroll');
+  const esc = (s='') => String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const records = new Map(window.COMIC_VAULT_CHARACTERS.map(c=>[c.imageSlug,c]));
+  const nodes = new Map(Object.entries(graph.nodes).filter(([,n])=>records.has(n.recordSlug)));
+  const edges = graph.edges.filter(e=>nodes.has(e.a)&&nodes.has(e.b)&&e.sourceIds.every(id=>graph.sources[id]));
+  const bySlug = new Map([...nodes.values()].map(n=>[n.recordSlug,n.id]));
+  const categories = [['all','All'],['family','Family & partners'],['mentors','Mentors'],['teammates','Teammates'],['rivals','Rivals'],['legacy','Legacy']];
+  let state, opener=null, previousOverflow='', previewSelection=null, resizeObserver=null, frame=0, closingForDossier=false;
+  const copy = obj => JSON.parse(JSON.stringify(obj));
+  const pref = (k,f) => {try{return localStorage.getItem(k)||f;}catch(_){return f;}};
+  function save(k,v){try{localStorage.setItem(k,v);}catch(_){/* Session controls remain usable. */}}
+  const nodeName = n => n.civilian ? n.hero+' / '+n.civilian : n.hero;
+  const shortName = id => {const n=nodes.get(id);return n ? n.civilian||n.hero : 'Character';};
+  const lookup = id => nodes.get(id);
+  function connections(id){return edges.filter(e=>e.a===id||e.b===id).sort((a,b)=>a.priority-b.priority||a.id.localeCompare(b.id));}
+  function relatedId(e,root){return e.a===root?e.b:e.a;}
+  function relationLabel(e,root){return e.a===root?e.toB:e.toA;}
+  function keyCategory(e){return ['rivals','family','mentors','legacy','teammates'].find(t=>e.tags.includes(t))||'teammates';}
+  function sourceLinks(ids){return `<span class="cv-source-cites">${(ids||[]).filter(id=>graph.sources[id]).map(id=>`<a href="${esc(graph.sources[id].url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(graph.sources[id].title)} (opens a new tab)">[${esc(id)}]</a>`).join(' ')}</span>`;}
+  function sourceRows(ids){return [...new Set(ids)].filter(id=>graph.sources[id]).map(id=>{const s=graph.sources[id];return `<div class="cvx-source-row"><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(id)} · ${esc(s.title)} ↗</a><small>${esc(s.note)}</small></div>`;}).join('');}
+  function artwork(n){const c=records.get(n.recordSlug);const initials=n.hero.split(/\s+/).filter(x=>x.toLowerCase()!=='the').slice(0,2).map(x=>x[0]).join('');return `<span class="cvx-node-art"><picture><img src="assets/characters/${esc(c.imageSlug)}.webp" data-cvx-art="${esc(c.imageSlug)}" alt="" width="120" height="160" loading="lazy" decoding="async"></picture><span class="cvx-initials" aria-hidden="true">${esc(initials)}</span></span>`;}
+  function card(id,options={}){
+    const n=lookup(id),e=options.edge,label=e?relationLabel(e,state.root):options.label||'Tap to open file';
+    const root=!!options.root, category=e?keyCategory(e):options.category||'legacy';
+    return `<button type="button" class="cvx-node${root?' cvx-root':''}" data-cvx-node="${esc(id)}" ${e?`data-cvx-edge="${esc(e.id)}"`:''} ${options.legacyIndex!==undefined?`data-cvx-legacy="${options.legacyIndex}"`:''} data-category="${category}" aria-haspopup="dialog" aria-label="${esc(nodeName(n))}. ${esc(root?'Centered character':label)}. View details." ${options.position?`style="grid-row:${options.position[0]};grid-column:${options.position[1]}"`:''}>
+      ${root?'<span class="cvx-node-kicker">CENTER OF THIS MAP</span>':options.era?`<span class="cvx-node-kicker">${esc(options.era)}</span>`:''}${artwork(n)}<span class="cvx-node-name">${esc(n.hero)}</span>${n.civilian?`<span class="cvx-node-person">${esc(n.civilian)}</span>`:''}<span class="${root?'cvx-node-tap':'cvx-node-relation'}">${esc(root?'View character file ↗':label)}</span></button>`;
+  }
+  function selectedEdges(){const all=connections(state.root);return state.filter==='all'?all:all.filter(e=>e.tags.includes(state.filter));}
+  function syncCitations(){const value=bridge.getCitations();$('cvxCitations').checked=value;$('cvxCiteState').textContent=value?'ON':'OFF';}
+  function snapshot(){return copy({...state,scroll:scroller.scrollTop});}
+  function step(){return {root:state.root,mode:state.mode,filter:state.filter,view:state.view,scroll:scroller.scrollTop};}
+  function pushStep(){state.stack.push(step());if(state.stack.length>40)state.stack.shift();}
+  function restoreStep(s){Object.assign(state,s);render();requestAnimationFrame(()=>{scroller.scrollTop=s.scroll||0;});}
+  function center(id){if(!lookup(id))return;if(id!==state.root||state.mode!=='connections')pushStep();state.root=id;state.mode='connections';state.filter='all';render();scroller.scrollTop=0;focusCenter();}
+  function focusCenter(){requestAnimationFrame(()=>{const t=$('cvxCanvas').querySelector('.cvx-root')||$('cvxCenterSelect');t?.focus({preventScroll:true});});}
+  function render(){
+    if(!state)return;
+    document.querySelectorAll('[data-cvx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxMode===state.mode)));
+    document.querySelectorAll('[data-cvx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxView===state.view)));
+    $('cvxCenterControls').hidden=state.mode==='legacy';$('cvxFilters').hidden=state.mode==='legacy';
+    $('cvxCenterSelect').value=state.root;$('cvxBack').disabled=state.stack.length===0;
+    $('cvxStart').disabled=state.root===state.start&&state.mode==='connections'&&state.stack.length===0;
+    const trail=state.stack.slice(-4);
+    $('cvxTrail').hidden=state.stack.length===0;
+    $('cvxTrail').innerHTML=trail.map((s,i)=>`<button type="button" data-cvx-trail="${state.stack.length-trail.length+i}">${esc(s.mode==='legacy'?'Flash legacy':shortName(s.root))}</button><span aria-hidden="true">›</span>`).join('')+`<span aria-current="location">${esc(state.mode==='legacy'?'Flash legacy':shortName(state.root))}</span>`;
+    if(state.mode==='legacy') renderLegacy();else renderConnections();
+    syncCitations();
+  }
+  function renderConnections(){
+    const all=connections(state.root),shown=selectedEdges(),n=lookup(state.root);
+    $('cvxFilters').innerHTML=categories.map(([key,label])=>{const count=key==='all'?all.length:all.filter(e=>e.tags.includes(key)).length;return `<button type="button" class="cvx-filter" data-cvx-filter="${key}" aria-pressed="${state.filter===key}" ${!count?'disabled':''}>${esc(label)} · ${count}</button>`;}).join('');
+    $('cvxStatus').innerHTML=`<strong>${esc(nodeName(n))}</strong> · ${shown.length} of ${all.length} selected relationships. ${state.view==='map'?'Tap a branch to explore.':'Select a relationship to see the evidence.'}`;
+    const host=$('cvxCanvas');
+    if(!shown.length){host.innerHTML='<div class="cvx-empty">No relationships match this filter in the pilot. Choose another category.</div>';return;}
+    if(state.view==='list'){
+      host.innerHTML=`<div class="cvx-list">${shown.map(e=>{const id=relatedId(e,state.root),n=lookup(id);return `<button type="button" class="cvx-list-item" data-cvx-node="${id}" data-cvx-edge="${e.id}" aria-haspopup="dialog" aria-label="${esc(nodeName(n))}: ${esc(relationLabel(e,state.root))}">${artwork(n)}<span><span class="cvx-node-name">${esc(n.hero)}</span>${n.civilian?`<span class="cvx-node-person">${esc(n.civilian)}</span>`:''}<span class="cvx-node-relation">${esc(relationLabel(e,state.root))}</span><span class="cvx-list-summary">${esc(e.era)}</span></span><span class="cvx-list-arrow" aria-hidden="true">↗</span></button>`;}).join('')}</div>`;
+    }else{
+      const positions=[[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]];
+      // A bounded eight-node neighborhood is intentional. No forced layout, canvas or drag gestures.
+      host.innerHTML=`<div class="cvx-map" id="cvxMap"><svg class="cvx-lines" id="cvxLines" aria-hidden="true" focusable="false"></svg><div class="cvx-map-grid">${card(state.root,{root:true})}${shown.slice(0,8).map((e,i)=>card(relatedId(e,state.root),{edge:e,position:positions[i]})).join('')}</div></div>`;
+      queueLines();
+    }
+  }
+  function renderLegacy(){
+    $('cvxStatus').textContent='Selected Flash mantle history · 4 bearers + 2 related speedster roles. Not a complete chronology or family tree.';
+    $('cvxCanvas').innerHTML=`<div class="cvx-legacy-intro"><strong>A shared name. Distinct lives.</strong><br>These connections show inspiration and different periods of holding the Flash identity. They are not a biological family tree, and a new bearer does not erase the earlier one.</div><div class="cvx-legacy-path">${graph.legacy.map((s,i)=>`<div class="cvx-legacy-step"><div class="cvx-legacy-link">${esc(s.link||'THE LEGACY BEGINS')}</div>${card(s.nodeId,{era:s.era,label:s.label,legacyIndex:i})}<p class="cvx-legacy-note">${esc(s.detail)} ${sourceLinks(s.sourceIds)}</p></div>`).join('')}</div><section class="cvx-legacy-companions"><h3>Related roles, not additional Flashes</h3><p>Wallace’s Kid Flash identity and Max’s mentorship are connected to the legacy, but neither is placed in this line of Flash mantle holders.</p><div class="cvx-companion-grid">${graph.legacyCompanions.map(id=>{const n=lookup(id);return `<button type="button" class="cvx-list-item" data-cvx-node="${id}" aria-haspopup="dialog">${artwork(n)}<span><span class="cvx-node-name">${esc(n.hero)}</span><span class="cvx-node-person">${esc(n.civilian)}</span><span class="cvx-list-summary">${esc(id==='dc:wallace'?'Separate Kid Flash; Wally’s cousin':'Bart Allen’s mentor')}</span></span><span class="cvx-list-arrow" aria-hidden="true">↗</span></button>`;}).join('')}</div></section>`;
+  }
+  function queueLines(){cancelAnimationFrame(frame);frame=requestAnimationFrame(drawLines);}
+  function drawLines(){
+    if(!dialog.open||state.mode!=='connections'||state.view!=='map')return;
+    const stage=$('cvxMap'),svg=$('cvxLines'),root=stage?.querySelector('.cvx-root');if(!stage||!svg||!root)return;
+    const r=stage.getBoundingClientRect(), rr=root.getBoundingClientRect();
+    const rx=rr.left-r.left+rr.width/2,ry=rr.top-r.top+rr.height/2;
+    const small=window.matchMedia('(max-width:700px)').matches;
+    svg.setAttribute('viewBox',`0 0 ${r.width} ${r.height}`);
+    svg.innerHTML=[...stage.querySelectorAll('[data-cvx-edge]')].map(b=>{const br=b.getBoundingClientRect(),x=br.left-r.left+br.width/2,y=br.top-r.top+br.height/2;
+      const path=small?`M ${rx} ${rr.bottom-r.top} V ${y} H ${x}`:`M ${rx} ${ry} L ${x} ${y}`;
+      return `<path d="${path}" data-category="${b.dataset.category}"></path>`;}).join('');
+  }
+  function showPreview(id,edgeId,legacyIndex){
+    const n=lookup(id);if(!n)return;
+    const edge=edges.find(e=>e.id===edgeId),legacy=legacyIndex!==undefined?graph.legacy[Number(legacyIndex)]:null;
+    previewSelection={id};
+    let relation='Character file',detail=n.summary,era='',refs=[];
+    if(edge){relation=`${shortName(state.root)} → ${relationLabel(edge,state.root)}`;detail=edge.detail;era=edge.era;refs=edge.sourceIds;}
+    else if(legacy){relation=legacy.label;detail=legacy.detail;era=legacy.era;refs=legacy.sourceIds;}
+    else if(state.mode==='legacy'&&id==='dc:wallace'){relation='A separate Kid Flash';detail='Wallace is a different person from Wally West. Their cousin relationship belongs to the comics continuity mapped here.';era='Rebirth-era West family explanation.';refs=['C13','C16'];}
+    else if(state.mode==='legacy'&&id==='dc:max'){relation='Mentor, not a Flash mantle holder';detail='Max mentors Bart Allen as Impulse. He appears beside this legacy for that relationship, not as another person in the Flash succession.';era='Impulse (1995) / Runs in the Family.';refs=['C14'];}
+    $('cvxPreviewBody').innerHTML=`<div class="cvx-preview-identity">${artwork(n)}<div><h3 id="cvxPreviewName">${esc(n.hero)}</h3>${n.civilian?`<p>${esc(n.civilian)}</p>`:''}</div></div><p class="cvx-preview-relation">${esc(relation)}</p><p class="cvx-preview-description">${esc(detail)} ${sourceLinks(refs)}</p>${era?`<p class="cvx-era"><strong>ERA &amp; CONTINUITY</strong>${esc(era)}</p>`:''}<div class="cvx-preview-actions"><button type="button" class="cvx-btn cvx-btn-primary" id="cvxOpenDossier">Open dossier ↗</button><button type="button" class="cvx-btn" id="cvxExploreNode">Explore connections</button></div>${refs.length?`<details class="cvx-scope"><summary>Relationship sources · ${refs.length}</summary>${sourceRows(refs)}<p>References remain available with inline citations off. Sources are publisher text and catalog descriptions, not a full issue-by-issue reading.</p></details>`:`<p class="cvx-status">${connections(id).length} connections in this pilot. Open the dossier for the complete biography and its source register.</p>`}`;
+    if(!preview.open)preview.showModal();preview.scrollTop=0;$('cvxPreviewClose').focus({preventScroll:true});
+  }
+  function closePreview(){if(preview.open)preview.close();previewSelection=null;}
+  function open(id='dc:donna',mode='connections',restored=null){
+    if(!lookup(id))id='dc:donna';
+    if(!dialog.open){
+      bridge.dismissMenu();opener=document.activeElement;previousOverflow=document.body.style.overflow;
+      state=restored?copy(restored):{root:id,start:id,mode,filter:'all',view:pref('comicVaultConnectionsView','map')==='list'?'list':'map',stack:[],entry:bridge.captureEntry(),scroll:0};
+      if(!nodes.has(state.root))state.root='dc:donna';
+      state.stack=Array.isArray(state.stack)?state.stack:[];
+      if(restored){bridge.restoreEntry(state.entry);opener=state.entry?.kind==='profile'?$('connectionExploreBtn'):document.querySelector('.cvx-home-entry');}
+      // restoreEntry can update overflow when it opens the preserved dossier.
+      previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
+      dialog.showModal();
+    }else{state.root=id;state.mode=mode;state.filter='all';}
+    render();requestAnimationFrame(()=>{scroller.scrollTop=restored?.scroll||0;queueLines();$('cvxTitle').focus({preventScroll:true});});
+  }
+  function close(options={}){closingForDossier=options.toDossier===true;closePreview();if(dialog.open)dialog.close();}
+  dialog.addEventListener('close',()=>{
+    // close events are queued: a dossier may already have opened before this fires.
+    const underlying=document.querySelector('#profileSheet.open, #artViewer.open, #sideMenu.open');
+    document.body.style.overflow=underlying?'hidden':previousOverflow;
+    if(!closingForDossier){const focus=(opener&&opener.isConnected&&opener.getClientRects().length)?opener:document.getElementById('menuBtn');focus?.focus({preventScroll:true});}
+    closingForDossier=false;
+  });
+  dialog.addEventListener('cancel',e=>{e.preventDefault();close();});
+  preview.addEventListener('cancel',e=>{e.preventDefault();closePreview();});
+  $('cvxClose').addEventListener('click',close);$('cvxPreviewClose').addEventListener('click',closePreview);
+  // Keep keyboard navigation inside the active layer, including at either end of its controls.
+  [dialog,preview].forEach(layer=>layer.addEventListener('keydown',e=>{
+    if(e.key!=='Tab'||(layer===dialog&&preview.open))return;
+    const stops=[...layer.querySelectorAll('button:not(:disabled), input:not(:disabled), select:not(:disabled), a[href], summary, [tabindex="0"]')].filter(el=>{const closed=el.closest('details:not([open])');return (!closed||(el.tagName==='SUMMARY'&&el.parentElement===closed))&&el.getClientRects().length&&getComputedStyle(el).visibility!=='hidden';});
+    if(!stops.length){e.preventDefault();return;}
+    const first=stops[0],last=stops[stops.length-1];
+    if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+    else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+  }));
+  // Backdrop closing is only allowed when both press and release were outside the dialog rectangle.
+  [dialog,preview].forEach(d=>{let outside=false;const isOutside=e=>{const r=d.getBoundingClientRect();return e.target===d&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom);};d.addEventListener('pointerdown',e=>outside=isOutside(e));d.addEventListener('click',e=>{if(outside&&isOutside(e)){d===preview?closePreview():close();}outside=false;});});
+  dialog.addEventListener('click',e=>{
+    const mode=e.target.closest('[data-cvx-mode]');if(mode){if(mode.dataset.cvxMode!==state.mode){pushStep();state.mode=mode.dataset.cvxMode;state.filter='all';render();}return;}
+    const view=e.target.closest('[data-cvx-view]');if(view){state.view=view.dataset.cvxView;save('comicVaultConnectionsView',state.view);render();return;}
+    const filter=e.target.closest('[data-cvx-filter]');if(filter){state.filter=filter.dataset.cvxFilter;render();return;}
+    const trail=e.target.closest('[data-cvx-trail]');if(trail){const i=Number(trail.dataset.cvxTrail),s=state.stack[i];if(s){state.stack=state.stack.slice(0,i);restoreStep(s);}return;}
+    const button=e.target.closest('[data-cvx-node]');if(button){showPreview(button.dataset.cvxNode,button.dataset.cvxEdge,button.dataset.cvxLegacy);return;}
+  });
+  preview.addEventListener('click',e=>{
+    if(e.target.closest('#cvxExploreNode')&&previewSelection){const id=previewSelection.id;closePreview();center(id);}
+    else if(e.target.closest('#cvxOpenDossier')&&previewSelection){const id=previewSelection.id,s=snapshot();close({toDossier:true});bridge.openDossier(lookup(id).recordSlug,s);}
+  });
+  $('cvxBack').addEventListener('click',()=>{if(state.stack.length)restoreStep(state.stack.pop());});
+  $('cvxStart').addEventListener('click',()=>{state.root=state.start;state.mode='connections';state.filter='all';state.stack=[];render();scroller.scrollTop=0;focusCenter();});
+  $('cvxDonna').addEventListener('click',()=>center('dc:donna'));
+  $('cvxCenterSelect').addEventListener('change',e=>center(e.target.value));
+  $('cvxCitations').addEventListener('change',e=>{bridge.setCitations(e.target.checked);syncCitations();});
+  // Listen for the same setting changing in the dossier, another tab, or unavailable-storage mode.
+  new MutationObserver(syncCitations).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
+  document.addEventListener('error',e=>{const im=e.target;if(!(im instanceof HTMLImageElement)||!im.dataset.cvxArt)return;
+    if(!im.dataset.cvxFallback){im.dataset.cvxFallback='1';im.src=`assets/characters/${im.dataset.cvxArt}.png`;}
+    else im.closest('.cvx-node-art')?.classList.add('cvx-art-missing');
+  },true);
+  document.addEventListener('click',e=>{const button=e.target.closest('[data-cvx-open]');if(!button)return;let id=button.dataset.cvxOpen;if(id==='active')id=bySlug.get(bridge.activeSlug())||'dc:donna';open(id||'dc:donna',button.dataset.cvxStartMode||'connections');});
+  const profileEntry=$('connectionExploreBtn');
+  window.addEventListener('cv:profile-opened',e=>{profileEntry.hidden=!bySlug.has(e.detail.slug);});
+  $('cvxCenterSelect').innerHTML=[...nodes.values()].sort((a,b)=>nodeName(a).localeCompare(nodeName(b))).map(n=>`<option value="${n.id}">${esc(nodeName(n))}</option>`).join('');
+  $('cvxScopeText').textContent=`${nodes.size} mapped dossiers · ${edges.length} reviewed relationships. ${graph.scope} Other characters are not automatically connected from shared names or team tags.`;
+  $('cvxSourceList').innerHTML=sourceRows(Object.keys(graph.sources));
+  if('ResizeObserver' in window){resizeObserver=new ResizeObserver(queueLines);resizeObserver.observe($('cvxCanvas'));}else window.addEventListener('resize',queueLines);
+  window.ComicVaultConnections=Object.freeze({open,close,isOpen:()=>dialog.open||preview.open,restore:s=>open(s.root,s.mode,s),snapshot:()=>state?snapshot():null,stats:()=>({nodes:nodes.size,edges:edges.length,sources:Object.keys(graph.sources).length})});
+})();
 
 </script>
 </body>
