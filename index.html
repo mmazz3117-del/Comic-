@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="8.59" />
+  <meta name="comic-vault-build" content="8.60" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.59: CONNECTIONS MAP — FIT, PINCH, PAN & COMPACT LANDSCAPE -->
+  <!-- Comic Vault v8.60: CONNECTIONS MAP — FIT, PINCH, PAN, CONTEXTUAL LEGACY & LINE KEY -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4846,7 +4846,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 @media(max-width:700px){.cvx-picker{flex-basis:100%;max-width:100%}.cvx-picker .cvx-select-label{font-size:10px}.cvx-picker .cvx-select-label select{font-size:16px}.cvx-map-guide .cvx-rotate-hint{display:block}.cvx-pager{gap:5px}.cvx-pager .cvx-btn{min-width:78px;padding:8px;font-size:10px}.cvx-coverage{font-size:10px}}
 </style>
 <style id="cvxMapViewportStyles">
-/* v8.59 — an interactive map viewport, not a change to character artwork sizing. */
+/* v8.60 — interactive map viewport + relationship line key; character artwork sizing unchanged. */
 #cvConnections .cvx-header{padding:9px 16px;gap:10px}
 #cvConnections .cvx-header>div:first-child{min-width:0;flex:1}
 #cvConnections .cvx-header h2{font-size:23px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -4916,6 +4916,27 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
  #cvConnections .cvz-viewport .cvx-node-tap{grid-column:2;font-size:10px;line-height:1.25}
 }
 </style>
+
+<style id="cvzLegendStyles">
+/* v8.60 — compact relationship line key. */
+#cvConnections .cvx-frame{position:relative}
+.cvz-line-key{position:absolute;z-index:30;top:104px;right:14px;width:min(390px,calc(100% - 28px));padding:13px;border:1px solid #46657f;border-radius:12px;background:#0c1a28f5;box-shadow:0 18px 50px #000a;color:#dceafa;font:500 11px/1.45 Inter,system-ui,sans-serif;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.cvz-line-key[hidden]{display:none!important}
+.cvz-line-key-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-bottom:10px;border-bottom:1px solid #2c4357}
+.cvz-line-key-head strong{display:block;font-size:15px;line-height:1.25;color:#f1f7ff;margin-top:2px}
+.cvz-line-key-head button{width:36px;height:36px;min-width:36px;border:1px solid #3d5972;border-radius:50%;background:#12283a;color:#e8f5ff;font:500 23px/1 Inter,system-ui,sans-serif;cursor:pointer}
+.cvz-line-key-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px 14px;padding:12px 0}
+.cvz-line-key-grid>div{display:grid;grid-template-columns:48px minmax(0,1fr);align-items:center;gap:8px;min-width:0}
+.cvz-line-key-grid b{display:block;color:#e8f4ff;font-size:11px;font-weight:650}
+.cvz-line-key-grid small{display:block;color:#9fb5c9;font-size:9px;margin-top:1px}
+.cvz-key-line{display:block;width:44px;height:0;border-top:3px solid #4f7fa5;border-radius:999px}
+.cvz-key-family{border-color:#b297d3}.cvz-key-mentors{border-color:#70ada3}.cvz-key-allies{border-color:#72a6c0}.cvz-key-teammates{border-color:#4f7fa5}.cvz-key-rivals{border-color:#c98187}.cvz-key-legacy{border-color:#c8ab67;border-top-style:dashed}
+.cvz-line-key>p{margin:0;padding-top:9px;border-top:1px solid #263d51;color:#abc0d2;font-size:10px;line-height:1.55}
+.cvz-line-key>p strong{color:#dceeff}
+#cvzLegendButton[aria-expanded="true"]{background:#234c70;border-color:#95cef8}
+@media(max-width:700px){.cvz-line-key{top:112px;right:8px;width:calc(100% - 16px);padding:11px}.cvz-line-key-grid{grid-template-columns:1fr 1fr;gap:8px}.cvz-line-key-grid>div{grid-template-columns:38px minmax(0,1fr)}.cvz-key-line{width:34px}}
+@media(orientation:landscape) and (max-height:600px){.cvz-line-key{top:91px;right:max(8px,env(safe-area-inset-right));width:min(520px,calc(100% - 16px));max-height:calc(100dvh - 100px);overflow:auto}.cvz-line-key-grid{grid-template-columns:repeat(3,1fr)}}
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -4924,7 +4945,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.59</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.60</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -5160,7 +5181,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.59</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.60</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -5209,7 +5230,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 
   <dialog class="cvx-dialog" id="cvConnections" aria-labelledby="cvxTitle" aria-describedby="cvxDescription">
  <div class="cvx-frame">
-  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.59</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.60</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
   <div class="cvz-bar" id="cvzMapBar" hidden>
    <div class="cvz-zoom-controls" role="group" aria-label="Map zoom controls">
     <button type="button" class="cvz-symbol" id="cvzZoomOut" aria-label="Zoom map out" title="Zoom out">−</button>
@@ -5224,9 +5245,22 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
     <span id="cvzPageLabel">1 / 1</span>
     <button type="button" id="cvzNextPage" data-cvx-page="1" aria-label="Next map page" title="Next map page">›</button>
     <button type="button" data-cvx-view="list" aria-label="Read these relationships as a list">List</button>
+    <button type="button" id="cvzLegendButton" aria-expanded="false" aria-controls="cvzLineKey" aria-label="Open relationship line key">Key</button>
    </div>
   </div>
   <p class="cvz-hint" id="cvzMapHint" hidden>Pinch or +/− to zoom · drag to move · tap a character</p>
+  <section class="cvz-line-key" id="cvzLineKey" hidden aria-labelledby="cvzLineKeyTitle">
+   <div class="cvz-line-key-head"><div><span class="cvx-kicker">RELATIONSHIP LEGEND</span><strong id="cvzLineKeyTitle">How to read the lines</strong></div><button type="button" id="cvzLegendClose" aria-label="Close relationship line key">×</button></div>
+   <div class="cvz-line-key-grid">
+    <div><i class="cvz-key-line cvz-key-family"></i><span><b>Family &amp; partners</b><small>Purple solid line</small></span></div>
+    <div><i class="cvz-key-line cvz-key-mentors"></i><span><b>Mentor / protégé</b><small>Teal solid line</small></span></div>
+    <div><i class="cvz-key-line cvz-key-allies"></i><span><b>Allies &amp; friends</b><small>Light-blue solid line</small></span></div>
+    <div><i class="cvz-key-line cvz-key-teammates"></i><span><b>Teammates</b><small>Blue solid line</small></span></div>
+    <div><i class="cvz-key-line cvz-key-rivals"></i><span><b>Rivals / adversaries</b><small>Red-pink solid line</small></span></div>
+    <div><i class="cvz-key-line cvz-key-legacy"></i><span><b>Legacy / shared mantle</b><small>Gold dotted line</small></span></div>
+   </div>
+   <p>A relationship can fit more than one category. The <strong>wording on the character card and relationship preview is the definitive explanation</strong>; line color is a quick visual cue.</p>
+  </section>
   <span class="cvx-sr" role="status" aria-live="polite" id="cvzAnnouncement"></span>
   <div class="cvx-scroll" id="cvxScroll">
    <div id="cvxExplorerOptions">
@@ -155344,7 +155378,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.59</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.60</b></span>
           ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -155698,7 +155732,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     }
   });
 
-  // v8.59: narrow bridge to the independent Connections explorer.
+  // v8.60: narrow bridge to the independent Connections explorer.
   window.ComicVaultUI = Object.freeze({
     getCitations: () => citationsVisible,
     setCitations: value => applyCitationPreference(value,true),
@@ -155761,7 +155795,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 <script type="application/json" id="cvConnectionsData">
 {
   "schemaVersion": 2,
-  "release": "8.59",
+  "release": "8.60",
   "pilot": false,
   "scope": "Selected main-comics relationships across the Donna/Titans, Flash, Gotham, Superman, Lantern, Wonder/Amazon and magic/Shazam networks. Every edge has its own era and evidence scope; mapped does not mean exhaustive.",
   "nodes": {
@@ -161084,7 +161118,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 }
 </script>
 <script id="cvConnectionsScript">
-/* Comic Vault v8.59 — Connections viewport: fit, pinch/zoom, pan and rotation. */
+/* Comic Vault v8.60 — Connections viewport: fit, pinch/zoom, pan, contextual legacy and line key. */
 (() => {
   'use strict';
   const graph = JSON.parse(document.getElementById('cvConnectionsData').textContent);
@@ -161097,7 +161131,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   const edges = graph.edges.filter(e=>nodes.has(e.a)&&nodes.has(e.b)&&e.sourceIds.every(id=>graph.sources[id]));
   const bySlug = new Map([...nodes.values()].map(n=>[n.recordSlug,n.id]));
   const categories = [['all','All'],['family','Family & partners'],['mentors','Mentors'],['allies','Allies & friends'],['teammates','Teammates'],['rivals','Rivals'],['legacy','Legacy']];
-  // v8.59: curated legacy views are contextual, never global shortcuts.
+  // v8.60: curated legacy views are contextual, never global shortcuts.
   const FLASH_LEGACY_IDS=new Set(['dc:jay','dc:barry','dc:wally','dc:bart','dc:wallace','dc:max']);
   const hasContextualLegacy=id=>FLASH_LEGACY_IDS.has(id);
   const PAGE_SIZE = 8;
@@ -161127,7 +161161,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     return `<button type="button" class="cvx-node${root?' cvx-root':''}" data-cvx-node="${esc(id)}" ${e?`data-cvx-edge="${esc(e.id)}"`:''} ${options.legacyIndex!==undefined?`data-cvx-legacy="${options.legacyIndex}"`:''} data-category="${category}" aria-haspopup="dialog" aria-label="${esc(nodeName(n))}. ${esc(root?'Centered character':label)}. View details." ${options.position?`style="grid-row:${options.position[0]};grid-column:${options.position[1]};--cvz-row:${options.position[0]};--cvz-column:${options.position[1]}"`:''}>
       ${root?'<span class="cvx-node-kicker">CENTER OF THIS MAP</span>':options.era?`<span class="cvx-node-kicker">${esc(options.era)}</span>`:''}${artwork(n)}<span class="cvx-node-name">${esc(n.hero)}</span>${n.civilian?`<span class="cvx-node-person">${esc(n.civilian)}</span>`:''}<span class="${root?'cvx-node-tap':'cvx-node-relation'}">${esc(root?'View character file ↗':label)}</span></button>`;
   }
-  // v8.59: camera coordinates are local CSS pixels, kept separate from the graph data.
+  // v8.60: camera coordinates are local CSS pixels, kept separate from the graph data.
   // Pointer gestures only take over inside the map; browser zoom elsewhere is untouched.
   let mapAbort=null, mapObserver=null, mapMeasureFrame=0, zoomAnnouncement=0;
   let mapMetrics=null, ignoreMapClickUntil=0;
@@ -161383,7 +161417,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     const stage=$('cvxMap'),svg=$('cvxLines'),root=stage?.querySelector('.cvx-root');
     if(!stage||!svg||!root)return;
 
-    // v8.59: cards and SVG share one transformed map world. Calculate every
+    // v8.60: cards and SVG share one transformed map world. Calculate every
     // endpoint in that world's local CSS pixels so pan/zoom cannot desync lines.
     const scale=Math.max(.001,state.camera?.s||1);
     const stageScreen=stage.getBoundingClientRect();
@@ -161537,6 +161571,24 @@ window.COMIC_VAULT_AUDIT_LOG = [
   window.ComicVaultConnections=Object.freeze({open,close,isOpen:()=>dialog.open||preview.open,restore:s=>open(s.root,s.mode,s),snapshot:()=>state?snapshot():null,stats:()=>({nodes:nodes.size,mapped:mappedCount,total:records.size,pending:records.size-mappedCount,edges:edges.length,sources:Object.keys(graph.sources).length,pageSize:PAGE_SIZE})});
 })();
 
+</script>
+
+<script id="cvzLegendScript">
+/* Comic Vault v8.60 — relationship line-key behavior. */
+(() => {
+  'use strict';
+  const button=document.getElementById('cvzLegendButton');
+  const panel=document.getElementById('cvzLineKey');
+  const close=document.getElementById('cvzLegendClose');
+  const explorer=document.getElementById('cvConnections');
+  if(!button||!panel||!close||!explorer)return;
+  const setOpen=open=>{panel.hidden=!open;button.setAttribute('aria-expanded',String(open));if(open)close.focus({preventScroll:true});};
+  button.addEventListener('click',()=>setOpen(panel.hidden));
+  close.addEventListener('click',()=>{setOpen(false);button.focus({preventScroll:true});});
+  panel.addEventListener('keydown',e=>{if(e.key==='Escape'){e.preventDefault();e.stopPropagation();setOpen(false);button.focus({preventScroll:true});}});
+  explorer.addEventListener('close',()=>setOpen(false));
+  explorer.addEventListener('click',e=>{if(!panel.hidden&&!panel.contains(e.target)&&!button.contains(e.target)&&e.target.closest('[data-cvx-node]'))setOpen(false);});
+})();
 </script>
 </body>
 </html>
