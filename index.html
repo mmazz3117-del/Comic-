@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="8.58" />
+  <meta name="comic-vault-build" content="8.59" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.58: CONNECTIONS MAP — FIT, PINCH, PAN & COMPACT LANDSCAPE -->
+  <!-- Comic Vault v8.59: CONNECTIONS MAP — FIT, PINCH, PAN & COMPACT LANDSCAPE -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4846,7 +4846,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 @media(max-width:700px){.cvx-picker{flex-basis:100%;max-width:100%}.cvx-picker .cvx-select-label{font-size:10px}.cvx-picker .cvx-select-label select{font-size:16px}.cvx-map-guide .cvx-rotate-hint{display:block}.cvx-pager{gap:5px}.cvx-pager .cvx-btn{min-width:78px;padding:8px;font-size:10px}.cvx-coverage{font-size:10px}}
 </style>
 <style id="cvxMapViewportStyles">
-/* v8.58 — an interactive map viewport, not a change to character artwork sizing. */
+/* v8.59 — an interactive map viewport, not a change to character artwork sizing. */
 #cvConnections .cvx-header{padding:9px 16px;gap:10px}
 #cvConnections .cvx-header>div:first-child{min-width:0;flex:1}
 #cvConnections .cvx-header h2{font-size:23px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -4924,7 +4924,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.58</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.59</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -5160,7 +5160,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.58</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.59</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -5209,7 +5209,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 
   <dialog class="cvx-dialog" id="cvConnections" aria-labelledby="cvxTitle" aria-describedby="cvxDescription">
  <div class="cvx-frame">
-  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.58</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.59</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
   <div class="cvz-bar" id="cvzMapBar" hidden>
    <div class="cvz-zoom-controls" role="group" aria-label="Map zoom controls">
     <button type="button" class="cvz-symbol" id="cvzZoomOut" aria-label="Zoom map out" title="Zoom out">−</button>
@@ -155344,7 +155344,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.58</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.59</b></span>
           ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -155698,7 +155698,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     }
   });
 
-  // v8.58: narrow bridge to the independent Connections explorer.
+  // v8.59: narrow bridge to the independent Connections explorer.
   window.ComicVaultUI = Object.freeze({
     getCitations: () => citationsVisible,
     setCitations: value => applyCitationPreference(value,true),
@@ -155761,7 +155761,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 <script type="application/json" id="cvConnectionsData">
 {
   "schemaVersion": 2,
-  "release": "8.58",
+  "release": "8.59",
   "pilot": false,
   "scope": "Selected main-comics relationships across the Donna/Titans, Flash, Gotham, Superman, Lantern, Wonder/Amazon and magic/Shazam networks. Every edge has its own era and evidence scope; mapped does not mean exhaustive.",
   "nodes": {
@@ -161084,7 +161084,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 }
 </script>
 <script id="cvConnectionsScript">
-/* Comic Vault v8.58 — Connections viewport: fit, pinch/zoom, pan and rotation. */
+/* Comic Vault v8.59 — Connections viewport: fit, pinch/zoom, pan and rotation. */
 (() => {
   'use strict';
   const graph = JSON.parse(document.getElementById('cvConnectionsData').textContent);
@@ -161097,6 +161097,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
   const edges = graph.edges.filter(e=>nodes.has(e.a)&&nodes.has(e.b)&&e.sourceIds.every(id=>graph.sources[id]));
   const bySlug = new Map([...nodes.values()].map(n=>[n.recordSlug,n.id]));
   const categories = [['all','All'],['family','Family & partners'],['mentors','Mentors'],['allies','Allies & friends'],['teammates','Teammates'],['rivals','Rivals'],['legacy','Legacy']];
+  // v8.59: curated legacy views are contextual, never global shortcuts.
+  const FLASH_LEGACY_IDS=new Set(['dc:jay','dc:barry','dc:wally','dc:bart','dc:wallace','dc:max']);
+  const hasContextualLegacy=id=>FLASH_LEGACY_IDS.has(id);
   const PAGE_SIZE = 8;
   // One adjacency index; future record/relationship additions do not need new layout code.
   const adjacency = new Map([...nodes.keys()].map(id=>[id,[]]));
@@ -161124,7 +161127,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     return `<button type="button" class="cvx-node${root?' cvx-root':''}" data-cvx-node="${esc(id)}" ${e?`data-cvx-edge="${esc(e.id)}"`:''} ${options.legacyIndex!==undefined?`data-cvx-legacy="${options.legacyIndex}"`:''} data-category="${category}" aria-haspopup="dialog" aria-label="${esc(nodeName(n))}. ${esc(root?'Centered character':label)}. View details." ${options.position?`style="grid-row:${options.position[0]};grid-column:${options.position[1]};--cvz-row:${options.position[0]};--cvz-column:${options.position[1]}"`:''}>
       ${root?'<span class="cvx-node-kicker">CENTER OF THIS MAP</span>':options.era?`<span class="cvx-node-kicker">${esc(options.era)}</span>`:''}${artwork(n)}<span class="cvx-node-name">${esc(n.hero)}</span>${n.civilian?`<span class="cvx-node-person">${esc(n.civilian)}</span>`:''}<span class="${root?'cvx-node-tap':'cvx-node-relation'}">${esc(root?'View character file ↗':label)}</span></button>`;
   }
-  // v8.58: camera coordinates are local CSS pixels, kept separate from the graph data.
+  // v8.59: camera coordinates are local CSS pixels, kept separate from the graph data.
   // Pointer gestures only take over inside the map; browser zoom elsewhere is untouched.
   let mapAbort=null, mapObserver=null, mapMeasureFrame=0, zoomAnnouncement=0;
   let mapMetrics=null, ignoreMapClickUntil=0;
@@ -161323,6 +161326,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function focusCenter(){requestAnimationFrame(()=>{const t=$('cvxCanvas').querySelector('.cvx-root')||$('cvxCenterSelect');t?.focus({preventScroll:true});});}
   function render(){
     if(!state)return;
+    // Show a legacy mode only when the centered character belongs to that curated legacy.
+    const legacyAvailable=hasContextualLegacy(state.root);
+    if(state.mode==='legacy'&&!legacyAvailable)state.mode='connections';
+    const legacyButton=document.querySelector('[data-cvx-mode="legacy"]');
+    if(legacyButton){legacyButton.hidden=!legacyAvailable;legacyButton.textContent='Flash legacy';}
     teardownMap();
     document.querySelectorAll('[data-cvx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxMode===state.mode)));
     document.querySelectorAll('[data-cvx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxView===state.view)));
@@ -161372,19 +161380,45 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function queueLines(){cancelAnimationFrame(frame);frame=requestAnimationFrame(drawLines);}
   function drawLines(){
     if(!dialog.open||state.mode!=='connections'||state.view!=='map')return;
-    const stage=$('cvxMap'),svg=$('cvxLines'),root=stage?.querySelector('.cvx-root');if(!stage||!svg||!root)return;
-    // Convert screen coordinates into the actual SVG coordinate system. This
-    // includes camera transforms, borders and SVG aspect-ratio/rounding effects.
+    const stage=$('cvxMap'),svg=$('cvxLines'),root=stage?.querySelector('.cvx-root');
+    if(!stage||!svg||!root)return;
+
+    // v8.59: cards and SVG share one transformed map world. Calculate every
+    // endpoint in that world's local CSS pixels so pan/zoom cannot desync lines.
+    const scale=Math.max(.001,state.camera?.s||1);
+    const stageScreen=stage.getBoundingClientRect();
+    const localRect=el=>{
+      const r=el.getBoundingClientRect();
+      return {
+        left:(r.left-stageScreen.left)/scale,
+        top:(r.top-stageScreen.top)/scale,
+        width:r.width/scale,
+        height:r.height/scale
+      };
+    };
+    const center=r=>({x:r.left+r.width/2,y:r.top+r.height/2});
+    const edgePoint=(rect,toward)=>{
+      const c=center(rect),dx=toward.x-c.x,dy=toward.y-c.y;
+      if(!dx&&!dy)return c;
+      const tx=dx?rect.width/(2*Math.abs(dx)):Infinity;
+      const ty=dy?rect.height/(2*Math.abs(dy)):Infinity;
+      const t=Math.min(tx,ty);
+      return {x:c.x+dx*t,y:c.y+dy*t};
+    };
+
     svg.setAttribute('viewBox',`0 0 ${stage.clientWidth} ${stage.clientHeight}`);
-    const matrix=svg.getScreenCTM();if(!matrix)return;
-    const inverse=matrix.inverse();
-    const point=(x,y)=>{const p=svg.createSVGPoint();p.x=x;p.y=y;return p.matrixTransform(inverse);};
-    const rr=root.getBoundingClientRect(),small=!isShortLandscape()&&window.matchMedia('(max-width:700px)').matches;
-    const start=point(rr.left+rr.width/2,small?rr.bottom:rr.top+rr.height/2);
-    svg.innerHTML=[...stage.querySelectorAll('[data-cvx-edge]')].map(b=>{
-      const r=b.getBoundingClientRect(),end=point(r.left+r.width/2,r.top+r.height/2);
-      const path=small?`M ${start.x} ${start.y} V ${end.y} H ${end.x}`:`M ${start.x} ${start.y} L ${end.x} ${end.y}`;
-      return `<path d="${path}" data-category="${b.dataset.category}"></path>`;
+    svg.setAttribute('preserveAspectRatio','none');
+    const rootRect=localRect(root),rootCenter=center(rootRect);
+    const portrait=!isShortLandscape()&&window.matchMedia('(max-width:700px)').matches;
+    const cards=[...stage.querySelectorAll('[data-cvx-edge]')];
+    svg.innerHTML=cards.map(card=>{
+      const cardRect=localRect(card),cardCenter=center(cardRect);
+      const a=edgePoint(rootRect,cardCenter),b=edgePoint(cardRect,rootCenter);
+      // Connect border-to-border so each relationship is visible and never
+      // appears to terminate mysteriously beneath a card.
+      const midY=a.y+(b.y-a.y)*.5;
+      const d=portrait?`M ${a.x} ${a.y} V ${midY} H ${b.x} V ${b.y}`:`M ${a.x} ${a.y} L ${b.x} ${b.y}`;
+      return `<path d="${d}" data-category="${card.dataset.category}" data-edge="${card.dataset.cvxEdge}"></path>`;
     }).join('');
   }
   function showPreview(id,edgeId,legacyIndex){
