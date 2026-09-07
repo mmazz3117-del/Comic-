@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="8.4" />
+  <meta name="comic-vault-build" content="8.58" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.56: CONNECTIONS & LEGACY — LANTERN NETWORK / BATCH CX4 -->
+  <!-- Comic Vault v8.58: CONNECTIONS MAP — FIT, PINCH, PAN & COMPACT LANDSCAPE -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4845,6 +4845,77 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 .cvx-picker input:focus-visible,.cvx-coverage summary:focus-visible{outline:2px solid #a5d7ff;outline-offset:3px}
 @media(max-width:700px){.cvx-picker{flex-basis:100%;max-width:100%}.cvx-picker .cvx-select-label{font-size:10px}.cvx-picker .cvx-select-label select{font-size:16px}.cvx-map-guide .cvx-rotate-hint{display:block}.cvx-pager{gap:5px}.cvx-pager .cvx-btn{min-width:78px;padding:8px;font-size:10px}.cvx-coverage{font-size:10px}}
 </style>
+<style id="cvxMapViewportStyles">
+/* v8.58 — an interactive map viewport, not a change to character artwork sizing. */
+#cvConnections .cvx-header{padding:9px 16px;gap:10px}
+#cvConnections .cvx-header>div:first-child{min-width:0;flex:1}
+#cvConnections .cvx-header h2{font-size:23px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#cvConnections .cvx-header .cvx-kicker{font-size:9px;letter-spacing:.1em}
+#cvxTitle:focus{outline:none}
+.cvz-options-button{min-height:44px;border:1px solid #496a85;border-radius:9px;padding:8px 12px;background:#142a3e;color:#d8efff;font:600 12px/1.3 Inter,system-ui,sans-serif;cursor:pointer;flex-shrink:0}
+.cvz-options-button[aria-expanded="true"]{background:#234c70;border-color:#95cef8}
+.cvz-bar{flex:0 0 auto;padding:7px 12px;border-bottom:1px solid #294156;background:#0b1928;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px 10px}
+.cvz-zoom-controls,.cvz-navigation{display:flex;align-items:center;gap:5px;min-width:max-content;flex-shrink:0}
+.cvz-bar button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:6px 10px;border:1px solid #3a5670;border-radius:8px;background:#142a3e;color:#e4f4ff;font:600 12px/1.3 Inter,system-ui,sans-serif;cursor:pointer}
+.cvz-bar button:disabled{opacity:.35;cursor:default}
+.cvz-bar .cvz-symbol{font-size:23px;padding:4px 8px}
+.cvz-bar output{width:43px;text-align:center;font:600 11px/1.2 Inter,system-ui,sans-serif;color:#bad7ed;font-variant-numeric:tabular-nums}
+#cvzPageLabel{font:500 11px/1.3 Inter,system-ui,sans-serif;color:#b7cce0;min-width:43px;text-align:center;white-space:nowrap}
+.cvz-hint{flex:0 0 auto;margin:0;padding:4px 14px;color:#9ebdd5;font:400 10px/1.6 Inter,system-ui,sans-serif;background:#091624;border-bottom:1px solid #203449}
+#cvConnections.cvz-tree-mode:not(.cvz-options-open) .cvx-scroll{display:flex;flex-direction:column;overflow:hidden;padding:9px;scrollbar-gutter:auto;min-height:0}
+#cvConnections.cvz-tree-mode:not(.cvz-options-open) #cvxCanvas{display:flex;flex-direction:column;flex:1;min-height:0}
+#cvConnections.cvz-tree-mode:not(.cvz-options-open) #cvxSources{display:none}
+#cvConnections.cvz-tree-mode.cvz-options-open #cvxCanvas{height:clamp(300px,68dvh,760px);min-height:300px}
+#cvConnections.cvz-tree-mode.cvz-options-open .cvx-scroll{overflow:auto;display:block}
+#cvxExplorerOptions{padding-bottom:4px}
+.cvz-viewport{position:relative;isolation:isolate;flex:1;width:100%;height:100%;min-height:0;overflow:hidden;border:1px solid #355570;border-radius:13px;background-color:#081522;background-image:radial-gradient(#29486188 .8px,transparent .8px);background-size:24px 24px;touch-action:none;overscroll-behavior:contain;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;outline-offset:-4px}
+.cvz-viewport:focus-visible{outline:2px solid #a6d8ff}
+.cvz-viewport.cvz-dragging,.cvz-viewport.cvz-dragging *{cursor:grabbing!important}
+#cvConnections .cvz-viewport .cvx-map{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform;max-width:none;margin:0;border-radius:12px;overflow:visible}
+.cvz-viewport img{-webkit-user-drag:none;user-select:none}
+.cvz-viewport .cvx-node{touch-action:none}
+/* Unscaled toolbar remains reachable when the diagram is zoomed or panned. */
+@media(max-width:700px){
+ #cvConnections .cvx-header{padding:7px 12px;padding-top:max(7px,env(safe-area-inset-top));gap:7px}
+ #cvConnections .cvx-header h2{font-size:19px}
+ #cvConnections .cvx-header .cvx-kicker{font-size:8px}
+ .cvz-options-button{font-size:11px;padding:7px 9px}
+ .cvz-bar{padding:5px 9px;gap:4px;justify-content:center}
+ .cvz-bar button{font-size:11px;padding:6px 8px}
+ .cvz-bar .cvz-symbol{font-size:23px}
+ .cvz-navigation{flex:1 0 auto;justify-content:center}
+ .cvz-hint{font-size:10px;text-align:center;padding:3px 9px}
+ #cvConnections.cvz-tree-mode:not(.cvz-options-open) .cvx-scroll{padding:6px 8px max(8px,env(safe-area-inset-bottom))}
+}
+/* Phone landscape: remove ornamental outer margins and reclaim vertical space. */
+@media(orientation:landscape) and (max-height:600px){
+ #cvConnections{width:100%;height:100dvh;margin:0;border:0;border-radius:0}
+ #cvConnections .cvx-header{padding:2px max(10px,env(safe-area-inset-right)) 2px max(10px,env(safe-area-inset-left));min-height:49px}
+ #cvConnections .cvx-header h2{font-size:20px;margin:0}
+ #cvConnections .cvx-header .cvx-kicker{font-size:8px;line-height:1.2}
+ .cvz-bar{padding:3px max(10px,env(safe-area-inset-right)) 3px max(10px,env(safe-area-inset-left));flex-wrap:nowrap;gap:6px}
+ .cvz-bar button{padding:4px 8px}
+ .cvz-navigation{flex:none}
+ .cvz-hint{padding:1px max(10px,env(safe-area-inset-left));font-size:10px;text-align:center}
+ #cvConnections.cvz-tree-mode:not(.cvz-options-open) .cvx-scroll{padding:4px max(8px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
+}
+@media(prefers-reduced-motion:reduce){.cvz-viewport *{transition:none!important;animation:none!important}}
+/* A wide, shallow card layout uses the available width of a phone in landscape.
+   Names and relationship labels remain present; source artwork itself is unchanged. */
+@media(orientation:landscape) and (max-height:600px){
+ #cvConnections .cvz-viewport .cvx-map{padding:12px 16px}
+ #cvConnections .cvz-viewport .cvx-map-grid{grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:repeat(3,minmax(92px,auto));gap:14px 38px;align-items:center}
+ #cvConnections .cvz-viewport .cvx-map-grid .cvx-node{display:grid;grid-template-columns:60px minmax(0,1fr);grid-template-rows:auto;grid-column:var(--cvz-column)!important;grid-row:var(--cvz-row)!important;gap:3px 7px;align-content:center;align-items:center;text-align:left;min-height:94px;max-width:none;width:100%;padding:8px 11px;margin:0}
+ #cvConnections .cvz-viewport .cvx-map-grid .cvx-root{grid-column:2!important;grid-row:2!important;min-height:102px;width:100%;max-width:none}
+ #cvConnections .cvz-viewport .cvx-node-art{grid-column:1;grid-row:1/span 4;height:70px}
+ #cvConnections .cvz-viewport .cvx-root .cvx-node-art{height:76px;grid-row:2/span 3}
+ #cvConnections .cvz-viewport .cvx-node-kicker{grid-column:1/-1;text-align:center;font-size:8px;line-height:1.2}
+ #cvConnections .cvz-viewport .cvx-node-name{grid-column:2;font-size:15px;line-height:1.2}
+ #cvConnections .cvz-viewport .cvx-node-person{grid-column:2;font-size:12px;line-height:1.25}
+ #cvConnections .cvz-viewport .cvx-node-relation{grid-column:2;font-size:10px;line-height:1.25;padding:4px 5px;margin-top:1px;width:fit-content}
+ #cvConnections .cvz-viewport .cvx-node-tap{grid-column:2;font-size:10px;line-height:1.25}
+}
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -4853,7 +4924,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.56</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.58</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4917,7 +4988,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
           <i></i>
           <div><strong>2</strong><span>CONNECTED UNIVERSES</span></div>
         </div>
-        <button class="cvx-home-entry" type="button" data-cvx-open="dc:donna"><b aria-hidden="true">⌘</b><span>CONNECTIONS &amp; LEGACY<small id="cvxHomeCopy">Explore the Titans, Flash, Gotham, Superman and Lantern circles.</small></span><em data-cvx-coverage>EXPLORE ↗</em></button>
+        <button class="cvx-home-entry" type="button" data-cvx-open="dc:donna"><b aria-hidden="true">⌘</b><span>CONNECTIONS &amp; LEGACY<small id="cvxHomeCopy">Explore the Titans, Flash, Gotham, Superman, Lantern, Wonder and magic circles.</small></span><em data-cvx-coverage>EXPLORE ↗</em></button>
         <button class="home-feature-link" id="homeFeaturedLink">VIEW FEATURED FILE →</button>
       </section>
 
@@ -5089,7 +5160,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.56</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.58</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -5138,8 +5209,27 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 
   <dialog class="cvx-dialog" id="cvConnections" aria-labelledby="cvxTitle" aria-describedby="cvxDescription">
  <div class="cvx-frame">
-  <header class="cvx-header"><div><span class="cvx-kicker">COMIC VAULT / CONNECTIONS EXPLORER · v8.56</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.58</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <div class="cvz-bar" id="cvzMapBar" hidden>
+   <div class="cvz-zoom-controls" role="group" aria-label="Map zoom controls">
+    <button type="button" class="cvz-symbol" id="cvzZoomOut" aria-label="Zoom map out" title="Zoom out">−</button>
+    <output id="cvzZoomValue" aria-label="Map zoom level">100%</output>
+    <button type="button" class="cvz-symbol" id="cvzZoomIn" aria-label="Zoom map in" title="Zoom in">+</button>
+    <button type="button" id="cvzFit" title="Fit every branch on this page into the visible map">Fit map</button>
+    <button type="button" id="cvzReadable" title="Actual size: center the selected character at 100%">100%</button>
+   </div>
+   <div class="cvz-navigation" role="group" aria-label="Map navigation">
+    <button type="button" id="cvzQuickBack" title="Back a map step" aria-label="Back a map step">↶</button>
+    <button type="button" id="cvzPreviousPage" data-cvx-page="-1" aria-label="Previous map page" title="Previous map page">‹</button>
+    <span id="cvzPageLabel">1 / 1</span>
+    <button type="button" id="cvzNextPage" data-cvx-page="1" aria-label="Next map page" title="Next map page">›</button>
+    <button type="button" data-cvx-view="list" aria-label="Read these relationships as a list">List</button>
+   </div>
+  </div>
+  <p class="cvz-hint" id="cvzMapHint" hidden>Pinch or +/− to zoom · drag to move · tap a character</p>
+  <span class="cvx-sr" role="status" aria-live="polite" id="cvzAnnouncement"></span>
   <div class="cvx-scroll" id="cvxScroll">
+   <div id="cvxExplorerOptions">
    <p class="cvx-intro" id="cvxDescription">Tap a character to see the connection, open a dossier, or follow a new branch.</p>
    <details class="cvx-coverage"><summary id="cvxCoverageText">Mapping coverage</summary><progress id="cvxCoverageProgress" aria-label="Dossiers with selected mapped connections"></progress><p id="cvxCoverageNote"></p></details>
    <div class="cvx-toolbar">
@@ -5150,9 +5240,10 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
    <div class="cvx-history"><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxBack">← Back a step</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxStart">↶ Starting character</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxDonna">Donna’s circle</button></div>
    <nav class="cvx-trail" id="cvxTrail" aria-label="Exploration trail"></nav>
    <div class="cvx-filters" id="cvxFilters" role="group" aria-label="Filter relationship types"></div>
-   <div id="cvxMapGuide" class="cvx-map-guide"><p>Each branch connects directly to <strong id="cvxGuideRoot">the selected character</strong>. Position does not imply rank or ancestry.</p><p id="cvxRotateHint" class="cvx-rotate-hint">↻ Rotate your phone for a wider tree. Portrait and List work too.</p></div>
+   <div id="cvxMapGuide" class="cvx-map-guide"><p>Each branch connects directly to <strong id="cvxGuideRoot">the selected character</strong>. Position does not imply rank or ancestry.</p><p id="cvxRotateHint" class="cvx-rotate-hint">Use Fit map for the full page, then pinch or +/− to read details. Rotate for a wider arrangement; List is also available.</p></div>
    <div id="cvxStatus" class="cvx-status" role="status" aria-live="polite" tabindex="-1"></div>
    <nav class="cvx-pager" id="cvxPager" aria-label="Connection pages" hidden></nav>
+   </div>
    <div id="cvxCanvas"></div>
    <details class="cvx-scope" id="cvxSources"><summary>About this map &amp; research sources</summary><p id="cvxScopeText"></p><p><strong>Read each line as a relationship, not an automatic family tie.</strong> Era notes distinguish historical romances, adopted bonds, mentorship, and mantle succession. The map uses existing archive artwork; a costume is not proof of an era.</p><div id="cvxSourceList"></div></details>
   </div>
@@ -155253,7 +155344,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.56</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.58</b></span>
           ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -155607,7 +155698,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     }
   });
 
-  // v8.56: narrow bridge to the independent Connections explorer.
+  // v8.58: narrow bridge to the independent Connections explorer.
   window.ComicVaultUI = Object.freeze({
     getCitations: () => citationsVisible,
     setCitations: value => applyCitationPreference(value,true),
@@ -155670,9 +155761,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
 <script type="application/json" id="cvConnectionsData">
 {
   "schemaVersion": 2,
-  "release": "8.56",
+  "release": "8.58",
   "pilot": false,
-  "scope": "Selected main-comics relationships across the Donna/Titans, Flash, Gotham, Superman and Lantern networks. Each relationship carries its own era and evidence scope. Coverage counts mapped dossiers, not an exhaustive history of every relationship.",
+  "scope": "Selected main-comics relationships across the Donna/Titans, Flash, Gotham, Superman, Lantern, Wonder/Amazon and magic/Shazam networks. Every edge has its own era and evidence scope; mapped does not mean exhaustive.",
   "nodes": {
     "dc:donna": {
       "id": "dc:donna",
@@ -156293,6 +156384,206 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "civilian": "Hank Henshaw",
       "summary": "Hank Henshaw’s Cyborg Superman; a Lantern adversary, not Victor Stone.",
       "mappingBatch": "CX4"
+    },
+    "dc:ares": {
+      "id": "dc:ares",
+      "recordSlug": "ares",
+      "hero": "Ares",
+      "civilian": "",
+      "summary": "God of War and recurring Wonder Woman adversary.",
+      "mappingBatch": "CX5"
+    },
+    "dc:artemis": {
+      "id": "dc:artemis",
+      "recordSlug": "artemis-of-bana-mighdall",
+      "hero": "Artemis",
+      "civilian": "Bana-Mighdall",
+      "summary": "Amazon warrior and former temporary Wonder Woman.",
+      "mappingBatch": "CX5"
+    },
+    "dc:cheetah": {
+      "id": "dc:cheetah",
+      "recordSlug": "cheetah",
+      "hero": "Cheetah",
+      "civilian": "Barbara Ann Minerva",
+      "summary": "Archaeologist transformed into one of Diana’s defining enemies.",
+      "mappingBatch": "CX5"
+    },
+    "dc:nubia": {
+      "id": "dc:nubia",
+      "recordSlug": "nubia",
+      "hero": "Nubia",
+      "civilian": "",
+      "summary": "Amazon champion and queen; sister relationship is continuity-sensitive.",
+      "mappingBatch": "CX5"
+    },
+    "dc:steve": {
+      "id": "dc:steve",
+      "recordSlug": "steve-trevor",
+      "hero": "Steve Trevor",
+      "civilian": "",
+      "summary": "Soldier, pilot and one of Diana’s longest-running allies and partners.",
+      "mappingBatch": "CX5"
+    },
+    "dc:circe": {
+      "id": "dc:circe",
+      "recordSlug": "circe",
+      "hero": "Circe",
+      "civilian": "",
+      "summary": "Sorceress and recurring magical foe of Wonder Woman.",
+      "mappingBatch": "CX5"
+    },
+    "dc:giganta": {
+      "id": "dc:giganta",
+      "recordSlug": "giganta",
+      "hero": "Giganta",
+      "civilian": "Doris Zuel",
+      "summary": "Size-changing scientist and recurring Wonder Woman opponent.",
+      "mappingBatch": "CX5"
+    },
+    "dc:grail": {
+      "id": "dc:grail",
+      "recordSlug": "grail",
+      "hero": "Grail",
+      "civilian": "",
+      "summary": "Daughter of Darkseid and major threat in the Darkseid War / Wonder Woman era.",
+      "mappingBatch": "CX5"
+    },
+    "dc:silverswan": {
+      "id": "dc:silverswan",
+      "recordSlug": "silver-swan",
+      "hero": "Silver Swan",
+      "civilian": "Vanessa Kapatelis",
+      "summary": "Wonder Woman adversary whose identity and status vary by era.",
+      "mappingBatch": "CX5"
+    },
+    "dc:cale": {
+      "id": "dc:cale",
+      "recordSlug": "veronica-cale",
+      "hero": "Veronica Cale",
+      "civilian": "Dr. Veronica Cale",
+      "summary": "Strategist and recurring ideological opponent of Wonder Woman.",
+      "mappingBatch": "CX5"
+    },
+    "dc:cassie": {
+      "id": "dc:cassie",
+      "recordSlug": "wonder-girl-cassie-sandsmark",
+      "hero": "Wonder Girl",
+      "civilian": "Cassie Sandsmark",
+      "summary": "Wonder Woman partner and one of the Wonder Girls.",
+      "mappingBatch": "CX5"
+    },
+    "dc:yara": {
+      "id": "dc:yara",
+      "recordSlug": "yara-flor",
+      "hero": "Yara Flor",
+      "civilian": "",
+      "summary": "Esquecida-linked hero who has carried Wonder Girl and future Wonder Woman roles.",
+      "mappingBatch": "CX5"
+    },
+    "dc:zatanna": {
+      "id": "dc:zatanna",
+      "recordSlug": "zatanna",
+      "hero": "Zatanna",
+      "civilian": "Zatanna Zatara",
+      "summary": "Stage magician and major DC sorcerer; Justice League Dark veteran.",
+      "mappingBatch": "CX5"
+    },
+    "dc:constantine": {
+      "id": "dc:constantine",
+      "recordSlug": "john-constantine",
+      "hero": "John Constantine",
+      "civilian": "",
+      "summary": "Occult investigator and Justice League Dark veteran.",
+      "mappingBatch": "CX5"
+    },
+    "dc:fate": {
+      "id": "dc:fate",
+      "recordSlug": "doctor-fate",
+      "hero": "Doctor Fate",
+      "civilian": "Kent Nelson",
+      "summary": "Golden Age sorcerer and Justice Society founder.",
+      "mappingBatch": "CX5"
+    },
+    "dc:swamp": {
+      "id": "dc:swamp",
+      "recordSlug": "swamp-thing",
+      "hero": "Swamp Thing",
+      "civilian": "Alec Holland",
+      "summary": "Avatar of the Green and recurring ally in DC’s magic corner.",
+      "mappingBatch": "CX5"
+    },
+    "dc:deadman": {
+      "id": "dc:deadman",
+      "recordSlug": "deadman",
+      "hero": "Deadman",
+      "civilian": "Boston Brand",
+      "summary": "Ghostly hero and Justice League Dark veteran.",
+      "mappingBatch": "CX5"
+    },
+    "dc:stranger": {
+      "id": "dc:stranger",
+      "recordSlug": "phantom-stranger",
+      "hero": "Phantom Stranger",
+      "civilian": "",
+      "summary": "Mystical wanderer whose alliances vary by story.",
+      "mappingBatch": "CX5"
+    },
+    "dc:enchantress": {
+      "id": "dc:enchantress",
+      "recordSlug": "enchantress",
+      "hero": "Enchantress",
+      "civilian": "June Moone",
+      "summary": "Powerful magical entity linked to June Moone and a Justice League Dark crisis.",
+      "mappingBatch": "CX5"
+    },
+    "dc:trigon": {
+      "id": "dc:trigon",
+      "recordSlug": "trigon",
+      "hero": "Trigon",
+      "civilian": "",
+      "summary": "Demonic father and recurring enemy of Raven.",
+      "mappingBatch": "CX5"
+    },
+    "dc:shazam": {
+      "id": "dc:shazam",
+      "recordSlug": "shazam",
+      "hero": "Shazam",
+      "civilian": "Billy Batson",
+      "summary": "Wizard-chosen champion and center of the Shazam Family.",
+      "mappingBatch": "CX5"
+    },
+    "dc:blackadam": {
+      "id": "dc:blackadam",
+      "recordSlug": "black-adam",
+      "hero": "Black Adam",
+      "civilian": "Teth-Adam",
+      "summary": "Ancient magical champion, hero/villain figure and Shazam rival.",
+      "mappingBatch": "CX5"
+    },
+    "dc:mary": {
+      "id": "dc:mary",
+      "recordSlug": "mary-marvel",
+      "hero": "Mary Marvel",
+      "civilian": "Mary Bromfield",
+      "summary": "Shazam-family hero and Billy’s sister/foster-sibling depending era.",
+      "mappingBatch": "CX5"
+    },
+    "dc:freddy": {
+      "id": "dc:freddy",
+      "recordSlug": "freddy-freeman",
+      "hero": "Freddy Freeman",
+      "civilian": "",
+      "summary": "Captain Marvel Jr./Shazam-family hero and Billy’s close family ally.",
+      "mappingBatch": "CX5"
+    },
+    "dc:sivana": {
+      "id": "dc:sivana",
+      "recordSlug": "doctor-sivana",
+      "hero": "Doctor Sivana",
+      "civilian": "Thaddeus Sivana",
+      "summary": "Mad scientist and Shazam’s classic archenemy.",
+      "mappingBatch": "CX5"
     }
   },
   "edges": [
@@ -158704,6 +158995,708 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "priority": 4,
       "reviewBatch": "CX4",
       "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-ares",
+      "a": "dc:diana",
+      "b": "dc:ares",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "God of War adversary",
+      "toA": "Amazon champion opposing him",
+      "detail": "Ares repeatedly attempts to advance war and conflict, placing him directly against Diana’s mission of peace. The branch identifies a recurring adversarial relationship without assuming the same Ares portrayal in every continuity.",
+      "era": "Wonder Woman mythos across multiple eras.",
+      "sourceIds": [
+        "W01",
+        "W02"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-cheetah",
+      "a": "dc:diana",
+      "b": "dc:cheetah",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Recurring archenemy",
+      "toA": "Hero she repeatedly opposes",
+      "detail": "Barbara Minerva’s Cheetah is one of Diana’s defining enemies. Their history can include friendship or attempted redemption in some eras, so the map labels the enduring conflict rather than reducing Barbara to a one-note villain.",
+      "era": "Post-Crisis/Rebirth and later Wonder Woman stories.",
+      "sourceIds": [
+        "W03"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-steve",
+      "a": "dc:diana",
+      "b": "dc:steve",
+      "tags": [
+        "family"
+      ],
+      "toB": "Longtime partner & ally",
+      "toA": "Longtime partner & ally",
+      "detail": "Steve is one of Diana’s longest-running human allies and recurring romantic partners. Relationship status varies across continuities, so this branch does not claim an unbroken present-day romance.",
+      "era": "Wonder Woman comics across multiple continuities.",
+      "sourceIds": [
+        "W04"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-artemis",
+      "a": "dc:diana",
+      "b": "dc:artemis",
+      "tags": [
+        "legacy",
+        "allies"
+      ],
+      "toB": "Amazon peer & former mantle holder",
+      "toA": "Predecessor/rival turned ally",
+      "detail": "Artemis defeated Diana in Hippolyta’s contest and briefly carried the Wonder Woman title before Diana reclaimed the role. Later stories place the two Amazons on the same side despite recurring tension.",
+      "era": "Wonder Woman #90–100 era and later Amazon stories.",
+      "sourceIds": [
+        "W05",
+        "W06"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-nubia",
+      "a": "dc:diana",
+      "b": "dc:nubia",
+      "tags": [
+        "family",
+        "allies"
+      ],
+      "toB": "Amazon sister/peer",
+      "toA": "Amazon sister/peer",
+      "detail": "Nubia has historically been framed as Diana’s sister, while modern continuity gives her a stronger independent role as Amazon leader. The branch preserves the sisterhood while flagging that exact origin mechanics vary by era.",
+      "era": "Pre-Crisis sister history; modern Amazon leadership differs.",
+      "sourceIds": [
+        "W07",
+        "W08"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-hippolyta-nubia",
+      "a": "dc:hippolyta",
+      "b": "dc:nubia",
+      "tags": [
+        "legacy",
+        "allies"
+      ],
+      "toB": "Successor as Amazon queen",
+      "toA": "Predecessor in Amazon rule",
+      "detail": "Nubia becomes Queen of the Amazons in the modern era after Hippolyta’s long reign. This is a leadership succession, not a claim that every prior Nubia story used the same status.",
+      "era": "Infinite Frontier / Trial of the Amazons era.",
+      "sourceIds": [
+        "W07"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-cassie",
+      "a": "dc:diana",
+      "b": "dc:cassie",
+      "tags": [
+        "mentors",
+        "legacy"
+      ],
+      "toB": "Mentor & heroic model",
+      "toA": "Protégé / Wonder Girl",
+      "detail": "Cassie becomes Wonder Girl as a young hero inspired by and partnered with Wonder Woman. Her exact powers and parentage have shifted, but the Diana-to-Cassie legacy relationship remains central.",
+      "era": "Modern Wonder Girl history; continuity details vary.",
+      "sourceIds": [
+        "W09",
+        "W05"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-yara",
+      "a": "dc:diana",
+      "b": "dc:yara",
+      "tags": [
+        "legacy",
+        "allies"
+      ],
+      "toB": "Wonder legacy predecessor",
+      "toA": "Later Wonder Girl / future-era Wonder Woman",
+      "detail": "Yara enters DC’s Wonder legacy as a new Wonder Girl in main continuity after first appearing as a future Wonder Woman. The branch treats those as distinct roles rather than claiming she permanently replaced Diana.",
+      "era": "Future State and 2021 Wonder Girl introduction.",
+      "sourceIds": [
+        "W05",
+        "W11"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-donna-cassie",
+      "a": "dc:donna",
+      "b": "dc:cassie",
+      "tags": [
+        "legacy",
+        "allies"
+      ],
+      "toB": "Fellow Wonder Girl / senior peer",
+      "toA": "Fellow Wonder Girl / junior peer",
+      "detail": "Donna and Cassie are distinct Wonder Girls from different generations. Modern Wonder Woman stories explicitly bring them together as part of the same legacy family.",
+      "era": "Current Wonder Woman supporting-cast era.",
+      "sourceIds": [
+        "W10"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-donna-yara",
+      "a": "dc:donna",
+      "b": "dc:yara",
+      "tags": [
+        "legacy",
+        "allies"
+      ],
+      "toB": "Fellow Wonder Girl / senior peer",
+      "toA": "Fellow Wonder Girl / younger peer",
+      "detail": "Donna and Yara are presented together among the three modern Wonder Girls. Placement in the same legacy does not imply shared parentage or identical Amazon origins.",
+      "era": "Current Wonder Woman supporting-cast era.",
+      "sourceIds": [
+        "W10"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-cassie-yara",
+      "a": "dc:cassie",
+      "b": "dc:yara",
+      "tags": [
+        "legacy",
+        "allies"
+      ],
+      "toB": "Wonder legacy peer",
+      "toA": "Wonder legacy peer",
+      "detail": "Cassie and Yara stand together in the modern Wonder Girl circle and both participate in Trial of the Amazons. They remain separate heroes with different origins.",
+      "era": "Trial of the Amazons and current Wonder Woman era.",
+      "sourceIds": [
+        "W10",
+        "W12"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-circe",
+      "a": "dc:diana",
+      "b": "dc:circe",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Recurring magical adversary",
+      "toA": "Hero opposing her magic",
+      "detail": "Circe is a major magical foe whose schemes repeatedly draw Wonder Woman into supernatural conflict. This branch is anchored to the Justice League Dark-era witching war rather than assuming every Circe appearance has the same motive.",
+      "era": "Justice League Dark 2018 witching-war era.",
+      "sourceIds": [
+        "W20"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-cale-circe",
+      "a": "dc:cale",
+      "b": "dc:circe",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Era-specific magical ally",
+      "toA": "Era-specific strategic ally",
+      "detail": "During the Godwatch conflict, Veronica Cale turns to Circe as part of her campaign surrounding Themyscira and her daughter. Their cooperation is tactical and era-specific, not a permanent friendship.",
+      "era": "Wonder Woman: Godwatch / Rebirth era.",
+      "sourceIds": [
+        "W13",
+        "W14"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-cheetah-circe",
+      "a": "dc:cheetah",
+      "b": "dc:circe",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Received a magical enhancement in one era",
+      "toA": "Former magical benefactor",
+      "detail": "In one post-Crisis phase, Circe magically strengthened Barbara Minerva’s Cheetah form. This is recorded as a specific historical connection, not a permanent master-servant relationship.",
+      "era": "Post-Crisis Cheetah history.",
+      "sourceIds": [
+        "W21"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-giganta",
+      "a": "dc:diana",
+      "b": "dc:giganta",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Recurring physical adversary",
+      "toA": "Hero she repeatedly fights",
+      "detail": "Giganta is a recurring Wonder Woman opponent whose size-changing power lets her challenge Diana physically. Her origin changes are not treated as part of the relationship label.",
+      "era": "Recurring Wonder Woman rivalry across eras.",
+      "sourceIds": [
+        "W15"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-silverswan",
+      "a": "dc:diana",
+      "b": "dc:silverswan",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Recurring adversary",
+      "toA": "Hero she repeatedly opposes",
+      "detail": "Silver Swan has fought Wonder Woman across multiple incarnations. The map keeps the rivalry broad while the dossier handles which Swan/version is being discussed.",
+      "era": "Selected Silver Swan stories; identity varies by era.",
+      "sourceIds": [
+        "W16",
+        "W17"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-cale",
+      "a": "dc:diana",
+      "b": "dc:cale",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Ideological and strategic adversary",
+      "toA": "Hero she seeks to undermine",
+      "detail": "Veronica Cale attacks Diana through politics, strategy and personal schemes rather than mirroring her powers. Their conflict is one of values and control as much as direct combat.",
+      "era": "Wonder Woman: Down to Earth and Rebirth Godwatch.",
+      "sourceIds": [
+        "W13",
+        "W16"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-grail",
+      "a": "dc:diana",
+      "b": "dc:grail",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Darkseid War adversary",
+      "toA": "Hero opposing her schemes",
+      "detail": "Grail’s Darkseid-related plans pull her into direct conflict with Wonder Woman during Darkseid War and the later Children of the Gods storyline. This is a specific cosmic adversarial branch.",
+      "era": "Darkseid War / Wonder Woman #31–37 era.",
+      "sourceIds": [
+        "W18",
+        "W19"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-zatanna-constantine",
+      "a": "dc:zatanna",
+      "b": "dc:constantine",
+      "tags": [
+        "family",
+        "teammates"
+      ],
+      "toB": "Former romantic partner & magic teammate",
+      "toA": "Former romantic partner & magic teammate",
+      "detail": "Zatanna and Constantine share both romantic history and repeated magical-team service. The relationship is explicitly historical and should not be read as a claim that they are currently together.",
+      "era": "Justice League Dark / Search for Swamp Thing era and earlier history.",
+      "sourceIds": [
+        "W27",
+        "W30"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-zatanna-deadman",
+      "a": "dc:zatanna",
+      "b": "dc:deadman",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Justice League Dark teammate",
+      "toA": "Justice League Dark teammate",
+      "detail": "Zatanna and Deadman serve together on Justice League Dark. The connection is team service, not family or a generic “all magic users know each other” assumption.",
+      "era": "New 52 Justice League Dark.",
+      "sourceIds": [
+        "W27"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-constantine-deadman",
+      "a": "dc:constantine",
+      "b": "dc:deadman",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Justice League Dark teammate",
+      "toA": "Justice League Dark teammate",
+      "detail": "Constantine and Deadman are teammates in the original Justice League Dark lineup and later supernatural missions.",
+      "era": "New 52 Justice League Dark.",
+      "sourceIds": [
+        "W27"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-constantine-swamp",
+      "a": "dc:constantine",
+      "b": "dc:swamp",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Occult ally & investigator",
+      "toA": "Supernatural ally",
+      "detail": "Constantine has a long history with Swamp Thing and helps search for him after Brightest Day, drawing Batman and Zatanna into the case. The branch reflects recurring cooperation without implying constant partnership.",
+      "era": "Swamp Thing / Search for Swamp Thing era.",
+      "sourceIds": [
+        "W23",
+        "W24",
+        "W30"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-zatanna",
+      "a": "dc:diana",
+      "b": "dc:zatanna",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Justice League Dark teammate/leader",
+      "toA": "Magic teammate under Diana’s team",
+      "detail": "Diana leads the 2018 Justice League Dark roster with Zatanna as one of its central mystics. This is an explicit team relationship, not merely both characters appearing in the same universe.",
+      "era": "Justice League Dark (2018).",
+      "sourceIds": [
+        "W28",
+        "W29"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-diana-swamp",
+      "a": "dc:diana",
+      "b": "dc:swamp",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Justice League Dark teammate/leader",
+      "toA": "Magic teammate under Diana’s team",
+      "detail": "Swamp Thing serves with Wonder Woman’s 2018 Justice League Dark lineup during the crisis in Earth’s magic.",
+      "era": "Justice League Dark (2018).",
+      "sourceIds": [
+        "W28",
+        "W29"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-zatanna-swamp",
+      "a": "dc:zatanna",
+      "b": "dc:swamp",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Justice League Dark teammate",
+      "toA": "Justice League Dark teammate",
+      "detail": "Zatanna and Swamp Thing serve together in the 2018 Justice League Dark lineup and later battles against the Upside-Down Man.",
+      "era": "Justice League Dark (2018–2020).",
+      "sourceIds": [
+        "W28",
+        "W29"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-constantine-stranger",
+      "a": "dc:constantine",
+      "b": "dc:stranger",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Blight-era supernatural ally",
+      "toA": "Blight-era supernatural ally",
+      "detail": "Constantine joins forces with Phantom Stranger during the Forever Evil: Blight crisis. The alliance is story-specific and does not define the Stranger as a permanent team member.",
+      "era": "Forever Evil: Blight (2013–2014).",
+      "sourceIds": [
+        "W32"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-swamp-stranger",
+      "a": "dc:swamp",
+      "b": "dc:stranger",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Blight-era supernatural ally",
+      "toA": "Blight-era supernatural ally",
+      "detail": "Swamp Thing and Phantom Stranger are part of Constantine’s supernatural coalition against Blight. This is a documented temporary alliance.",
+      "era": "Forever Evil: Blight.",
+      "sourceIds": [
+        "W32"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-zatanna-enchantress",
+      "a": "dc:zatanna",
+      "b": "dc:enchantress",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Hero opposing magical crisis",
+      "toA": "Source of the magical crisis",
+      "detail": "Enchantress’s uncontrolled magical crisis is the threat that helps bring Zatanna and the early Justice League Dark together. The branch is adversarial for this arc, not a permanent moral classification of June Moone.",
+      "era": "Justice League Dark #1–6 / In the Dark.",
+      "sourceIds": [
+        "W31"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-constantine-enchantress",
+      "a": "dc:constantine",
+      "b": "dc:enchantress",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Hero opposing magical crisis",
+      "toA": "Source of the magical crisis",
+      "detail": "Constantine is part of the group trying to contain the Enchantress crisis that launches Justice League Dark. June Moone’s later roles are separate from this event-specific conflict.",
+      "era": "Justice League Dark #1–6 / In the Dark.",
+      "sourceIds": [
+        "W31"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-deadman-enchantress",
+      "a": "dc:deadman",
+      "b": "dc:enchantress",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Hero opposing magical crisis",
+      "toA": "Source of the magical crisis",
+      "detail": "Deadman is among the supernatural heroes assembled against Enchantress during the formation of Justice League Dark.",
+      "era": "Justice League Dark #1–6 / In the Dark.",
+      "sourceIds": [
+        "W31"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-raven-trigon",
+      "a": "dc:raven",
+      "b": "dc:trigon",
+      "tags": [
+        "family",
+        "rivals"
+      ],
+      "toB": "Daughter and primary opposing hero",
+      "toA": "Father and recurring tormentor",
+      "detail": "Trigon is Raven’s demonic father and one of the defining threats she repeatedly resists. The family tie is biological/demonic while the relationship is also profoundly adversarial.",
+      "era": "New Teen Titans onward.",
+      "sourceIds": [
+        "W33"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-fate-blackadam",
+      "a": "dc:fate",
+      "b": "dc:blackadam",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Justice Society opponent in this arc",
+      "toA": "Opponent of Fate’s Justice Society",
+      "detail": "Doctor Fate is among the Justice Society heroes confronting Black Adam during the Rock of Eternity conflict. This branch is deliberately era-specific rather than declaring them permanent enemies or teammates.",
+      "era": "Justice Society of America #24–25 (2009).",
+      "sourceIds": [
+        "W35"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-shazam-blackadam",
+      "a": "dc:shazam",
+      "b": "dc:blackadam",
+      "tags": [
+        "legacy",
+        "rivals"
+      ],
+      "toB": "Ancient predecessor/rival champion",
+      "toA": "Later Wizard-chosen champion and rival",
+      "detail": "Black Adam was chosen by the Wizard long before Billy Batson and later became one of Shazam’s central magical rivals. This is a champion legacy with conflict, not a family relationship.",
+      "era": "Classic/modern Shazam mythology.",
+      "sourceIds": [
+        "W36"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-shazam-mary",
+      "a": "dc:shazam",
+      "b": "dc:mary",
+      "tags": [
+        "family",
+        "teammates",
+        "legacy"
+      ],
+      "toB": "Brother/foster-brother & fellow champion",
+      "toA": "Sister/foster-sister & fellow champion",
+      "detail": "Mary is part of Billy’s Shazam Family. Older continuity emphasizes their biological sibling relationship, while post-Flashpoint continuity frames the household as foster siblings; both are kept explicit rather than merged.",
+      "era": "Golden Age Marvel Family and post-Flashpoint Shazam Family.",
+      "sourceIds": [
+        "W37",
+        "W38"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-shazam-freddy",
+      "a": "dc:shazam",
+      "b": "dc:freddy",
+      "tags": [
+        "family",
+        "teammates",
+        "legacy"
+      ],
+      "toB": "Close family ally / mentor in classic era",
+      "toA": "Protégé/foster-brother depending era",
+      "detail": "Freddy becomes Captain Marvel Jr. after Billy shares his power in classic continuity; modern continuity recasts Freddy as Billy’s foster brother in the Shazam Family.",
+      "era": "Classic Captain Marvel Jr. history and post-Flashpoint family.",
+      "sourceIds": [
+        "W37",
+        "W39"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-mary-freddy",
+      "a": "dc:mary",
+      "b": "dc:freddy",
+      "tags": [
+        "family",
+        "teammates"
+      ],
+      "toB": "Shazam-family teammate",
+      "toA": "Shazam-family teammate",
+      "detail": "Mary and Freddy serve together as core members of the Marvel/Shazam Family. Their exact family framing changes across continuities, so the branch emphasizes the shared heroic family rather than inventing a biological relation between them.",
+      "era": "Marvel Family / Shazam Family across eras.",
+      "sourceIds": [
+        "W37",
+        "W38",
+        "W39"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx5-shazam-sivana",
+      "a": "dc:shazam",
+      "b": "dc:sivana",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Archenemy",
+      "toA": "Hero he repeatedly targets",
+      "detail": "Doctor Sivana is one of Shazam’s oldest and most persistent archenemies, using science and, in some modern stories, magic against Billy and his family.",
+      "era": "Whiz Comics era through modern Shazam stories.",
+      "sourceIds": [
+        "W40"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX5",
+      "reviewStatus": "source-linked-selected-relationship"
     }
   ],
   "sources": {
@@ -159596,6 +160589,406 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "reviewed": "2026-09-07",
       "note": "Names Hal, John, Guy and Kyle organizing a rescue of Ganthet and Sayd. The link describes the stated rescue mission, not an unverified outcome.",
       "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "W01": {
+      "id": "W01",
+      "title": "DC — Wonder Woman",
+      "url": "https://www.dc.com/characters/wonder-woman",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Diana overview and official related-character context for Ares, Cheetah, Steve Trevor, Wonder Girl, Hippolyta, Veronica Cale and others. Used only where a more specific relationship source is also clear.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W02": {
+      "id": "W02",
+      "title": "DC — Ares",
+      "url": "https://www.dc.com/characters/ares",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Ares is the god of war and a recurring foe of Wonder Woman and the Amazons.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W03": {
+      "id": "W03",
+      "title": "DC — The Cheetah",
+      "url": "https://www.dc.com/characters/the-cheetah",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Barbara Ann Minerva as Cheetah and her recurring Wonder Woman rivalry.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W04": {
+      "id": "W04",
+      "title": "DC — Steve Trevor",
+      "url": "https://www.dc.com/characters/steve-trevor",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Steve as Diana’s longtime ally, guide in Man’s World and recurring romantic partner; no claim that every era has identical status.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W05": {
+      "id": "W05",
+      "title": "DC — The Magnificent Matrilineage of Wonder Woman",
+      "url": "https://www.dc.com/blog/2021/02/10/the-magnificent-matrilineage-of-wonder-woman",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Artemis’s temporary Wonder Woman tenure, Cassie’s legacy, Nubia’s earlier sister history and Yara’s Future State Wonder Woman role. This is a legacy explainer, not a single-current-continuity family tree.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W06": {
+      "id": "W06",
+      "title": "DC — The Legend of Artemis: Wonder Woman’s Hot-Tempered Rival",
+      "url": "https://www.dc.com/blog/2022/07/22/the-legend-of-artemis-wonder-womans-hot-tempered-rival",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Artemis’s Bana-Mighdall identity, temporary Wonder Woman role and later work alongside Diana/Amazons. Used with explicit era labels.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W07": {
+      "id": "W07",
+      "title": "DC — Nubia: Queen of the Amazons",
+      "url": "https://www.dc.com/blog/2024/06/14/themysciras-past-and-future-collide-in-nubia-queen-of-the-amazons",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Nubia’s modern role as Queen of the Amazons following Hippolyta’s era; does not flatten all older Nubia continuities into one origin.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W08": {
+      "id": "W08",
+      "title": "DC — The Future Has Always Been in Nubia’s Hands",
+      "url": "https://www.dc.com/blog/2021/10/19/the-future-has-always-been-in-nubias-hands",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Nubia and Diana’s early sister framing and their cooperation against Mars; retained as continuity-sensitive historical context.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W09": {
+      "id": "W09",
+      "title": "DC — Wonder Girl",
+      "url": "https://www.dc.com/characters/wonder-girl",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Cassie Sandsmark as Wonder Girl, partner to Wonder Woman and founding Young Justice member. The current page reflects a modern power presentation and is not used to overwrite all historical origins.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W10": {
+      "id": "W10",
+      "title": "DC — Trinity, Truth and a Trio of Wonder Girls",
+      "url": "https://www.dc.com/blog/2024/11/19/trinity-truth-and-a-trio-of-wonder-girls-tom-kings-wonder-woman-enters-a-new-era",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Donna, Cassie and Yara are explicitly presented together as the three Wonder Girls in the current Wonder Woman run; used for their modern peer/legacy connection.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W11": {
+      "id": "W11",
+      "title": "DC — The Legend of Yara Flor Launches in Wonder Girl #1",
+      "url": "https://www.dc.com/blog/2021/02/03/the-legend-of-d-cs-yara-flor-launches-in-may-with-wonder-girl-1",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Yara’s main-universe introduction and Wonder Girl identity; kept separate from her Future State Wonder Woman status.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W12": {
+      "id": "W12",
+      "title": "DC — Trial of the Amazons April titles",
+      "url": "https://www.dc.com/blog/2022/01/21/dc-announces-april-titles",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Cassie and Yara are both central participants in Trial of the Amazons; used only for this Amazon event connection.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W13": {
+      "id": "W13",
+      "title": "DC — Veronica Cale",
+      "url": "https://www.dc.com/characters/veronica-cale",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Veronica’s antagonism toward Wonder Woman and her era-specific alliance with Circe during the Godwatch conflict.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W14": {
+      "id": "W14",
+      "title": "DC — Wonder Woman #20 (2016)",
+      "url": "https://www.dc.com/comics/wonder-woman-2016/wonder-woman-20",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Godwatch story explicitly puts Veronica Cale’s plan, Circe and Wonder Woman into the same conflict. Used to qualify the Cale/Circe collaboration.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W15": {
+      "id": "W15",
+      "title": "DC — Giganta",
+      "url": "https://www.dc.com/characters/giganta",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Giganta as a recurring Wonder Woman opponent. The page also notes Wonder Girl interrupting the post-Crisis body-transfer scheme, but that detail is not generalized to all eras.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W16": {
+      "id": "W16",
+      "title": "DC — Wonder Woman: Down to Earth",
+      "url": "https://www.dc.com/graphic-novels/wonder-woman-1987/wonder-woman-down-to-earth",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Collection synopsis explicitly places Veronica Cale, Doctor Psycho, Silver Swan and Ares among Diana’s conflicts.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W17": {
+      "id": "W17",
+      "title": "DC — DC Retroactive: Wonder Woman – The ’80s #1",
+      "url": "https://www.dc.com/comics/dc-retroactive-wonder-woman-2011/dc-retroactive-wonder-woman-the-80s-1",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Explicit Wonder Woman versus Silver Swan battle; used as a clean era-specific rivalry anchor.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W18": {
+      "id": "W18",
+      "title": "DC — Wonder Woman Vol. 6: Children of the Gods",
+      "url": "https://www.dc.com/graphic-novels/wonder-woman-2016/wonder-woman-vol-6-children-of-the-gods",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Diana’s conflict with the cosmic threat of Darkseid and Grail in Wonder Woman #31–37.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W19": {
+      "id": "W19",
+      "title": "DC — Wonder Woman #33",
+      "url": "https://www.dc.com/comics/wonder-woman-2016/wonder-woman-33",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Grail’s quest after Darkseid War and confrontation within the Wonder Woman storyline; used for the Diana/Grail adversarial branch.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W20": {
+      "id": "W20",
+      "title": "DC — Justice League Dark #15 (2018)",
+      "url": "https://www.dc.com/comics/justice-league-dark-2018/justice-league-dark-15",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Circe assembles the Injustice League Dark while Wonder Woman’s magic team opposes her; used for the Diana/Circe magical conflict.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W21": {
+      "id": "W21",
+      "title": "DC — Five Lives of the Cheetah",
+      "url": "https://www.dc.com/blog/2021/09/27/the-five-lives-of-the-cheetah-wonder-womans-deadliest-enemy",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Barbara Minerva’s Cheetah history and Circe’s role in empowering one era of the character. This does not make Circe her permanent master.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W22": {
+      "id": "W22",
+      "title": "DC — Zatanna",
+      "url": "https://www.dc.com/characters/zatanna",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Zatanna’s magical identity and official related-character context with Constantine, Deadman, Swamp Thing and Phantom Stranger.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W23": {
+      "id": "W23",
+      "title": "DC — John Constantine",
+      "url": "https://www.dc.com/characters/john-constantine",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Constantine as occult investigator and official related-character context with Deadman, Swamp Thing, Phantom Stranger and Zatanna.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W24": {
+      "id": "W24",
+      "title": "DC — Swamp Thing",
+      "url": "https://www.dc.com/characters/swamp-thing",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Swamp Thing/Alec Holland identity and official related-character context with Constantine, Deadman, Phantom Stranger and Zatanna.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W25": {
+      "id": "W25",
+      "title": "DC — Deadman",
+      "url": "https://www.dc.com/characters/deadman",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Deadman/Boston Brand and his work with supernatural heroes including Spectre and Justice League Dark.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W26": {
+      "id": "W26",
+      "title": "DC — The Phantom Stranger",
+      "url": "https://www.dc.com/characters/the-phantom-stranger",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Phantom Stranger’s supernatural role and related-character context; connections are kept era-qualified rather than defining him as permanent teammate to everyone listed.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W27": {
+      "id": "W27",
+      "title": "DC — Justice League Dark — New 52 announcement",
+      "url": "https://www.dc.com/blog/2011/06/27/dc-comics-the-new-52-justice-league-dark",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Justice League Dark roster evidence for Constantine, Zatanna and Deadman; used for teammate branches.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W28": {
+      "id": "W28",
+      "title": "DC — Justice League Dark #1 (2018)",
+      "url": "https://www.dc.com/comics/justice-league-dark-2018/justice-league-dark-1",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Wonder Woman leads the 2018 Justice League Dark lineup including Zatanna and Swamp Thing; page also stars other magic characters but only explicit team relationships are mapped.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W29": {
+      "id": "W29",
+      "title": "DC — Bringing Wonder to Magic: Justice League Dark",
+      "url": "https://www.dc.com/blog/2018/07/25/bringing-wonder-to-magic-james-tynion-iv-talks-justice-league-dark",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Explicit 2018 team lineup: Zatanna, Swamp Thing, Man-Bat, Detective Chimp and Wonder Woman. Used only for documented team links among dossiers present here.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W30": {
+      "id": "W30",
+      "title": "DC — The Search for Swamp Thing Begins",
+      "url": "https://www.dc.com/blog/2011/06/21/the-search-for-swamp-thing-begins",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Constantine seeks Swamp Thing and enlists Batman and Zatanna; also calls Zatanna a former flame of Constantine. Used for that specific search and historical romance context.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W31": {
+      "id": "W31",
+      "title": "DC — Justice League Dark Vol. 1: In the Dark",
+      "url": "https://www.dc.com/graphic-novels/justice-league-dark-2011/justice-league-dark-vol-1-in-the-dark",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Enchantress unleashes the crisis that brings Deadman, Zatanna and Constantine together; used as adversarial evidence for that arc.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W32": {
+      "id": "W32",
+      "title": "DC — Forever Evil: Blight announcement",
+      "url": "https://www.dc.com/blog/2013/10/04/what-s-new-in-the-new-52-announcing-forever-evil-blight",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Constantine works with Phantom Stranger and Swamp Thing during the Blight crisis while trying to rescue Zatanna; used for those era-specific alliances.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W33": {
+      "id": "W33",
+      "title": "DC — Trigon",
+      "url": "https://www.dc.com/characters/trigon",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Trigon is Raven’s demonic father and recurring enemy of Raven and the Teen Titans.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W34": {
+      "id": "W34",
+      "title": "DC — Doctor Fate",
+      "url": "https://www.dc.com/characters/doctor-fate",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Kent Nelson as Doctor Fate and Justice Society founder; related-character context includes Black Adam, but rivalry evidence uses a more specific story source.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W35": {
+      "id": "W35",
+      "title": "DC — Justice Society of America #24",
+      "url": "https://www.dc.com/comics/justice-society-of-america-2007/justice-society-of-america-24",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "The Justice Society, including Doctor Fate, faces Black Adam and Isis at the Rock of Eternity; used for an era-specific adversarial connection.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W36": {
+      "id": "W36",
+      "title": "DC — Black Adam",
+      "url": "https://www.dc.com/characters/black-adam",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Teth-Adam as the Wizard’s former champion and a frequent enemy to Earth’s heroes, with Shazam explicitly related. Used for the Billy/Adam rivalry.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W37": {
+      "id": "W37",
+      "title": "DC — Shazam Family",
+      "url": "https://www.dc.com/characters/shazam-family",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Billy, Mary and Freddy as members of the Shazam/Marvel Family across eras, with post-Flashpoint foster-family framing kept distinct from Golden Age sibling history.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W38": {
+      "id": "W38",
+      "title": "DC — Mary Bromfield",
+      "url": "https://www.dc.com/characters/mary-bromfield",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Mary’s relationship to Billy and Freddy and her own Shazam-family identity.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W39": {
+      "id": "W39",
+      "title": "DC — Captain Marvel Jr.",
+      "url": "https://www.dc.com/characters/captain-marvel-jr",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Freddy Freeman as Billy’s close ally/protégé and, in modern continuity, foster brother; historic naming is retained in the detail.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
+    },
+    "W40": {
+      "id": "W40",
+      "title": "DC — Doctor Sivana",
+      "url": "https://www.dc.com/characters/doctor-sivana",
+      "publisher": "DC",
+      "kind": "Publisher character/editorial/catalog text",
+      "reviewed": "2026-09-07",
+      "note": "Doctor Sivana as Shazam’s sworn archenemy and recurring opponent of the Shazam Family.",
+      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
     }
   },
   "legacy": [
@@ -159676,12 +161069,22 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "newSources": 30,
       "kind": "selected source-linked relationships",
       "reviewed": "2026-09-07"
+    },
+    {
+      "id": "CX5",
+      "release": "8.57",
+      "scope": "Wonder/Amazon legacy and magic/Shazam relationships, with bridges into the existing Donna, Titans, Batman and Superman-era maps",
+      "newNodes": 25,
+      "newRelationships": 37,
+      "newSources": 40,
+      "kind": "selected source-linked relationships",
+      "reviewed": "2026-09-07"
     }
   ]
 }
 </script>
 <script id="cvConnectionsScript">
-/* Comic Vault v8.56 — Extensible Connections & Legacy registry. No external graph library. */
+/* Comic Vault v8.58 — Connections viewport: fit, pinch/zoom, pan and rotation. */
 (() => {
   'use strict';
   const graph = JSON.parse(document.getElementById('cvConnectionsData').textContent);
@@ -159718,19 +161121,209 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function card(id,options={}){
     const n=lookup(id),e=options.edge,label=e?relationLabel(e,state.root):options.label||'Tap to open file';
     const root=!!options.root, category=e?keyCategory(e):options.category||'legacy';
-    return `<button type="button" class="cvx-node${root?' cvx-root':''}" data-cvx-node="${esc(id)}" ${e?`data-cvx-edge="${esc(e.id)}"`:''} ${options.legacyIndex!==undefined?`data-cvx-legacy="${options.legacyIndex}"`:''} data-category="${category}" aria-haspopup="dialog" aria-label="${esc(nodeName(n))}. ${esc(root?'Centered character':label)}. View details." ${options.position?`style="grid-row:${options.position[0]};grid-column:${options.position[1]}"`:''}>
+    return `<button type="button" class="cvx-node${root?' cvx-root':''}" data-cvx-node="${esc(id)}" ${e?`data-cvx-edge="${esc(e.id)}"`:''} ${options.legacyIndex!==undefined?`data-cvx-legacy="${options.legacyIndex}"`:''} data-category="${category}" aria-haspopup="dialog" aria-label="${esc(nodeName(n))}. ${esc(root?'Centered character':label)}. View details." ${options.position?`style="grid-row:${options.position[0]};grid-column:${options.position[1]};--cvz-row:${options.position[0]};--cvz-column:${options.position[1]}"`:''}>
       ${root?'<span class="cvx-node-kicker">CENTER OF THIS MAP</span>':options.era?`<span class="cvx-node-kicker">${esc(options.era)}</span>`:''}${artwork(n)}<span class="cvx-node-name">${esc(n.hero)}</span>${n.civilian?`<span class="cvx-node-person">${esc(n.civilian)}</span>`:''}<span class="${root?'cvx-node-tap':'cvx-node-relation'}">${esc(root?'View character file ↗':label)}</span></button>`;
   }
+  // v8.58: camera coordinates are local CSS pixels, kept separate from the graph data.
+  // Pointer gestures only take over inside the map; browser zoom elsewhere is untouched.
+  let mapAbort=null, mapObserver=null, mapMeasureFrame=0, zoomAnnouncement=0;
+  let mapMetrics=null, ignoreMapClickUntil=0;
+  const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
+  const isShortLandscape=()=>matchMedia('(orientation:landscape) and (max-height:600px)').matches;
+  const mapKey=()=>[state.root,state.filter,state.page,isShortLandscape()?'phone-landscape':matchMedia('(max-width:700px)').matches?'portrait-layout':'wide-layout'].join('|');
+  function mapUI(){
+    const isTree=state.mode==='connections'&&state.view==='map';
+    dialog.classList.toggle('cvz-tree-mode',isTree);
+    dialog.classList.toggle('cvz-options-open',!!state.optionsOpen);
+    $('cvxExplorerOptions').hidden=isTree&&!state.optionsOpen;
+    $('cvzMapBar').hidden=!isTree;
+    $('cvzMapHint').hidden=!isTree;
+    $('cvzOptions').setAttribute('aria-expanded',String(!isTree||!!state.optionsOpen));
+    $('cvzOptions').textContent=isTree&&state.optionsOpen?'Show map':'Options';
+    $('cvzQuickBack').disabled=!state.stack.length;
+    const title=isTree?nodeName(lookup(state.root)):'CONNECTIONS & LEGACY';
+    $('cvxTitle').textContent=title;$('cvxTitle').title=title;
+    if(isTree){
+      const count=selectedEdges().length,pages=Math.max(1,Math.ceil(count/PAGE_SIZE));
+      $('cvzPageLabel').textContent=`${state.page+1} / ${pages}`;
+      $('cvzPageLabel').setAttribute('aria-label',`Connection page ${state.page+1} of ${pages}`);
+      $('cvzPreviousPage').disabled=state.page===0;
+      $('cvzNextPage').disabled=state.page>=pages-1;
+    }
+  }
+  function teardownMap(){
+    if(mapAbort)mapAbort.abort();mapAbort=null;
+    if(mapObserver)mapObserver.disconnect();mapObserver=null;
+    cancelAnimationFrame(mapMeasureFrame);mapMeasureFrame=0;mapMetrics=null;
+    clearTimeout(zoomAnnouncement);
+  }
+  function scheduleMapMeasure(){
+    cancelAnimationFrame(mapMeasureFrame);
+    mapMeasureFrame=requestAnimationFrame(measureMap);
+  }
+  function measureMap(){
+    const vp=$('cvzViewport'),stage=$('cvxMap');
+    if(!vp||!stage||!dialog.open)return;
+    const vw=vp.clientWidth,vh=vp.clientHeight;if(vw<10||vh<10)return;
+    const small=matchMedia('(max-width:700px)').matches;
+    // Retain the accepted two-column portrait and radial landscape arrangements.
+    const width=isShortLandscape()?1120:small?Math.max(420,vw):Math.max(800,Math.min(1120,vw));
+    stage.style.width=width+'px';
+    const mw=stage.offsetWidth,mh=stage.offsetHeight;
+    if(!mw||!mh)return;
+    const fit=Math.min(1,(vw-20)/mw,(vh-20)/mh);
+    const key=mapKey(),prior=state.camera;
+    mapMetrics={vw,vh,mw,mh,fit,min:Math.min(.15,fit),max:3};
+    if(!prior||prior.key!==key||prior.autoFit){
+      state.camera={key,s:fit,x:(vw-mw*fit)/2,y:(vh-mh*fit)/2,autoFit:true,vw,vh};
+    }else if(prior.vw!==vw||prior.vh!==vh){
+      const centerX=((prior.vw||vw)/2-prior.x)/prior.s;
+      const centerY=((prior.vh||vh)/2-prior.y)/prior.s;
+      state.camera={...prior,x:vw/2-centerX*prior.s,y:vh/2-centerY*prior.s,vw,vh};
+    }
+    applyMapCamera();queueLines();
+  }
+  function applyMapCamera(announce=false){
+    if(!mapMetrics||!state?.camera)return;
+    const {vw,vh,mw,mh,min,max}=mapMetrics,c=state.camera,stage=$('cvxMap');
+    if(!stage)return;
+    c.s=clamp(c.s,min,max);
+    c.x=mw*c.s<=vw?(vw-mw*c.s)/2:clamp(c.x,vw-mw*c.s-28,28);
+    c.y=mh*c.s<=vh?(vh-mh*c.s)/2:clamp(c.y,vh-mh*c.s-28,28);
+    c.vw=vw;c.vh=vh;
+    stage.style.transform=`translate(${c.x}px,${c.y}px) scale(${c.s})`;
+    $('cvzZoomValue').textContent=Math.round(c.s*100)+'%';
+    $('cvzZoomOut').disabled=c.s<=min+.001;
+    $('cvzZoomIn').disabled=c.s>=max-.001;
+    if(announce){clearTimeout(zoomAnnouncement);zoomAnnouncement=setTimeout(()=>{
+      $('cvzAnnouncement').textContent=`Map zoom ${Math.round(c.s*100)} percent${c.autoFit?', fitted to this page':''}.`;
+    },160);}
+  }
+  function fitMap(){
+    if(!mapMetrics||!state?.camera)return;
+    const {vw,vh,mw,mh,fit}=mapMetrics;
+    Object.assign(state.camera,{s:fit,x:(vw-mw*fit)/2,y:(vh-mh*fit)/2,autoFit:true});
+    applyMapCamera(true);
+  }
+  function zoomMap(scale,anchor){
+    if(!mapMetrics||!state?.camera)return;
+    const c=state.camera,{vw,vh,min,max}=mapMetrics;
+    const p=anchor||{x:vw/2,y:vh/2},next=clamp(scale,min,max),ratio=next/c.s;
+    c.x=p.x-(p.x-c.x)*ratio;c.y=p.y-(p.y-c.y)*ratio;c.s=next;c.autoFit=false;
+    applyMapCamera(true);
+  }
+  function readableMap(){
+    if(!mapMetrics||!state?.camera)return;
+    const stage=$('cvxMap'),root=stage?.querySelector('.cvx-root');if(!root)return;
+    const sr=stage.getBoundingClientRect(),rr=root.getBoundingClientRect(),old=state.camera.s;
+    const x=(rr.left-sr.left+rr.width/2)/old,y=(rr.top-sr.top+rr.height/2)/old;
+    Object.assign(state.camera,{s:1,x:mapMetrics.vw/2-x,y:mapMetrics.vh/2-y,autoFit:false});
+    applyMapCamera(true);
+  }
+  function panMap(dx,dy){
+    if(!state?.camera)return;
+    state.camera.x+=dx;state.camera.y+=dy;state.camera.autoFit=false;applyMapCamera();
+  }
+  function attachMap(){
+    const vp=$('cvzViewport');if(!vp)return;
+    mapAbort=new AbortController();const opts={signal:mapAbort.signal};
+    const points=new Map();let gesture=null,moved=false;
+    const local=e=>{const r=vp.getBoundingClientRect();return {x:e.clientX-r.left-vp.clientLeft,y:e.clientY-r.top-vp.clientTop};};
+    function resetGesture(){
+      if(!state.camera)return;
+      const ps=[...points.values()];
+      if(ps.length>=2){
+        const a=ps[0],b=ps[1],mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+        gesture={mode:'pinch',distance:Math.max(1,Math.hypot(a.x-b.x,a.y-b.y)),mid,c:{...state.camera}};
+        moved=true;ignoreMapClickUntil=performance.now()+600;
+      }else if(ps.length===1){gesture={mode:'pan',point:ps[0],c:{...state.camera}};}
+      else gesture=null;
+    }
+    vp.addEventListener('pointerdown',e=>{
+      if(e.pointerType==='mouse'&&e.button!==0)return;
+      if(!mapMetrics)measureMap();if(!state.camera)return;
+      if(points.size===0){moved=false;ignoreMapClickUntil=0;}
+      points.set(e.pointerId,local(e));
+      // Capture to the hit target: ordinary taps still activate their character card.
+      try{e.target.setPointerCapture(e.pointerId);}catch(_){}
+      resetGesture();
+    },opts);
+    vp.addEventListener('pointermove',e=>{
+      if(!points.has(e.pointerId)||!gesture)return;
+      points.set(e.pointerId,local(e));
+      const ps=[...points.values()];
+      if(gesture.mode==='pinch'&&ps.length>=2){
+        const a=ps[0],b=ps[1],mid={x:(a.x+b.x)/2,y:(a.y+b.y)/2};
+        const dist=Math.hypot(a.x-b.x,a.y-b.y),c=gesture.c;
+        const next=clamp(c.s*dist/gesture.distance,mapMetrics.min,mapMetrics.max),ratio=next/c.s;
+        Object.assign(state.camera,{s:next,x:mid.x-(gesture.mid.x-c.x)*ratio,y:mid.y-(gesture.mid.y-c.y)*ratio,autoFit:false});
+      }else if(ps.length===1){
+        const dx=ps[0].x-gesture.point.x,dy=ps[0].y-gesture.point.y;
+        if(!moved&&Math.hypot(dx,dy)<6)return;
+        moved=true;Object.assign(state.camera,{x:gesture.c.x+dx,y:gesture.c.y+dy,autoFit:false});
+      }else return;
+      e.preventDefault();vp.classList.add('cvz-dragging');ignoreMapClickUntil=performance.now()+600;
+      applyMapCamera();
+    },{...opts,passive:false});
+    function end(e){
+      if(!points.has(e.pointerId))return;
+      points.delete(e.pointerId);
+      if(moved)ignoreMapClickUntil=performance.now()+600;
+      if(!points.size)vp.classList.remove('cvz-dragging');
+      resetGesture();
+    }
+    ['pointerup','pointercancel','lostpointercapture'].forEach(name=>vp.addEventListener(name,end,opts));
+    vp.addEventListener('click',e=>{
+      if(e.detail!==0&&performance.now()<ignoreMapClickUntil){e.preventDefault();e.stopImmediatePropagation();}
+    },{...opts,capture:true});
+    vp.addEventListener('dragstart',e=>e.preventDefault(),opts);
+    vp.addEventListener('wheel',e=>{
+      e.preventDefault();if(!state.camera)return;
+      if(e.shiftKey){panMap(-e.deltaY,-e.deltaX);return;}
+      const delta=e.deltaY*(e.deltaMode===1?16:e.deltaMode===2?vp.clientHeight:1);
+      zoomMap(state.camera.s*Math.exp(-clamp(delta,-300,300)*.002),local(e));
+    },{...opts,passive:false});
+    // Safari legacy gesture events must not zoom the page as well as the map.
+    ['gesturestart','gesturechange','gestureend'].forEach(name=>vp.addEventListener(name,e=>e.preventDefault(),{...opts,passive:false}));
+    vp.addEventListener('keydown',e=>{
+      if(e.ctrlKey||e.metaKey||e.altKey)return;
+      let used=true;
+      if(e.key==='+'||e.key==='=')zoomMap(state.camera.s*1.25);
+      else if(e.key==='-')zoomMap(state.camera.s/1.25);
+      else if(e.key==='0'||e.key.toLowerCase()==='f')fitMap();
+      else if(e.key==='1')readableMap();
+      else if(e.key==='ArrowLeft')panMap(55,0);
+      else if(e.key==='ArrowRight')panMap(-55,0);
+      else if(e.key==='ArrowUp')panMap(0,55);
+      else if(e.key==='ArrowDown')panMap(0,-55);
+      else used=false;
+      if(used)e.preventDefault();
+    },opts);
+    vp.addEventListener('focusin',e=>{
+      const target=e.target.closest('.cvx-node');
+      if(!target||!mapMetrics||points.size||!target.matches(':focus-visible'))return;
+      const r=target.getBoundingClientRect(),v=vp.getBoundingClientRect();let dx=0,dy=0;
+      if(r.left<v.left+8)dx=v.left+8-r.left;else if(r.right>v.right-8)dx=v.right-8-r.right;
+      if(r.top<v.top+8)dy=v.top+8-r.top;else if(r.bottom>v.bottom-8)dy=v.bottom-8-r.bottom;
+      if(dx||dy)panMap(dx,dy);
+    },opts);
+    if('ResizeObserver' in window){mapObserver=new ResizeObserver(scheduleMapMeasure);mapObserver.observe(vp);}
+    window.addEventListener('resize',scheduleMapMeasure,opts);
+    document.fonts?.ready.then(()=>{if(vp.isConnected)scheduleMapMeasure();});
+    measureMap();scheduleMapMeasure();
+  }
+
   function selectedEdges(){const all=connections(state.root);return state.filter==='all'?all:all.filter(e=>e.tags.includes(state.filter));}
   function syncCitations(){const value=bridge.getCitations();$('cvxCitations').checked=value;$('cvxCiteState').textContent=value?'ON':'OFF';}
   function snapshot(){return copy({...state,scroll:scroller.scrollTop});}
-  function step(){return {root:state.root,mode:state.mode,filter:state.filter,view:state.view,page:state.page||0,scroll:scroller.scrollTop};}
+  function step(){return {root:state.root,mode:state.mode,filter:state.filter,view:state.view,page:state.page||0,scroll:scroller.scrollTop,camera:state.camera?{...state.camera}:null,optionsOpen:!!state.optionsOpen};}
   function pushStep(){state.stack.push(step());if(state.stack.length>40)state.stack.shift();}
   function restoreStep(s){Object.assign(state,s);$('cvxSearch').value='';render();requestAnimationFrame(()=>{scroller.scrollTop=s.scroll||0;});}
-  function center(id){if(!lookup(id))return;if(id!==state.root||state.mode!=='connections')pushStep();state.root=id;state.mode='connections';state.filter='all';state.page=0;$('cvxSearch').value='';render();scroller.scrollTop=0;focusCenter();}
+  function center(id){if(!lookup(id))return;if(id!==state.root||state.mode!=='connections')pushStep();state.root=id;state.mode='connections';state.filter='all';state.page=0;state.optionsOpen=false;$('cvxSearch').value='';render();scroller.scrollTop=0;focusCenter();}
   function focusCenter(){requestAnimationFrame(()=>{const t=$('cvxCanvas').querySelector('.cvx-root')||$('cvxCenterSelect');t?.focus({preventScroll:true});});}
   function render(){
     if(!state)return;
+    teardownMap();
     document.querySelectorAll('[data-cvx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxMode===state.mode)));
     document.querySelectorAll('[data-cvx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxView===state.view)));
     $('cvxCenterControls').hidden=state.mode==='legacy';$('cvxFilters').hidden=state.mode==='legacy';
@@ -159743,6 +161336,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
     $('cvxTrail').hidden=state.stack.length===0;
     $('cvxTrail').innerHTML=trail.map((s,i)=>`<button type="button" data-cvx-trail="${state.stack.length-trail.length+i}">${esc(s.mode==='legacy'?'Flash legacy':shortName(s.root))}</button><span aria-hidden="true">›</span>`).join('')+`<span aria-current="location">${esc(state.mode==='legacy'?'Flash legacy':shortName(state.root))}</span>`;
     if(state.mode==='legacy') renderLegacy();else renderConnections();
+    mapUI();
+    if(state.mode==='connections'&&state.view==='map')attachMap();
     syncCitations();
   }
   function renderConnections(){
@@ -159763,7 +161358,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     }else{
       const positions=[[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]];
       // Keep the accepted layout; page through high-degree roots rather than discarding branches.
-      host.innerHTML=`<div class="cvx-map" id="cvxMap"><svg class="cvx-lines" id="cvxLines" aria-hidden="true" focusable="false"></svg><div class="cvx-map-grid">${card(state.root,{root:true})}${shown.slice(first,last).map((e,i)=>card(relatedId(e,state.root),{edge:e,position:positions[i]})).join('')}</div></div>${shown.length>PAGE_SIZE?`<nav class="cvx-pager" aria-label="More connections">${pager(pageCount,first,last,shown.length)}</nav>`:''}`;
+      host.innerHTML=`<div class="cvz-viewport" id="cvzViewport" tabindex="0" role="group" aria-label="Interactive relationship map for ${esc(nodeName(n))}" aria-describedby="cvzMapHint"><div class="cvx-map" id="cvxMap"><svg class="cvx-lines" id="cvxLines" aria-hidden="true" focusable="false"></svg><div class="cvx-map-grid">${card(state.root,{root:true})}${shown.slice(first,last).map((e,i)=>card(relatedId(e,state.root),{edge:e,position:positions[i]})).join('')}</div></div></div>`;
       queueLines();
     }
   }
@@ -159778,13 +161373,19 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function drawLines(){
     if(!dialog.open||state.mode!=='connections'||state.view!=='map')return;
     const stage=$('cvxMap'),svg=$('cvxLines'),root=stage?.querySelector('.cvx-root');if(!stage||!svg||!root)return;
-    const r=stage.getBoundingClientRect(), rr=root.getBoundingClientRect();
-    const rx=rr.left-r.left+rr.width/2,ry=rr.top-r.top+rr.height/2;
-    const small=window.matchMedia('(max-width:700px)').matches;
-    svg.setAttribute('viewBox',`0 0 ${r.width} ${r.height}`);
-    svg.innerHTML=[...stage.querySelectorAll('[data-cvx-edge]')].map(b=>{const br=b.getBoundingClientRect(),x=br.left-r.left+br.width/2,y=br.top-r.top+br.height/2;
-      const path=small?`M ${rx} ${rr.bottom-r.top} V ${y} H ${x}`:`M ${rx} ${ry} L ${x} ${y}`;
-      return `<path d="${path}" data-category="${b.dataset.category}"></path>`;}).join('');
+    // Convert screen coordinates into the actual SVG coordinate system. This
+    // includes camera transforms, borders and SVG aspect-ratio/rounding effects.
+    svg.setAttribute('viewBox',`0 0 ${stage.clientWidth} ${stage.clientHeight}`);
+    const matrix=svg.getScreenCTM();if(!matrix)return;
+    const inverse=matrix.inverse();
+    const point=(x,y)=>{const p=svg.createSVGPoint();p.x=x;p.y=y;return p.matrixTransform(inverse);};
+    const rr=root.getBoundingClientRect(),small=!isShortLandscape()&&window.matchMedia('(max-width:700px)').matches;
+    const start=point(rr.left+rr.width/2,small?rr.bottom:rr.top+rr.height/2);
+    svg.innerHTML=[...stage.querySelectorAll('[data-cvx-edge]')].map(b=>{
+      const r=b.getBoundingClientRect(),end=point(r.left+r.width/2,r.top+r.height/2);
+      const path=small?`M ${start.x} ${start.y} V ${end.y} H ${end.x}`:`M ${start.x} ${start.y} L ${end.x} ${end.y}`;
+      return `<path d="${path}" data-category="${b.dataset.category}"></path>`;
+    }).join('');
   }
   function showPreview(id,edgeId,legacyIndex){
     const n=lookup(id);if(!n)return;
@@ -159803,7 +161404,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(!lookup(id))id='dc:donna';
     if(!dialog.open){
       bridge.dismissMenu();opener=document.activeElement;previousOverflow=document.body.style.overflow;
-      state=restored?copy(restored):{root:id,start:id,mode,filter:'all',page:0,view:pref('comicVaultConnectionsView','map')==='list'?'list':'map',stack:[],entry:bridge.captureEntry(),scroll:0};
+      state=restored?copy(restored):{root:id,start:id,mode,filter:'all',page:0,view:pref('comicVaultConnectionsView','map')==='list'?'list':'map',stack:[],entry:bridge.captureEntry(),scroll:0,camera:null,optionsOpen:false};
       if(!nodes.has(state.root))state.root='dc:donna';
       state.stack=Array.isArray(state.stack)?state.stack:[];
       $('cvxSearch').value='';state.page=Number.isInteger(state.page)?state.page:0;
@@ -159814,7 +161415,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     }else{state.root=id;state.mode=mode;state.filter='all';state.page=0;$('cvxSearch').value='';}
     render();requestAnimationFrame(()=>{scroller.scrollTop=restored?.scroll||0;queueLines();$('cvxTitle').focus({preventScroll:true});});
   }
-  function close(options={}){closingForDossier=options.toDossier===true;closePreview();if(dialog.open)dialog.close();}
+  function close(options={}){teardownMap();closingForDossier=options.toDossier===true;closePreview();if(dialog.open)dialog.close();}
   dialog.addEventListener('close',()=>{
     // close events are queued: a dossier may already have opened before this fires.
     const underlying=document.querySelector('#profileSheet.open, #artViewer.open, #sideMenu.open');
@@ -159838,13 +161439,12 @@ window.COMIC_VAULT_AUDIT_LOG = [
   [dialog,preview].forEach(d=>{let outside=false;const isOutside=e=>{const r=d.getBoundingClientRect();return e.target===d&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom);};d.addEventListener('pointerdown',e=>outside=isOutside(e));d.addEventListener('click',e=>{if(outside&&isOutside(e)){d===preview?closePreview():close();}outside=false;});});
   dialog.addEventListener('click',e=>{
     const mode=e.target.closest('[data-cvx-mode]');if(mode){if(mode.dataset.cvxMode!==state.mode){pushStep();state.mode=mode.dataset.cvxMode;state.filter='all';state.page=0;render();}return;}
-    const view=e.target.closest('[data-cvx-view]');if(view){state.view=view.dataset.cvxView;save('comicVaultConnectionsView',state.view);render();return;}
+    const view=e.target.closest('[data-cvx-view]');if(view){state.view=view.dataset.cvxView;state.optionsOpen=false;save('comicVaultConnectionsView',state.view);render();return;}
     const filter=e.target.closest('[data-cvx-filter]');if(filter){state.filter=filter.dataset.cvxFilter;state.page=0;render();return;}
     const pageButton=e.target.closest('[data-cvx-page]');if(pageButton){
       const maxPage=Math.max(0,Math.ceil(selectedEdges().length/PAGE_SIZE)-1);
       state.page=Math.min(maxPage,Math.max(0,(state.page||0)+Number(pageButton.dataset.cvxPage)));
-      render();$('cvxPager').scrollIntoView({block:'start',behavior:'auto'});
-      $('cvxStatus').focus({preventScroll:true});return;
+      render();if(state.view==='map'&&!state.optionsOpen){scroller.scrollTop=0;$('cvzViewport')?.focus({preventScroll:true});}else{$('cvxPager').scrollIntoView({block:'start',behavior:'auto'});$('cvxStatus').focus({preventScroll:true});}return;
     }
     const trail=e.target.closest('[data-cvx-trail]');if(trail){const i=Number(trail.dataset.cvxTrail),s=state.stack[i];if(s){state.stack=state.stack.slice(0,i);restoreStep(s);}return;}
     const button=e.target.closest('[data-cvx-node]');if(button){showPreview(button.dataset.cvxNode,button.dataset.cvxEdge,button.dataset.cvxLegacy);return;}
@@ -159855,6 +161455,17 @@ window.COMIC_VAULT_AUDIT_LOG = [
   });
   $('cvxBack').addEventListener('click',()=>{if(state.stack.length)restoreStep(state.stack.pop());});
   $('cvxStart').addEventListener('click',()=>{state.root=state.start;state.mode='connections';state.filter='all';state.page=0;state.stack=[];$('cvxSearch').value='';render();scroller.scrollTop=0;focusCenter();});
+  $('cvzZoomIn').addEventListener('click',()=>zoomMap((state.camera?.s||1)*1.25));
+  $('cvzZoomOut').addEventListener('click',()=>zoomMap((state.camera?.s||1)/1.25));
+  $('cvzFit').addEventListener('click',fitMap);
+  $('cvzReadable').addEventListener('click',readableMap);
+  $('cvzQuickBack').addEventListener('click',()=>{if(state.stack.length)restoreStep(state.stack.pop());});
+  $('cvzOptions').addEventListener('click',()=>{
+    if(state.mode==='connections'&&state.view==='map'){
+      state.optionsOpen=!state.optionsOpen;mapUI();scroller.scrollTop=0;scheduleMapMeasure();
+      if(state.optionsOpen)$('cvxSearch').focus({preventScroll:true});
+    }else{scroller.scrollTop=0;$('cvxSearch').focus({preventScroll:true});}
+  });
   $('cvxDonna').addEventListener('click',()=>center('dc:donna'));
   $('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.target.value);});
   $('cvxSearch').addEventListener('input',updateCenterChoices);
@@ -159885,7 +161496,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   $('cvxCoverageProgress').max=records.size;$('cvxCoverageProgress').value=mappedCount;
   $('cvxCoverageNote').textContent=`${records.size-mappedCount} dossiers still await mapping. A mapped dossier has selected source-linked connections—not every relationship in its history.`;
   document.querySelectorAll('[data-cvx-coverage]').forEach(el=>el.textContent=`${mappedCount} / ${records.size} MAPPED`);
-  $('cvxHomeCopy').textContent='Explore the Titans, Flash, Gotham, Superman and Lantern circles.';
+  $('cvxHomeCopy').textContent='Explore the Titans, Flash, Gotham, Superman, Lantern, Wonder and magic circles.';
   $('cvxScopeText').textContent=`${mappedCount} / ${records.size} dossiers have selected mapped connections · ${edges.length} source-linked relationships. ${graph.scope} Other characters are not automatically connected from shared names or team tags.`;
   $('cvxSourceList').innerHTML=sourceRows(Object.keys(graph.sources));
   if('ResizeObserver' in window){resizeObserver=new ResizeObserver(queueLines);resizeObserver.observe($('cvxCanvas'));}else window.addEventListener('resize',queueLines);
