@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.54: CONNECTIONS & LEGACY PILOT — 15 DOSSIERS / 20 REVIEWED RELATIONSHIPS -->
+  <!-- Comic Vault v8.56: CONNECTIONS & LEGACY — LANTERN NETWORK / BATCH CX4 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4825,6 +4825,26 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 @media(prefers-reduced-motion:reduce){.cvx-dialog *,.cvx-preview *{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
 </style>
+<style id="cvxGrowthStyles">
+/* v8.55: growth controls, paging and guidance only. */
+.cvx-coverage{border:1px solid #294056;border-radius:9px;padding:10px 13px;margin:0 0 16px;background:#102131;color:#bcd0e4;font-size:11px;line-height:1.7}
+.cvx-coverage summary{cursor:pointer;min-height:24px;color:#c8e7ff;font-weight:600}
+.cvx-coverage progress{display:block;width:100%;height:7px;margin:12px 0;accent-color:#74b8ed}.cvx-coverage p{margin:7px 0 2px}
+.cvx-picker{display:grid;gap:7px;flex:1;min-width:0;max-width:510px}
+.cvx-picker .cvx-select-label{max-width:none;min-width:0;margin-top:3px}
+.cvx-picker input{width:100%;min-height:44px;border:1px solid #3a536b;border-radius:9px;background:#0c1927;color:#e7f4ff;padding:9px 12px;font:400 16px/1.4 Inter,system-ui,sans-serif;min-width:0}
+.cvx-search-label{font-size:10px;font-weight:600;letter-spacing:.1em;color:#9db5cc}
+.cvx-picker small{font-size:10px;color:#98aec5;line-height:1.6;min-height:16px}
+.cvx-map-guide{border-left:2px solid #527fa0;padding:7px 12px;background:#112030;margin:10px 0 12px;border-radius:0 8px 8px 0;color:#b3c8dc;font-size:11px;line-height:1.65}
+.cvx-map-guide p{margin:0}.cvx-map-guide strong{color:#e3f2ff;font-weight:500}
+.cvx-map-guide .cvx-rotate-hint{display:none;margin-top:6px;color:#92c7ef}
+.cvx-pager{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0;scroll-margin-top:10px}
+.cvx-pager .cvx-btn{min-width:88px;font-size:11px;padding:8px 10px}.cvx-page-summary{text-align:center;font-size:12px;color:#d4e9fb;line-height:1.5}.cvx-page-summary small{display:block;font-size:10px;color:#9ab4cc}
+.cvx-dialog [hidden]{display:none!important}
+.cvx-node[data-category="allies"]{--node-tint:#87bad4}.cvx-lines path[data-category="allies"]{stroke:#72a6c0}
+.cvx-picker input:focus-visible,.cvx-coverage summary:focus-visible{outline:2px solid #a5d7ff;outline-offset:3px}
+@media(max-width:700px){.cvx-picker{flex-basis:100%;max-width:100%}.cvx-picker .cvx-select-label{font-size:10px}.cvx-picker .cvx-select-label select{font-size:16px}.cvx-map-guide .cvx-rotate-hint{display:block}.cvx-pager{gap:5px}.cvx-pager .cvx-btn{min-width:78px;padding:8px;font-size:10px}.cvx-coverage{font-size:10px}}
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -4833,7 +4853,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.54</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.56</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4897,7 +4917,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
           <i></i>
           <div><strong>2</strong><span>CONNECTED UNIVERSES</span></div>
         </div>
-        <button class="cvx-home-entry" type="button" data-cvx-open="dc:donna"><b aria-hidden="true">⌘</b><span>CONNECTIONS &amp; LEGACY<small>Follow Donna’s circle. Discover the Flash legacy.</small></span><em>PILOT ↗</em></button>
+        <button class="cvx-home-entry" type="button" data-cvx-open="dc:donna"><b aria-hidden="true">⌘</b><span>CONNECTIONS &amp; LEGACY<small id="cvxHomeCopy">Explore the Titans, Flash, Gotham, Superman and Lantern circles.</small></span><em data-cvx-coverage>EXPLORE ↗</em></button>
         <button class="home-feature-link" id="homeFeaturedLink">VIEW FEATURED FILE →</button>
       </section>
 
@@ -5069,14 +5089,14 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.54</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.56</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
           <button data-collection="all"><span>CHARACTER ARCHIVE</span><em>400</em></button>
           <button data-page="favorites"><span>FAVORITES</span><em id="menuFavoritesCount">0</em></button>
           <button data-page="spotlight"><span>FEATURED FILE</span></button>
-          <button type="button" data-cvx-open="dc:donna"><span>CONNECTIONS &amp; LEGACY</span><em>PILOT</em></button>
+          <button type="button" data-cvx-open="dc:donna"><span>CONNECTIONS &amp; LEGACY</span><em data-cvx-coverage>EXPLORE</em></button>
 
           <div class="menu-label">BROWSE COLLECTIONS</div>
 
@@ -5118,20 +5138,23 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 
   <dialog class="cvx-dialog" id="cvConnections" aria-labelledby="cvxTitle" aria-describedby="cvxDescription">
  <div class="cvx-frame">
-  <header class="cvx-header"><div><span class="cvx-kicker">COMIC VAULT / DISCOVERY PILOT · v8.54</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <header class="cvx-header"><div><span class="cvx-kicker">COMIC VAULT / CONNECTIONS EXPLORER · v8.56</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
   <div class="cvx-scroll" id="cvxScroll">
    <p class="cvx-intro" id="cvxDescription">Tap a character to see the connection, open a dossier, or follow a new branch.</p>
+   <details class="cvx-coverage"><summary id="cvxCoverageText">Mapping coverage</summary><progress id="cvxCoverageProgress" aria-label="Dossiers with selected mapped connections"></progress><p id="cvxCoverageNote"></p></details>
    <div class="cvx-toolbar">
     <div class="cvx-segment" role="group" aria-label="Explorer mode"><button type="button" data-cvx-mode="connections" aria-pressed="true">Connections</button><button type="button" data-cvx-mode="legacy" aria-pressed="false">Flash legacy</button></div>
     <label class="cvx-reading-toggle"><span>Citations</span><input type="checkbox" role="switch" id="cvxCitations" aria-label="Show inline citations in connections"><span class="cvx-toggle-track" aria-hidden="true"></span><span id="cvxCiteState" aria-hidden="true">OFF</span></label>
    </div>
-   <div class="cvx-control-row" id="cvxCenterControls"><label class="cvx-select-label">CENTER ON A CHARACTER<select id="cvxCenterSelect" aria-label="Center on a mapped character"></select></label><div class="cvx-segment" role="group" aria-label="Relationship presentation"><button type="button" data-cvx-view="map" aria-pressed="true">Tree</button><button type="button" data-cvx-view="list" aria-pressed="false">List</button></div></div>
+   <div class="cvx-control-row" id="cvxCenterControls"><div class="cvx-picker"><label class="cvx-search-label" for="cvxSearch">FIND A MAPPED CHARACTER</label><input type="search" id="cvxSearch" placeholder="Hero, person or alias…" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="cvxSearchResult"><label class="cvx-select-label" for="cvxCenterSelect">CENTER ON<select id="cvxCenterSelect" aria-label="Center on a mapped character"></select></label><small id="cvxSearchResult" aria-live="polite"></small></div><div class="cvx-segment" role="group" aria-label="Relationship presentation"><button type="button" data-cvx-view="map" aria-pressed="true">Tree</button><button type="button" data-cvx-view="list" aria-pressed="false">List</button></div></div>
    <div class="cvx-history"><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxBack">← Back a step</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxStart">↶ Starting character</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxDonna">Donna’s circle</button></div>
    <nav class="cvx-trail" id="cvxTrail" aria-label="Exploration trail"></nav>
    <div class="cvx-filters" id="cvxFilters" role="group" aria-label="Filter relationship types"></div>
-   <div id="cvxStatus" class="cvx-status" role="status" aria-live="polite"></div>
+   <div id="cvxMapGuide" class="cvx-map-guide"><p>Each branch connects directly to <strong id="cvxGuideRoot">the selected character</strong>. Position does not imply rank or ancestry.</p><p id="cvxRotateHint" class="cvx-rotate-hint">↻ Rotate your phone for a wider tree. Portrait and List work too.</p></div>
+   <div id="cvxStatus" class="cvx-status" role="status" aria-live="polite" tabindex="-1"></div>
+   <nav class="cvx-pager" id="cvxPager" aria-label="Connection pages" hidden></nav>
    <div id="cvxCanvas"></div>
-   <details class="cvx-scope" id="cvxSources"><summary>About this pilot &amp; research sources</summary><p id="cvxScopeText"></p><p><strong>Read each line as a relationship, not an automatic family tie.</strong> Era notes distinguish historical romances, adopted bonds, mentorship, and mantle succession. The map uses existing archive artwork; a costume is not proof of an era.</p><div id="cvxSourceList"></div></details>
+   <details class="cvx-scope" id="cvxSources"><summary>About this map &amp; research sources</summary><p id="cvxScopeText"></p><p><strong>Read each line as a relationship, not an automatic family tie.</strong> Era notes distinguish historical romances, adopted bonds, mentorship, and mantle succession. The map uses existing archive artwork; a costume is not proof of an era.</p><div id="cvxSourceList"></div></details>
   </div>
  </div>
 </dialog>
@@ -155230,7 +155253,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.54</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.56</b></span>
           ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -155584,7 +155607,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     }
   });
 
-  // v8.54: narrow bridge to the independent Connections pilot.
+  // v8.56: narrow bridge to the independent Connections explorer.
   window.ComicVaultUI = Object.freeze({
     getCitations: () => citationsVisible,
     setCitations: value => applyCitationPreference(value,true),
@@ -155646,10 +155669,10 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
 <script type="application/json" id="cvConnectionsData">
 {
-  "schemaVersion": 1,
-  "release": "8.54",
-  "pilot": true,
-  "scope": "Selected main-comics Donna Troy/Titans and Flash connections. Era labels are part of the relationship, not optional decoration. This is not a complete family tree or a complete map of all 400 dossiers.",
+  "schemaVersion": 2,
+  "release": "8.56",
+  "pilot": false,
+  "scope": "Selected main-comics relationships across the Donna/Titans, Flash, Gotham, Superman and Lantern networks. Each relationship carries its own era and evidence scope. Coverage counts mapped dossiers, not an exhaustive history of every relationship.",
   "nodes": {
     "dc:donna": {
       "id": "dc:donna",
@@ -155755,6 +155778,521 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "hero": "Kid Flash",
       "civilian": "Wallace West",
       "summary": "Wally’s cousin; a separate person with his own heroic career."
+    },
+    "dc:alfred": {
+      "id": "dc:alfred",
+      "recordSlug": "alfred-pennyworth",
+      "hero": "Alfred Pennyworth",
+      "civilian": "",
+      "summary": "Bruce Wayne’s caregiver and trusted confidant.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:babs": {
+      "id": "dc:babs",
+      "recordSlug": "batgirl",
+      "hero": "Batgirl",
+      "civilian": "Barbara Gordon",
+      "summary": "Also Oracle; an independent hero and mentor to the Batgirls.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:cass": {
+      "id": "dc:cass",
+      "recordSlug": "cassandra-cain",
+      "hero": "Batgirl",
+      "civilian": "Cassandra Cain",
+      "summary": "A Gotham hero mentored by Oracle and Batman.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:kate": {
+      "id": "dc:kate",
+      "recordSlug": "batwoman",
+      "hero": "Batwoman",
+      "civilian": "Kate Kane",
+      "summary": "Bruce Wayne’s cousin and an independent Gotham protector.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:selina": {
+      "id": "dc:selina",
+      "recordSlug": "catwoman",
+      "hero": "Catwoman",
+      "civilian": "Selina Kyle",
+      "summary": "Thief, occasional ally and romantic counterpart to Batman.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:jim": {
+      "id": "dc:jim",
+      "recordSlug": "commissioner-gordon",
+      "hero": "Commissioner Gordon",
+      "civilian": "James Gordon",
+      "summary": "Batman’s police ally and Barbara Gordon’s father.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:joker": {
+      "id": "dc:joker",
+      "recordSlug": "joker",
+      "hero": "Joker",
+      "civilian": "",
+      "summary": "Batman’s recurring adversary.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:lucius": {
+      "id": "dc:lucius",
+      "recordSlug": "lucius-fox",
+      "hero": "Lucius Fox",
+      "civilian": "",
+      "summary": "Wayne Enterprises associate and Luke Fox’s father.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:jason": {
+      "id": "dc:jason",
+      "recordSlug": "red-hood",
+      "hero": "Red Hood",
+      "civilian": "Jason Todd",
+      "summary": "Former Robin with a troubled relationship to Batman.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:tim": {
+      "id": "dc:tim",
+      "recordSlug": "red-robin",
+      "hero": "Red Robin",
+      "civilian": "Tim Drake",
+      "summary": "Former Robin; a detective trained by Batman.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:damian": {
+      "id": "dc:damian",
+      "recordSlug": "robin",
+      "hero": "Robin",
+      "civilian": "Damian Wayne",
+      "summary": "Son of Bruce Wayne and Talia al Ghul.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:steph": {
+      "id": "dc:steph",
+      "recordSlug": "stephanie-brown",
+      "hero": "Spoiler",
+      "civilian": "Stephanie Brown",
+      "summary": "Also Batgirl; Cassandra Cain’s close friend and teammate.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:bane": {
+      "id": "dc:bane",
+      "recordSlug": "bane",
+      "hero": "Bane",
+      "civilian": "",
+      "summary": "A strategist whose history includes defeating Batman.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:harley": {
+      "id": "dc:harley",
+      "recordSlug": "harley-quinn",
+      "hero": "Harley Quinn",
+      "civilian": "Harleen Quinzel",
+      "summary": "Former Joker partner; member of the Gotham City Sirens.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:ivy": {
+      "id": "dc:ivy",
+      "recordSlug": "poison-ivy",
+      "hero": "Poison Ivy",
+      "civilian": "Pamela Isley",
+      "summary": "Gotham Siren with a documented romance with Harley Quinn.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:riddler": {
+      "id": "dc:riddler",
+      "recordSlug": "riddler",
+      "hero": "Riddler",
+      "civilian": "Edward Nygma",
+      "summary": "Gotham criminal who challenges Batman with puzzles.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:penguin": {
+      "id": "dc:penguin",
+      "recordSlug": "penguin",
+      "hero": "Penguin",
+      "civilian": "Oswald Cobblepot",
+      "summary": "Gotham underworld operator and Batman adversary.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:harvey": {
+      "id": "dc:harvey",
+      "recordSlug": "two-face",
+      "hero": "Two-Face",
+      "civilian": "Harvey Dent",
+      "summary": "Former district attorney and Gotham adversary.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:ras": {
+      "id": "dc:ras",
+      "recordSlug": "ra-s-al-ghul",
+      "hero": "Ra’s al Ghul",
+      "civilian": "",
+      "summary": "Talia’s father and a recurring enemy of Batman.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:talia": {
+      "id": "dc:talia",
+      "recordSlug": "talia-al-ghul",
+      "hero": "Talia al Ghul",
+      "civilian": "",
+      "summary": "Damian Wayne’s mother and Ra’s al Ghul’s daughter.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:luke": {
+      "id": "dc:luke",
+      "recordSlug": "batwing",
+      "hero": "Batwing",
+      "civilian": "Luke Fox",
+      "summary": "Lucius Fox’s son; a recruit of Batman Incorporated.",
+      "batch": "CX2",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:clark": {
+      "id": "dc:clark",
+      "recordSlug": "superman",
+      "hero": "Superman",
+      "civilian": "Clark Kent / Kal-El",
+      "summary": "Kryptonian hero, Lois Lane’s husband and Jon’s father.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:lois": {
+      "id": "dc:lois",
+      "recordSlug": "lois-lane",
+      "hero": "Lois Lane",
+      "civilian": "",
+      "summary": "Journalist and member of the Kent family.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:jon": {
+      "id": "dc:jon",
+      "recordSlug": "jon-kent",
+      "hero": "Superman",
+      "civilian": "Jon Kent",
+      "summary": "Clark and Lois’s son; formerly Superboy.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:kara": {
+      "id": "dc:kara",
+      "recordSlug": "supergirl",
+      "hero": "Supergirl",
+      "civilian": "Kara Zor-El",
+      "summary": "Superman’s Kryptonian cousin, with a heroic life of her own.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:krypto": {
+      "id": "dc:krypto",
+      "recordSlug": "krypto",
+      "hero": "Krypto",
+      "civilian": "",
+      "summary": "Superman’s Kryptonian canine companion.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:lex": {
+      "id": "dc:lex",
+      "recordSlug": "lex-luthor",
+      "hero": "Lex Luthor",
+      "civilian": "",
+      "summary": "A recurring opponent of Superman; roles vary by era.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:johnhenry": {
+      "id": "dc:johnhenry",
+      "recordSlug": "steel",
+      "hero": "Steel",
+      "civilian": "John Henry Irons",
+      "summary": "Engineer inspired by Superman; Natasha’s uncle.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:natasha": {
+      "id": "dc:natasha",
+      "recordSlug": "natasha-irons",
+      "hero": "Steel",
+      "civilian": "Natasha Irons",
+      "summary": "John Henry Irons’s niece and a hero in her own right.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:jimmy": {
+      "id": "dc:jimmy",
+      "recordSlug": "jimmy-olsen",
+      "hero": "Jimmy Olsen",
+      "civilian": "",
+      "summary": "Photographer and Superman’s friend.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:raven": {
+      "id": "dc:raven",
+      "recordSlug": "raven",
+      "hero": "Raven",
+      "civilian": "Rachel Roth",
+      "summary": "A member of the Titans’ 2023 team.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:gar": {
+      "id": "dc:gar",
+      "recordSlug": "beast-boy",
+      "hero": "Beast Boy",
+      "civilian": "Garfield Logan",
+      "summary": "A shapeshifter in the Titans’ 2023 team.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:vic": {
+      "id": "dc:vic",
+      "recordSlug": "cyborg",
+      "hero": "Cyborg",
+      "civilian": "Victor Stone",
+      "summary": "Titan and ally of Donna, Dick and their teammates.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:ollie": {
+      "id": "dc:ollie",
+      "recordSlug": "green-arrow",
+      "hero": "Green Arrow",
+      "civilian": "Oliver Queen",
+      "summary": "Roy Harper’s former mentor and Dinah Lance’s partner.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:dinah": {
+      "id": "dc:dinah",
+      "recordSlug": "black-canary",
+      "hero": "Black Canary",
+      "civilian": "Dinah Laurel Lance",
+      "summary": "Bird of Prey and Barbara Gordon’s close ally.",
+      "batch": "CX3",
+      "mappingStatus": "selected-relationships"
+    },
+    "dc:hal": {
+      "id": "dc:hal",
+      "recordSlug": "green-lantern",
+      "hero": "Green Lantern",
+      "civilian": "Hal Jordan",
+      "summary": "Earth Lantern; connected here through Corps service, friendship and spectrum conflicts.",
+      "mappingBatch": "CX4"
+    },
+    "dc:johnstewart": {
+      "id": "dc:johnstewart",
+      "recordSlug": "john-stewart",
+      "hero": "Green Lantern",
+      "civilian": "John Stewart",
+      "summary": "Earth Lantern; Hal’s former trainee and a fellow Corps veteran.",
+      "mappingBatch": "CX4"
+    },
+    "dc:guy": {
+      "id": "dc:guy",
+      "recordSlug": "guy-gardner",
+      "hero": "Green Lantern",
+      "civilian": "Guy Gardner",
+      "summary": "Corps veteran with distinct Green and Red Lantern periods.",
+      "mappingBatch": "CX4"
+    },
+    "dc:kyle": {
+      "id": "dc:kyle",
+      "recordSlug": "kyle-rayner",
+      "hero": "Green Lantern",
+      "civilian": "Kyle Rayner",
+      "summary": "Ganthet’s chosen ring bearer; later a Corps veteran and White Lantern.",
+      "mappingBatch": "CX4"
+    },
+    "dc:jessica": {
+      "id": "dc:jessica",
+      "recordSlug": "jessica-cruz",
+      "hero": "Green Lantern",
+      "civilian": "Jessica Cruz",
+      "summary": "Simon Baz’s partner in the Green Lanterns adventures.",
+      "mappingBatch": "CX4"
+    },
+    "dc:simon": {
+      "id": "dc:simon",
+      "recordSlug": "simon-baz",
+      "hero": "Green Lantern",
+      "civilian": "Simon Baz",
+      "summary": "Jessica Cruz’s partner; distinct from the earlier Earth Lanterns.",
+      "mappingBatch": "CX4"
+    },
+    "dc:kilowog": {
+      "id": "dc:kilowog",
+      "recordSlug": "kilowog",
+      "hero": "Kilowog",
+      "civilian": "",
+      "summary": "Corps trainer and veteran of Recharge, Emerald Warriors and Lost Army.",
+      "mappingBatch": "CX4"
+    },
+    "dc:ganthet": {
+      "id": "dc:ganthet",
+      "recordSlug": "ganthet",
+      "hero": "Ganthet",
+      "civilian": "",
+      "summary": "Guardian, Kyle’s ring benefactor and co-founder of the Blue Lantern Corps.",
+      "mappingBatch": "CX4"
+    },
+    "dc:carol": {
+      "id": "dc:carol",
+      "recordSlug": "carol-ferris",
+      "hero": "Star Sapphire",
+      "civilian": "Carol Ferris",
+      "summary": "Hal Jordan’s longstanding, sometimes difficult romantic connection.",
+      "mappingBatch": "CX4"
+    },
+    "dc:sinestro": {
+      "id": "dc:sinestro",
+      "recordSlug": "sinestro",
+      "hero": "Sinestro",
+      "civilian": "Thaal Sinestro",
+      "summary": "Hal’s former mentor and a recurring rival; allegiances depend on the story.",
+      "mappingBatch": "CX4"
+    },
+    "dc:walker": {
+      "id": "dc:walker",
+      "recordSlug": "saint-walker",
+      "hero": "Saint Walker",
+      "civilian": "Bro’Dee Walker",
+      "summary": "The first Blue Lantern, linked to the Corps’ founders and its allies.",
+      "mappingBatch": "CX4"
+    },
+    "dc:larfleeze": {
+      "id": "dc:larfleeze",
+      "recordSlug": "larfleeze",
+      "hero": "Larfleeze",
+      "civilian": "",
+      "summary": "Orange-ring wielder; a reluctant member of the 2010 spectrum coalition.",
+      "mappingBatch": "CX4"
+    },
+    "dc:blackhand": {
+      "id": "dc:blackhand",
+      "recordSlug": "black-hand",
+      "hero": "Black Hand",
+      "civilian": "William Derek Hand",
+      "summary": "Nekron’s herald; distinct from Nekron himself.",
+      "mappingBatch": "CX4"
+    },
+    "dc:nekron": {
+      "id": "dc:nekron",
+      "recordSlug": "nekron",
+      "hero": "Nekron",
+      "civilian": "",
+      "summary": "Blackest Night antagonist whose herald is Black Hand.",
+      "mappingBatch": "CX4"
+    },
+    "dc:atrocitus": {
+      "id": "dc:atrocitus",
+      "recordSlug": "atrocitus",
+      "hero": "Atrocitus",
+      "civilian": "Atros",
+      "summary": "Red Lantern leader; Dex-Starr’s ally and an era-dependent rival or collaborator.",
+      "mappingBatch": "CX4"
+    },
+    "dc:dex": {
+      "id": "dc:dex",
+      "recordSlug": "dex-starr",
+      "hero": "Dex-Starr",
+      "civilian": "Dexter",
+      "summary": "Feline Red Lantern who acts alongside Atrocitus.",
+      "mappingBatch": "CX4"
+    },
+    "dc:salaak": {
+      "id": "dc:salaak",
+      "recordSlug": "salaak",
+      "hero": "Salaak",
+      "civilian": "",
+      "summary": "Corps comrade caught in the War of the Green Lanterns conflict.",
+      "mappingBatch": "CX4"
+    },
+    "dc:indigo": {
+      "id": "dc:indigo",
+      "recordSlug": "indigo-1",
+      "hero": "Indigo-1",
+      "civilian": "Iroque",
+      "summary": "Indigo Tribe figure whose cooperation and conflicts require era labels.",
+      "mappingBatch": "CX4"
+    },
+    "dc:arisia": {
+      "id": "dc:arisia",
+      "recordSlug": "arisia-rrab",
+      "hero": "Arisia Rrab",
+      "civilian": "",
+      "summary": "Green Lantern on the Emerald Warriors and Lost Army expeditions.",
+      "mappingBatch": "CX4"
+    },
+    "dc:sayd": {
+      "id": "dc:sayd",
+      "recordSlug": "sayd",
+      "hero": "Sayd",
+      "civilian": "",
+      "summary": "Co-founder of the Blue Lantern Corps alongside Ganthet.",
+      "mappingBatch": "CX4"
+    },
+    "dc:tomarre": {
+      "id": "dc:tomarre",
+      "recordSlug": "tomar-re",
+      "hero": "Tomar-Re",
+      "civilian": "",
+      "summary": "Hal’s alien colleague and post-Crisis mentor; not his son Tomar-Tu.",
+      "mappingBatch": "CX4"
+    },
+    "dc:hammond": {
+      "id": "dc:hammond",
+      "recordSlug": "hector-hammond",
+      "hero": "Hector Hammond",
+      "civilian": "",
+      "summary": "A recurring opponent of Hal Jordan in the comics.",
+      "mappingBatch": "CX4"
+    },
+    "dc:krona": {
+      "id": "dc:krona",
+      "recordSlug": "krona",
+      "hero": "Krona",
+      "civilian": "",
+      "summary": "The threat behind the War of the Green Lanterns crisis mapped here.",
+      "mappingBatch": "CX4"
+    },
+    "dc:volthoom": {
+      "id": "dc:volthoom",
+      "recordSlug": "volthoom",
+      "hero": "First Lantern",
+      "civilian": "Volthoom",
+      "summary": "The First Lantern antagonist; not a shortcut for every Ring of Volthoom reference.",
+      "mappingBatch": "CX4"
+    },
+    "dc:henshaw": {
+      "id": "dc:henshaw",
+      "recordSlug": "cyborg-superman",
+      "hero": "Cyborg Superman",
+      "civilian": "Hank Henshaw",
+      "summary": "Hank Henshaw’s Cyborg Superman; a Lantern adversary, not Victor Stone.",
+      "mappingBatch": "CX4"
     }
   },
   "edges": [
@@ -156091,6 +156629,2081 @@ window.COMIC_VAULT_AUDIT_LOG = [
         "C10"
       ],
       "priority": 5
+    },
+    {
+      "id": "cx-bruce-alfred",
+      "a": "dc:bruce",
+      "b": "dc:alfred",
+      "tags": [
+        "family"
+      ],
+      "toB": "Caregiver & father figure",
+      "toA": "Raised in his care",
+      "detail": "Alfred raised Bruce and became a trusted confidant. This is a caregiving relationship, not biological parentage.",
+      "era": "Classic main-comics Bat-family history; later status changes are not erased.",
+      "sourceIds": [
+        "N01"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-alfred-dick",
+      "a": "dc:alfred",
+      "b": "dc:dick",
+      "tags": [
+        "family"
+      ],
+      "toB": "Raised in his care",
+      "toA": "Caregiver",
+      "detail": "Alfred’s caregiving extended to this Robin as part of the Wayne household.",
+      "era": "Historical Bat-family household.",
+      "sourceIds": [
+        "N01"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-alfred-jason",
+      "a": "dc:alfred",
+      "b": "dc:jason",
+      "tags": [
+        "family"
+      ],
+      "toB": "Raised in his care",
+      "toA": "Caregiver",
+      "detail": "Alfred’s caregiving extended to this Robin as part of the Wayne household.",
+      "era": "Historical Bat-family household.",
+      "sourceIds": [
+        "N01"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-alfred-tim",
+      "a": "dc:alfred",
+      "b": "dc:tim",
+      "tags": [
+        "family"
+      ],
+      "toB": "Raised in his care",
+      "toA": "Caregiver",
+      "detail": "Alfred’s caregiving extended to this Robin as part of the Wayne household.",
+      "era": "Historical Bat-family household.",
+      "sourceIds": [
+        "N01"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-alfred-damian",
+      "a": "dc:alfred",
+      "b": "dc:damian",
+      "tags": [
+        "family"
+      ],
+      "toB": "Raised in his care",
+      "toA": "Caregiver",
+      "detail": "Alfred’s caregiving extended to this Robin as part of the Wayne household.",
+      "era": "Historical Bat-family household.",
+      "sourceIds": [
+        "N01"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-babs",
+      "a": "dc:bruce",
+      "b": "dc:babs",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Gotham ally",
+      "toA": "Gotham ally",
+      "detail": "Barbara joined Batman’s crimefighting circle while establishing an identity of her own.",
+      "era": "Main-comics Batgirl / Oracle career.",
+      "sourceIds": [
+        "N02"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-jim-babs",
+      "a": "dc:jim",
+      "b": "dc:babs",
+      "tags": [
+        "family"
+      ],
+      "toB": "Daughter",
+      "toA": "Father",
+      "detail": "Barbara is Jim Gordon’s daughter in the family relationship described here.",
+      "era": "Main-comics Gordon family; older origin variants can qualify biological versus adoptive history.",
+      "sourceIds": [
+        "N02"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-jim",
+      "a": "dc:bruce",
+      "b": "dc:jim",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Police ally & friend",
+      "toA": "Vigilante ally & friend",
+      "detail": "Gordon’s police work and Batman’s investigations form a longstanding partnership.",
+      "era": "Recurring main-comics collaboration, not a police chain of command.",
+      "sourceIds": [
+        "N04"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-kate",
+      "a": "dc:bruce",
+      "b": "dc:kate",
+      "tags": [
+        "family"
+      ],
+      "toB": "Cousin",
+      "toA": "Cousin",
+      "detail": "Kate Kane and Bruce Wayne are cousins. Batwoman’s career remains independent of Batman’s.",
+      "era": "Kate Kane continuity; not the earlier Kathy Kane Batwoman.",
+      "sourceIds": [
+        "N03"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-jason",
+      "a": "dc:bruce",
+      "b": "dc:jason",
+      "tags": [
+        "family",
+        "mentors"
+      ],
+      "toB": "Former Robin & adopted son",
+      "toA": "Mentor & adoptive father",
+      "detail": "Jason served as Bruce’s Robin before becoming Red Hood. Their family bond has included serious conflict.",
+      "era": "Post-Crisis Jason Todd and later Bat-family accounts.",
+      "sourceIds": [
+        "N05"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-tim",
+      "a": "dc:bruce",
+      "b": "dc:tim",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "Robin protégé",
+      "toA": "Mentor",
+      "detail": "Tim became Robin after recognizing how much Batman needed a partner. This link is to Tim, not Jason or Damian.",
+      "era": "Tim Drake’s Robin / Red Robin career.",
+      "sourceIds": [
+        "N06"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-damian",
+      "a": "dc:bruce",
+      "b": "dc:damian",
+      "tags": [
+        "family",
+        "mentors"
+      ],
+      "toB": "Son & Robin",
+      "toA": "Father & mentor",
+      "detail": "Damian is Bruce’s son and a holder of the Robin identity. Fatherhood and mentorship are distinct parts of the same connection.",
+      "era": "Main-comics Damian Wayne.",
+      "sourceIds": [
+        "N07"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-talia-damian",
+      "a": "dc:talia",
+      "b": "dc:damian",
+      "tags": [
+        "family"
+      ],
+      "toB": "Son",
+      "toA": "Mother",
+      "detail": "Talia is Damian’s mother and raised him before his arrival in Bruce’s life.",
+      "era": "Main-comics Damian Wayne.",
+      "sourceIds": [
+        "N07"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-ras-talia",
+      "a": "dc:ras",
+      "b": "dc:talia",
+      "tags": [
+        "family"
+      ],
+      "toB": "Daughter",
+      "toA": "Father",
+      "detail": "Talia is Ra’s al Ghul’s daughter; this does not make her choices identical to his.",
+      "era": "Main-comics al Ghul family.",
+      "sourceIds": [
+        "N13"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-ras-damian",
+      "a": "dc:ras",
+      "b": "dc:damian",
+      "tags": [
+        "family"
+      ],
+      "toB": "Grandson",
+      "toA": "Maternal grandfather",
+      "detail": "Ra’s is Damian’s grandfather through Talia.",
+      "era": "Main-comics al Ghul family.",
+      "sourceIds": [
+        "N07"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-ras",
+      "a": "dc:bruce",
+      "b": "dc:ras",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Adversary",
+      "toA": "Adversary",
+      "detail": "Ra’s regarded Bruce as a possible heir, but Batman opposed his methods.",
+      "era": "Recurring main-comics League of Assassins conflicts.",
+      "sourceIds": [
+        "N13"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-talia",
+      "a": "dc:bruce",
+      "b": "dc:talia",
+      "tags": [
+        "family"
+      ],
+      "toB": "Former lover & co-parent",
+      "toA": "Former lover & co-parent",
+      "detail": "Bruce and Talia share a romantic history and are Damian’s parents. This does not label them a current couple.",
+      "era": "Main-comics history; alliances and hostility vary.",
+      "sourceIds": [
+        "N14",
+        "N07"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-lucius",
+      "a": "dc:bruce",
+      "b": "dc:lucius",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Business & technical ally",
+      "toA": "Wayne Enterprises associate",
+      "detail": "Lucius’s work with Wayne Enterprises supports Bruce’s resources. His knowledge of Batman’s identity varies by portrayal.",
+      "era": "Main-comics Wayne Enterprises association.",
+      "sourceIds": [
+        "N08"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-lucius-luke",
+      "a": "dc:lucius",
+      "b": "dc:luke",
+      "tags": [
+        "family"
+      ],
+      "toB": "Son",
+      "toA": "Father",
+      "detail": "Luke Fox is Lucius Fox’s son. He is not the original Batwing, David Zavimbe.",
+      "era": "Luke Fox’s Batwing continuity.",
+      "sourceIds": [
+        "N09"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-luke",
+      "a": "dc:bruce",
+      "b": "dc:luke",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Batman Inc. recruit",
+      "toA": "Recruited him as Batwing",
+      "detail": "Bruce recruited Luke as Batwing after the original holder stepped down.",
+      "era": "Batwing #19–34 / Batman Incorporated era.",
+      "sourceIds": [
+        "N09"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-babs-cass",
+      "a": "dc:babs",
+      "b": "dc:cass",
+      "tags": [
+        "mentors",
+        "legacy"
+      ],
+      "toB": "Batgirl protégé",
+      "toA": "Oracle mentor",
+      "detail": "Barbara mentors Cassandra in the Batgirls partnership. Shared use of Batgirl does not merge the two women.",
+      "era": "Batgirls (2021), collected in Vol. 1.",
+      "sourceIds": [
+        "N10"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-babs-steph",
+      "a": "dc:babs",
+      "b": "dc:steph",
+      "tags": [
+        "mentors",
+        "legacy"
+      ],
+      "toB": "Batgirl protégé",
+      "toA": "Oracle mentor",
+      "detail": "Barbara mentors Stephanie while operating as Oracle in this period.",
+      "era": "Batgirls (2021), collected in Vol. 1.",
+      "sourceIds": [
+        "N10"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-cass-steph",
+      "a": "dc:cass",
+      "b": "dc:steph",
+      "tags": [
+        "teammates",
+        "allies"
+      ],
+      "toB": "Batgirls partner & friend",
+      "toA": "Batgirls partner & friend",
+      "detail": "Cassandra and Stephanie work together and support each other as the Batgirls.",
+      "era": "Batgirls (2021), not a biological sister relationship.",
+      "sourceIds": [
+        "N10"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-cass",
+      "a": "dc:bruce",
+      "b": "dc:cass",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "Protégé",
+      "toA": "Mentor",
+      "detail": "Batman is one of Cassandra’s mentors. This selected edge does not attempt to summarize every change in their family status.",
+      "era": "Main-comics Cassandra Cain; discussed in the 2025 Batgirl recap.",
+      "sourceIds": [
+        "N11"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-selina",
+      "a": "dc:bruce",
+      "b": "dc:selina",
+      "tags": [
+        "family",
+        "rivals",
+        "allies"
+      ],
+      "toB": "Romantic counterpart",
+      "toA": "Romantic counterpart",
+      "detail": "Bruce and Selina have a history involving attraction, opposition and cooperation. No permanent marital status is implied.",
+      "era": "Main-comics Batman/Catwoman; relationship status varies by era.",
+      "sourceIds": [
+        "N12"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-joker",
+      "a": "dc:bruce",
+      "b": "dc:joker",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Adversary",
+      "toA": "Adversary",
+      "detail": "Joker repeatedly opposes Batman’s efforts to protect Gotham.",
+      "era": "Recurring main-comics conflicts; temporary cooperation is not excluded.",
+      "sourceIds": [
+        "N15"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-bane",
+      "a": "dc:bruce",
+      "b": "dc:bane",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Adversary",
+      "toA": "Adversary",
+      "detail": "Bane’s history includes defeating Batman and later confronting him again.",
+      "era": "Recurring main-comics conflicts; temporary cooperation is not excluded.",
+      "sourceIds": [
+        "N16"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-riddler",
+      "a": "dc:bruce",
+      "b": "dc:riddler",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Adversary",
+      "toA": "Adversary",
+      "detail": "Riddler challenges Batman through crimes built around puzzles and traps.",
+      "era": "Recurring main-comics conflicts; temporary cooperation is not excluded.",
+      "sourceIds": [
+        "N17"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-penguin",
+      "a": "dc:bruce",
+      "b": "dc:penguin",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Adversary",
+      "toA": "Adversary",
+      "detail": "Penguin’s Gotham underworld activities repeatedly put him against Batman.",
+      "era": "Recurring main-comics conflicts; temporary cooperation is not excluded.",
+      "sourceIds": [
+        "N18"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-ivy",
+      "a": "dc:bruce",
+      "b": "dc:ivy",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Adversary",
+      "toA": "Adversary",
+      "detail": "Ivy’s campaigns have put her in conflict with Batman; this is not a permanent moral label for every era.",
+      "era": "Recurring main-comics conflicts; temporary cooperation is not excluded.",
+      "sourceIds": [
+        "N21"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-jason-joker",
+      "a": "dc:jason",
+      "b": "dc:joker",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Killer & adversary",
+      "toA": "Former Robin he killed",
+      "detail": "Joker killed Jason during his Robin years. Jason’s later return does not remove that history.",
+      "era": "A Death in the Family and its lasting main-comics aftermath.",
+      "sourceIds": [
+        "N05"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-joker-harley",
+      "a": "dc:joker",
+      "b": "dc:harley",
+      "tags": [
+        "family"
+      ],
+      "toB": "Former partner",
+      "toA": "Former partner",
+      "detail": "Harley and Joker had a harmful romantic and criminal partnership before Harley built a more independent life.",
+      "era": "Historical main-comics relationship, not present-day couple status.",
+      "sourceIds": [
+        "N20"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-harley-ivy",
+      "a": "dc:harley",
+      "b": "dc:ivy",
+      "tags": [
+        "family",
+        "allies"
+      ],
+      "toB": "Romantic partner & ally",
+      "toA": "Romantic partner & ally",
+      "detail": "Harley and Ivy’s main-comics relationship includes friendship and romance. This does not import the separate animated timeline.",
+      "era": "Main-comics romance documented through the January 2025 DC retrospective.",
+      "sourceIds": [
+        "N22"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-selina-harley",
+      "a": "dc:selina",
+      "b": "dc:harley",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Gotham City Sirens teammate",
+      "toA": "Gotham City Sirens teammate",
+      "detail": "They operate together in the Gotham City Sirens partnership.",
+      "era": "Gotham City Sirens (2009) #1–7.",
+      "sourceIds": [
+        "N23"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-selina-ivy",
+      "a": "dc:selina",
+      "b": "dc:ivy",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Gotham City Sirens teammate",
+      "toA": "Gotham City Sirens teammate",
+      "detail": "They operate together in the Gotham City Sirens partnership.",
+      "era": "Gotham City Sirens (2009) #1–7.",
+      "sourceIds": [
+        "N23"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-clark-lois",
+      "a": "dc:clark",
+      "b": "dc:lois",
+      "tags": [
+        "family"
+      ],
+      "toB": "Wife",
+      "toA": "Husband",
+      "detail": "Clark and Lois are married partners in the family eras mapped here. Lois also has her own independent journalistic career.",
+      "era": "Post-Crisis marriage and Rebirth-era Kent family; alternate continuities differ.",
+      "sourceIds": [
+        "N24"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-clark-jon",
+      "a": "dc:clark",
+      "b": "dc:jon",
+      "tags": [
+        "family",
+        "legacy"
+      ],
+      "toB": "Son & fellow Superman",
+      "toA": "Father & predecessor",
+      "detail": "Jon is Clark’s son and later shares the Superman identity. He is not Conner Kent.",
+      "era": "Rebirth family history and Son of Kal-El era.",
+      "sourceIds": [
+        "N25"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-lois-jon",
+      "a": "dc:lois",
+      "b": "dc:jon",
+      "tags": [
+        "family"
+      ],
+      "toB": "Son",
+      "toA": "Mother",
+      "detail": "Jon is the son of Lois Lane and Clark Kent.",
+      "era": "Main-comics Kent family.",
+      "sourceIds": [
+        "N25"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-clark-kara",
+      "a": "dc:clark",
+      "b": "dc:kara",
+      "tags": [
+        "family"
+      ],
+      "toB": "Cousin",
+      "toA": "Cousin",
+      "detail": "Kara Zor-El and Kal-El are Kryptonian cousins. The link is not to Power Girl or another Supergirl.",
+      "era": "Kara Zor-El main-comics histories.",
+      "sourceIds": [
+        "N26"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-clark-jimmy",
+      "a": "dc:clark",
+      "b": "dc:jimmy",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Friend",
+      "toA": "Friend",
+      "detail": "Jimmy is Superman’s friend. Descriptions of him as a little brother are figurative, not a claim of blood kinship.",
+      "era": "Main-comics Superman/Jimmy Olsen partnership.",
+      "sourceIds": [
+        "N27"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-clark-krypto",
+      "a": "dc:clark",
+      "b": "dc:krypto",
+      "tags": [
+        "family",
+        "allies"
+      ],
+      "toB": "Canine companion",
+      "toA": "Human companion",
+      "detail": "Krypto is a Kryptonian dog with a close bond to Clark, not merely equipment or a borrowed superpower.",
+      "era": "Main-comics Kryptonian Krypto; distinct from screen versions and the Earth dog of the same name.",
+      "sourceIds": [
+        "N28"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-clark-johnhenry",
+      "a": "dc:clark",
+      "b": "dc:johnhenry",
+      "tags": [
+        "allies",
+        "legacy"
+      ],
+      "toB": "Inspired ally",
+      "toA": "Heroic inspiration",
+      "detail": "John Henry became Steel after Superman saved his life and inspired him to protect others. He is not Clark’s biological relative.",
+      "era": "Reign of the Supermen origin and later Steel career.",
+      "sourceIds": [
+        "N29"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-johnhenry-natasha",
+      "a": "dc:johnhenry",
+      "b": "dc:natasha",
+      "tags": [
+        "family",
+        "teammates",
+        "legacy"
+      ],
+      "toB": "Niece & fellow Steel",
+      "toA": "Uncle & fellow Steel",
+      "detail": "Natasha is John Henry’s niece and shares his engineering and heroic work, while developing a separate career.",
+      "era": "Main-comics Irons family / Steel histories.",
+      "sourceIds": [
+        "N30"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-clark-natasha",
+      "a": "dc:clark",
+      "b": "dc:natasha",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Super-family ally",
+      "toA": "Super-family ally",
+      "detail": "Natasha fought alongside Clark during the Warworld period. The wider Superman family includes allied heroes as well as blood relatives.",
+      "era": "Warworld / 2022 return to Earth period.",
+      "sourceIds": [
+        "N31"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-clark-lex",
+      "a": "dc:clark",
+      "b": "dc:lex",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Longstanding adversary",
+      "toA": "Longstanding adversary",
+      "detail": "Lex’s rivalry with Superman is a defining recurring conflict. This historical link does not deny periods of alliance or changed allegiances.",
+      "era": "Recurring main-comics Superman/Luthor conflict.",
+      "sourceIds": [
+        "N32"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-clark",
+      "a": "dc:bruce",
+      "b": "dc:clark",
+      "tags": [
+        "allies",
+        "teammates"
+      ],
+      "toB": "World’s Finest partner",
+      "toA": "World’s Finest partner",
+      "detail": "Bruce and Clark are recurring crimefighting partners and friends. Alternate-world stories that set them against each other are not merged into this bond.",
+      "era": "Main-comics World’s Finest partnerships.",
+      "sourceIds": [
+        "N33"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-damian-jon",
+      "a": "dc:damian",
+      "b": "dc:jon",
+      "tags": [
+        "teammates",
+        "allies"
+      ],
+      "toB": "Super Sons partner",
+      "toA": "Super Sons partner",
+      "detail": "Damian and Jon team up as Robin and Superboy in Super Sons. Their fathers are different people; this is not a sibling link.",
+      "era": "Super Sons (2017) and the related collected adventures.",
+      "sourceIds": [
+        "N34"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-donna-raven",
+      "a": "dc:donna",
+      "b": "dc:raven",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "They serve together in the selected Titans roster.",
+      "era": "Dawn of DC Titans, 2023.",
+      "sourceIds": [
+        "N35"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-donna-gar",
+      "a": "dc:donna",
+      "b": "dc:gar",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "They serve together in the selected Titans roster.",
+      "era": "Dawn of DC Titans, 2023.",
+      "sourceIds": [
+        "N35"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-donna-vic",
+      "a": "dc:donna",
+      "b": "dc:vic",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "They serve together in the selected Titans roster.",
+      "era": "Dawn of DC Titans, 2023.",
+      "sourceIds": [
+        "N35"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-dick-raven",
+      "a": "dc:dick",
+      "b": "dc:raven",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "They work together within the Titans during Beast World.",
+      "era": "Titans: Beast World (2023–24).",
+      "sourceIds": [
+        "N36"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-dick-vic",
+      "a": "dc:dick",
+      "b": "dc:vic",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "They work together within the Titans during Beast World.",
+      "era": "Titans: Beast World (2023–24).",
+      "sourceIds": [
+        "N36"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-dick-gar",
+      "a": "dc:dick",
+      "b": "dc:gar",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "Nightwing and Beast Boy are teammates in the Beast World story.",
+      "era": "Titans: Beast World (2023–24).",
+      "sourceIds": [
+        "N36"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-gar-raven",
+      "a": "dc:gar",
+      "b": "dc:raven",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "Their selected connection here is the Titans partnership; relationship history beyond this team edge needs its own scoped evidence.",
+      "era": "Titans: Beast World (2023–24).",
+      "sourceIds": [
+        "N36"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-gar-vic",
+      "a": "dc:gar",
+      "b": "dc:vic",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "Beast Boy and Cyborg work together with the Titans.",
+      "era": "Titans: Beast World (2023–24).",
+      "sourceIds": [
+        "N36"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-kory-raven",
+      "a": "dc:kory",
+      "b": "dc:raven",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Titans teammate",
+      "toA": "Titans teammate",
+      "detail": "Starfire and Raven are members of the same selected Titans roster.",
+      "era": "Dawn of DC Titans, 2023.",
+      "sourceIds": [
+        "N35"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-ollie-roy",
+      "a": "dc:ollie",
+      "b": "dc:roy",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "Former Speedy protégé",
+      "toA": "Former mentor",
+      "detail": "Roy fought beside Oliver as Speedy before developing his Arsenal identity.",
+      "era": "Classic Green Arrow / Speedy history.",
+      "sourceIds": [
+        "N37"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-ollie-dinah",
+      "a": "dc:ollie",
+      "b": "dc:dinah",
+      "tags": [
+        "family",
+        "allies"
+      ],
+      "toB": "Romantic partner & ally",
+      "toA": "Romantic partner & ally",
+      "detail": "Oliver and Dinah share a longstanding, sometimes interrupted romance and crimefighting partnership.",
+      "era": "Main-comics relationship history; marriage and separations are era-dependent.",
+      "sourceIds": [
+        "N38",
+        "N40"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-babs-dinah",
+      "a": "dc:babs",
+      "b": "dc:dinah",
+      "tags": [
+        "teammates",
+        "allies"
+      ],
+      "toB": "Birds of Prey partner",
+      "toA": "Birds of Prey partner",
+      "detail": "Oracle and Black Canary’s partnership forms the original Birds of Prey core.",
+      "era": "Original Birds of Prey partnership; later rosters vary.",
+      "sourceIds": [
+        "N39",
+        "N40"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX3",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-bruce-harvey",
+      "a": "dc:bruce",
+      "b": "dc:harvey",
+      "tags": [
+        "rivals",
+        "allies"
+      ],
+      "toB": "Adversary & occasional ally",
+      "toA": "Adversary & occasional ally",
+      "detail": "Harvey and Batman have been allies as well as opponents. Detective Comics #991 reunites them against Kobra rather than treating their history as one unchanging hostility.",
+      "era": "Historical main-comics relationship; specific cooperation in Detective Comics #991 (2018).",
+      "sourceIds": [
+        "N41"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-dick-damian",
+      "a": "dc:dick",
+      "b": "dc:damian",
+      "tags": [
+        "mentors",
+        "teammates"
+      ],
+      "toB": "Former Robin protégé",
+      "toA": "Former Batman mentor",
+      "detail": "Dick guided Damian as Robin while serving as Batman himself. Their later Nightwing and Robin identities do not erase that partnership.",
+      "era": "Batman and Robin (2009) / Batman Reborn era.",
+      "sourceIds": [
+        "N42"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-dick-babs",
+      "a": "dc:dick",
+      "b": "dc:babs",
+      "tags": [
+        "family",
+        "allies"
+      ],
+      "toB": "Romantic partner & ally",
+      "toA": "Romantic partner & ally",
+      "detail": "Dick and Barbara’s main-comics history includes a renewed romance and heroic partnership. This records the relationship described in the 2022 Nightwing period, not every continuity or all later developments.",
+      "era": "Nightwing era discussed in DC’s December 2022 retrospective.",
+      "sourceIds": [
+        "N43"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx-babs-kory",
+      "a": "dc:babs",
+      "b": "dc:kory",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Trusted ally",
+      "toA": "Trusted ally",
+      "detail": "Oracle trusted Starfire to help protect Dick when assassins threatened him. Their cooperation is recorded directly rather than inferring that two of his partners must be rivals.",
+      "era": "Nightwing #88 (2022), as discussed by DC.",
+      "sourceIds": [
+        "N43"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX2",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-johnstewart",
+      "a": "dc:hal",
+      "b": "dc:johnstewart",
+      "tags": [
+        "mentors",
+        "allies",
+        "teammates"
+      ],
+      "toB": "Former trainee & friend",
+      "toA": "Early trainer & friend",
+      "detail": "Hal initially trained John as a substitute Green Lantern. Their difficult early encounters developed into a partnership between experienced equals, rather than a permanent superior-and-subordinate relationship.",
+      "era": "John’s introduction and later shared Corps service; main comics.",
+      "sourceIds": [
+        "L01"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-guy",
+      "a": "dc:hal",
+      "b": "dc:guy",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Fellow Earth Lantern",
+      "toA": "Fellow Earth Lantern",
+      "detail": "Hal and Guy have served in the same Corps, including its Earth-based period. Sharing the Green Lantern title does not make them relatives or one continuous person.",
+      "era": "Post-Crisis Corps service and subsequent team eras.",
+      "sourceIds": [
+        "L23"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-kyle",
+      "a": "dc:hal",
+      "b": "dc:kyle",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Fellow Earth Lantern",
+      "toA": "Fellow Earth Lantern",
+      "detail": "Hal and Kyle work together in the restored Corps. This branch records their cooperation, not a claim that Kyle disappears from the identity when Hal returns.",
+      "era": "Green Lantern: Rebirth and the rebuilt Corps.",
+      "sourceIds": [
+        "L01"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-guy-kyle",
+      "a": "dc:guy",
+      "b": "dc:kyle",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Recharge teammate",
+      "toA": "Recharge teammate",
+      "detail": "Guy and Kyle help lead the Corps’ new recruits alongside Kilowog. Both are active participants in the rebuilding effort, not successive versions of the same individual.",
+      "era": "Green Lantern Corps: Recharge (2005).",
+      "sourceIds": [
+        "L03"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-guy-kilowog",
+      "a": "dc:guy",
+      "b": "dc:kilowog",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Corps veteran & teammate",
+      "toA": "Corps veteran & teammate",
+      "detail": "Guy and Kilowog lead new recruits together during Recharge. Their working partnership also gives Guy’s map a connection beyond the human Lanterns.",
+      "era": "Green Lantern Corps: Recharge (2005).",
+      "sourceIds": [
+        "L03"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-kyle-kilowog",
+      "a": "dc:kyle",
+      "b": "dc:kilowog",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Recharge teammate",
+      "toA": "Recharge teammate",
+      "detail": "Kyle and Kilowog share responsibility for a new generation of Corps recruits. The source establishes this veteran team role; it does not make Kilowog the source of Kyle’s original ring.",
+      "era": "Green Lantern Corps: Recharge (2005).",
+      "sourceIds": [
+        "L03"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-johnstewart-kyle",
+      "a": "dc:johnstewart",
+      "b": "dc:kyle",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Honor Guard teammate",
+      "toA": "Honor Guard teammate",
+      "detail": "John joins Kyle and Ganthet as the Corps confronts the Alpha Lantern crisis. This is a specific shared mission, rather than a connection inferred solely from matching uniforms.",
+      "era": "Green Lantern Corps #48 and the 2010 Alpha Lantern storyline.",
+      "sourceIds": [
+        "L04"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-johnstewart-ganthet",
+      "a": "dc:johnstewart",
+      "b": "dc:ganthet",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Lantern teammate in this era",
+      "toA": "Lantern teammate in this era",
+      "detail": "John and Ganthet join Kyle against the Alpha Lantern threat. Ganthet is participating as a Lantern in this period; the branch does not freeze his role as John’s permanent commanding Guardian.",
+      "era": "Green Lantern Corps #48 (2010).",
+      "sourceIds": [
+        "L04"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-kyle-ganthet",
+      "a": "dc:kyle",
+      "b": "dc:ganthet",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "Ring benefactor",
+      "toA": "Chosen ring bearer",
+      "detail": "Ganthet placed the surviving ring in Kyle’s hands, giving an ordinary artist an extraordinary responsibility. That handoff is the foundation of their connection; it is not a biological parent-child relationship.",
+      "era": "Emerald Twilight aftermath and Kyle’s Torchbearer history.",
+      "sourceIds": [
+        "L05"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-ganthet-sayd",
+      "a": "dc:ganthet",
+      "b": "dc:sayd",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Blue Corps co-founder",
+      "toA": "Blue Corps co-founder",
+      "detail": "After their exile, Ganthet and Sayd created the Blue Lantern power ring together. This branch records their shared undertaking; it does not use co-founding as evidence of kinship.",
+      "era": "Blue Lantern Corps founding after the Sinestro Corps War.",
+      "sourceIds": [
+        "L06"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-ganthet-walker",
+      "a": "dc:ganthet",
+      "b": "dc:walker",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "First Blue ring bearer",
+      "toA": "Blue Corps co-founder",
+      "detail": "The blue ring made by Ganthet and Sayd reached Saint Walker as he sought hope for his endangered world. Walker became the first member of their new Corps.",
+      "era": "Origin of the Blue Lantern Corps.",
+      "sourceIds": [
+        "L06"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-sayd-walker",
+      "a": "dc:sayd",
+      "b": "dc:walker",
+      "tags": [
+        "mentors"
+      ],
+      "toB": "First Blue ring bearer",
+      "toA": "Blue Corps co-founder",
+      "detail": "Sayd helped create the ring that selected Saint Walker. Their connection belongs to the founding of the Blue Corps, not to a biological family or a change in Walker’s personal identity.",
+      "era": "Origin of the Blue Lantern Corps.",
+      "sourceIds": [
+        "L06"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-walker",
+      "a": "dc:hal",
+      "b": "dc:walker",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Blue Lantern ally",
+      "toA": "Ally seeking his help",
+      "detail": "Hal and Kyle undertake a mission to find Saint Walker and restore the Blue Lantern Corps. The green and blue heroes cooperate without becoming members of a single interchangeable Corps.",
+      "era": "The Quest for Hope, Hal Jordan and the Green Lantern Corps #14–21 (2017).",
+      "sourceIds": [
+        "L07"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-kyle-walker",
+      "a": "dc:kyle",
+      "b": "dc:walker",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Blue Lantern ally",
+      "toA": "Ally seeking his help",
+      "detail": "Kyle joins Hal in seeking Saint Walker during the effort to restore the Blue Corps. The branch is tied to that quest, rather than assigning every color Kyle has worn to his permanent status.",
+      "era": "The Quest for Hope (2017).",
+      "sourceIds": [
+        "L07"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-johnstewart-arisia",
+      "a": "dc:johnstewart",
+      "b": "dc:arisia",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Lost Army teammate",
+      "toA": "Lost Army teammate",
+      "detail": "John and Arisia are among the Lanterns stranded together in The Lost Army. Their shared effort to survive and find a way forward supports this expedition-specific team connection.",
+      "era": "Green Lantern: The Lost Army (2015).",
+      "sourceIds": [
+        "L08"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-kilowog-arisia",
+      "a": "dc:kilowog",
+      "b": "dc:arisia",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Expedition teammate",
+      "toA": "Expedition teammate",
+      "detail": "Kilowog and Arisia travel together with Guy in Emerald Warriors and appear among the displaced Lanterns in The Lost Army. This records their shared missions, not an invented family relationship.",
+      "era": "Emerald Warriors (2010–11) and The Lost Army (2015).",
+      "sourceIds": [
+        "L08",
+        "L09"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-guy-arisia",
+      "a": "dc:guy",
+      "b": "dc:arisia",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Emerald Warriors teammate",
+      "toA": "Emerald Warriors teammate",
+      "detail": "Guy, Arisia and Kilowog venture into dangerous territory together. Their team faces additional strain when Guy’s separate pact with Atrocitus and Ganthet comes to light.",
+      "era": "Green Lantern: Emerald Warriors #1–7; pact revealed in #5.",
+      "sourceIds": [
+        "L09",
+        "L16"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-salaak",
+      "a": "dc:hal",
+      "b": "dc:salaak",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Corps comrade; temporary opponent",
+      "toA": "Corps comrade; temporary opponent",
+      "detail": "Salaak belongs to the comrades opposing Hal and the other Earth Lanterns during the Corps’ internal war. The story’s conflict does not make Salaak a permanent villain or erase their shared service.",
+      "era": "War of the Green Lanterns; Green Lantern Corps #59 (2011).",
+      "sourceIds": [
+        "L10"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-kilowog-salaak",
+      "a": "dc:kilowog",
+      "b": "dc:salaak",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Corps comrade",
+      "toA": "Corps comrade",
+      "detail": "Kilowog and Salaak stand on the same side of the Corps’ fracture against the Earthborn Lanterns. This is an era-specific team connection, not evidence that their temporary position defines all later loyalties.",
+      "era": "War of the Green Lanterns; Green Lantern Corps #59 (2011).",
+      "sourceIds": [
+        "L10"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-tomarre",
+      "a": "dc:hal",
+      "b": "dc:tomarre",
+      "tags": [
+        "mentors",
+        "teammates"
+      ],
+      "toB": "Fellow Lantern & later-origin mentor",
+      "toA": "Fellow Lantern & later-origin protégé",
+      "detail": "Tomar-Re was an early alien colleague Hal encountered in the Corps. Post-Crisis accounts also give him a mentoring role. The branch points to Tomar-Re, not his separate son Tomar-Tu.",
+      "era": "Early Green Lantern adventures; mentorship specifically qualified to post-Crisis accounts.",
+      "sourceIds": [
+        "L11"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-johnstewart-tomarre",
+      "a": "dc:johnstewart",
+      "b": "dc:tomarre",
+      "tags": [
+        "legacy",
+        "teammates"
+      ],
+      "toB": "Ring donor at the Crisis",
+      "toA": "Recipient of his ring",
+      "detail": "At the Crisis, Tomar-Re passed his ring to John. This specific ring transfer is not a claim that John is Tomar-Re’s son or his successor in every responsibility.",
+      "era": "Crisis on Infinite Earths-era ring transfer.",
+      "sourceIds": [
+        "L01"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-carol",
+      "a": "dc:hal",
+      "b": "dc:carol",
+      "tags": [
+        "family",
+        "allies"
+      ],
+      "toB": "Romantic partner across eras",
+      "toA": "Romantic partner across eras",
+      "detail": "Hal and Carol have a longstanding romantic relationship that has endured separations, conflict and renewed commitment. Their preview deliberately does not assume that one issue’s relationship status holds throughout every era.",
+      "era": "Classic Hal/Carol history; their relationship is again central in Green Lantern #24 (2025).",
+      "sourceIds": [
+        "L01",
+        "L12"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-sinestro",
+      "a": "dc:hal",
+      "b": "dc:sinestro",
+      "tags": [
+        "mentors",
+        "rivals"
+      ],
+      "toB": "Former mentor & recurring foe",
+      "toA": "Former protégé & recurring foe",
+      "detail": "Sinestro once mentored Hal before becoming one of his defining enemies. The Sinestro Corps War turns that personal rupture into a wider conflict; later cooperation does not erase the rivalry.",
+      "era": "Shared Green Lantern history and the Sinestro Corps War (2007).",
+      "sourceIds": [
+        "L02"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-larfleeze",
+      "a": "dc:hal",
+      "b": "dc:larfleeze",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Reluctant spectrum ally",
+      "toA": "Reluctant spectrum ally",
+      "detail": "Larfleeze and Hal are forced into the same spectrum coalition after Blackest Night. This is a conditional alliance, not a declaration that Larfleeze is a Green Lantern or Hal’s dependable friend.",
+      "era": "The 2010 New Guardians coalition; Green Lantern #53.",
+      "sourceIds": [
+        "L13"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-indigo",
+      "a": "dc:hal",
+      "b": "dc:indigo",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Uneasy spectrum ally",
+      "toA": "Uneasy spectrum ally",
+      "detail": "Hal and Indigo-1 participate in the spectrum coalition. Their connection becomes more difficult in the later Indigo Tribe story, where Hal is pursued on the tribe’s world. Cooperation here is not permanent trust.",
+      "era": "Green Lantern #53 (2010) and Secret of the Indigo Tribe (2012).",
+      "sourceIds": [
+        "L13",
+        "L14"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-sinestro-indigo",
+      "a": "dc:sinestro",
+      "b": "dc:indigo",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Indigo Tribe opponent in this story",
+      "toA": "Fugitive pursued by her tribe",
+      "detail": "Sinestro and Hal are trapped on the Indigo homeworld with the tribe pursuing them. This branch records the conflict surrounding Indigo-1’s tribe, not a claim that she and Sinestro are enemies in every appearance.",
+      "era": "Secret of the Indigo Tribe; Green Lantern (2011) #8 (2012).",
+      "sourceIds": [
+        "L14"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-atrocitus",
+      "a": "dc:hal",
+      "b": "dc:atrocitus",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Early Lantern adversary",
+      "toA": "Opposing Green Lantern",
+      "detail": "During Secret Origin, Hal and Sinestro face Atrocitus together. The branch captures that conflict; his separate, later dealings with other Lanterns should not be mistaken for the same alliance.",
+      "era": "Green Lantern #34 (2008), Secret Origin.",
+      "sourceIds": [
+        "L15"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-guy-atrocitus",
+      "a": "dc:guy",
+      "b": "dc:atrocitus",
+      "tags": [
+        "allies",
+        "rivals"
+      ],
+      "toB": "Former pact ally; later rival",
+      "toA": "Former pact ally; later rival",
+      "detail": "Guy’s secret agreement with Atrocitus predates their later conflict in the Red Lantern era. Both parts matter: neither permanent friendship nor permanent hostility describes their entire history.",
+      "era": "Emerald Warriors #5 (2010) and Red Lanterns #30 (2014).",
+      "sourceIds": [
+        "L16",
+        "L17"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-atrocitus-dex",
+      "a": "dc:atrocitus",
+      "b": "dc:dex",
+      "tags": [
+        "allies",
+        "teammates"
+      ],
+      "toB": "Red Lantern companion",
+      "toA": "Red Lantern leader & ally",
+      "detail": "Dex-Starr operates alongside Atrocitus, including carrying out the Hell Seed mission at his direction. The cat is an active Red Lantern ally here, not merely decorative artwork beside the larger character.",
+      "era": "Red Lanterns #30 (2014) and the Green Lanterns #5 recap (2016).",
+      "sourceIds": [
+        "L17",
+        "L18"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-guy-kara",
+      "a": "dc:guy",
+      "b": "dc:kara",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Red Lantern teammate in this era",
+      "toA": "Red Lantern teammate in this era",
+      "detail": "Kara’s time with a red ring brings her into Guy’s Red Lantern circle. This branch belongs to that period; Supergirl is not permanently recategorized as a Red Lantern.",
+      "era": "Red Lanterns #30 (2014), Red Daughter of Krypton period.",
+      "sourceIds": [
+        "L17"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-blackhand",
+      "a": "dc:hal",
+      "b": "dc:blackhand",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Nekron’s herald under scrutiny",
+      "toA": "Lantern wary of his return",
+      "detail": "Hal is alarmed by the Indigo Tribe’s custody of Black Hand after Blackest Night. The concern is about a dangerous herald’s containment, not evidence that Black Hand has become Hal’s trusted teammate.",
+      "era": "Brightest Day; Green Lantern #59 (2010).",
+      "sourceIds": [
+        "L19"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-nekron-blackhand",
+      "a": "dc:nekron",
+      "b": "dc:blackhand",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Herald",
+      "toA": "Power he serves as herald",
+      "detail": "Black Hand serves as Nekron’s herald. They are two distinct characters with different roles; a servant-and-patron connection does not make Black Hand another civilian identity for Nekron.",
+      "era": "Blackest Night and the Brightest Day aftermath.",
+      "sourceIds": [
+        "L19"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-nekron",
+      "a": "dc:hal",
+      "b": "dc:nekron",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Blackest Night enemy",
+      "toA": "Opposing Green Lantern",
+      "detail": "Hal is among the Green Lanterns who stand against Nekron during Blackest Night. This is an adversarial event connection, not membership in Nekron’s forces.",
+      "era": "Blackest Night (2009–10).",
+      "sourceIds": [
+        "L01"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-krona",
+      "a": "dc:hal",
+      "b": "dc:krona",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Corps-crisis adversary",
+      "toA": "Earth Lantern resisting his crisis",
+      "detail": "Krona’s attack drives the crisis in which Hal and the other Earthborn Lanterns confront their own Corps. This branch is scoped to that war and does not assign every past Guardian action to Krona.",
+      "era": "War of the Green Lanterns (2011), including its conclusion in Green Lantern #67.",
+      "sourceIds": [
+        "L20",
+        "L21"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-hammond",
+      "a": "dc:hal",
+      "b": "dc:hammond",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Recurring psychic adversary",
+      "toA": "Opposing Green Lantern",
+      "detail": "Hector Hammond confronts Hal in the comics, including their renewed battle in the 2023 series. The link stays with this comics identity rather than importing the film’s altered family and origin material.",
+      "era": "Green Lantern #22 (2025); comics relationship.",
+      "sourceIds": [
+        "L22"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-henshaw",
+      "a": "dc:hal",
+      "b": "dc:henshaw",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Coast City adversary",
+      "toA": "Lantern shaped by his attack",
+      "detail": "Hank Henshaw’s Cyborg Superman helped Mongul destroy Coast City, the catastrophe at the heart of Hal’s subsequent collapse. This branch identifies Hank, not Superman, Victor Stone or another Cyborg Superman incarnation.",
+      "era": "Reign of the Supermen / Coast City destruction (1993).",
+      "sourceIds": [
+        "L23"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-sinestro-henshaw",
+      "a": "dc:sinestro",
+      "b": "dc:henshaw",
+      "tags": [
+        "teammates"
+      ],
+      "toB": "Sinestro Corps recruit",
+      "toA": "Leader of his wartime Corps",
+      "detail": "Cyborg Superman joins Sinestro’s fear-powered army during the Sinestro Corps War. That wartime recruitment does not make the two interchangeable or imply that every later action by Henshaw is Sinestro’s order.",
+      "era": "The Sinestro Corps War (2007).",
+      "sourceIds": [
+        "L02"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-johnstewart-henshaw",
+      "a": "dc:johnstewart",
+      "b": "dc:henshaw",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Alpha Lantern mastermind",
+      "toA": "Lantern resisting forced conversion",
+      "detail": "John resists the Alpha Lantern crisis orchestrated by Cyborg Superman. The attempt to force him into their ranks is a hostile act, not a voluntary team affiliation.",
+      "era": "Revolt of the Alpha Lanterns (2010).",
+      "sourceIds": [
+        "L24"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-kyle-henshaw",
+      "a": "dc:kyle",
+      "b": "dc:henshaw",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Alpha Lantern mastermind",
+      "toA": "Lantern resisting forced conversion",
+      "detail": "Kyle is among the Lanterns targeted by the Alpha Lanterns under Cyborg Superman’s control. The branch records a specific adversarial campaign, separate from Henshaw’s earlier Sinestro Corps role.",
+      "era": "Revolt of the Alpha Lanterns (2010).",
+      "sourceIds": [
+        "L24"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-ganthet-henshaw",
+      "a": "dc:ganthet",
+      "b": "dc:henshaw",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Alpha Lantern mastermind",
+      "toA": "Target of the Alpha Lantern revolt",
+      "detail": "Cyborg Superman’s Alpha Lantern campaign targets Ganthet alongside John and Kyle. The conflict belongs to Ganthet’s Lantern period, not a claim that he always holds the same office or power set.",
+      "era": "Revolt of the Alpha Lanterns (2010).",
+      "sourceIds": [
+        "L24"
+      ],
+      "priority": 5,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-jessica-simon",
+      "a": "dc:jessica",
+      "b": "dc:simon",
+      "tags": [
+        "teammates",
+        "allies"
+      ],
+      "toB": "Green Lantern partner",
+      "toA": "Green Lantern partner",
+      "detail": "Jessica and Simon regularly work together as Earth’s Green Lantern partners. The partnership connects two separate people and their shared responsibilities; it is not a romance inferred from teaming up.",
+      "era": "Green Lanterns / Rebirth-era partnership.",
+      "sourceIds": [
+        "L25"
+      ],
+      "priority": 1,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-jessica-volthoom",
+      "a": "dc:jessica",
+      "b": "dc:volthoom",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "First Lantern antagonist",
+      "toA": "Lantern he seeks to coerce",
+      "detail": "The First Lantern Volthoom seeks to force Jessica and Simon into restoring his lost power. This edge is about that character and scheme, not an automatic identification with every entity associated with Jessica’s earlier ring.",
+      "era": "Green Lanterns #18 (2017), The Last Testament of the First Lantern.",
+      "sourceIds": [
+        "L26"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-simon-volthoom",
+      "a": "dc:simon",
+      "b": "dc:volthoom",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "First Lantern antagonist",
+      "toA": "Lantern he seeks to coerce",
+      "detail": "Volthoom’s plan targets Simon together with Jessica. His demand for their help is coercion, not a mentor relationship or evidence that Simon willingly serves him.",
+      "era": "Green Lanterns #18 (2017).",
+      "sourceIds": [
+        "L26"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-ollie",
+      "a": "dc:hal",
+      "b": "dc:ollie",
+      "tags": [
+        "allies",
+        "teammates"
+      ],
+      "toB": "Longstanding friend & partner",
+      "toA": "Longstanding friend & partner",
+      "detail": "Hal and Oliver’s shared adventures build a lasting friendship despite sharp disagreements. The branch records both the personal bond and their working partnership without making either hero the other’s subordinate.",
+      "era": "Classic Green Lantern/Green Arrow partnership and later comics.",
+      "sourceIds": [
+        "L27"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-barry",
+      "a": "dc:hal",
+      "b": "dc:barry",
+      "tags": [
+        "allies",
+        "teammates"
+      ],
+      "toB": "Close friend",
+      "toA": "Close friend",
+      "detail": "Hal and Barry are close friends whose different temperaments shape their adventures together. This connection points specifically to Barry Allen, not whichever Flash happens to share the mantle.",
+      "era": "The Flash and Green Lantern: The Brave and the Bold; classic partnership.",
+      "sourceIds": [
+        "L28"
+      ],
+      "priority": 2,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-kyle-wally",
+      "a": "dc:kyle",
+      "b": "dc:wally",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Initially uneasy team-up partner",
+      "toA": "Initially uneasy team-up partner",
+      "detail": "Kyle and Wally work through an uneasy partnership when confronting Sonar. The story establishes a connection between these particular mantle holders, not a recycled Hal-and-Barry friendship assigned to their successors.",
+      "era": "Green Lantern #66–67 (1995), reviewed in DC’s team-up retrospective.",
+      "sourceIds": [
+        "L29"
+      ],
+      "priority": 3,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-guy-ganthet",
+      "a": "dc:guy",
+      "b": "dc:ganthet",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Secret-pact collaborator",
+      "toA": "Secret-pact collaborator",
+      "detail": "Ganthet is part of Guy’s hidden agreement with Atrocitus. That limited cooperation causes tension with Guy’s expedition teammates and is kept separate from Ganthet’s other Guardian and Blue Lantern roles.",
+      "era": "Green Lantern: Emerald Warriors #5 (2010).",
+      "sourceIds": [
+        "L16"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-kyle-sayd",
+      "a": "dc:kyle",
+      "b": "dc:sayd",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Guardian he joins a mission to rescue",
+      "toA": "Member of her rescue team",
+      "detail": "Kyle joins Hal, John and Guy in organizing the mission to rescue Sayd and Ganthet. The branch states the rescue effort, not an outcome or permanent chain of command inferred from the solicitation.",
+      "era": "Hal Jordan and the Green Lantern Corps #33 (2017).",
+      "sourceIds": [
+        "L30"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-hal-sayd",
+      "a": "dc:hal",
+      "b": "dc:sayd",
+      "tags": [
+        "allies"
+      ],
+      "toB": "Guardian he joins a mission to rescue",
+      "toA": "Member of her rescue team",
+      "detail": "Hal helps assemble the rescue of Sayd and Ganthet. It is a documented mission connection, separate from Sayd’s co-founding of the Blue Lantern Corps.",
+      "era": "Hal Jordan and the Green Lantern Corps #33 (2017).",
+      "sourceIds": [
+        "L30"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
+    },
+    {
+      "id": "cx4-simon-atrocitus",
+      "a": "dc:simon",
+      "b": "dc:atrocitus",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Red Lantern opponent",
+      "toA": "Green Lantern opponent",
+      "detail": "Simon confronts Atrocitus during the Red Dawn attack. The recap describes a direct clash between them, so the branch does not rely solely on their opposing ring colors.",
+      "era": "Green Lanterns #5 (2016).",
+      "sourceIds": [
+        "L18"
+      ],
+      "priority": 4,
+      "reviewBatch": "CX4",
+      "reviewStatus": "source-linked-selected-relationship"
     }
   ],
   "sources": {
@@ -156263,6 +158876,726 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "reviewed": "2026-09-06",
       "kind": "Publisher text / catalog",
       "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues not read for this pilot."
+    },
+    "N01": {
+      "id": "N01",
+      "title": "DC — Alfred Pennyworth",
+      "url": "https://www.dc.com/characters/alfred-pennyworth",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for Alfred’s caregiver role with Bruce and the named Robins; not as proof of present-day survival.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N02": {
+      "id": "N02",
+      "title": "DC — Batgirl / Barbara Gordon",
+      "url": "https://www.dc.com/characters/batgirl",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for Barbara’s relationship to Jim Gordon and Batman. The page’s shared-mantle debut metadata is not imported.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N03": {
+      "id": "N03",
+      "title": "DC — Batwoman / Kate Kane",
+      "url": "https://www.dc.com/characters/batwoman",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for Kate and Bruce being cousins. The shared-mantle debut date on this page is not used for Kate.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N04": {
+      "id": "N04",
+      "title": "DC — James Gordon",
+      "url": "https://www.dc.com/characters/james-gordon",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Gordon’s police partnership and friendship with Batman, not a universal claim about his knowledge of Bruce’s identity.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N05": {
+      "id": "N05",
+      "title": "DC — Red Hood / Jason Todd",
+      "url": "https://www.dc.com/characters/red-hood",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Jason as Batman’s former Robin/adoptive family and Joker as his killer in the classic story. Detailed resurrection mechanisms are outside this mapping pass.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N06": {
+      "id": "N06",
+      "title": "DC — Tim Drake",
+      "url": "https://www.dc.com/characters/tim-drake",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for Batman’s mentorship and Tim’s place after Jason in the Robin legacy.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N07": {
+      "id": "N07",
+      "title": "DC — Damian Wayne",
+      "url": "https://www.dc.com/characters/damian-wayne",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Bruce and Talia as Damian’s parents and Ra’s as his maternal grandfather.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N08": {
+      "id": "N08",
+      "title": "DC — Lucius Fox",
+      "url": "https://www.dc.com/characters/lucius-fox",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for the Wayne Enterprises working relationship; no uniform present-day job title or identity knowledge is assumed.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N09": {
+      "id": "N09",
+      "title": "DC — Batwing: Luke Fox",
+      "url": "https://www.dc.com/graphic-novels/batwing-luke-fox",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Catalog for Batwing #19–34 and Futures End #1 identifies Luke’s father and Batman’s recruitment of him.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N10": {
+      "id": "N10",
+      "title": "DC — Batgirls Vol. 1",
+      "url": "https://www.dc.com/graphic-novels/batgirls-vol-1",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Barbara mentoring Cassandra and Stephanie and their work together in Batgirls (2021).",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N11": {
+      "id": "N11",
+      "title": "DC — In Batgirl, the Real Battle is One We All Share",
+      "url": "https://www.dc.com/blog/2025/01/27/in-batgirl-the-real-battle-is-one-we-all-share",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Cassandra’s mentorship by Batman. Not a new biography or current-status certification.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N12": {
+      "id": "N12",
+      "title": "DC — Catwoman",
+      "url": "https://www.dc.com/characters/catwoman",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for the mixed adversarial, allied and romantic history with Bruce; not a permanent marriage claim.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N13": {
+      "id": "N13",
+      "title": "DC — Ra’s al Ghul",
+      "url": "https://www.dc.com/characters/ras-al-ghul",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Ra’s rivalry with Bruce and fatherhood of Talia.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N14": {
+      "id": "N14",
+      "title": "DC — Talia al Ghul",
+      "url": "https://www.dc.com/characters/talia-al-ghul",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports the history between Talia and Batman and her independent role, not a present-day couple label.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N15": {
+      "id": "N15",
+      "title": "DC — The Joker",
+      "url": "https://www.dc.com/characters/the-joker",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used only for Joker’s longstanding opposition to Batman.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N16": {
+      "id": "N16",
+      "title": "DC — Bane",
+      "url": "https://www.dc.com/characters/bane",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for Bane’s repeated conflicts with Batman.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N17": {
+      "id": "N17",
+      "title": "DC — Riddler",
+      "url": "https://www.dc.com/characters/riddler",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports the adversarial puzzle-based relationship with Batman.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N18": {
+      "id": "N18",
+      "title": "DC — Penguin",
+      "url": "https://www.dc.com/characters/penguin",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Penguin’s Gotham criminal opposition to Batman.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N20": {
+      "id": "N20",
+      "title": "DC — Harley Quinn",
+      "url": "https://www.dc.com/characters/harley-quinn",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for her historical partnership/romance with Joker and departure, not an endorsement of the relationship.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N21": {
+      "id": "N21",
+      "title": "DC — Poison Ivy",
+      "url": "https://www.dc.com/characters/poison-ivy",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for her history as a Batman adversary; not a claim that every later story has the same alignment.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N22": {
+      "id": "N22",
+      "title": "DC — How Long Have Harley Quinn and Poison Ivy Been a Couple?",
+      "url": "https://www.dc.com/blog/2025/01/08/how-long-have-harley-quinn-and-poison-ivy-been-a-couple",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for the main-comics romantic relationship documented through the article’s January 2025 scope. Not the TV series or alternate universes.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N23": {
+      "id": "N23",
+      "title": "DC — Gotham City Sirens: Union",
+      "url": "https://www.dc.com/graphic-novels/gotham-city-sirens-2009/gotham-city-sirens-union",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Identifies Selina, Harley and Ivy as the team in Gotham City Sirens #1–7.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N24": {
+      "id": "N24",
+      "title": "DC — Lois Lane",
+      "url": "https://www.dc.com/characters/lois-lane",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports the Clark/Lois married-family relationship in eras where the marriage is in continuity.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N25": {
+      "id": "N25",
+      "title": "DC — Jon Kent",
+      "url": "https://www.dc.com/characters/jon-kent",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Jon’s parentage and his Superman identity; not interchangeable with Conner Kent.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N26": {
+      "id": "N26",
+      "title": "DC — Supergirl / Kara Zor-El",
+      "url": "https://www.dc.com/characters/supergirl",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for Kara and Kal-El as cousins, not Power Girl or other Supergirls.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N27": {
+      "id": "N27",
+      "title": "DC — Jimmy Olsen",
+      "url": "https://www.dc.com/characters/jimmy-olsen",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Jimmy’s friendship with Superman; family language is figurative, not biological.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N28": {
+      "id": "N28",
+      "title": "DC — Why Krypto Matters",
+      "url": "https://www.dc.com/blog/2018/04/11/why-krypto-matters",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for the Kryptonian dog’s bond with Clark. Does not merge screen versions or the Earth dog also called Krypto.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N29": {
+      "id": "N29",
+      "title": "DC — Steel / John Henry Irons",
+      "url": "https://www.dc.com/characters/steel",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Superman’s inspiration of John Henry and his place as a human ally, not a blood relative.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N30": {
+      "id": "N30",
+      "title": "DC — Five to Follow: Black Brilliance in the Superhero Community",
+      "url": "https://www.dc.com/blog/2025/02/10/five-to-follow-black-brilliance-in-the-superhero-community",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Identifies Natasha as John Henry Irons’s niece and partner in his heroic work.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N31": {
+      "id": "N31",
+      "title": "DC — Home for the Holidays: Kal-El Returns to His Families",
+      "url": "https://www.dc.com/blog/2022/12/14/home-for-the-holidays-kal-el-returns-to-his-families",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for Natasha’s Superman-family alliance during the Warworld period; does not make them biological relatives.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N32": {
+      "id": "N32",
+      "title": "DC — Lex Luthor",
+      "url": "https://www.dc.com/characters/lex-luthor",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for the longstanding antagonism with Superman, not a claim that all stories maintain that role.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N33": {
+      "id": "N33",
+      "title": "DC — World’s Finest Origin: When Bruce Wayne Met Clark Kent",
+      "url": "https://www.dc.com/blog/2025/05/15/world-s-finest-origin-when-bruce-wayne-met-clark-kent",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Main-comics partnership only; the separate animated adaptation in this article is not merged into it.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N34": {
+      "id": "N34",
+      "title": "DC — Super Sons Omnibus Super Duper Edition",
+      "url": "https://www.dc.com/graphic-novels/super-sons-2017/super-sons-omnibus-super-duper-edition",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Identifies Jon Kent and Damian Wayne as the Super Sons in the collected comics.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N35": {
+      "id": "N35",
+      "title": "DC — Everything You Need to Know About Beast Boy",
+      "url": "https://www.dc.com/blog/2023/11/29/no-sleep-till-bludhaven-everything-you-need-to-know-about-beast-boy",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Specific Titans roster as of the 2023 Dawn of DC/Beast World period; no assumption of permanent team membership.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N36": {
+      "id": "N36",
+      "title": "DC — Titans: Beast World",
+      "url": "https://www.dc.com/graphic-novels/titans-beast-world-2023/titans-beast-world",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Publisher collection description supports Beast Boy’s team relationships with Nightwing, Raven and Cyborg.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N37": {
+      "id": "N37",
+      "title": "DC — Arsenal / Roy Harper",
+      "url": "https://www.dc.com/characters/arsenal",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for Roy’s earlier role as Green Arrow’s sidekick, Speedy.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N38": {
+      "id": "N38",
+      "title": "DC — The Archer and the Canary",
+      "url": "https://www.dc.com/blog/2017/01/11/the-archer-and-the-canary-the-not-so-secret-history-of-oliver-queen-and-dinah-lance",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Historical relationship overview, including a prior marriage and separation; not proof of one unbroken present-day status.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N39": {
+      "id": "N39",
+      "title": "DC — Birds of Prey",
+      "url": "https://www.dc.com/characters/birds-of-prey",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Used for the original Black Canary/Oracle partnership only. A general roster list is not used to connect every possible member.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N40": {
+      "id": "N40",
+      "title": "DC — Black Canary",
+      "url": "https://www.dc.com/characters/black-canary",
+      "publisher": "DC",
+      "kind": "Publisher character page / editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Supports Dinah’s friendship and team partnership with Barbara and recurring relationship with Oliver.",
+      "access": "Relevant publisher text or indexed excerpt read for this relationship. Complete comic issues were not read in this pass."
+    },
+    "N41": {
+      "id": "N41",
+      "title": "DC — Detective Comics #991",
+      "url": "https://www.dc.com/comics/detective-comics-2016/detective-comics-991",
+      "publisher": "DC",
+      "kind": "Publisher editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "The October 2018 catalog describes Harvey and Batman as allies, enemies and allies again. Used for mixed historical alignment, not a permanent partnership.",
+      "access": "Relevant publisher page text read; complete comic issues not read in this pass."
+    },
+    "N42": {
+      "id": "N42",
+      "title": "DC — Recommended Robin: Six Essential Damian Wayne Stories",
+      "url": "https://www.dc.com/blog/2023/05/11/recommended-robin-six-essential-damian-wayne-stories",
+      "publisher": "DC",
+      "kind": "Publisher editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "The Batman Reborn section identifies Dick as Batman and Damian as his Robin. Screen announcements elsewhere in the article are not imported.",
+      "access": "Relevant publisher page text read; complete comic issues not read in this pass."
+    },
+    "N43": {
+      "id": "N43",
+      "title": "DC — What’s the Deal with Nightwing and Starfire?",
+      "url": "https://www.dc.com/blog/2022/12/01/whats-the-deal-with-nightwing-and-starfire",
+      "publisher": "DC",
+      "kind": "Publisher editorial / catalog",
+      "reviewed": "2026-09-06",
+      "note": "Only the main-comics discussion of Dick and Barbara, and Oracle asking Starfire to protect Dick in Nightwing #88, is used. Not TV continuity or a certification of later relationship status.",
+      "access": "Relevant publisher page text read; complete comic issues not read in this pass."
+    },
+    "L01": {
+      "id": "L01",
+      "title": "DC — Emerald Allies: Hal Jordan and John Stewart’s Close Friendship",
+      "url": "https://www.dc.com/blog/2023/03/07/emerald-allies-hal-jordan-and-john-stewart-s-close-friendship",
+      "publisher": "DC",
+      "kind": "Publisher historical editorial",
+      "reviewed": "2026-09-07",
+      "note": "Supports Hal’s initial training of John, their later partnership, the four Earth Lanterns’ Rebirth cooperation, Tomar-Re’s ring transfer to John, and the conflict with Nekron. Only the comics discussion is used.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L02": {
+      "id": "L02",
+      "title": "DC — Green Lantern: The Sinestro Corps War",
+      "url": "https://www.dc.com/graphic-novels/green-lantern-2005/green-lantern-the-sinestro-corps-war",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Explicitly identifies Sinestro as Hal’s former mentor and enemy, and Cyborg Superman as a recruit in Sinestro’s war. Recruitment is limited to this era.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L03": {
+      "id": "L03",
+      "title": "DC — Green Lantern Corps: Recharge #1",
+      "url": "https://www.dc.com/comics/green-lantern-corps-recharge-2005/green-lantern-corps-recharge-1",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Names Guy Gardner, Kyle Rayner and Kilowog as veterans leading the new recruits. Used for their collaboration, not an invented family or mentor chain.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L04": {
+      "id": "L04",
+      "title": "DC — Green Lantern Corps #48",
+      "url": "https://www.dc.com/comics/green-lantern-corps-2006/green-lantern-corps-48",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Names John Stewart and Ganthet joining Kyle Rayner against the new threat. Ganthet’s role here is era-specific.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L05": {
+      "id": "L05",
+      "title": "DC — To Bear the Torch: Kyle Rayner",
+      "url": "https://www.dc.com/blog/2026-03-30/to-bear-the-torch-why-kyle-rayner-is-the-strongest-lantern-of-all",
+      "publisher": "DC",
+      "kind": "Publisher character editorial",
+      "reviewed": "2026-09-07",
+      "note": "Used for Ganthet giving Kyle the ring and the Torchbearer relationship. The article’s opinion about who is strongest is not used as a ranking.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L06": {
+      "id": "L06",
+      "title": "DC — All Will Be Well: Meet the Blue Lantern Corps",
+      "url": "https://www.dc.com/blog/2017/08/22/all-will-be-well-meet-the-blue-lantern-corps",
+      "publisher": "DC",
+      "kind": "Publisher historical explainer",
+      "reviewed": "2026-09-07",
+      "note": "Identifies Ganthet and Sayd as the Blue Corps’ founders and Saint Walker as their first ring’s recipient. Co-founding does not establish a parent-child relationship.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L07": {
+      "id": "L07",
+      "title": "DC — Hal Jordan and the Green Lantern Corps Vol. 3: The Quest for Hope",
+      "url": "https://www.dc.com/graphic-novels/hal-jordan-and-the-green-lantern-corps-2016/hal-jordan-and-the-green-lantern-corps-vol-3-the-quest-for-hope",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Hal and Kyle’s mission to find Saint Walker and restore the Blue Lantern Corps; collects the 2016 series #14–21.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L08": {
+      "id": "L08",
+      "title": "DC — Green Lantern: The Lost Army #1",
+      "url": "https://www.dc.com/comics/green-lantern-the-lost-army-2015/green-lantern-the-lost-army-1",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Names John Stewart, Kilowog and Arisia among the displaced team. Used only for the documented Lost Army collaboration.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L09": {
+      "id": "L09",
+      "title": "DC — Green Lantern: Emerald Warriors",
+      "url": "https://www.dc.com/graphic-novels/green-lantern-emerald-warriors-2010/green-lantern-emerald-warriors",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Names Guy, Kilowog and Arisia on the frontier mission. Used for those specific expedition teammates, not every possible pair of Corps members.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L10": {
+      "id": "L10",
+      "title": "DC — Green Lantern Corps #59",
+      "url": "https://www.dc.com/comics/green-lantern-corps-2006/green-lantern-corps-59",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Describes Salaak and Kilowog as comrades opposing the Earth Lanterns during War of the Green Lanterns. Temporary conflict is not permanent villainy.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L11": {
+      "id": "L11",
+      "title": "DC — Off World Warriors: Five Essential Alien Green Lanterns",
+      "url": "https://www.dc.com/blog/2026-09-03/off-world-warriors-five-essential-alien-green-lanterns",
+      "publisher": "DC",
+      "kind": "Publisher historical editorial",
+      "reviewed": "2026-09-07",
+      "note": "Used only for the comics account of Tomar-Re meeting Hal and his post-Crisis mentorship. Tomar-Tu is a separate person. Screen material is not mapped.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L12": {
+      "id": "L12",
+      "title": "DC — Green Lantern #24 (2023 series)",
+      "url": "https://www.dc.com/comics/green-lantern-2023/green-lantern-24",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "The 2025 synopsis explicitly frames Hal and Carol’s relationship in terms of love. Used with the historical account, not as a claim about all future issues.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L13": {
+      "id": "L13",
+      "title": "DC — Green Lantern #53 (2005 series)",
+      "url": "https://www.dc.com/comics/green-lantern-2005/green-lantern-53",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Names the temporary spectrum coalition: Hal, Sinestro, Carol, Saint Walker, Atrocitus, Indigo-1 and Larfleeze. This is not the same lineup as Kyle’s later New Guardians series.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L14": {
+      "id": "L14",
+      "title": "DC — Green Lantern (2011) #8",
+      "url": "https://www.dc.com/comics/green-lantern-2011/green-lantern-2011-8",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Hal and Sinestro are pursued by the Indigo Tribe. Used to qualify the uneasy Indigo relationship in this story, not assert permanent hostility.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L15": {
+      "id": "L15",
+      "title": "DC — Green Lantern #34 (2005 series)",
+      "url": "https://www.dc.com/comics/green-lantern-2005/green-lantern-34",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Secret Origin places Hal and Sinestro against Atrocitus. Their relationships in later stories can differ.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L16": {
+      "id": "L16",
+      "title": "DC — Green Lantern: Emerald Warriors #5",
+      "url": "https://www.dc.com/comics/green-lantern-emerald-warriors-2010/green-lantern-emerald-warriors-5",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Identifies Guy’s secret pact with Atrocitus and Ganthet. This specific cooperation is not a claim of lasting allegiance.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L17": {
+      "id": "L17",
+      "title": "DC — Red Lanterns #30",
+      "url": "https://www.dc.com/comics/red-lanterns-2011/red-lanterns-30",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Guy’s Red Lantern period, red-ring Supergirl, and the Atrocitus/Dex-Starr faction. Supergirl is Kara here; a red ring is not a permanent identity.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L18": {
+      "id": "L18",
+      "title": "DC — Reader Recaps: Suicide Squad Defeated by…Airsickness?",
+      "url": "https://www.dc.com/blog/2016/09/13/reader-recaps-suicide-squad-defeated-by-airsickness",
+      "publisher": "DC",
+      "kind": "Publisher issue recap",
+      "reviewed": "2026-09-07",
+      "note": "Only the Green Lanterns #5 recap: Atrocitus sends Dex-Starr on the Hell Seed mission and fights Simon Baz. Other titles in the roundup are not relationship evidence.",
+      "access": "Relevant search-indexed publisher recap text reviewed; no full comic issue reading is claimed."
+    },
+    "L19": {
+      "id": "L19",
+      "title": "DC — Green Lantern #59 (2005 series)",
+      "url": "https://www.dc.com/comics/green-lantern-2005/green-lantern-59",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Explicitly calls Black Hand Nekron’s herald and describes Hal’s concern about his confinement by the Indigo Tribe.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L20": {
+      "id": "L20",
+      "title": "DC — Green Lantern #67 (2005 series)",
+      "url": "https://www.dc.com/comics/green-lantern-2005/green-lantern-67",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Identifies Krona’s attack as the crisis concluding War of the Green Lanterns. Used with the collected storyline’s account of the Earth Lanterns’ resistance.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L21": {
+      "id": "L21",
+      "title": "DC — Green Lantern: War of the Green Lanterns",
+      "url": "https://www.dc.com/graphic-novels/green-lantern-2005/green-lantern-war-of-the-green-lanterns",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "The synopsis places the four Earthborn Lanterns against the rest of their Corps. Paired with #67 to identify the Krona conflict; no claim about exact death mechanics.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L22": {
+      "id": "L22",
+      "title": "DC — Green Lantern #22 (2023 series)",
+      "url": "https://www.dc.com/comics/green-lantern-2023/green-lantern-22",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "The 2025 synopsis explicitly places Hal Jordan against Hector Hammond. This is comics continuity, not the film’s version of Hector.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L23": {
+      "id": "L23",
+      "title": "DC — In Brightest Day: Twelve Iconic Moments in the Green Lantern Saga",
+      "url": "https://www.dc.com/blog/2020/05/22/in-brightest-day-twelve-iconic-moments-in-the-green-lantern-saga",
+      "publisher": "DC",
+      "kind": "Publisher historical editorial",
+      "reviewed": "2026-09-07",
+      "note": "Used for the Earth Lanterns’ shared Corps service and Cyborg Superman’s role with Mongul in destroying Coast City. No map link is created for an absent dossier.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L24": {
+      "id": "L24",
+      "title": "DC — Green Lantern Corps: Revolt of the Alpha Lanterns",
+      "url": "https://www.dc.com/graphic-novels/green-lantern-corps-2006/green-lantern-corps-revolt-of-the-alpha-lanterns",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Names John, Kyle and Ganthet resisting the Alpha Lanterns under Cyborg Superman. Attempted forced recruitment is not voluntary membership.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L25": {
+      "id": "L25",
+      "title": "DC — Jessica Cruz",
+      "url": "https://www.dc.com/characters/jessica-cruz",
+      "publisher": "DC",
+      "kind": "Publisher character page",
+      "reviewed": "2026-09-07",
+      "note": "Identifies Simon Baz as Jessica’s frequent partner. Does not merge Jessica’s earlier Ring of Volthoom with the First Lantern character.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L26": {
+      "id": "L26",
+      "title": "DC — Green Lanterns #18",
+      "url": "https://www.dc.com/comics/green-lanterns-2016/green-lanterns-18",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Explicitly identifies Volthoom as the First Lantern and his plan to force Jessica and Simon to restore his power. Coercion is not mentorship.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L27": {
+      "id": "L27",
+      "title": "DC — Relationship Roundup: Hal Jordan and Oliver Queen",
+      "url": "https://www.dc.com/blog/2018/02/27/relationship-roundup-hal-jordan-and-oliver-queen",
+      "publisher": "DC",
+      "kind": "Publisher relationship editorial",
+      "reviewed": "2026-09-07",
+      "note": "The comics friendship and working partnership of the two heroes, including disagreement; not a television relationship.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L28": {
+      "id": "L28",
+      "title": "DC — The Flash and Green Lantern: The Brave and the Bold",
+      "url": "https://www.dc.com/graphic-novels/the-flash/green-lantern-the-brave-and-the-bold-1999/the-flash-and-green-lantern-the-brave-and-the-bold",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Specifically identifies Barry Allen and Hal Jordan’s friendship. Does not redirect to Wally or another Lantern.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L29": {
+      "id": "L29",
+      "title": "DC — The Red and the Green: Eight Great Flash and Green Lantern Team-Ups",
+      "url": "https://www.dc.com/blog/2025-12-22/the-red-and-the-green-eight-great-flash-and-green-lantern-team-ups",
+      "publisher": "DC",
+      "kind": "Publisher historical editorial",
+      "reviewed": "2026-09-07",
+      "note": "Used only for Wally West and Kyle Rayner’s uneasy team-up in Green Lantern #66–67 (1995). Other Flash/Lantern pairings stay distinct.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
+    },
+    "L30": {
+      "id": "L30",
+      "title": "DC — Hal Jordan and the Green Lantern Corps #33",
+      "url": "https://www.dc.com/comics/hal-jordan-and-the-green-lantern-corps-2016/hal-jordan-and-the-green-lantern-corps-33",
+      "publisher": "DC",
+      "kind": "Publisher issue/collection synopsis",
+      "reviewed": "2026-09-07",
+      "note": "Names Hal, John, Guy and Kyle organizing a rescue of Ganthet and Sayd. The link describes the stated rescue mission, not an unverified outcome.",
+      "access": "Relevant public publisher text reviewed. The linked complete comic issues were not read in full for this relationship pass."
     }
   },
   "legacy": [
@@ -156312,11 +159645,43 @@ window.COMIC_VAULT_AUDIT_LOG = [
   "legacyCompanions": [
     "dc:wallace",
     "dc:max"
+  ],
+  "batches": [
+    {
+      "id": "CX1",
+      "release": "8.54",
+      "scope": "Donna / selected Flash connections",
+      "kind": "selected relationships"
+    },
+    {
+      "id": "CX2",
+      "release": "8.55",
+      "scope": "Gotham family, allies and selected rivals",
+      "newNodes": 21,
+      "kind": "selected relationships"
+    },
+    {
+      "id": "CX3",
+      "release": "8.55",
+      "scope": "Super-family, Titans and Arrow/Birds of Prey bridges",
+      "newNodes": 14,
+      "kind": "selected relationships"
+    },
+    {
+      "id": "CX4",
+      "release": "8.56",
+      "scope": "Lantern Corps and emotional-spectrum relationships, with bridges to the existing Flash/Arrow/Supergirl maps",
+      "newNodes": 25,
+      "newRelationships": 50,
+      "newSources": 30,
+      "kind": "selected source-linked relationships",
+      "reviewed": "2026-09-07"
+    }
   ]
 }
 </script>
 <script id="cvConnectionsScript">
-/* Comic Vault v8.54 — Connections & Legacy pilot. No external graph library. */
+/* Comic Vault v8.56 — Extensible Connections & Legacy registry. No external graph library. */
 (() => {
   'use strict';
   const graph = JSON.parse(document.getElementById('cvConnectionsData').textContent);
@@ -156328,7 +159693,14 @@ window.COMIC_VAULT_AUDIT_LOG = [
   const nodes = new Map(Object.entries(graph.nodes).filter(([,n])=>records.has(n.recordSlug)));
   const edges = graph.edges.filter(e=>nodes.has(e.a)&&nodes.has(e.b)&&e.sourceIds.every(id=>graph.sources[id]));
   const bySlug = new Map([...nodes.values()].map(n=>[n.recordSlug,n.id]));
-  const categories = [['all','All'],['family','Family & partners'],['mentors','Mentors'],['teammates','Teammates'],['rivals','Rivals'],['legacy','Legacy']];
+  const categories = [['all','All'],['family','Family & partners'],['mentors','Mentors'],['allies','Allies & friends'],['teammates','Teammates'],['rivals','Rivals'],['legacy','Legacy']];
+  const PAGE_SIZE = 8;
+  // One adjacency index; future record/relationship additions do not need new layout code.
+  const adjacency = new Map([...nodes.keys()].map(id=>[id,[]]));
+  edges.forEach(e=>{adjacency.get(e.a).push(e);adjacency.get(e.b).push(e);});
+  adjacency.forEach(list=>list.sort((a,b)=>(a.priority??99)-(b.priority??99)||a.id.localeCompare(b.id)));
+  const mappedCount=[...adjacency.values()].filter(list=>list.length>0).length;
+  const norm=value=>String(value||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
   let state, opener=null, previousOverflow='', previewSelection=null, resizeObserver=null, frame=0, closingForDossier=false;
   const copy = obj => JSON.parse(JSON.stringify(obj));
   const pref = (k,f) => {try{return localStorage.getItem(k)||f;}catch(_){return f;}};
@@ -156336,10 +159708,10 @@ window.COMIC_VAULT_AUDIT_LOG = [
   const nodeName = n => n.civilian ? n.hero+' / '+n.civilian : n.hero;
   const shortName = id => {const n=nodes.get(id);return n ? n.civilian||n.hero : 'Character';};
   const lookup = id => nodes.get(id);
-  function connections(id){return edges.filter(e=>e.a===id||e.b===id).sort((a,b)=>a.priority-b.priority||a.id.localeCompare(b.id));}
+  function connections(id){return adjacency.get(id)||[];}
   function relatedId(e,root){return e.a===root?e.b:e.a;}
   function relationLabel(e,root){return e.a===root?e.toB:e.toA;}
-  function keyCategory(e){return ['rivals','family','mentors','legacy','teammates'].find(t=>e.tags.includes(t))||'teammates';}
+  function keyCategory(e){return ['rivals','family','mentors','legacy','allies','teammates'].find(t=>e.tags.includes(t))||'teammates';}
   function sourceLinks(ids){return `<span class="cv-source-cites">${(ids||[]).filter(id=>graph.sources[id]).map(id=>`<a href="${esc(graph.sources[id].url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(graph.sources[id].title)} (opens a new tab)">[${esc(id)}]</a>`).join(' ')}</span>`;}
   function sourceRows(ids){return [...new Set(ids)].filter(id=>graph.sources[id]).map(id=>{const s=graph.sources[id];return `<div class="cvx-source-row"><a href="${esc(s.url)}" target="_blank" rel="noopener noreferrer">${esc(id)} · ${esc(s.title)} ↗</a><small>${esc(s.note)}</small></div>`;}).join('');}
   function artwork(n){const c=records.get(n.recordSlug);const initials=n.hero.split(/\s+/).filter(x=>x.toLowerCase()!=='the').slice(0,2).map(x=>x[0]).join('');return `<span class="cvx-node-art"><picture><img src="assets/characters/${esc(c.imageSlug)}.webp" data-cvx-art="${esc(c.imageSlug)}" alt="" width="120" height="160" loading="lazy" decoding="async"></picture><span class="cvx-initials" aria-hidden="true">${esc(initials)}</span></span>`;}
@@ -156352,17 +159724,20 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function selectedEdges(){const all=connections(state.root);return state.filter==='all'?all:all.filter(e=>e.tags.includes(state.filter));}
   function syncCitations(){const value=bridge.getCitations();$('cvxCitations').checked=value;$('cvxCiteState').textContent=value?'ON':'OFF';}
   function snapshot(){return copy({...state,scroll:scroller.scrollTop});}
-  function step(){return {root:state.root,mode:state.mode,filter:state.filter,view:state.view,scroll:scroller.scrollTop};}
+  function step(){return {root:state.root,mode:state.mode,filter:state.filter,view:state.view,page:state.page||0,scroll:scroller.scrollTop};}
   function pushStep(){state.stack.push(step());if(state.stack.length>40)state.stack.shift();}
-  function restoreStep(s){Object.assign(state,s);render();requestAnimationFrame(()=>{scroller.scrollTop=s.scroll||0;});}
-  function center(id){if(!lookup(id))return;if(id!==state.root||state.mode!=='connections')pushStep();state.root=id;state.mode='connections';state.filter='all';render();scroller.scrollTop=0;focusCenter();}
+  function restoreStep(s){Object.assign(state,s);$('cvxSearch').value='';render();requestAnimationFrame(()=>{scroller.scrollTop=s.scroll||0;});}
+  function center(id){if(!lookup(id))return;if(id!==state.root||state.mode!=='connections')pushStep();state.root=id;state.mode='connections';state.filter='all';state.page=0;$('cvxSearch').value='';render();scroller.scrollTop=0;focusCenter();}
   function focusCenter(){requestAnimationFrame(()=>{const t=$('cvxCanvas').querySelector('.cvx-root')||$('cvxCenterSelect');t?.focus({preventScroll:true});});}
   function render(){
     if(!state)return;
     document.querySelectorAll('[data-cvx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxMode===state.mode)));
     document.querySelectorAll('[data-cvx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxView===state.view)));
     $('cvxCenterControls').hidden=state.mode==='legacy';$('cvxFilters').hidden=state.mode==='legacy';
-    $('cvxCenterSelect').value=state.root;$('cvxBack').disabled=state.stack.length===0;
+    $('cvxMapGuide').hidden=state.mode==='legacy';
+    $('cvxRotateHint').hidden=state.mode==='legacy'||state.view!=='map';
+    if(state.mode==='legacy')$('cvxPager').hidden=true;
+    updateCenterChoices();$('cvxBack').disabled=state.stack.length===0;
     $('cvxStart').disabled=state.root===state.start&&state.mode==='connections'&&state.stack.length===0;
     const trail=state.stack.slice(-4);
     $('cvxTrail').hidden=state.stack.length===0;
@@ -156373,17 +159748,27 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function renderConnections(){
     const all=connections(state.root),shown=selectedEdges(),n=lookup(state.root);
     $('cvxFilters').innerHTML=categories.map(([key,label])=>{const count=key==='all'?all.length:all.filter(e=>e.tags.includes(key)).length;return `<button type="button" class="cvx-filter" data-cvx-filter="${key}" aria-pressed="${state.filter===key}" ${!count?'disabled':''}>${esc(label)} · ${count}</button>`;}).join('');
-    $('cvxStatus').innerHTML=`<strong>${esc(nodeName(n))}</strong> · ${shown.length} of ${all.length} selected relationships. ${state.view==='map'?'Tap a branch to explore.':'Select a relationship to see the evidence.'}`;
+    const pageCount=Math.max(1,Math.ceil(shown.length/PAGE_SIZE));
+    state.page=Math.min(Math.max(0,Number.isInteger(state.page)?state.page:0),pageCount-1);
+    const first=state.page*PAGE_SIZE,last=Math.min(first+PAGE_SIZE,shown.length);
+    const range=state.view==='map'&&shown.length>PAGE_SIZE?` · Showing ${first+1}–${last}`:'';
+    $('cvxStatus').innerHTML=`<strong>${esc(nodeName(n))}</strong> · ${shown.length} of ${all.length} recorded relationships${range}.`;
+    $('cvxGuideRoot').textContent=nodeName(n);
+    $('cvxPager').hidden=state.view!=='map'||shown.length<=PAGE_SIZE;
+    $('cvxPager').innerHTML=pager(pageCount,first,last,shown.length);
     const host=$('cvxCanvas');
-    if(!shown.length){host.innerHTML='<div class="cvx-empty">No relationships match this filter in the pilot. Choose another category.</div>';return;}
+    if(!shown.length){host.innerHTML='<div class="cvx-empty">No recorded relationships match this filter. Choose another category.</div>';return;}
     if(state.view==='list'){
       host.innerHTML=`<div class="cvx-list">${shown.map(e=>{const id=relatedId(e,state.root),n=lookup(id);return `<button type="button" class="cvx-list-item" data-cvx-node="${id}" data-cvx-edge="${e.id}" aria-haspopup="dialog" aria-label="${esc(nodeName(n))}: ${esc(relationLabel(e,state.root))}">${artwork(n)}<span><span class="cvx-node-name">${esc(n.hero)}</span>${n.civilian?`<span class="cvx-node-person">${esc(n.civilian)}</span>`:''}<span class="cvx-node-relation">${esc(relationLabel(e,state.root))}</span><span class="cvx-list-summary">${esc(e.era)}</span></span><span class="cvx-list-arrow" aria-hidden="true">↗</span></button>`;}).join('')}</div>`;
     }else{
       const positions=[[1,1],[1,2],[1,3],[2,1],[2,3],[3,1],[3,2],[3,3]];
-      // A bounded eight-node neighborhood is intentional. No forced layout, canvas or drag gestures.
-      host.innerHTML=`<div class="cvx-map" id="cvxMap"><svg class="cvx-lines" id="cvxLines" aria-hidden="true" focusable="false"></svg><div class="cvx-map-grid">${card(state.root,{root:true})}${shown.slice(0,8).map((e,i)=>card(relatedId(e,state.root),{edge:e,position:positions[i]})).join('')}</div></div>`;
+      // Keep the accepted layout; page through high-degree roots rather than discarding branches.
+      host.innerHTML=`<div class="cvx-map" id="cvxMap"><svg class="cvx-lines" id="cvxLines" aria-hidden="true" focusable="false"></svg><div class="cvx-map-grid">${card(state.root,{root:true})}${shown.slice(first,last).map((e,i)=>card(relatedId(e,state.root),{edge:e,position:positions[i]})).join('')}</div></div>${shown.length>PAGE_SIZE?`<nav class="cvx-pager" aria-label="More connections">${pager(pageCount,first,last,shown.length)}</nav>`:''}`;
       queueLines();
     }
+  }
+  function pager(pageCount,first,last,total){
+    return `<button type="button" class="cvx-btn cvx-btn-subtle" data-cvx-page="-1" ${state.page===0?'disabled':''} aria-label="Previous connection branches">← Previous</button><span class="cvx-page-summary">Page ${state.page+1} / ${pageCount}<small>Branches ${first+1}–${last} of ${total}</small></span><button type="button" class="cvx-btn cvx-btn-subtle" data-cvx-page="1" ${state.page>=pageCount-1?'disabled':''} aria-label="Next connection branches">Next →</button>`;
   }
   function renderLegacy(){
     $('cvxStatus').textContent='Selected Flash mantle history · 4 bearers + 2 related speedster roles. Not a complete chronology or family tree.';
@@ -156410,7 +159795,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     else if(legacy){relation=legacy.label;detail=legacy.detail;era=legacy.era;refs=legacy.sourceIds;}
     else if(state.mode==='legacy'&&id==='dc:wallace'){relation='A separate Kid Flash';detail='Wallace is a different person from Wally West. Their cousin relationship belongs to the comics continuity mapped here.';era='Rebirth-era West family explanation.';refs=['C13','C16'];}
     else if(state.mode==='legacy'&&id==='dc:max'){relation='Mentor, not a Flash mantle holder';detail='Max mentors Bart Allen as Impulse. He appears beside this legacy for that relationship, not as another person in the Flash succession.';era='Impulse (1995) / Runs in the Family.';refs=['C14'];}
-    $('cvxPreviewBody').innerHTML=`<div class="cvx-preview-identity">${artwork(n)}<div><h3 id="cvxPreviewName">${esc(n.hero)}</h3>${n.civilian?`<p>${esc(n.civilian)}</p>`:''}</div></div><p class="cvx-preview-relation">${esc(relation)}</p><p class="cvx-preview-description">${esc(detail)} ${sourceLinks(refs)}</p>${era?`<p class="cvx-era"><strong>ERA &amp; CONTINUITY</strong>${esc(era)}</p>`:''}<div class="cvx-preview-actions"><button type="button" class="cvx-btn cvx-btn-primary" id="cvxOpenDossier">Open dossier ↗</button><button type="button" class="cvx-btn" id="cvxExploreNode">Explore connections</button></div>${refs.length?`<details class="cvx-scope"><summary>Relationship sources · ${refs.length}</summary>${sourceRows(refs)}<p>References remain available with inline citations off. Sources are publisher text and catalog descriptions, not a full issue-by-issue reading.</p></details>`:`<p class="cvx-status">${connections(id).length} connections in this pilot. Open the dossier for the complete biography and its source register.</p>`}`;
+    $('cvxPreviewBody').innerHTML=`<div class="cvx-preview-identity">${artwork(n)}<div><h3 id="cvxPreviewName">${esc(n.hero)}</h3>${n.civilian?`<p>${esc(n.civilian)}</p>`:''}</div></div><p class="cvx-preview-relation">${esc(relation)}</p><p class="cvx-preview-description">${esc(detail)} ${sourceLinks(refs)}</p>${era?`<p class="cvx-era"><strong>ERA &amp; CONTINUITY</strong>${esc(era)}</p>`:''}<div class="cvx-preview-actions"><button type="button" class="cvx-btn cvx-btn-primary" id="cvxOpenDossier">Open dossier ↗</button><button type="button" class="cvx-btn" id="cvxExploreNode">Explore connections</button></div>${refs.length?`<details class="cvx-scope"><summary>Relationship sources · ${refs.length}</summary>${sourceRows(refs)}<p>References remain available with inline citations off. Sources are publisher text and catalog descriptions, not a full issue-by-issue reading.</p></details>`:`<p class="cvx-status">${connections(id).length} recorded connections in this map. Open the dossier for the complete biography and its source register.</p>`}`;
     if(!preview.open)preview.showModal();preview.scrollTop=0;$('cvxPreviewClose').focus({preventScroll:true});
   }
   function closePreview(){if(preview.open)preview.close();previewSelection=null;}
@@ -156418,14 +159803,15 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(!lookup(id))id='dc:donna';
     if(!dialog.open){
       bridge.dismissMenu();opener=document.activeElement;previousOverflow=document.body.style.overflow;
-      state=restored?copy(restored):{root:id,start:id,mode,filter:'all',view:pref('comicVaultConnectionsView','map')==='list'?'list':'map',stack:[],entry:bridge.captureEntry(),scroll:0};
+      state=restored?copy(restored):{root:id,start:id,mode,filter:'all',page:0,view:pref('comicVaultConnectionsView','map')==='list'?'list':'map',stack:[],entry:bridge.captureEntry(),scroll:0};
       if(!nodes.has(state.root))state.root='dc:donna';
       state.stack=Array.isArray(state.stack)?state.stack:[];
+      $('cvxSearch').value='';state.page=Number.isInteger(state.page)?state.page:0;
       if(restored){bridge.restoreEntry(state.entry);opener=state.entry?.kind==='profile'?$('connectionExploreBtn'):document.querySelector('.cvx-home-entry');}
       // restoreEntry can update overflow when it opens the preserved dossier.
       previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
       dialog.showModal();
-    }else{state.root=id;state.mode=mode;state.filter='all';}
+    }else{state.root=id;state.mode=mode;state.filter='all';state.page=0;$('cvxSearch').value='';}
     render();requestAnimationFrame(()=>{scroller.scrollTop=restored?.scroll||0;queueLines();$('cvxTitle').focus({preventScroll:true});});
   }
   function close(options={}){closingForDossier=options.toDossier===true;closePreview();if(dialog.open)dialog.close();}
@@ -156451,9 +159837,15 @@ window.COMIC_VAULT_AUDIT_LOG = [
   // Backdrop closing is only allowed when both press and release were outside the dialog rectangle.
   [dialog,preview].forEach(d=>{let outside=false;const isOutside=e=>{const r=d.getBoundingClientRect();return e.target===d&&(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom);};d.addEventListener('pointerdown',e=>outside=isOutside(e));d.addEventListener('click',e=>{if(outside&&isOutside(e)){d===preview?closePreview():close();}outside=false;});});
   dialog.addEventListener('click',e=>{
-    const mode=e.target.closest('[data-cvx-mode]');if(mode){if(mode.dataset.cvxMode!==state.mode){pushStep();state.mode=mode.dataset.cvxMode;state.filter='all';render();}return;}
+    const mode=e.target.closest('[data-cvx-mode]');if(mode){if(mode.dataset.cvxMode!==state.mode){pushStep();state.mode=mode.dataset.cvxMode;state.filter='all';state.page=0;render();}return;}
     const view=e.target.closest('[data-cvx-view]');if(view){state.view=view.dataset.cvxView;save('comicVaultConnectionsView',state.view);render();return;}
-    const filter=e.target.closest('[data-cvx-filter]');if(filter){state.filter=filter.dataset.cvxFilter;render();return;}
+    const filter=e.target.closest('[data-cvx-filter]');if(filter){state.filter=filter.dataset.cvxFilter;state.page=0;render();return;}
+    const pageButton=e.target.closest('[data-cvx-page]');if(pageButton){
+      const maxPage=Math.max(0,Math.ceil(selectedEdges().length/PAGE_SIZE)-1);
+      state.page=Math.min(maxPage,Math.max(0,(state.page||0)+Number(pageButton.dataset.cvxPage)));
+      render();$('cvxPager').scrollIntoView({block:'start',behavior:'auto'});
+      $('cvxStatus').focus({preventScroll:true});return;
+    }
     const trail=e.target.closest('[data-cvx-trail]');if(trail){const i=Number(trail.dataset.cvxTrail),s=state.stack[i];if(s){state.stack=state.stack.slice(0,i);restoreStep(s);}return;}
     const button=e.target.closest('[data-cvx-node]');if(button){showPreview(button.dataset.cvxNode,button.dataset.cvxEdge,button.dataset.cvxLegacy);return;}
   });
@@ -156462,9 +159854,10 @@ window.COMIC_VAULT_AUDIT_LOG = [
     else if(e.target.closest('#cvxOpenDossier')&&previewSelection){const id=previewSelection.id,s=snapshot();close({toDossier:true});bridge.openDossier(lookup(id).recordSlug,s);}
   });
   $('cvxBack').addEventListener('click',()=>{if(state.stack.length)restoreStep(state.stack.pop());});
-  $('cvxStart').addEventListener('click',()=>{state.root=state.start;state.mode='connections';state.filter='all';state.stack=[];render();scroller.scrollTop=0;focusCenter();});
+  $('cvxStart').addEventListener('click',()=>{state.root=state.start;state.mode='connections';state.filter='all';state.page=0;state.stack=[];$('cvxSearch').value='';render();scroller.scrollTop=0;focusCenter();});
   $('cvxDonna').addEventListener('click',()=>center('dc:donna'));
-  $('cvxCenterSelect').addEventListener('change',e=>center(e.target.value));
+  $('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.target.value);});
+  $('cvxSearch').addEventListener('input',updateCenterChoices);
   $('cvxCitations').addEventListener('change',e=>{bridge.setCitations(e.target.checked);syncCitations();});
   // Listen for the same setting changing in the dossier, another tab, or unavailable-storage mode.
   new MutationObserver(syncCitations).observe(document.documentElement,{attributes:true,attributeFilter:['class']});
@@ -156475,11 +159868,28 @@ window.COMIC_VAULT_AUDIT_LOG = [
   document.addEventListener('click',e=>{const button=e.target.closest('[data-cvx-open]');if(!button)return;let id=button.dataset.cvxOpen;if(id==='active')id=bySlug.get(bridge.activeSlug())||'dc:donna';open(id||'dc:donna',button.dataset.cvxStartMode||'connections');});
   const profileEntry=$('connectionExploreBtn');
   window.addEventListener('cv:profile-opened',e=>{profileEntry.hidden=!bySlug.has(e.detail.slug);});
-  $('cvxCenterSelect').innerHTML=[...nodes.values()].sort((a,b)=>nodeName(a).localeCompare(nodeName(b))).map(n=>`<option value="${n.id}">${esc(nodeName(n))}</option>`).join('');
-  $('cvxScopeText').textContent=`${nodes.size} mapped dossiers · ${edges.length} reviewed relationships. ${graph.scope} Other characters are not automatically connected from shared names or team tags.`;
+  function updateCenterChoices(){
+    const terms=norm($('cvxSearch').value).split(' ').filter(Boolean);
+    const available=[...nodes.values()].filter(n=>connections(n.id).length).sort((a,b)=>nodeName(a).localeCompare(nodeName(b)));
+    const matches=available.filter(n=>{const c=records.get(n.recordSlug);const text=norm([nodeName(n),c.name,c.realName,...(c.aliases||[])].join(' '));return terms.every(t=>text.includes(t));});
+    const hasCurrent=matches.some(n=>n.id===state?.root);
+    const placeholder=matches.length?'Choose a matching character':'No mapped character matches';
+    $('cvxCenterSelect').innerHTML=(!hasCurrent?`<option value="" disabled selected>${placeholder}</option>`:'')+matches.map(n=>`<option value="${esc(n.id)}">${esc(nodeName(n))}</option>`).join('');
+    $('cvxCenterSelect').disabled=!matches.length;
+    if(hasCurrent)$('cvxCenterSelect').value=state.root;
+    $('cvxSearchResult').textContent=terms.length?`${matches.length} mapped ${matches.length===1?'match':'matches'}. Select one to explore.`:`Search hero names, people or aliases in the ${available.length} mapped dossiers.`;
+  }
+  updateCenterChoices();
+  const coverageText=`${mappedCount} / ${records.size} dossiers mapped · ${edges.length} selected relationships`;
+  $('cvxCoverageText').textContent=coverageText;
+  $('cvxCoverageProgress').max=records.size;$('cvxCoverageProgress').value=mappedCount;
+  $('cvxCoverageNote').textContent=`${records.size-mappedCount} dossiers still await mapping. A mapped dossier has selected source-linked connections—not every relationship in its history.`;
+  document.querySelectorAll('[data-cvx-coverage]').forEach(el=>el.textContent=`${mappedCount} / ${records.size} MAPPED`);
+  $('cvxHomeCopy').textContent='Explore the Titans, Flash, Gotham, Superman and Lantern circles.';
+  $('cvxScopeText').textContent=`${mappedCount} / ${records.size} dossiers have selected mapped connections · ${edges.length} source-linked relationships. ${graph.scope} Other characters are not automatically connected from shared names or team tags.`;
   $('cvxSourceList').innerHTML=sourceRows(Object.keys(graph.sources));
   if('ResizeObserver' in window){resizeObserver=new ResizeObserver(queueLines);resizeObserver.observe($('cvxCanvas'));}else window.addEventListener('resize',queueLines);
-  window.ComicVaultConnections=Object.freeze({open,close,isOpen:()=>dialog.open||preview.open,restore:s=>open(s.root,s.mode,s),snapshot:()=>state?snapshot():null,stats:()=>({nodes:nodes.size,edges:edges.length,sources:Object.keys(graph.sources).length})});
+  window.ComicVaultConnections=Object.freeze({open,close,isOpen:()=>dialog.open||preview.open,restore:s=>open(s.root,s.mode,s),snapshot:()=>state?snapshot():null,stats:()=>({nodes:nodes.size,mapped:mappedCount,total:records.size,pending:records.size-mappedCount,edges:edges.length,sources:Object.keys(graph.sources).length,pageSize:PAGE_SIZE})});
 })();
 
 </script>
