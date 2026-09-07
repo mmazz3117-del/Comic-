@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.47: SOURCE-REVIEWED CHARACTER DOSSIERS — RESEARCH BATCH R2 -->
+  <!-- Comic Vault v8.48: OPTIONAL CITATIONS + ARCHIVE AUDIT + RESEARCH BATCH R3 -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4713,6 +4713,28 @@ html.cv-pinch-zoom .card-character-image{
 .cv-evidence-item small{font-size:11px;line-height:1.5;color:#94a6b9;display:block}
 @media(max-width:500px){.cv-research-block{padding:15px}.cv-research-block h4{font-size:16px}.cv-dossier-scope{padding:12px}.cv-research-evidence{padding:13px}}
 </style>
+
+<style id="cv-v848-reading-controls">
+/* Reading preferences only. All accepted artwork/scale rules remain untouched. */
+html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
+.cv-reading-tools{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:20px 26px 0;padding:12px 16px;background:rgba(13,28,46,.78);border:1px solid rgba(125,165,196,.23);border-radius:12px;min-width:0}
+.cv-reading-tools[hidden]{display:none!important}
+.cv-reading-copy{display:grid;gap:4px;min-width:0}
+.cv-reading-copy strong{color:var(--text,#e5edf7);font-size:13px;font-weight:600}
+.cv-reading-copy small{color:var(--muted,#9aabbe);font-size:11px;line-height:1.5}
+.cv-reading-sources{font:inherit;color:#9cd0ef;background:none;border:0;padding:0;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+.cv-reading-switch{display:inline-flex;align-items:center;gap:8px;position:relative;min-height:44px;cursor:pointer;flex-shrink:0}
+.cv-reading-switch input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:pointer;z-index:1}
+.cv-switch-track{width:42px;height:24px;border-radius:999px;background:#2c3d53;border:1px solid #667993;position:relative;box-sizing:border-box}
+.cv-switch-track:before{content:"";position:absolute;left:3px;top:3px;width:16px;height:16px;border-radius:50%;background:#e4eef8;transform:translateX(0);transition:transform .15s ease}
+.cv-reading-switch input:checked+.cv-switch-track{background:#245d91;border-color:#7fb7ed}
+.cv-reading-switch input:checked+.cv-switch-track:before{transform:translateX(18px)}
+.cv-reading-switch input:focus-visible+.cv-switch-track{outline:2px solid #b7e1ff;outline-offset:4px}
+.cv-switch-state{font-size:11px;font-weight:700;letter-spacing:.04em;color:#c5d5e6;width:22px}
+.cv-reading-sources:focus-visible{outline:2px solid #b7e1ff;outline-offset:3px}
+@media(max-width:620px){.cv-reading-tools{margin:16px 18px 0;padding:10px 13px;gap:8px}}
+@media(prefers-reduced-motion:reduce){.cv-switch-track:before{transition:none}}
+</style>
 </head>
 <body>
   <div class="app-shell">
@@ -4721,7 +4743,7 @@ html.cv-pinch-zoom .card-character-image{
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.47</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.48</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -4926,6 +4948,10 @@ html.cv-pinch-zoom .card-character-image{
           <button class="profile-tab" data-tab="comics">COMICS</button>
         </nav>
 
+        <div class="cv-reading-tools" id="citationControls" hidden>
+          <div class="cv-reading-copy"><strong id="citationToggleLabel">Show citations</strong><small id="citationToggleHint">Inline references · <button class="cv-reading-sources" id="openResearchSources" type="button">Sources in History</button></small></div>
+          <label class="cv-reading-switch"><input id="citationToggle" type="checkbox" role="switch" aria-labelledby="citationToggleLabel" aria-describedby="citationToggleHint"><span class="cv-switch-track" aria-hidden="true"></span><span class="cv-switch-state" id="citationToggleState" aria-hidden="true">OFF</span></label>
+        </div>
         <div class="profile-body" id="profileBody"></div>
       </article>
     </div>
@@ -4951,7 +4977,7 @@ html.cv-pinch-zoom .card-character-image{
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.47</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.48</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -23745,26 +23771,27 @@ window.COMIC_VAULT_CHARACTERS = [
     "base": "Earth / Oa",
     "teams": [
       "Green Lantern Corps",
-      "Justice League International"
+      "Justice League International (former)",
+      "Red Lantern Corps (former)"
     ],
-    "occupation": "Green Lantern",
-    "species": "Human",
+    "occupation": "Green Lantern; proprietor of Warriors; former teacher in his classic history",
+    "species": "Human; historical Vuldarian transformation is era-specific",
     "birthplace": "Varies by continuity",
     "height": "Varies by continuity",
     "eyes": "Varies by continuity",
-    "overview": "Guy Gardner is a brash, confrontational Green Lantern whose arrogance masks courage and fierce loyalty. He becomes one of the defining personalities of both the Corps and Justice League International.",
+    "overview": "Guy Gardner is an Earth-born Green Lantern whose combative confidence hides a fierce attachment to his fellow heroes. A veteran of the Corps and Justice League International, he fights with a willpower-driven ring rather than innate green-energy powers. Guy has also lived as Warrior and served with the Red Lanterns, but those identities belong to different stages of his life. He is a difficult teammate to ignore—and, when danger arrives, a difficult teammate to drive away.",
     "powers": [
-      "Green power ring",
-      "Energy constructs",
-      "Flight",
-      "Force fields",
-      "Willpower"
+      "Willpower-driven energy constructs",
+      "Ring-generated force fields and flight",
+      "Offensive energy projection",
+      "Experienced close combat",
+      "Warrior body-transformation powers — historical, not baseline"
     ],
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 4,
+      "Fighting Ability": 3,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
       "Speed": 3,
@@ -23774,61 +23801,73 @@ window.COMIC_VAULT_CHARACTERS = [
       "Healing / Recovery": null,
       "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 3,
       "Skill / Technology": 2,
       "Power Versatility": 4
     },
     "allies": [
+      "Green Lantern / Hal Jordan",
       "John Stewart",
-      "Hal Jordan",
-      "Kilowog"
+      "Kyle Rayner",
+      "Kilowog",
+      "Ice / Tora Olafsdotter"
     ],
     "enemies": [
       "Sinestro",
-      "Red Lantern Corps"
+      "Atrocitus — adversary and uneasy associate in different periods",
+      "Dementor"
     ],
     "history": [
       [
-        "1968",
-        "Debut",
-        "Guy Gardner enters the comics in Green Lantern #59 (1968)."
+        "Earth life",
+        "A qualified second candidate",
+        "Guy is another candidate for Abin Sur’s ring before establishing his own Green Lantern career."
       ],
       [
-        "1980s",
-        "Green Lantern",
-        "Guy becomes an active Corps member after years as Hal Jordan's backup."
-      ],
-      [
-        "1987",
         "Justice League International",
-        "His abrasive personality becomes central to the team's chemistry."
+        "A difficult but committed teammate",
+        "His confrontations with Batman and other members coexist with genuine service to the League."
       ],
       [
-        "2010s",
-        "Red Lantern",
-        "Guy infiltrates and later leads Red Lanterns."
+        "Independent years",
+        "Warrior and Warriors",
+        "He uses different power sources and builds a gathering place for fellow heroes."
+      ],
+      [
+        "Restored Corps",
+        "From replacement to veteran",
+        "Guy helps the rebuilt Corps and undertakes dangerous assignments with experienced partners."
+      ],
+      [
+        "Red Lantern period",
+        "An assignment with personal consequences",
+        "Hal’s undercover mission places Guy among the rage-driven Red Lanterns."
       ]
     ],
     "costumes": [
       [
-        "1980s",
         "Green Lantern",
-        "Green/black uniform and bowl haircut."
+        "Corps vest",
+        "The familiar sleeveless green vest presents Guy as a distinct Lantern, not Hal Jordan in another pose."
       ],
       [
-        "1990s",
         "Warrior",
-        "Alien weaponry replaces the ring."
+        "Separate civilian/hero identity",
+        "Warrior-era presentation belongs with a different source of power."
       ],
       [
-        "2010s",
         "Red Lantern",
-        "Red Corps uniform and ring."
+        "Red Corps uniform",
+        "A separate affiliation, not a permanent recoloring of every green-ring appearance."
       ]
     ],
     "comics": [
-      "Justice League International",
-      "Green Lantern Corps"
+      "Green Lantern #59 (1968)",
+      "Justice League International Vol. 1",
+      "Green Lantern: Rebirth #1–6",
+      "Green Lantern Corps: Recharge #1–5",
+      "Green Lantern: Emerald Warriors #1–7",
+      "Red Lanterns Vol. 4: Blood Brothers"
     ],
     "imageSlug": "guy-gardner",
     "aliases": [
@@ -23836,55 +23875,125 @@ window.COMIC_VAULT_CHARACTERS = [
       "Red Lantern"
     ],
     "family": [
-      "Gardner family — Earth family varies"
+      "Ice / Tora Olafsdotter — significant romantic relationship; status changes across eras"
     ],
-    "gear": [],
+    "gear": [
+      {
+        "type": "PRIMARY EQUIPMENT",
+        "name": "Green Lantern power ring",
+        "detail": "Channels willpower into constructs, protective fields, flight and energy effects. These are technological capabilities, not Guy’s unassisted human physiology."
+      },
+      {
+        "type": "ERA-SPECIFIC EQUIPMENT",
+        "name": "Yellow and red power rings",
+        "detail": "Used during distinct periods; not simultaneous permanent additions to every Green Lantern portrayal."
+      }
+    ],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "1968",
-          "title": "Debut",
-          "detail": "Guy Gardner enters the comics in Green Lantern #59 (1968)."
+          "era": "Earth life",
+          "title": "A qualified second candidate",
+          "detail": "Guy is another candidate for Abin Sur’s ring before establishing his own Green Lantern career.",
+          "sourceIds": [
+            "G01"
+          ]
         },
         {
-          "era": "1980s",
-          "title": "Green Lantern",
-          "detail": "Guy becomes an active Corps member after years as Hal Jordan's backup."
+          "era": "Justice League International",
+          "title": "A difficult but committed teammate",
+          "detail": "His confrontations with Batman and other members coexist with genuine service to the League.",
+          "sourceIds": [
+            "G03"
+          ]
         },
         {
-          "era": "1987",
-          "title": "Justice League International",
-          "detail": "His abrasive personality becomes central to the team's chemistry."
+          "era": "Independent years",
+          "title": "Warrior and Warriors",
+          "detail": "He uses different power sources and builds a gathering place for fellow heroes.",
+          "sourceIds": [
+            "G01",
+            "G02"
+          ]
         },
         {
-          "era": "2010s",
-          "title": "Red Lantern",
-          "detail": "Guy infiltrates and later leads Red Lanterns."
+          "era": "Restored Corps",
+          "title": "From replacement to veteran",
+          "detail": "Guy helps the rebuilt Corps and undertakes dangerous assignments with experienced partners.",
+          "sourceIds": [
+            "G04",
+            "G05"
+          ]
+        },
+        {
+          "era": "Red Lantern period",
+          "title": "An assignment with personal consequences",
+          "detail": "Hal’s undercover mission places Guy among the rage-driven Red Lanterns.",
+          "sourceIds": [
+            "G06"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Debut",
+          "title": "Green Lantern #59 (1968)",
+          "detail": "This is Guy Gardner’s debut, not the first appearance of the Green Lantern mantle.",
+          "sourceIds": [
+            "G01"
+          ]
+        },
+        {
+          "era": "Civilian background",
+          "title": "Classic teacher and revised police history",
+          "detail": "His teaching background and the New 52 Baltimore police account belong to different treatments.",
+          "sourceIds": [
+            "G01"
+          ]
+        },
+        {
+          "era": "Power changes",
+          "title": "Warrior is not his permanent baseline",
+          "detail": "The Vuldarian-derived body-weapon abilities stop functioning during Green Lantern: Rebirth. DC’s 2025 Q&A treats the ancestry question itself as less settled.",
+          "sourceIds": [
+            "G07"
+          ]
+        },
+        {
+          "era": "Relationships",
+          "title": "Do not turn an on/off romance into a fixed marriage",
+          "detail": "Ice is a major romantic connection; the label is scoped across eras.",
+          "sourceIds": [
+            "G08",
+            "G12"
+          ]
         }
       ]
     },
     "costumeCategories": {
       "Main Comics": [
         {
-          "era": "1980s",
-          "title": "Green Lantern",
-          "detail": "Green/black uniform and bowl haircut."
+          "era": "Green Lantern",
+          "title": "Corps vest",
+          "detail": "The familiar sleeveless green vest presents Guy as a distinct Lantern, not Hal Jordan in another pose."
         },
         {
-          "era": "1990s",
-          "title": "Warrior",
-          "detail": "Alien weaponry replaces the ring."
+          "era": "Warrior",
+          "title": "Separate civilian/hero identity",
+          "detail": "Warrior-era presentation belongs with a different source of power."
         },
         {
-          "era": "2010s",
-          "title": "Red Lantern",
-          "detail": "Red Corps uniform and ring."
+          "era": "Red Lantern",
+          "title": "Red Corps uniform",
+          "detail": "A separate affiliation, not a permanent recoloring of every green-ring appearance."
         }
       ]
     },
-    "continuityNote": "",
+    "continuityNote": "This is Guy Gardner’s debut, not the first appearance of the Green Lantern mantle. His teaching background and the New 52 Baltimore police account belong to different treatments. The Vuldarian-derived body-weapon abilities stop functioning during Green Lantern: Rebirth. DC’s 2025 Q&A treats the ancestry question itself as less settled. Ice is a major romantic connection; the label is scoped across eras.",
     "auditCorrections": [
-      "Existing core dossier reviewed; no major identity-level correction required."
+      "Existing core dossier reviewed; no major identity-level correction required.",
+      "v8.48: Removed the contradiction that ring powers were intrinsic human abilities.",
+      "v8.48: Separated Warrior, yellow-ring and red-ring history; added contextual relationships and reading."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
@@ -23896,29 +24005,59 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
     },
     "auditSources": [
-      "DC publisher canon / official character and issue metadata",
-      "Continuity-sensitive reference cross-check",
-      "Comic Vault existing dossier compared against mantle and retcon history"
+      "DC — Behind the Bowl Cut: Guy Gardner",
+      "DC — Seven Reasons Why Guy Gardner’s Really Not So Bad",
+      "DC — Justice League International retrospective",
+      "DC — Green Lantern Corps: Recharge #1",
+      "DC — Green Lantern: Emerald Warriors",
+      "DC — Red Lanterns Vol. 4: Blood Brothers",
+      "DC — Guy’s Vuldarian powers, July 2025 Q&A",
+      "DC — Green Lantern Corps #19",
+      "DC — Green Lantern Corps: official profile",
+      "DC — Green With Creativity: Lantern constructs",
+      "DC — Green Lantern by Geoff Johns Omnibus Vol. 1",
+      "DC — Fire & Ice: their return and Guy Gardner"
     ],
     "originProfile": {
-      "originLossMotivation": "Guy becomes an active Corps member after years as Hal Jordan's backup. His abrasive personality becomes central to the team's chemistry.\n\nGuy Gardner's personal world is anchored by Gardner family — Earth family varies; John Stewart — major ally; Hal Jordan — major ally; and Kilowog — major ally.\n\nAt the center of the character is this core drive: Protect the people closest to Guy Gardner while using extraordinary responsibilities in a way that does not destroy the family, friendships or humanity those responsibilities are supposed to defend.",
+      "originLossMotivation": "Guy Gardner did not begin as the man at the center of the Corps. When the dying Abin Sur sought a human successor, Guy was another suitable candidate, but Hal Jordan was nearer. Guy eventually moved beyond that reserve role and became a Green Lantern in his own right. His classic civilian life included teaching physical education. Before cosmic responsibility, there had been ordinary work: getting through the day, dealing with other people and being responsible for someone besides himself.\n\nAmong the heroes of Justice League International, Guy could turn almost any disagreement into a contest of authority. He challenged Batman, irritated teammates and treated backing down as a defeat. The resulting conflicts sometimes made him look foolish rather than formidable. Yet membership in the League required more than winning an argument. The same man who made cooperation exhausting still had to fight beside people he could not control. His history with that team is full of the distance between being powerful, being useful and being easy to live with.\n\nHis relationships show another side of that struggle. Ice, Tora Olafsdotter, became an important romantic partner; separation and reunion did not make their bond uncomplicated. Guy also created Warriors, a place where heroes could gather without every meeting being a mission briefing. Being a host gave him a different way to contribute. Friendship did not remove his temper, but it provided something more lasting than proving he was the toughest person in a room. Those attachments help explain why his loyalty often survives clashes that would end a less substantial friendship.\n\nGuy's identity has not depended on keeping one ring forever. He wielded a yellow ring and, as Warrior, gained the ability to transform parts of his body into weapons through a Vuldarian-linked change. That bodily power later ceased functioning, and he returned to Green Lantern service. These were different ways of fighting, not one endlessly accumulating set of gifts. Losing one source of strength forced him to continue without it. His determination outlasted the particular costume, weapon or explanation that had made him dangerous in a previous chapter of his life.\n\nIn the rebuilt Green Lantern Corps, Guy became one of the veterans helping a new generation survive its responsibilities. Working with Kyle Rayner and Kilowog placed him on the experienced side of the relationship, not simply in the position of the newcomer making trouble. Missions with Kilowog and Arisia took him into dangerous, little-known sectors. His willingness to act independently could be valuable, but secret dealings with Atrocitus also put trust at risk. Courage did not spare Guy the consequences of decisions made without telling the people expected to stand beside him.\n\nA later assignment sent him into the Red Lantern Corps on Hal's orders. Living among rage-driven Lanterns made the mission more than a change of uniform: he had to confront the possibility that the role would consume the person carrying it out. Guy's stubbornness is both a resource and a danger. It keeps him in a fight, but it can also make retreat, apology and honest self-examination harder. At his best he directs that force toward protecting people, rather than toward preserving an image of himself that nobody is allowed to question.",
       "powerOrigin": {
-        "type": "Cosmic Technology / Green Lantern Ring",
-        "detail": "Guy Gardner's power origin is classified as Cosmic Technology / Green Lantern Ring. The dossier identifies the character as Human, so these abilities are treated as intrinsic to that nature or heritage rather than a separate Earth-style accident. The resulting ability set includes Green power ring, Energy constructs, Flight, Force fields and Willpower."
+        "type": "Alien technology; historical transformation treated separately",
+        "detail": "His standard green energy powers come from a power ring. Warrior’s former Vuldarian body transformation and other ring colors are distinct periods."
       },
       "importantPeople": [
-        "Gardner family — Earth family varies",
-        "John Stewart — major ally",
-        "Hal Jordan — major ally",
-        "Kilowog — major ally",
-        "Sinestro — major adversary",
-        "Red Lantern Corps — major adversary"
+        "Ice / Tora Olafsdotter — major romantic connection",
+        "Kilowog — veteran colleague",
+        "Green Lantern / Hal Jordan — fellow Lantern and sometime rival",
+        "Kyle Rayner — Corps colleague"
       ],
-      "coreDrive": "Protect the people closest to Guy Gardner while using extraordinary responsibilities in a way that does not destroy the family, friendships or humanity those responsibilities are supposed to defend.",
-      "standard": "Comic Vault Expanded Origin Standard v1",
+      "coreDrive": "Stand beside his people when the situation becomes dangerous, while learning that loyalty is more important than winning every argument.",
+      "standard": "Character-first dossier / source-reviewed R3",
       "manualDeepDive": true,
-      "profilePass": "P300",
-      "profileUpdatedThrough": 300
+      "profilePass": "R3-v8.48",
+      "paragraphSources": [
+        [
+          "G01"
+        ],
+        [
+          "G03"
+        ],
+        [
+          "G02",
+          "G08",
+          "G12"
+        ],
+        [
+          "G01",
+          "G07"
+        ],
+        [
+          "G04",
+          "G05"
+        ],
+        [
+          "G06"
+        ]
+      ]
     },
     "attributeAudit": {
       "status": "Deep Vetted",
@@ -23941,17 +24080,222 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "relationshipGroups": {
       "FAMILY & CLOSE RELATIONS": [
-        "Gardner family — Earth family varies"
+        "Ice / Tora Olafsdotter — significant romantic relationship; status changes across eras"
       ],
       "KEY ALLIES": [
+        "Green Lantern / Hal Jordan",
         "John Stewart",
-        "Hal Jordan",
-        "Kilowog"
+        "Kyle Rayner",
+        "Kilowog",
+        "Ice / Tora Olafsdotter"
       ],
       "KEY RIVALS / ENEMIES": [
         "Sinestro",
-        "Red Lantern Corps"
+        "Atrocitus — adversary and uneasy associate in different periods",
+        "Dementor"
       ]
+    },
+    "researchSources": [
+      {
+        "id": "G01",
+        "label": "DC — Behind the Bowl Cut: Guy Gardner",
+        "url": "https://www.dc.com/blog/2025/07/08/behind-the-bowl-cut-everything-you-need-to-know-about-guy-gardner",
+        "kind": "Publisher editorial",
+        "note": "Debut, backup selection, teaching career, Warrior transformation and mantle changes.",
+        "access": "Public article text reviewed; not full issue text."
+      },
+      {
+        "id": "G02",
+        "label": "DC — Seven Reasons Why Guy Gardner’s Really Not So Bad",
+        "url": "https://www.dc.com/blog/2021/05/03/seven-reasons-why-guy-gardners-really-not-so-bad",
+        "kind": "Publisher editorial",
+        "note": "Loyalty, ordinary work, Warriors and the person beneath his abrasive manner.",
+        "access": "Public article text reviewed."
+      },
+      {
+        "id": "G03",
+        "label": "DC — Justice League International retrospective",
+        "url": "https://www.dc.com/blog/2024/01/12/justice-league-international-is-a-superhero-workplace-comedy",
+        "kind": "Publisher editorial",
+        "note": "Team membership, interpersonal conflict and opening collection.",
+        "access": "Public article text reviewed."
+      },
+      {
+        "id": "G04",
+        "label": "DC — Green Lantern Corps: Recharge #1",
+        "url": "https://www.dc.com/comics/green-lantern-corps-recharge-2005/green-lantern-corps-recharge-1",
+        "kind": "Publisher catalog",
+        "note": "Veteran Lanterns and rebuilding the Corps.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "G05",
+        "label": "DC — Green Lantern: Emerald Warriors",
+        "url": "https://www.dc.com/graphic-novels/green-lantern-emerald-warriors-2010/green-lantern-emerald-warriors",
+        "kind": "Publisher catalog",
+        "note": "Guy, Kilowog, Arisia, the Atrocitus mission; collects #1–7.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "G06",
+        "label": "DC — Red Lanterns Vol. 4: Blood Brothers",
+        "url": "https://www.dc.com/graphic-novels/red-lanterns-2011/red-lanterns-vol-4-blood-brothers",
+        "kind": "Publisher catalog",
+        "note": "Undercover Red Lantern assignment and its personal cost.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "G07",
+        "label": "DC — Guy’s Vuldarian powers, July 2025 Q&A",
+        "url": "https://www.dc.com/blog/2025/07/09/when-did-superman-get-his-original-american-way-motto",
+        "kind": "Publisher editorial",
+        "note": "The Guy Gardner question separates inactive powers from uncertain ancestry.",
+        "access": "Public article text reviewed."
+      },
+      {
+        "id": "G08",
+        "label": "DC — Green Lantern Corps #19",
+        "url": "https://www.dc.com/comics/green-lantern-corps-2006/green-lantern-corps-19",
+        "kind": "Publisher catalog",
+        "note": "Reunion with Ice following the Sinestro Corps War.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "G09",
+        "label": "DC — Green Lantern Corps: official profile",
+        "url": "https://www.dc.com/characters/green-lantern-corps",
+        "kind": "Publisher reference",
+        "note": "Shared ring technology: constructs, protection and flight.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "G10",
+        "label": "DC — Green With Creativity: Lantern constructs",
+        "url": "https://www.dc.com/blog/2024/03/14/green-with-creativity-the-five-best-green-lantern-constructs",
+        "kind": "Publisher editorial",
+        "note": "Constructs shaped by imagination and willpower.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "G11",
+        "label": "DC — Green Lantern by Geoff Johns Omnibus Vol. 1",
+        "url": "https://www.dc.com/graphic-novels/green-lantern-by-geoff-johns-omnibus-2015/green-lantern-by-geoff-johns-omnibus-vol-1",
+        "kind": "Publisher catalog",
+        "note": "Catalog identifies Rebirth and Recharge material; no full omnibus read.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "G12",
+        "label": "DC — Fire & Ice: their return and Guy Gardner",
+        "url": "https://www.dc.com/blog/2023/04/26/dc-s-power-girl-special-1-launches-two-new-dawn-of-dc-titles",
+        "kind": "Publisher announcement",
+        "note": "Ice described as Guy’s former romantic partner; avoids claiming they are presently married.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      }
+    ],
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Main-comics Guy Gardner. Classic/JLI, Warrior, rebuilt Corps and Red Lantern periods are identified separately. No claim of exhaustive coverage of every 2026 appearance.",
+    "researchReview": {
+      "batch": "R3",
+      "version": "v8.48",
+      "date": "2026-09-06",
+      "method": "Character-first narrative, era-scoped abilities, identity and relationship cross-checks; publisher references, catalog descriptions and explicitly labelled supplementary review.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Motivation synthesis and reading choices are Comic Vault interpretation. The review date does not imply coverage of every comic published by that date. Some Marvel pages were available only as indexed extracts; see individual access notes."
+    },
+    "powerDetails": [
+      {
+        "title": "Constructs and offensive energy",
+        "detail": "The ring gives form to willpower and imagination. Guy can create weapons, restraints and barriers rather than relying only on direct energy blasts. Maintaining a useful construct requires more than merely having an aggressive personality.",
+        "sourceIds": [
+          "G09",
+          "G10"
+        ]
+      },
+      {
+        "title": "Flight and protection",
+        "detail": "A ring-generated field supplies protection and movement beyond ordinary human limits. Separate Guy’s unassisted body from what his equipment enables. Losing access to the ring is therefore a meaningful vulnerability.",
+        "sourceIds": [
+          "G09"
+        ]
+      },
+      {
+        "title": "Experience and teamwork",
+        "detail": "Corps service gives Guy practical combat and mission experience, including work alongside other veteran Lanterns. His temperament is not a substitute for those learned skills.",
+        "sourceIds": [
+          "G04",
+          "G05"
+        ]
+      },
+      {
+        "title": "Historical power sets",
+        "detail": "Yellow-ring service, Red Lantern power and Warrior’s transformation abilities are separate eras. This dossier does not combine their advantages into one permanent loadout.",
+        "sourceIds": [
+          "G01",
+          "G06",
+          "G07"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "Green Lantern #59 (1968)",
+        "scope": "Debut",
+        "why": "See the alternative candidate behind Hal’s selection.",
+        "sourceIds": [
+          "G01"
+        ]
+      },
+      {
+        "title": "Justice League International Vol. 1",
+        "scope": "Team personality; Justice League #1–6 and JLI #7",
+        "why": "A useful introduction to the difficult colleague behind the ring.",
+        "sourceIds": [
+          "G03"
+        ]
+      },
+      {
+        "title": "Green Lantern: Rebirth #1–6",
+        "scope": "Return to green-ring service",
+        "why": "Read the larger restoration story with Guy’s changing power status in mind.",
+        "sourceIds": [
+          "G07",
+          "G11"
+        ]
+      },
+      {
+        "title": "Green Lantern Corps: Recharge #1–5",
+        "scope": "Corps rebuilding",
+        "why": "Follow Guy as a veteran rather than a replacement waiting for his turn.",
+        "sourceIds": [
+          "G04",
+          "G11"
+        ]
+      },
+      {
+        "title": "Green Lantern: Emerald Warriors #1–7",
+        "scope": "Cosmic assignments",
+        "why": "Explore the mission with Kilowog, Arisia and the Atrocitus complication.",
+        "sourceIds": [
+          "G05"
+        ]
+      },
+      {
+        "title": "Red Lanterns Vol. 4: Blood Brothers",
+        "scope": "Red Lantern era",
+        "why": "The undercover assignment is the beginning of a distinct identity crisis, not a universal green-ring upgrade.",
+        "sourceIds": [
+          "G06"
+        ]
+      }
+    ],
+    "attributeContext": "Comic Vault editorial estimates, not official publisher statistics or battle predictions. Green-ring-equipped Guy; physical protection and travel ratings include the ring. Warrior, yellow-ring and red-ring peaks are excluded.",
+    "fieldSources": {
+      "firstAppearance": [
+        "G01"
+      ],
+      "powerDetails": "Per-card sourceIds",
+      "history": "Per-entry sourceIds",
+      "origin": "Per-paragraph paragraphSources"
     }
   },
   {
@@ -23959,28 +24303,28 @@ window.COMIC_VAULT_CHARACTERS = [
     "realName": "Harleen Quinzel",
     "publisher": "DC",
     "firstAppearance": "Batman: The Animated Series, 'Joker's Favor' (1992); first comic appearance The Batman Adventures #12 (1993); main DC continuity Batman: Harley Quinn #1 (1999)",
-    "alignment": "Antihero",
+    "alignment": "Antihero; former villain; varies by era",
     "base": "Gotham City",
     "teams": [
-      "Suicide Squad",
-      "Birds of Prey"
+      "Gotham City Sirens",
+      "Suicide Squad (former / era-specific)"
     ],
-    "occupation": "Former psychiatrist, adventurer",
+    "occupation": "Former psychiatrist; adventurer and occasional vigilante; former Coney Island landlady",
     "species": "Human",
     "birthplace": "Brooklyn, New York",
     "height": "5'7\"",
     "eyes": "Blue",
-    "overview": "Originally introduced as the Joker's partner, Harley Quinn evolved into an independent antihero with chaotic humor, surprising resilience and a growing circle of allies.",
+    "overview": "Harleen Quinzel is a former Arkham psychiatrist who became Harley Quinn through her entanglement with the Joker. She later built a life outside his control, finding lasting connections with Poison Ivy and other outsiders. An acrobat, inventive fighter and perceptive reader of people, Harley has been a criminal, a coerced operative and an uneasy ally to heroes. Her movement toward independence and responsibility does not erase the harm she has caused; it gives her choices that no longer have to revolve around the Joker.",
     "powers": [
-      "Acrobatics",
-      "Combat skill",
-      "Psychology expertise",
-      "Unpredictability"
+      "Acrobatics and agility",
+      "Close combat and improvised weapons",
+      "Psychological insight",
+      "Toxin resistance / chemical enhancement — era-dependent"
     ],
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
+      "Fighting Ability": 3,
       "Willpower": 3,
       "Psychic Power": null,
       "Strength": 2,
@@ -23996,132 +24340,206 @@ window.COMIC_VAULT_CHARACTERS = [
       "Power Versatility": 1
     },
     "allies": [
-      "Poison Ivy",
+      "Poison Ivy / Pamela Isley",
       "Catwoman / Selina Kyle",
-      "Birds of Prey"
+      "Batman — adversary and later occasional ally",
+      "Suicide Squad — mission-based affiliation"
     ],
     "enemies": [
-      "Joker",
-      "Various Gotham criminals"
+      "Joker — former criminal partner and major personal antagonist",
+      "Amanda Waller — coercive employer and adversary depending on era"
     ],
     "history": [
       [
-        "1992",
-        "Animated Debut",
-        "Harley is created for Batman: The Animated Series."
+        "Arkham",
+        "Harleen becomes Harley",
+        "Work with the Joker becomes a manipulative personal and criminal entanglement."
       ],
       [
-        "1993",
-        "Comics Debut",
-        "She enters DC comics continuity."
+        "Beyond the Joker",
+        "An independent criminal identity",
+        "Separation opens space for relationships and decisions not centered on pleasing him."
       ],
       [
-        "2000s",
-        "Independent Direction",
-        "Harley increasingly separates from the Joker."
+        "Sirens and Squad",
+        "Partnership versus coercion",
+        "Catwoman and Ivy’s alliance differs from service on Amanda Waller’s mission-driven Squad."
       ],
       [
-        "2011",
-        "New 52",
-        "A redesigned Harley becomes a major Suicide Squad character."
+        "Coney Island",
+        "A place of her own",
+        "A new home, property responsibilities and roller derby expand her civilian world."
       ],
       [
-        "2016",
-        "Rebirth",
-        "Her solo identity and supporting cast continue to expand."
+        "Harley and Ivy",
+        "Care through instability",
+        "Harley helps Ivy recover after a difficult resurrection."
+      ],
+      [
+        "Post–Joker War",
+        "Attempting to make amends",
+        "Back in Gotham, her wish to help must coexist with the consequences of her past."
       ]
     ],
     "costumes": [
       [
-        "1992",
-        "Jester",
-        "Classic red-and-black harlequin suit."
+        "Classic",
+        "Red-and-black harlequin",
+        "The jester motif is associated with her earliest identity."
       ],
       [
-        "2011",
-        "New 52",
-        "Punk-influenced redesign."
+        "Independent years",
+        "Street and roller-derby looks",
+        "Later outfits accompany a life outside the Joker’s partnership."
       ],
       [
-        "2016",
-        "Rebirth",
-        "Red-and-blue streetwear and comic styling."
-      ],
-      [
-        "Current",
-        "Modern",
-        "Multiple costumes preserve the red/black palette and playful chaos."
+        "Main comics",
+        "Costume variation",
+        "Different eras do not automatically share chemical changes or identical powers."
       ]
     ],
     "comics": [
-      "The Batman Adventures #12",
-      "Harley Quinn",
-      "Gotham City Sirens",
-      "Harleen"
+      "The Batman Adventures: Mad Love",
+      "Batman: Harley Quinn #1 (1999)",
+      "Gotham City Sirens (2009) #1 onward",
+      "Harley Quinn Vol. 1: Hot in the City",
+      "Harley Quinn and Poison Ivy (2019) #1–6",
+      "Harley Quinn Vol. 1: No Good Deed"
     ],
     "imageSlug": "harley-quinn",
     "aliases": [
       "Dr. Harleen Quinzel",
       "Cupid of Crime"
     ],
-    "family": [],
-    "gear": [],
+    "family": [
+      "Poison Ivy / Pamela Isley — close companion and romantic partner in main-comics stories",
+      "Joker — former partner and abuser, not a healthy family relationship"
+    ],
+    "gear": [
+      {
+        "type": "SIGNATURE WEAPONS",
+        "name": "Mallet and baseball bat",
+        "detail": "Conventional weapons wielded with athleticism and improvisation; neither explains a universal supernatural power set."
+      },
+      {
+        "type": "VARIABLE EQUIPMENT",
+        "name": "Trick weapons and other carried gear",
+        "detail": "Loadout changes by mission and era. Dangerous equipment is not the same as an innate energy-projection ability."
+      }
+    ],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "1992",
-          "title": "Animated Debut",
-          "detail": "Harley is created for Batman: The Animated Series."
+          "era": "Arkham",
+          "title": "Harleen becomes Harley",
+          "detail": "Work with the Joker becomes a manipulative personal and criminal entanglement.",
+          "sourceIds": [
+            "H01",
+            "H03"
+          ]
         },
         {
-          "era": "1993",
-          "title": "Comics Debut",
-          "detail": "She enters DC comics continuity."
+          "era": "Beyond the Joker",
+          "title": "An independent criminal identity",
+          "detail": "Separation opens space for relationships and decisions not centered on pleasing him.",
+          "sourceIds": [
+            "H02"
+          ]
         },
         {
-          "era": "2000s",
-          "title": "Independent Direction",
-          "detail": "Harley increasingly separates from the Joker."
+          "era": "Sirens and Squad",
+          "title": "Partnership versus coercion",
+          "detail": "Catwoman and Ivy’s alliance differs from service on Amanda Waller’s mission-driven Squad.",
+          "sourceIds": [
+            "H02",
+            "H07"
+          ]
         },
         {
-          "era": "2011",
-          "title": "New 52",
-          "detail": "A redesigned Harley becomes a major Suicide Squad character."
+          "era": "Coney Island",
+          "title": "A place of her own",
+          "detail": "A new home, property responsibilities and roller derby expand her civilian world.",
+          "sourceIds": [
+            "H04"
+          ]
         },
         {
-          "era": "2016",
-          "title": "Rebirth",
-          "detail": "Her solo identity and supporting cast continue to expand."
+          "era": "Harley and Ivy",
+          "title": "Care through instability",
+          "detail": "Harley helps Ivy recover after a difficult resurrection.",
+          "sourceIds": [
+            "H06"
+          ]
+        },
+        {
+          "era": "Post–Joker War",
+          "title": "Attempting to make amends",
+          "detail": "Back in Gotham, her wish to help must coexist with the consequences of her past.",
+          "sourceIds": [
+            "H05"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Debuts",
+          "title": "Animation, tie-in comics and main continuity",
+          "detail": "Joker’s Favor (1992) introduces Harley on television. The Batman Adventures #12 (1993) is her first comic appearance; Batman: Harley Quinn #1 (1999) brings her into the main DC comics setting.",
+          "sourceIds": [
+            "H02"
+          ]
+        },
+        {
+          "era": "Origins",
+          "title": "Mad Love and chemical-origin changes",
+          "detail": "Mad Love belongs to the animated-continuity foundation. The New 52 chemical-vat account changes aspects of that origin; do not silently combine them into one event.",
+          "sourceIds": [
+            "H03"
+          ]
+        },
+        {
+          "era": "Abilities",
+          "title": "Enhanced does not mean identical in every version",
+          "detail": "DC lists toxin immunity among her capabilities, but chemical enhancements and their limits vary. A screen portrayal or unusually exaggerated gag is not evidence of a permanent power in all comics.",
+          "sourceIds": [
+            "H01"
+          ]
+        },
+        {
+          "era": "Moral role",
+          "title": "Not a single fixed alignment across her life",
+          "detail": "Criminal activity, coerced service and later attempts at heroism belong to different phases. Her independence does not excuse every action.",
+          "sourceIds": [
+            "H02",
+            "H05"
+          ]
         }
       ]
     },
     "costumeCategories": {
       "Main Comics": [
         {
-          "era": "1992",
-          "title": "Jester",
-          "detail": "Classic red-and-black harlequin suit."
+          "era": "Classic",
+          "title": "Red-and-black harlequin",
+          "detail": "The jester motif is associated with her earliest identity."
         },
         {
-          "era": "2011",
-          "title": "New 52",
-          "detail": "Punk-influenced redesign."
+          "era": "Independent years",
+          "title": "Street and roller-derby looks",
+          "detail": "Later outfits accompany a life outside the Joker’s partnership."
         },
         {
-          "era": "2016",
-          "title": "Rebirth",
-          "detail": "Red-and-blue streetwear and comic styling."
-        },
-        {
-          "era": "Current",
-          "title": "Modern",
-          "detail": "Multiple costumes preserve the red/black palette and playful chaos."
+          "era": "Main comics",
+          "title": "Costume variation",
+          "detail": "Different eras do not automatically share chemical changes or identical powers."
         }
       ]
     },
-    "continuityNote": "Harley Quinn originated in Batman: The Animated Series before entering DC Comics. Keep her animated debut, first comic appearance, and later mainstream DC-continuity integration distinct.",
+    "continuityNote": "Joker’s Favor (1992) introduces Harley on television. The Batman Adventures #12 (1993) is her first comic appearance; Batman: Harley Quinn #1 (1999) brings her into the main DC comics setting. Mad Love belongs to the animated-continuity foundation. The New 52 chemical-vat account changes aspects of that origin; do not silently combine them into one event. DC lists toxin immunity among her capabilities, but chemical enhancements and their limits vary. A screen portrayal or unusually exaggerated gag is not evidence of a permanent power in all comics. Criminal activity, coerced service and later attempts at heroism belong to different phases. Her independence does not excuse every action.",
     "auditCorrections": [
-      "Separated animation debut, first comic appearance and main-continuity comics debut."
+      "Separated animation debut, first comic appearance and main-continuity comics debut.",
+      "v8.48: Kept animation, tie-in debut and main-comics debut separate.",
+      "v8.48: Added accountability and independent life without reducing the character to a diagnosis or to the Joker."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
@@ -24133,27 +24551,53 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
     },
     "auditSources": [
-      "DC publisher canon / official character and issue metadata",
-      "Continuity-sensitive reference cross-check",
-      "Comic Vault existing dossier compared against mantle and retcon history"
+      "DC — Harley Quinn: official profile",
+      "DC — How Do You Solve a Problem Like Harley?",
+      "DC — Twelve Moments That Defined Harley Quinn",
+      "DC — Harley Quinn Vol. 1: Hot in the City",
+      "DC Universe Infinite — Harley Quinn Vol. 1: No Good Deed",
+      "DC — Harley Quinn and Poison Ivy: Road Trip to Redemption",
+      "DC — Super-villains with their own comics"
     ],
     "originProfile": {
-      "originLossMotivation": "Harleen Quinzel began as a psychiatrist at Arkham Asylum, ambitious and fascinated by extreme criminal psychology. Her sessions with the Joker became a manipulative relationship in which professional curiosity, attraction and abuse blurred together. Harleen abandoned her career and identity to become Harley Quinn, repeatedly accepting violence and humiliation because Joker convinced her that devotion to him gave her life meaning. Over time, however, Harley's story moved away from being only Joker's sidekick. Her friendship and romance with Poison Ivy, her bonds with other outsiders and her growing recognition of the abuse she endured allowed her to build an identity that did not depend on Joker's approval. Harley remains chaotic and morally unpredictable, but the emotional arc that defines her is one of reclaiming agency: the same psychological insight once used against her becomes part of how she survives and reinvents herself.",
+      "originLossMotivation": "Before the costume, Harleen Quinzel worked at Arkham. Her professional interest in the Joker drew her into a relationship in which he exploited her attention and sympathy. She abandoned the boundaries of her earlier life and became Harley Quinn, joining his crimes and seeking recognition from someone who used affection as another instrument of control. The bright performance concealed an unequal relationship. Harley could be capable and inventive while still misjudging the man she wanted to trust; her training did not make her immune to manipulation.\n\nBreaking with the Joker was not a single clean division between one person and another. Harley had participated in violence and remained responsible for choices of her own. Escaping his control did not immediately make her harmless, or resolve every habit built around winning his approval. It did, however, open a different question: what would she do when her plans no longer had to serve his? Her later life repeatedly tests the difference between refusing somebody else's demands and deciding what kind of responsibility she is willing to accept herself.\n\nPoison Ivy became essential to that life beyond the Joker. Their connection grew into a romance, but companionship did not mean that either woman stopped having difficult motives or dangerous capabilities. When Ivy's resurrection left her unstable, Harley devoted herself to helping her recover. The resulting journey asked for more than flirtation or a shared escape from trouble. Harley had to care for another person through uncertainty. It exposed a capacity for sustained concern that cannot be explained by treating her only as a chaos-loving accessory to someone else's story.\n\nOther alliances widened Harley's world. With Catwoman and Ivy, Gotham City Sirens gave her partners with priorities of their own. Service with the Suicide Squad placed her in a much more coercive organization, where surviving a mission did not necessarily mean endorsing the people issuing orders. These relationships were not interchangeable families. One offered a way to negotiate life alongside other formidable women; another tied dangerous work to institutional control. Harley's talent for adapting helped her function in both settings without making either a complete account of her identity.\n\nIn Coney Island, Harley developed a life that included being a landlady and taking part in roller derby. Neighbors and daily obligations mattered alongside criminal trouble and costumed adventures. A place of her own gave independence a practical shape: people knew her, expected things of her and could be affected by what she did. Her improvisation and impulsiveness brought fresh complications, but her story no longer had to begin and end with returning to the Joker. Building an ordinary routine was itself an unfamiliar form of staying involved with other people.\n\nReturning to Gotham after the Joker War brought the question of making amends closer to home. Harley wanted to help a city with good reasons to distrust her. A declaration of good intentions could not obligate everyone to forgive, and familiar skills could still be used carelessly. Her strongest path forward involves acknowledging that independence and accountability belong together. She remains unruly and frequently dangerous, but neither a past crime nor an abusive former partner has to determine every future choice. The work is deciding what she does with the freedom she fought to reclaim.",
       "powerOrigin": {
-        "type": "Primarily Training / No Powers; Later Chemical Enhancement in Some Continuities",
-        "detail": "Harley is fundamentally human, relying on athleticism, acrobatics, weapons and psychological insight. Some comic continuities give her enhanced strength, agility, durability or toxin resistance through chemical treatments associated with Poison Ivy; those enhancements are not universal to every version."
+        "type": "Training and equipment; enhancements vary by era",
+        "detail": "Acrobatics, combat and psychological insight form the baseline. Some comics add toxin resistance and chemical enhancement, without establishing a universal supernatural power set."
       },
       "importantPeople": [
-        "Joker — former partner and abuser",
-        "Poison Ivy / Pamela Isley — closest friend, love and source of healthier belonging",
-        "Batman — adversary and occasional reluctant ally",
-        "Arkham patients and Gotham underworld — formative professional and criminal environment"
+        "Poison Ivy / Pamela Isley — love and lasting companionship",
+        "Joker — former abuser and criminal partner",
+        "Catwoman / Selina Kyle — fellow Siren",
+        "Batman — opponent and occasional later ally"
       ],
-      "coreDrive": "Freedom and self-definition after manipulation. Harley seeks excitement and connection, but her deeper modern arc is the struggle to build an identity that belongs to her rather than to the Joker.",
-      "standard": "Comic Vault Expanded Origin Standard v1",
+      "coreDrive": "Live outside the Joker’s control and decide what freedom requires when other people can be hurt by her choices.",
+      "standard": "Character-first dossier / source-reviewed R3",
       "manualDeepDive": true,
-      "profilePass": "P300",
-      "profileUpdatedThrough": 300
+      "profilePass": "R3-v8.48",
+      "paragraphSources": [
+        [
+          "H01",
+          "H03"
+        ],
+        [
+          "H02",
+          "H03"
+        ],
+        [
+          "H06"
+        ],
+        [
+          "H02",
+          "H07"
+        ],
+        [
+          "H04"
+        ],
+        [
+          "H05"
+        ]
+      ]
     },
     "attributeAudit": {
       "status": "Deep Vetted",
@@ -24174,15 +24618,177 @@ window.COMIC_VAULT_CHARACTERS = [
       "focus": "Identity, continuity, overview/history depth, relationships, reading, equipment, attributes, and internal consistency."
     },
     "relationshipGroups": {
+      "FAMILY & CLOSE RELATIONS": [
+        "Poison Ivy / Pamela Isley — close companion and romantic partner in main-comics stories",
+        "Joker — former partner and abuser, not a healthy family relationship"
+      ],
       "KEY ALLIES": [
-        "Poison Ivy",
+        "Poison Ivy / Pamela Isley",
         "Catwoman / Selina Kyle",
-        "Birds of Prey"
+        "Batman — adversary and later occasional ally",
+        "Suicide Squad — mission-based affiliation"
       ],
       "KEY RIVALS / ENEMIES": [
-        "Joker",
-        "Various Gotham criminals"
+        "Joker — former criminal partner and major personal antagonist",
+        "Amanda Waller — coercive employer and adversary depending on era"
       ]
+    },
+    "researchSources": [
+      {
+        "id": "H01",
+        "label": "DC — Harley Quinn: official profile",
+        "url": "https://www.dc.com/characters/harley-quinn",
+        "kind": "Publisher reference",
+        "note": "Psychiatrist background, acrobatics, intellect, toxin resistance and broad affiliations.",
+        "access": "Public character-page text reviewed."
+      },
+      {
+        "id": "H02",
+        "label": "DC — How Do You Solve a Problem Like Harley?",
+        "url": "https://www.dc.com/blog/2017/09/18/how-do-you-solve-a-problem-like-harley",
+        "kind": "Publisher editorial",
+        "note": "Three distinct debuts, Sirens, Squad and independent identity.",
+        "access": "Public article text reviewed."
+      },
+      {
+        "id": "H03",
+        "label": "DC — Twelve Moments That Defined Harley Quinn",
+        "url": "https://www.dc.com/blog/2022/09/29/lady-of-lunacy-twelve-moments-that-defined-harley-quinn",
+        "kind": "Publisher editorial",
+        "note": "Mad Love, main-comics introduction, New 52 changes and Ivy romance.",
+        "access": "Public article text reviewed."
+      },
+      {
+        "id": "H04",
+        "label": "DC — Harley Quinn Vol. 1: Hot in the City",
+        "url": "https://www.dc.com/graphic-novels/harley-quinn-2013/harley-quinn-vol-1-hot-in-the-city",
+        "kind": "Publisher catalog",
+        "note": "Coney Island, roller derby and independent solo life.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "H05",
+        "label": "DC Universe Infinite — Harley Quinn Vol. 1: No Good Deed",
+        "url": "https://www.dcuniverseinfinite.com/comics/book/harley-quinn-vol-1-no-good-deed/cbee657a-284d-4272-b799-88fb8b9c8e7c",
+        "kind": "Publisher catalog",
+        "note": "Return to Gotham, making amends and 2021 opening collection.",
+        "access": "Public collection synopsis reviewed; complete comics not accessed."
+      },
+      {
+        "id": "H06",
+        "label": "DC — Harley Quinn and Poison Ivy: Road Trip to Redemption",
+        "url": "https://www.dc.com/blog/2020/06/29/harley-quinn-and-poison-ivy-is-a-raucous-road-trip-to-redemption",
+        "kind": "Publisher editorial",
+        "note": "Harley helping Ivy after resurrection and considering a more heroic life.",
+        "access": "Public article text reviewed."
+      },
+      {
+        "id": "H07",
+        "label": "DC — Super-villains with their own comics",
+        "url": "https://www.dc.com/blog/2023/06/07/ask-the-question-which-super-villains-have-had-their-own-comic-book",
+        "kind": "Publisher editorial",
+        "note": "Gotham City Sirens team and publication scope.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      }
+    ],
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Main-comics life and major identity phases, with the animated origin explicitly separated. Physical enhancements, relationship status and moral role are era-sensitive; not a complete issue-by-issue current-status update.",
+    "researchReview": {
+      "batch": "R3",
+      "version": "v8.48",
+      "date": "2026-09-06",
+      "method": "Character-first narrative, era-scoped abilities, identity and relationship cross-checks; publisher references, catalog descriptions and explicitly labelled supplementary review.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Motivation synthesis and reading choices are Comic Vault interpretation. The review date does not imply coverage of every comic published by that date. Some Marvel pages were available only as indexed extracts; see individual access notes."
+    },
+    "powerDetails": [
+      {
+        "title": "Acrobatics and close combat",
+        "detail": "Harley combines agility, practiced movement and improvised attacks. Her fighting ability is a skill, not evidence of super-speed or unlimited physical strength.",
+        "sourceIds": [
+          "H01"
+        ]
+      },
+      {
+        "title": "Reading people",
+        "detail": "Her background gives her familiarity with psychological behavior. Insight can help her persuade or distract, but it does not amount to telepathy, infallible judgment or control over another mind.",
+        "sourceIds": [
+          "H01"
+        ]
+      },
+      {
+        "title": "Toxin resistance and variable enhancement",
+        "detail": "Some main-comics portrayals give her chemical protection or enhanced physical capabilities. These should be tied to their era; no universal immunity to every harmful substance is assumed here.",
+        "sourceIds": [
+          "H01"
+        ]
+      },
+      {
+        "title": "Limits and equipment",
+        "detail": "Weapons, timing and improvisation account for much of her effectiveness. The archive does not treat cartoon exaggeration, special-event boosts or a film-specific ability as her ordinary comics baseline.",
+        "sourceIds": [
+          "H01",
+          "H03"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "The Batman Adventures: Mad Love",
+        "scope": "Animated continuity / origin",
+        "why": "A foundational account of Harleen and the Joker; read as its own continuity.",
+        "sourceIds": [
+          "H03"
+        ]
+      },
+      {
+        "title": "Batman: Harley Quinn #1 (1999)",
+        "scope": "Main-comics introduction",
+        "why": "See how Harley entered Gotham’s central comics continuity.",
+        "sourceIds": [
+          "H02"
+        ]
+      },
+      {
+        "title": "Gotham City Sirens (2009) #1 onward",
+        "scope": "Harley, Ivy and Catwoman",
+        "why": "Explore an alliance where Harley is not simply somebody’s sidekick.",
+        "sourceIds": [
+          "H07"
+        ]
+      },
+      {
+        "title": "Harley Quinn Vol. 1: Hot in the City",
+        "scope": "Coney Island life",
+        "why": "Start the independent-life period with a home and surrounding community.",
+        "sourceIds": [
+          "H04"
+        ]
+      },
+      {
+        "title": "Harley Quinn and Poison Ivy (2019) #1–6",
+        "scope": "Relationship and recovery",
+        "why": "A focused story about Harley caring for Ivy and reconsidering her own path.",
+        "sourceIds": [
+          "H06"
+        ]
+      },
+      {
+        "title": "Harley Quinn Vol. 1: No Good Deed",
+        "scope": "2021 Gotham return",
+        "why": "Read her effort to make amends after the Joker War.",
+        "sourceIds": [
+          "H05"
+        ]
+      }
+    ],
+    "attributeContext": "Comic Vault editorial estimates, not official publisher statistics or battle predictions. Representative main-comics Harley; broad physical feats, toxin resistance and exaggerated comedy vary by story. No diagnosis or intelligence measurement is inferred from behavior.",
+    "fieldSources": {
+      "firstAppearance": [
+        "H01"
+      ],
+      "powerDetails": "Per-card sourceIds",
+      "history": "Per-entry sourceIds",
+      "origin": "Per-paragraph paragraphSources"
     }
   },
   {
@@ -27260,31 +27866,33 @@ window.COMIC_VAULT_CHARACTERS = [
     "name": "Jessica Cruz",
     "realName": "Jessica Cruz",
     "publisher": "DC",
-    "firstAppearance": "Green Lantern #20 (2013)",
+    "firstAppearance": "Green Lantern #20 (2013), credited early appearance; Justice League #30 (2014), full introduction",
     "alignment": "Hero",
     "base": "Earth / Oa",
     "teams": [
       "Green Lantern Corps",
-      "Justice League"
+      "Justice League",
+      "Justice League Odyssey",
+      "Sinestro Corps (era-specific)"
     ],
-    "occupation": "Green Lantern",
+    "occupation": "Green Lantern and cosmic peacekeeper",
     "species": "Human",
     "birthplace": "Varies by continuity",
     "height": "Varies by continuity",
     "eyes": "Varies by continuity",
-    "overview": "Jessica Cruz overcomes intense fear after being chosen first by the corrupted Power Ring and later by a Green Lantern ring. Her heroism centers on courage as something practiced rather than possessed automatically.",
+    "overview": "Jessica Cruz is a Green Lantern who learned to act without waiting for fear to disappear. After surviving the murder of her friends, she was trapped by a corrupted ring that exploited her terror. Her eventual choice to protect others helped her escape that coercion and earn a genuine Green Lantern ring. Earth patrols with Simon Baz, Justice League service and dangerous journeys through space gradually expanded her world without erasing the private struggles she brought into it.",
     "powers": [
-      "Green power ring",
-      "Energy constructs",
-      "Flight",
-      "Force fields",
-      "Willpower"
+      "Ring-generated energy constructs",
+      "Flight and protective fields",
+      "Energy projection",
+      "Corps technology",
+      "Power Ring and yellow-ring capabilities — distinct periods"
     ],
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
       "Fighting Ability": 2,
-      "Willpower": 4,
+      "Willpower": 5,
       "Psychic Power": null,
       "Strength": 2,
       "Speed": 3,
@@ -27294,106 +27902,209 @@ window.COMIC_VAULT_CHARACTERS = [
       "Healing / Recovery": null,
       "Energy Projection": 5,
       "Magic / Mystical Mastery": null,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 3,
       "Skill / Technology": 2,
       "Power Versatility": 4
     },
     "allies": [
       "Simon Baz",
-      "Justice League",
-      "Kilowog"
+      "Batman",
+      "Cyborg",
+      "Starfire",
+      "Azrael / Jean-Paul Valley"
     ],
     "enemies": [
-      "Volthoom",
-      "Sinestro Corps"
+      "Volthoom — entity associated with the corrupted Ring of Volthoom",
+      "Darkseid",
+      "Sinestro — opposing leader and later Corps connection"
     ],
     "history": [
       [
-        "2013",
-        "Debut",
-        "Jessica Cruz enters the comics in Green Lantern #20 (2013)."
+        "Before a ring",
+        "Survival and withdrawal",
+        "The murder of her friends leaves Jessica struggling to feel safe in everyday life."
       ],
       [
-        "2014",
         "Power Ring",
-        "Jessica is forced to wield an evil ring from Earth-3."
+        "Coerced into dangerous power",
+        "The Ring of Volthoom exploits her fear; contact with the League eventually leads toward a different choice."
       ],
       [
-        "2016",
         "Green Lantern",
-        "She and Simon Baz become Earth's paired Lanterns."
+        "Partnership with Simon Baz",
+        "Earth patrol and shared challenges give her an ongoing partner."
       ],
       [
-        "Modern",
-        "Cosmic Hero",
-        "Jessica serves across the Corps and Justice League."
+        "Personal reckoning",
+        "Returning to Portland",
+        "Jessica and Simon investigate the crime associated with her traumatic past."
+      ],
+      [
+        "Cosmic service",
+        "The Ghost Sector expedition",
+        "She joins Cyborg, Starfire and Azrael in a dangerous region beyond Earth."
+      ],
+      [
+        "2021 era",
+        "Fear without the old coercion",
+        "After the central battery fails, an encounter with Yellow Lanterns leads to a Sinestro Corps offer and later service."
       ]
     ],
     "costumes": [
       [
-        "2014",
         "Power Ring",
-        "Dark green ring-generated armor."
+        "Corrupted-ring period",
+        "Treat the early Power Ring look as its own stage."
       ],
       [
-        "2016",
         "Green Lantern",
-        "Standard Corps colors with personalized mask."
+        "Corps uniform",
+        "Her green Corps presentation belongs to her willpower-ring career."
+      ],
+      [
+        "Sinestro Corps",
+        "Yellow-ring period",
+        "Yellow equipment marks the later Corps transition rather than her initial possession."
       ]
     ],
     "comics": [
-      "Green Lanterns: Rage Planet",
-      "Justice League Odyssey"
+      "Justice League #30–34 (2014)",
+      "Green Lanterns Vol. 1: Rage Planet",
+      "Green Lanterns #15",
+      "Green Lanterns Vol. 4: The First Ring",
+      "Justice League Odyssey Vol. 1: The Ghost Sector",
+      "Green Lantern 2021 Annual #1"
     ],
     "imageSlug": "jessica-cruz",
     "aliases": [
       "Power Ring (briefly)"
     ],
     "family": [
-      "Cruz family — Earth family appears in supporting stories"
+      "Her murdered friends — defining personal loss"
     ],
-    "gear": [],
+    "gear": [
+      {
+        "type": "PRIMARY EQUIPMENT",
+        "name": "Green Lantern power ring",
+        "detail": "Willpower-channeling Corps technology; its constructs and protective fields are not innate human powers."
+      },
+      {
+        "type": "HISTORICAL EQUIPMENT",
+        "name": "Ring of Volthoom",
+        "detail": "A coercive, fear-feeding artifact from her Power Ring period, not an ordinary Green Lantern ring."
+      },
+      {
+        "type": "ERA-SPECIFIC EQUIPMENT",
+        "name": "Sinestro Corps ring",
+        "detail": "A later fear-powered affiliation, distinct from both her first corrupted ring and ordinary Green Lantern service."
+      }
+    ],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "2013",
-          "title": "Debut",
-          "detail": "Jessica Cruz enters the comics in Green Lantern #20 (2013)."
+          "era": "Before a ring",
+          "title": "Survival and withdrawal",
+          "detail": "The murder of her friends leaves Jessica struggling to feel safe in everyday life.",
+          "sourceIds": [
+            "J02"
+          ]
         },
         {
-          "era": "2014",
-          "title": "Power Ring",
-          "detail": "Jessica is forced to wield an evil ring from Earth-3."
+          "era": "Power Ring",
+          "title": "Coerced into dangerous power",
+          "detail": "The Ring of Volthoom exploits her fear; contact with the League eventually leads toward a different choice.",
+          "sourceIds": [
+            "J01",
+            "J09"
+          ]
         },
         {
-          "era": "2016",
-          "title": "Green Lantern",
-          "detail": "She and Simon Baz become Earth's paired Lanterns."
+          "era": "Green Lantern",
+          "title": "Partnership with Simon Baz",
+          "detail": "Earth patrol and shared challenges give her an ongoing partner.",
+          "sourceIds": [
+            "J03"
+          ]
         },
         {
-          "era": "Modern",
-          "title": "Cosmic Hero",
-          "detail": "Jessica serves across the Corps and Justice League."
+          "era": "Personal reckoning",
+          "title": "Returning to Portland",
+          "detail": "Jessica and Simon investigate the crime associated with her traumatic past.",
+          "sourceIds": [
+            "J04"
+          ]
+        },
+        {
+          "era": "Cosmic service",
+          "title": "The Ghost Sector expedition",
+          "detail": "She joins Cyborg, Starfire and Azrael in a dangerous region beyond Earth.",
+          "sourceIds": [
+            "J06"
+          ]
+        },
+        {
+          "era": "2021 era",
+          "title": "Fear without the old coercion",
+          "detail": "After the central battery fails, an encounter with Yellow Lanterns leads to a Sinestro Corps offer and later service.",
+          "sourceIds": [
+            "J07",
+            "J02"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Debut records",
+          "title": "Early credit versus full introduction",
+          "detail": "DC’s official profile credits Green Lantern #20 (2013); her full Justice League introduction is associated with #30 (2014). These are separate appearance milestones.",
+          "sourceIds": [
+            "J01",
+            "J08"
+          ]
+        },
+        {
+          "era": "Three ring contexts",
+          "title": "Power Ring is not another ordinary Green Lantern",
+          "detail": "Volthoom’s coercive ring, the willpower-driven Corps ring and her later yellow-ring period have different origins and affiliations.",
+          "sourceIds": [
+            "J01",
+            "J07"
+          ]
+        },
+        {
+          "era": "Character portrayal",
+          "title": "Courage is compatible with fear",
+          "detail": "Jessica’s growth does not establish that a ring permanently cures trauma or anxiety. This is a fictional character account, not a clinical description of recovery.",
+          "sourceIds": [
+            "J02"
+          ]
         }
       ]
     },
     "costumeCategories": {
       "Main Comics": [
         {
-          "era": "2014",
-          "title": "Power Ring",
-          "detail": "Dark green ring-generated armor."
+          "era": "Power Ring",
+          "title": "Corrupted-ring period",
+          "detail": "Treat the early Power Ring look as its own stage."
         },
         {
-          "era": "2016",
-          "title": "Green Lantern",
-          "detail": "Standard Corps colors with personalized mask."
+          "era": "Green Lantern",
+          "title": "Corps uniform",
+          "detail": "Her green Corps presentation belongs to her willpower-ring career."
+        },
+        {
+          "era": "Sinestro Corps",
+          "title": "Yellow-ring period",
+          "detail": "Yellow equipment marks the later Corps transition rather than her initial possession."
         }
       ]
     },
-    "continuityNote": "Jessica Cruz's first appearance as a character is separate from the point at which she formally becomes a Green Lantern. This profile should preserve that distinction.",
+    "continuityNote": "DC’s official profile credits Green Lantern #20 (2013); her full Justice League introduction is associated with #30 (2014). These are separate appearance milestones. Volthoom’s coercive ring, the willpower-driven Corps ring and her later yellow-ring period have different origins and affiliations. Jessica’s growth does not establish that a ring permanently cures trauma or anxiety. This is a fictional character account, not a clinical description of recovery.",
     "auditCorrections": [
-      "Existing core dossier reviewed; no major identity-level correction required."
+      "Existing core dossier reviewed; no major identity-level correction required.",
+      "v8.48: Expanded the life narrative without equating courage with a permanent cure for fear.",
+      "v8.48: Distinguished early debut credit, full introduction, corrupted ring and Sinestro Corps period."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
@@ -27405,27 +28116,57 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
     },
     "auditSources": [
-      "DC publisher canon / official character and issue metadata",
-      "Continuity-sensitive reference cross-check",
-      "Comic Vault existing dossier compared against mantle and retcon history"
+      "DC — Jessica Cruz: official profile",
+      "DC — Jessica Cruz: The People’s Green Lantern",
+      "DC — Green Lanterns Vol. 1: Rage Planet",
+      "DC — Green Lanterns #15",
+      "DC — Green Lanterns Vol. 4: The First Ring",
+      "DC — Justice League Odyssey Vol. 1: The Ghost Sector",
+      "DC — Green Lantern 2021 Annual #1",
+      "DC — Justice League #30 (2014)",
+      "DC — Justice League #34",
+      "DC — Green Lantern Corps: official profile",
+      "DC — Green With Creativity: constructs"
     ],
     "originProfile": {
-      "originLossMotivation": "Jessica Cruz's heroism begins with trauma rather than fearlessness. During a hunting trip with friends, Jessica witnessed criminals murder the people with her. She escaped, but the experience left her with severe anxiety, panic and agoraphobia that made ordinary life difficult. The corrupted Power Ring of Earth-3 later chose Jessica precisely because fear made her vulnerable and attempted to control her through it. She resisted, and after the evil ring was destroyed, a genuine Green Lantern ring eventually chose her. That transition is the heart of Jessica's story: she does not become courageous because fear disappears. She becomes heroic by acting while afraid, recovering agency over a mind and body that trauma had made feel unsafe. Her partnership with Simon Baz and later service with the Green Lantern Corps turn an intensely private battle into a cosmic one without erasing the human struggle beneath it.",
+      "originLossMotivation": "Jessica Cruz survived when the friends with her in the woods did not. Witnessing their murder made safety feel fragile, and she withdrew from the world she had previously moved through more freely. Leaving home and trusting ordinary situations became difficult. Her first encounter with superhuman power did not rescue her from that isolation. The Ring of Volthoom sought a frightened host and fastened itself to her. It made fear a means of control, turning an already painful struggle into something that could threaten people beyond Jessica herself.\n\nThe Justice League encountered a person caught inside that danger, not simply another willing criminal. Working alongside heroes while carrying the corrupted ring put Jessica in a position where help, suspicion and responsibility existed together. She had to resist an influence that wanted to decide for her. Her eventual willingness to risk herself for someone else mattered precisely because the ring had sought to exploit fear. A genuine Green Lantern ring recognized courage in her actions. Earning it did not erase what had happened; it changed her relationship with the power she carried.\n\nSharing Earth's protection with Simon Baz gave Jessica a partner rather than an audience waiting for perfection. Both were still learning, and their early work brought them into conflict with Red Lantern threats. They had to coordinate under pressure while figuring out what their rings and judgment could actually accomplish. The partnership widened the number of people she could rely on. She could contribute to a rescue or confront a threat without pretending she had become somebody who never doubted herself. Experience accumulated through specific decisions, not a single permanent victory over fear.\n\nSome missions also brought Jessica back toward the life she had tried to shut out. Returning to Portland with Simon meant facing the crime connected to her original trauma. Further Corps training took her far beyond familiar streets, demanding decisions in the unfamiliar conditions of space. These challenges were not interchangeable. Tracking a murderer and surviving far from Earth asked different things of her, but both required taking action without complete reassurance. Her growing competence gave her more choices. It did not make the past cease to matter, or turn recovery into a finished assignment.\n\nJessica's journey with Justice League Odyssey carried that growth into the Ghost Sector. With Cyborg, Starfire and Azrael, she confronted endangered worlds and a situation in which Darkseid claimed to be offering help. The team could not rely on the comfort of a familiar Earth patrol. Each alliance carried risks, and an imposing name was no guarantee of trustworthy guidance. Jessica was now part of a group making decisions far from home, responsible for people whose survival depended on more than her ability to produce a powerful burst of green light.\n\nWhen the Green Lantern Central Power Battery later failed, Jessica had to confront danger without her usual certainty of protection. Her resistance to attacking Yellow Lanterns drew an offer from the Sinestro Corps, and she entered another complicated relationship with fear-powered technology. That later period is not the same as her unwilling possession by Volthoom. Across these experiences, Jessica's defining achievement is retaining a say in her own life. She continues to care for others while navigating fear, rather than accepting that fear gives a ring, an enemy or anyone else the right to decide who she can be.",
       "powerOrigin": {
-        "type": "Cosmic Technology / Green Lantern Ring",
-        "detail": "Jessica first became host to the corrupt Power Ring from Earth-3, which exploited her fear. After breaking free, she was selected by a genuine Green Lantern power ring. The ring channels willpower into energy constructs, flight, protection, translation and other Corps abilities."
+        "type": "Alien rings; coercive and voluntary periods distinguished",
+        "detail": "A genuine Corps ring enables her familiar constructs and flight. Volthoom’s artifact and her later yellow ring are separate power histories."
       },
       "importantPeople": [
-        "Friends murdered during the hunting-trip trauma — defining loss",
-        "Simon Baz — Green Lantern partner and close ally",
-        "Green Lantern Corps — community that reframes fear as courage",
-        "Batman and Justice League — important allies during her early heroic development"
+        "Simon Baz — partner and trusted colleague",
+        "Batman and the Justice League — early heroic support",
+        "Cyborg, Starfire and Azrael — Odyssey teammates",
+        "Friends lost in the woods — defining bereavement"
       ],
-      "coreDrive": "Courage as a practice rather than a personality trait. Jessica fights to reclaim agency from fear and to prove that being afraid does not disqualify someone from being heroic.",
-      "standard": "Comic Vault Expanded Origin Standard v1",
+      "coreDrive": "Choose how to live and whom to protect without granting fear authority over every decision.",
+      "standard": "Character-first dossier / source-reviewed R3",
       "manualDeepDive": true,
-      "profilePass": "P300",
-      "profileUpdatedThrough": 300
+      "profilePass": "R3-v8.48",
+      "paragraphSources": [
+        [
+          "J02"
+        ],
+        [
+          "J01",
+          "J09"
+        ],
+        [
+          "J03"
+        ],
+        [
+          "J04",
+          "J05"
+        ],
+        [
+          "J06"
+        ],
+        [
+          "J07",
+          "J02"
+        ]
+      ]
     },
     "attributeAudit": {
       "status": "Deep Vetted",
@@ -27447,17 +28188,213 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "relationshipGroups": {
       "FAMILY & CLOSE RELATIONS": [
-        "Cruz family — Earth family appears in supporting stories"
+        "Her murdered friends — defining personal loss"
       ],
       "KEY ALLIES": [
         "Simon Baz",
-        "Justice League",
-        "Kilowog"
+        "Batman",
+        "Cyborg",
+        "Starfire",
+        "Azrael / Jean-Paul Valley"
       ],
       "KEY RIVALS / ENEMIES": [
-        "Volthoom",
-        "Sinestro Corps"
+        "Volthoom — entity associated with the corrupted Ring of Volthoom",
+        "Darkseid",
+        "Sinestro — opposing leader and later Corps connection"
       ]
+    },
+    "researchSources": [
+      {
+        "id": "J01",
+        "label": "DC — Jessica Cruz: official profile",
+        "url": "https://www.dc.com/characters/jessica-cruz",
+        "kind": "Publisher reference",
+        "note": "Corrupted Power Ring, self-sacrifice, genuine Lantern ring and baseline abilities.",
+        "access": "Public character-page text reviewed."
+      },
+      {
+        "id": "J02",
+        "label": "DC — Jessica Cruz: The People’s Green Lantern",
+        "url": "https://www.dc.com/blog/2025/03/10/jessica-cruz-the-people-s-green-lantern",
+        "kind": "Publisher editorial",
+        "note": "Trauma, agency, Simon partnership and later Corps transitions.",
+        "access": "Public article text reviewed."
+      },
+      {
+        "id": "J03",
+        "label": "DC — Green Lanterns Vol. 1: Rage Planet",
+        "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-1-rage-planet",
+        "kind": "Publisher catalog",
+        "note": "Jessica and Simon’s Earth partnership against Red Lantern threats.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "J04",
+        "label": "DC — Green Lanterns #15",
+        "url": "https://www.dc.com/comics/green-lanterns-2016/green-lanterns-15",
+        "kind": "Publisher catalog",
+        "note": "Return to Portland and the crime behind her trauma.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "J05",
+        "label": "DC — Green Lanterns Vol. 4: The First Ring",
+        "url": "https://www.dc.com/graphic-novels/green-lanterns-2016/green-lanterns-vol-4-the-first-ring",
+        "kind": "Publisher catalog",
+        "note": "Further Corps training and independent survival in space.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "J06",
+        "label": "DC — Justice League Odyssey Vol. 1: The Ghost Sector",
+        "url": "https://www.dc.com/graphic-novels/justice-league-odyssey-2018/justice-league-odyssey-vol-1-the-ghost-sector",
+        "kind": "Publisher catalog",
+        "note": "Cyborg, Starfire, Azrael and Jessica’s cosmic expedition; collects #1–5.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "J07",
+        "label": "DC — Green Lantern 2021 Annual #1",
+        "url": "https://www.dc.com/comics/green-lantern-2021-annual-2021/green-lantern-2021-annual-1",
+        "kind": "Publisher catalog",
+        "note": "Power-battery failure and the offer of a Sinestro Corps ring.",
+        "access": "Public catalog text reviewed; synopsis does not itself cover the complete issue."
+      },
+      {
+        "id": "J08",
+        "label": "DC — Justice League #30 (2014)",
+        "url": "https://www.dc.com/comics/justice-league-2011/justice-league-30",
+        "kind": "Publisher catalog",
+        "note": "Bibliographic anchor for her full introduction; distinguish DC’s 2013 first-appearance field.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "J09",
+        "label": "DC — Justice League #34",
+        "url": "https://www.dc.com/comics/justice-league-2011/justice-league-34",
+        "kind": "Publisher catalog",
+        "note": "Power Ring becomes a League member.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "J10",
+        "label": "DC — Green Lantern Corps: official profile",
+        "url": "https://www.dc.com/characters/green-lantern-corps",
+        "kind": "Publisher reference",
+        "note": "General technological capability of a Corps ring.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      },
+      {
+        "id": "J11",
+        "label": "DC — Green With Creativity: constructs",
+        "url": "https://www.dc.com/blog/2024/03/14/green-with-creativity-the-five-best-green-lantern-constructs",
+        "kind": "Publisher editorial",
+        "note": "Willpower and imagination underpin ring constructs.",
+        "access": "Publisher text or indexed catalog extract reviewed; complete comic issues were not read for this pass."
+      }
+    ],
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Main-comics Jessica Cruz; Power Ring, Green Lantern/Simon partnership, Odyssey and the 2021 yellow-ring transition. This scope does not certify every subsequent Corps assignment.",
+    "researchReview": {
+      "batch": "R3",
+      "version": "v8.48",
+      "date": "2026-09-06",
+      "method": "Character-first narrative, era-scoped abilities, identity and relationship cross-checks; publisher references, catalog descriptions and explicitly labelled supplementary review.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Motivation synthesis and reading choices are Comic Vault interpretation. The review date does not imply coverage of every comic published by that date. Some Marvel pages were available only as indexed extracts; see individual access notes."
+    },
+    "powerDetails": [
+      {
+        "title": "Constructs and energy",
+        "detail": "A genuine Corps ring translates willpower and imagination into useful energy forms. Jessica can use it for barriers, restraints, tools and direct offensive effects; these are not powers produced by her human body alone.",
+        "sourceIds": [
+          "J10",
+          "J11"
+        ]
+      },
+      {
+        "title": "Flight and shielding",
+        "detail": "Ring-generated protection makes extreme movement and survival possible. A powerless or unavailable ring changes her practical capabilities, as the battery-failure era demonstrates.",
+        "sourceIds": [
+          "J10",
+          "J07"
+        ]
+      },
+      {
+        "title": "Learned operational skill",
+        "detail": "Partnership with Simon and later Corps training build mission experience. Jessica’s growing independence is distinct from merely increasing a strength score.",
+        "sourceIds": [
+          "J03",
+          "J05"
+        ]
+      },
+      {
+        "title": "Fear-related distinctions",
+        "detail": "Her earliest artifact tried to dominate her. Her later Sinestro Corps connection is a different chapter; do not treat all yellow or fear-associated abilities as the same possession.",
+        "sourceIds": [
+          "J01",
+          "J07"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "Justice League #30–34 (2014)",
+        "scope": "Power Ring introduction",
+        "why": "Meet Jessica before her ordinary Green Lantern role.",
+        "sourceIds": [
+          "J08",
+          "J09"
+        ]
+      },
+      {
+        "title": "Green Lanterns Vol. 1: Rage Planet",
+        "scope": "Earth partnership",
+        "why": "A starting point for Jessica and Simon learning to work together.",
+        "sourceIds": [
+          "J03"
+        ]
+      },
+      {
+        "title": "Green Lanterns #15",
+        "scope": "Personal history",
+        "why": "Follow the return to Portland and her unresolved past.",
+        "sourceIds": [
+          "J04"
+        ]
+      },
+      {
+        "title": "Green Lanterns Vol. 4: The First Ring",
+        "scope": "Corps training",
+        "why": "See her tested beyond the familiar Earth assignment.",
+        "sourceIds": [
+          "J05"
+        ]
+      },
+      {
+        "title": "Justice League Odyssey Vol. 1: The Ghost Sector",
+        "scope": "Cosmic team; #1–5",
+        "why": "A different kind of responsibility beside Cyborg, Starfire and Azrael.",
+        "sourceIds": [
+          "J06"
+        ]
+      },
+      {
+        "title": "Green Lantern 2021 Annual #1",
+        "scope": "Yellow-ring transition",
+        "why": "Read the circumstances of the Sinestro Corps offer, rather than assuming a simple villain turn.",
+        "sourceIds": [
+          "J07"
+        ]
+      }
+    ],
+    "attributeContext": "Comic Vault editorial estimates, not official publisher statistics or battle predictions. Green-ring-equipped Jessica. Her former corrupted ring and later Sinestro Corps period are not combined with this baseline.",
+    "fieldSources": {
+      "firstAppearance": [
+        "J01"
+      ],
+      "powerDetails": "Per-card sourceIds",
+      "history": "Per-entry sourceIds",
+      "origin": "Per-paragraph paragraphSources"
     }
   },
   {
@@ -29001,22 +29938,24 @@ window.COMIC_VAULT_CHARACTERS = [
     "publisher": "MARVEL",
     "firstAppearance": "Captain Marvel #14 (2013) cameo; All-New Marvel NOW! Point One #1 (2014) first full appearance",
     "alignment": "Hero",
-    "base": "Jersey City",
+    "base": "Jersey City; team and travel locations vary by era",
     "teams": [
+      "Avengers (former)",
       "Champions",
-      "Avengers",
-      "X-Men in recent continuity"
+      "X-Men"
     ],
-    "occupation": "Student, hero",
-    "species": "Inhuman and mutant",
+    "occupation": "Student and superhero",
+    "species": "Human with Inhuman and mutant heritage",
     "birthplace": "Varies by continuity",
     "height": "Varies by continuity",
     "eyes": "Varies by continuity",
-    "overview": "Kamala Khan is a Pakistani-American teenager inspired by Carol Danvers who becomes Ms. Marvel. Her stories mix family, faith, fandom and superhero responsibility with an elastic or hard-light power set depending on era.",
+    "overview": "Kamala Khan is Jersey City’s Ms. Marvel, a Pakistani-American Muslim hero who first imagined adventures from the outside and then found herself responsible for the people around her. Terrigen-triggered body-morphing powers helped her become a protector in her own image rather than a copy of Carol Danvers. Friends, family and community remain central even as Avengers, Champions and X-Men service widen her world. Her later mutant identity adds to that history; it does not make her earlier Inhuman experiences disappear.",
     "powers": [
-      "Shape-shifting / embiggening in original powers",
-      "Healing",
-      "Hard-light constructs in later interpretations"
+      "Polymorphic stretching and size change",
+      "Embiggened limbs and body",
+      "Shape-changing",
+      "Accelerated healing with limits",
+      "Mutant hard-light potential — status and incarnation must be specified"
     ],
     "attributes": {
       "Intelligence": 3,
@@ -29038,50 +29977,68 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "allies": [
       "Captain Marvel / Carol Danvers",
-      "Miles Morales",
-      "Champions"
+      "Spider-Man / Miles Morales",
+      "Bruno Carrelli",
+      "Nakia Bahadir",
+      "Champions",
+      "X-Men"
     ],
     "enemies": [
       "Inventor",
-      "Kamran"
+      "Kamran — antagonist in her early comics",
+      "Orchis"
     ],
     "history": [
       [
-        "2013",
-        "Debut",
-        "Kamala Khan enters the comics in Captain Marvel #14 (2013)."
+        "Jersey City",
+        "A fan becomes a protector",
+        "Terrigen awakens body-morphing abilities; Kamala grows into her own Ms. Marvel identity."
       ],
       [
-        "2014",
-        "Ms. Marvel",
-        "Kamala headlines a landmark solo series in Jersey City."
+        "Early heroism",
+        "Bruno and a life outside the costume",
+        "Friendship supports her work while secrecy puts ordinary relationships under pressure."
       ],
       [
-        "2016",
+        "Avengers era",
+        "Admiration meets disagreement",
+        "Service beside her heroes and the Civil War II conflict challenge her trust in adult decisions."
+      ],
+      [
         "Champions",
-        "She co-founds a team of young heroes."
+        "Building a team with her peers",
+        "Kamala works with young heroes including Miles, pursuing a shared idea of responsibility."
       ],
       [
         "2023",
-        "Mutant Revelation",
-        "Modern continuity adds mutant heritage to her identity."
+        "Death, resurrection and the X-gene",
+        "Her death protecting Mary Jane is followed by Krakoan resurrection and disclosure of mutant heritage."
+      ],
+      [
+        "Mutant Menace",
+        "An unstable power balance",
+        "Inhuman assistance and a mutant-power revelation complicate her restored body’s abilities."
       ]
     ],
     "costumes": [
       [
-        "2014",
-        "Ms. Marvel",
-        "Blue tunic, red scarf and lightning bolt."
+        "Original Ms. Marvel",
+        "Blue, red and lightning motif",
+        "Her costume identifies the Jersey City hero; the outfit does not produce her polymorphism."
       ],
       [
-        "Modern",
-        "Updated Ms. Marvel",
-        "Classic colors with evolving power visuals."
+        "X-Men era",
+        "Mutant-team variations",
+        "Later designs signal an additional community without erasing the Ms. Marvel identity."
       ]
     ],
     "comics": [
-      "Ms. Marvel: No Normal",
-      "Champions"
+      "Ms. Marvel (2014) — No Normal",
+      "Ms. Marvel — Civil War II era",
+      "Champions (2016) #1 onward",
+      "X-Men: Hellfire Gala 2023 #1",
+      "Ms. Marvel: The New Mutant (2023) #1–4",
+      "Ms. Marvel: Mutant Menace (2024) #1–4"
     ],
     "imageSlug": "kamala-khan",
     "aliases": [
@@ -29092,49 +30049,133 @@ window.COMIC_VAULT_CHARACTERS = [
       "Muneeba Khan — mother",
       "Aamir Khan — brother"
     ],
-    "gear": [],
+    "gear": [
+      {
+        "type": "IDENTITY AND EQUIPMENT",
+        "name": "Ms. Marvel costume",
+        "detail": "A practical superhero identity, not the source of her Terrigen-triggered body-morphing powers."
+      },
+      {
+        "type": "CONTINUITY NOTE",
+        "name": "Bangle / adaptation distinction",
+        "detail": "Do not import the MCU’s bangle-based activation directly into her original comics power origin."
+      }
+    ],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "2013",
-          "title": "Debut",
-          "detail": "Kamala Khan enters the comics in Captain Marvel #14 (2013)."
+          "era": "Jersey City",
+          "title": "A fan becomes a protector",
+          "detail": "Terrigen awakens body-morphing abilities; Kamala grows into her own Ms. Marvel identity.",
+          "sourceIds": [
+            "K01",
+            "K02"
+          ]
         },
         {
-          "era": "2014",
-          "title": "Ms. Marvel",
-          "detail": "Kamala headlines a landmark solo series in Jersey City."
+          "era": "Early heroism",
+          "title": "Bruno and a life outside the costume",
+          "detail": "Friendship supports her work while secrecy puts ordinary relationships under pressure.",
+          "sourceIds": [
+            "K04"
+          ]
         },
         {
-          "era": "2016",
-          "title": "Champions",
-          "detail": "She co-founds a team of young heroes."
+          "era": "Avengers era",
+          "title": "Admiration meets disagreement",
+          "detail": "Service beside her heroes and the Civil War II conflict challenge her trust in adult decisions.",
+          "sourceIds": [
+            "K05",
+            "K06"
+          ]
+        },
+        {
+          "era": "Champions",
+          "title": "Building a team with her peers",
+          "detail": "Kamala works with young heroes including Miles, pursuing a shared idea of responsibility.",
+          "sourceIds": [
+            "K03",
+            "K06"
+          ]
         },
         {
           "era": "2023",
-          "title": "Mutant Revelation",
-          "detail": "Modern continuity adds mutant heritage to her identity."
+          "title": "Death, resurrection and the X-gene",
+          "detail": "Her death protecting Mary Jane is followed by Krakoan resurrection and disclosure of mutant heritage.",
+          "sourceIds": [
+            "K07"
+          ]
+        },
+        {
+          "era": "Mutant Menace",
+          "title": "An unstable power balance",
+          "detail": "Inhuman assistance and a mutant-power revelation complicate her restored body’s abilities.",
+          "sourceIds": [
+            "K08",
+            "K09",
+            "K11"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Debut",
+          "title": "Cameo is not the full launch",
+          "detail": "The archive retains Captain Marvel #14 (2013) as the cameo and All-New Marvel NOW! Point One #1 (2014) as the full introduction, followed by her solo series.",
+          "sourceIds": [
+            "K01",
+            "K03"
+          ]
+        },
+        {
+          "era": "Heritage",
+          "title": "Inhuman and mutant, not one replacing the other",
+          "detail": "The 2023 revelation adds an X-gene to a life already shaped by Terrigen and Inhuman abilities.",
+          "sourceIds": [
+            "K01",
+            "K07"
+          ]
+        },
+        {
+          "era": "2024 powers",
+          "title": "A revealed potential is not an always-active baseline",
+          "detail": "Marvel identifies hard-light structures in Mutant Menace #4. The issue review distinguishes the reanimated original body’s manifestation from the living Kamala’s still-constrained mutation after further Terrigenesis. Detailed limits merit direct-issue follow-up.",
+          "sourceIds": [
+            "K08",
+            "K11"
+          ]
+        },
+        {
+          "era": "Adaptation",
+          "title": "The MCU remains a separate record of events",
+          "detail": "The screen bangle and its activation story must not be copied into the original comics origin, even where later comics also introduce hard-light potential.",
+          "sourceIds": [
+            "K14",
+            "K08"
+          ]
         }
       ]
     },
     "costumeCategories": {
       "Main Comics": [
         {
-          "era": "2014",
-          "title": "Ms. Marvel",
-          "detail": "Blue tunic, red scarf and lightning bolt."
+          "era": "Original Ms. Marvel",
+          "title": "Blue, red and lightning motif",
+          "detail": "Her costume identifies the Jersey City hero; the outfit does not produce her polymorphism."
         },
         {
-          "era": "Modern",
-          "title": "Updated Ms. Marvel",
-          "detail": "Classic colors with evolving power visuals."
+          "era": "X-Men era",
+          "title": "Mutant-team variations",
+          "detail": "Later designs signal an additional community without erasing the Ms. Marvel identity."
         }
       ]
     },
-    "continuityNote": "Kamala Khan's debut history includes a brief/cameo appearance before her first full starring appearance. Both should remain distinguished in first-appearance notes.",
+    "continuityNote": "The archive retains Captain Marvel #14 (2013) as the cameo and All-New Marvel NOW! Point One #1 (2014) as the full introduction, followed by her solo series. The 2023 revelation adds an X-gene to a life already shaped by Terrigen and Inhuman abilities. Marvel identifies hard-light structures in Mutant Menace #4. The issue review distinguishes the reanimated original body’s manifestation from the living Kamala’s still-constrained mutation after further Terrigenesis. Detailed limits merit direct-issue follow-up. The screen bangle and its activation story must not be copied into the original comics origin, even where later comics also introduce hard-light potential.",
     "auditCorrections": [
       "Updated species to reflect Marvel's current status: both Inhuman and mutant.",
-      "Separated cameo from first full appearance."
+      "Separated cameo from first full appearance.",
+      "v8.48: Replaced template prose with a character-first Jersey City, Avengers, Champions and resurrection narrative.",
+      "v8.48: Preserved the comics hard-light reveal but distinguished potential/reanimated-body use from a universal active power; kept MCU origin separate."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
@@ -29146,31 +30187,63 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
     },
     "auditSources": [
-      "Marvel publisher canon / official character and issue metadata",
-      "Continuity-sensitive reference cross-check",
-      "Comic Vault existing dossier compared against mantle and retcon history"
+      "Marvel — Who Is Ms. Marvel? Official Guide",
+      "Marvel — Ms. Marvel: comics biography",
+      "Marvel — Ms. Marvel reading guide",
+      "Marvel — Kamala and Bruno’s Friendship",
+      "Marvel — Ms. Marvel and Captain Marvel’s History",
+      "Marvel — Every Team Ms. Marvel Has Joined",
+      "Marvel — Hellfire Gala 2023: Shocking Moments",
+      "Marvel — The Krakoan Age: Year 5",
+      "Marvel — Ms. Marvel: Mutant Menace #4",
+      "Marvel — Ms. Marvel: The New Mutant first look",
+      "AIPT — Mutant Menace #4 review",
+      "Marvel — Ms. Marvel comics for new readers",
+      "Marvel — Ms. Marvel: The New Mutant Vol. 2",
+      "Marvel — Ms. Marvel: on-screen biography"
     ],
     "originProfile": {
-      "originLossMotivation": "Kamala Khan enters the comics in Captain Marvel #14 (2013). Kamala headlines a landmark solo series in Jersey City.\n\nKamala Khan's personal world is anchored by Yusuf Khan — father; Muneeba Khan — mother; Aamir Khan — brother; and Captain Marvel — major ally.\n\nAt the center of the character is this core drive: Protect others and turn exceptional ability or experience into responsibility. Kamala Khan's defining question is not simply what can be done, but what should be done when someone else is in danger.",
+      "originLossMotivation": "Kamala Khan grew up in Jersey City loving superhero stories while trying to find room for her own life within family expectations, school and friendship. Carol Danvers seemed to embody the kind of confidence she admired. When Terrigen exposure awakened her Inhuman abilities, Kamala could suddenly reshape her body as well as imagine a different future. Becoming heroic did not require becoming Carol. Learning to use the name Ms. Marvel meant discovering that the girl already living in Jersey City had reasons, relationships and a community worth bringing into the costume.\n\nHer earliest work made that discovery practical. A changed body could reach someone in danger or deliver a giant-handed strike, but it could not automatically explain an absence to her family or tell her whom to trust. Bruno became an important friend and source of support. The people who knew Kamala outside the costume helped keep heroism connected to daily life. Secrecy created strains precisely because those relationships mattered. Saving strangers and remaining available to friends were not rival versions of herself; they were responsibilities she had to learn to hold together.\n\nMeeting and working with established heroes changed the distance between admiration and experience. Carol became more than a face on a poster, and joining the Avengers placed Kamala among people she had once watched from afar. The Civil War II conflict tested whether admiration required agreement. Disillusionment with adult choices did not end her belief in helping others, but it made her less willing to borrow someone else's judgment. Alongside other young heroes, she helped build the Champions around an effort to act on principles they were prepared to defend themselves.\n\nThe Champions gave Kamala peers with whom leadership and responsibility could be shared. Her friendships with Miles Morales and other young heroes were different from asking a famous mentor for permission. Team life broadened the scale of problems she confronted while leaving her obligations at home intact. Jersey City was not simply the place she had escaped on the way to more impressive adventures. It was where the people who shaped her still lived, and where the consequences of her choices could be personal rather than distant reports about another superhuman emergency.\n\nProtecting Mary Jane Watson cost Kamala her life. The X-Men later restored her through Krakoa's resurrection process, revealing that she possessed an X-gene as well as her Inhuman heritage. Returning did not reduce that history to a simple correction of what she had been before. It gave her another community and another danger to navigate, particularly as hostility toward mutants intensified. Working with the X-Men required adapting to threats and expectations beyond her first adventures. Her existing identity, family ties and experience of being Ms. Marvel still belonged to her.\n\nProblems with her resurrected body's powers brought her back to the Inhumans for help. The Mutant Menace crisis also exposed hard-light potential associated with her mutation, rather than making every earlier stretching feat secretly a light construct. Those questions about power and identity did not displace her concern for the people threatened around her. Kamala's recurring challenge is to remain herself while other people try to classify, recruit or define her. Being a daughter, friend, Muslim, Inhuman, mutant and hero need not be a competition in which one belonging makes the others false.",
       "powerOrigin": {
-        "type": "Inhuman / Mutant Heritage with Terrigen-Triggered Powers (Modern Continuity)",
-        "detail": "Kamala Khan's power origin is classified as Inhuman / Mutant Heritage with Terrigen-Triggered Powers (Modern Continuity). After her 2023 death and Krakoan resurrection, Marvel revealed that she also possesses an X-gene, making her both an Inhuman and a mutant. The resulting ability set includes Shape-shifting / embiggening in original powers, Healing and Hard-light constructs in later interpretations."
+        "type": "Terrigen-triggered polymorphism plus separately revealed mutant heritage",
+        "detail": "Original body-morphing and healing arise through Terrigenesis. The X-gene revelation and hard-light potential belong to later, carefully scoped developments, not a replacement origin."
       },
       "importantPeople": [
-        "Yusuf Khan — father",
-        "Muneeba Khan — mother",
-        "Aamir Khan — brother",
-        "Captain Marvel — major ally",
-        "Miles Morales — major ally",
-        "Champions — major ally",
-        "Inventor — major adversary",
-        "Kamran — major adversary"
+        "Yusuf, Muneeba and Aamir Khan — family",
+        "Bruno Carrelli — close friend",
+        "Captain Marvel / Carol Danvers — inspiration and mentor",
+        "Spider-Man / Miles Morales — friend and teammate"
       ],
-      "coreDrive": "Protect others and turn exceptional ability or experience into responsibility. Kamala Khan's defining question is not simply what can be done, but what should be done when someone else is in danger.",
-      "standard": "Comic Vault Expanded Origin Standard v1",
+      "coreDrive": "Protect her community in her own identity, learning from heroes without surrendering her judgment or her multiple forms of belonging.",
+      "standard": "Character-first dossier / source-reviewed R3",
       "manualDeepDive": true,
-      "profilePass": "P300",
-      "profileUpdatedThrough": 300
+      "profilePass": "R3-v8.48",
+      "paragraphSources": [
+        [
+          "K01",
+          "K02"
+        ],
+        [
+          "K04"
+        ],
+        [
+          "K05",
+          "K06"
+        ],
+        [
+          "K03",
+          "K06"
+        ],
+        [
+          "K07",
+          "K10"
+        ],
+        [
+          "K09",
+          "K08",
+          "K11"
+        ]
+      ]
     },
     "attributeAudit": {
       "status": "Deep Vetted",
@@ -29198,13 +30271,234 @@ window.COMIC_VAULT_CHARACTERS = [
       ],
       "KEY ALLIES": [
         "Captain Marvel / Carol Danvers",
-        "Miles Morales",
-        "Champions"
+        "Spider-Man / Miles Morales",
+        "Bruno Carrelli",
+        "Nakia Bahadir",
+        "Champions",
+        "X-Men"
       ],
       "KEY RIVALS / ENEMIES": [
         "Inventor",
-        "Kamran"
+        "Kamran — antagonist in her early comics",
+        "Orchis"
       ]
+    },
+    "researchSources": [
+      {
+        "id": "K01",
+        "label": "Marvel — Who Is Ms. Marvel? Official Guide",
+        "url": "https://www.marvel.com/articles/comics/who-is-ms-marvel-the-official-marvel-guide",
+        "kind": "Publisher editorial",
+        "note": "Jersey City origin, family, identity and Inhuman heritage.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K02",
+        "label": "Marvel — Ms. Marvel: comics biography",
+        "url": "https://www.marvel.com/characters/ms-marvel-kamala-khan/in-comics",
+        "kind": "Publisher reference",
+        "note": "Body morphing, size change, healing and early history.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K03",
+        "label": "Marvel — Ms. Marvel reading guide",
+        "url": "https://www.marvel.com/comics/guides/1426/ms-marvel-kamala-khan",
+        "kind": "Publisher reading guide",
+        "note": "Origin series and Champions entry points.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K04",
+        "label": "Marvel — Kamala and Bruno’s Friendship",
+        "url": "https://www.marvel.com/articles/comics/ms-marvel-kamala-khan-bruno-friendship-greatest-hits-list",
+        "kind": "Publisher editorial",
+        "note": "Friendship, support and the death/resurrection era.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K05",
+        "label": "Marvel — Ms. Marvel and Captain Marvel’s History",
+        "url": "https://www.marvel.com/articles/comics/ms-marvel-captain-marvel-history-explained",
+        "kind": "Publisher editorial",
+        "note": "Carol as inspiration, mentor and source of difficult disagreement.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K06",
+        "label": "Marvel — Every Team Ms. Marvel Has Joined",
+        "url": "https://www.marvel.com/articles/comics/every-team-ms-marvel-has-joined-list",
+        "kind": "Publisher editorial",
+        "note": "Avengers, Champions and X-Men affiliation history.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K07",
+        "label": "Marvel — Hellfire Gala 2023: Shocking Moments",
+        "url": "https://www.marvel.com/articles/comics/x-men-hellfire-gala-2023-most-shocking-moments-recap",
+        "kind": "Publisher story recap",
+        "note": "Death, Krakoan resurrection and the X-gene revelation.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K08",
+        "label": "Marvel — The Krakoan Age: Year 5",
+        "url": "https://www.marvel.com/articles/comics/krakoan-age-era-year-5-recap-summary",
+        "kind": "Publisher story recap",
+        "note": "Recap names hard-light capability revealed in Mutant Menace #4. Does not alone establish it as an always-active baseline.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K09",
+        "label": "Marvel — Ms. Marvel: Mutant Menace #4",
+        "url": "https://www.marvel.com/comics/issue/115103/ms_marvel_mutant_menace_2024_4",
+        "kind": "Publisher catalog",
+        "note": "Power instability and help from Medusa, Karnak and Lockjaw.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K10",
+        "label": "Marvel — Ms. Marvel: The New Mutant first look",
+        "url": "https://www.marvel.com/articles/comics/ms-marvel-the-new-mutant-1-first-look-preview",
+        "kind": "Publisher preview",
+        "note": "New X-Men role following the resurrection.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K11",
+        "label": "AIPT — Mutant Menace #4 review",
+        "url": "https://aiptcomics.com/2024/06/05/ms-marvel-mutant-menace-4-review/",
+        "kind": "Secondary issue review",
+        "note": "Supplementary issue recap: re-Terrigenesis, dormant living-host mutation and hard-light use by the reanimated body. Cross-checked with Marvel’s power-reveal recap.",
+        "access": "Public review text reviewed; the original comic was not read."
+      },
+      {
+        "id": "K12",
+        "label": "Marvel — Ms. Marvel comics for new readers",
+        "url": "https://www.marvel.com/articles/comics/ms-marvel-comics-for-new-readers",
+        "kind": "Publisher reading guide",
+        "note": "Annotated entry points for the character.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K13",
+        "label": "Marvel — Ms. Marvel: The New Mutant Vol. 2",
+        "url": "https://www.marvel.com/comics/collection/115074/ms_marvel_the_new_mutant_vol_2_trade_paperback",
+        "kind": "Publisher catalog",
+        "note": "Collection of Mutant Menace #1–4.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "K14",
+        "label": "Marvel — Ms. Marvel: on-screen biography",
+        "url": "https://www.marvel.com/characters/ms-marvel-kamala-khan/on-screen",
+        "kind": "Publisher adaptation reference",
+        "note": "MCU bangle-linked hard-light portrayal; adaptation evidence only.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      }
+    ],
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Earth-616 Kamala from her original Jersey City life through the 2023–2024 resurrection and Mutant Menace arc. This pass does not certify every later NYX, time-travel or 2026 development. MCU evidence is separated; hard-light details include an explicitly labelled secondary issue recap.",
+    "researchReview": {
+      "batch": "R3",
+      "version": "v8.48",
+      "date": "2026-09-06",
+      "method": "Character-first narrative, era-scoped abilities, identity and relationship cross-checks; publisher references, catalog descriptions and explicitly labelled supplementary review.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Motivation synthesis and reading choices are Comic Vault interpretation. The review date does not imply coverage of every comic published by that date. Some Marvel pages were available only as indexed extracts; see individual access notes."
+    },
+    "powerDetails": [
+      {
+        "title": "Stretching and embiggening",
+        "detail": "Kamala changes the size and shape of her physical body, including extending her reach and enlarging limbs. These original feats are bodily transformations, not hard-light fists projected around an unchanged arm.",
+        "sourceIds": [
+          "K02"
+        ]
+      },
+      {
+        "title": "Shape-changing and recovery",
+        "detail": "Her polymorphism includes broader changes of form, and she has an accelerated healing capability. Neither should be read as unlimited endurance, immunity to harm or freedom from the need to recover.",
+        "sourceIds": [
+          "K02"
+        ]
+      },
+      {
+        "title": "Mutant hard-light potential",
+        "detail": "A later comics reveal connects her X-gene with hard-light creation. This is real comics material, not simply an MCU mistake, but the 2024 manifestation and living-host limitations require separate labels. It is not added as a permanently available baseline attack here.",
+        "sourceIds": [
+          "K08",
+          "K11"
+        ]
+      },
+      {
+        "title": "Leadership and judgment",
+        "detail": "Team experience helps Kamala coordinate with other heroes and challenge decisions she believes are wrong. These are learned responsibilities rather than extra mutant senses or telepathic abilities.",
+        "sourceIds": [
+          "K05",
+          "K06"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "Ms. Marvel (2014) — No Normal",
+        "scope": "New reader / origin",
+        "why": "The clearest place to meet Kamala’s home, relationships and first heroic choices.",
+        "sourceIds": [
+          "K03",
+          "K12"
+        ]
+      },
+      {
+        "title": "Ms. Marvel — Civil War II era",
+        "scope": "Mentorship under pressure",
+        "why": "Read for her difficult reassessment of Carol and established heroes.",
+        "sourceIds": [
+          "K05"
+        ]
+      },
+      {
+        "title": "Champions (2016) #1 onward",
+        "scope": "Peers and leadership",
+        "why": "See the young team’s attempt to put its principles into practice.",
+        "sourceIds": [
+          "K03",
+          "K06"
+        ]
+      },
+      {
+        "title": "X-Men: Hellfire Gala 2023 #1",
+        "scope": "Major continuity change",
+        "why": "Understand the resurrection and the mutant revelation before jumping into the later solo miniseries.",
+        "sourceIds": [
+          "K07"
+        ]
+      },
+      {
+        "title": "Ms. Marvel: The New Mutant (2023) #1–4",
+        "scope": "New X-Men role",
+        "why": "Follow her effort to live with an additional identity under hostile circumstances.",
+        "sourceIds": [
+          "K10"
+        ]
+      },
+      {
+        "title": "Ms. Marvel: Mutant Menace (2024) #1–4",
+        "scope": "Power and identity follow-up",
+        "why": "The necessary context for the Inhuman treatment and hard-light distinction. Collected as The New Mutant Vol. 2.",
+        "sourceIds": [
+          "K09",
+          "K13"
+        ]
+      }
+    ],
+    "attributeContext": "Comic Vault editorial estimates, not official publisher statistics or battle predictions. Original/main body-morphing baseline, not the reanimated Mutant Menace body or an MCU adaptation. Energy Projection is N/A in this baseline; the separate hard-light note records the revealed mutant potential rather than deleting it.",
+    "fieldSources": {
+      "firstAppearance": [
+        "K01"
+      ],
+      "powerDetails": "Per-card sourceIds",
+      "history": "Per-entry sourceIds",
+      "origin": "Per-paragraph paragraphSources"
     }
   },
   {
@@ -32431,31 +33725,31 @@ window.COMIC_VAULT_CHARACTERS = [
     "name": "Magik",
     "realName": "Illyana Rasputin",
     "publisher": "MARVEL",
-    "firstAppearance": "Giant-Size X-Men #1 (1975) as Illyana Rasputin; Magik identity developed in the 1980s",
+    "firstAppearance": "Giant-Size X-Men #1 (1975) as Illyana; Uncanny X-Men #160 (1982) older Limbo return; Magik (1983) #1 begins her origin miniseries",
     "alignment": "Hero / antihero",
     "base": "Limbo / X-Men bases",
     "teams": [
       "New Mutants",
       "X-Men"
     ],
-    "occupation": "Sorceress, mutant hero",
-    "species": "Mutant / sorceress",
+    "occupation": "X-Man, sorceress and former ruler of Limbo",
+    "species": "Human mutant; trained sorceress",
     "birthplace": "Varies by continuity",
     "height": "Varies by continuity",
     "eyes": "Varies by continuity",
-    "overview": "Illyana Rasputin is Colossus' younger sister, a mutant teleporter raised for years in the demonic dimension Limbo. She becomes its sorceress ruler and wields the mystical Soulsword.",
+    "overview": "Illyana Rasputin is a mutant teleporter and sorceress who survived childhood captivity in Limbo. Younger sister to Colossus and Mikhail Rasputin, she returned to Earth older, armed with the Soulsword and wary of what her captor had made of her. As Magik, she found comrades among the New Mutants and became an important magical defender of the X-Men. Ruling Limbo was one phase of her life, not a permanent condition of every later adventure.",
     "powers": [
-      "Stepping discs",
-      "Teleportation",
-      "Sorcery",
-      "Soulsword",
-      "Limbo control"
+      "Mutant teleportation through stepping discs",
+      "Learned sorcery",
+      "Soulsword and magical disruption",
+      "Mystical armor",
+      "Limbo rulership — historical / era-specific"
     ],
     "attributes": {
       "Intelligence": 3,
       "Tactical Ability": 3,
-      "Fighting Ability": 2,
-      "Willpower": 3,
+      "Fighting Ability": 4,
+      "Willpower": 4,
       "Psychic Power": null,
       "Strength": 2,
       "Speed": 4,
@@ -32463,68 +33757,78 @@ window.COMIC_VAULT_CHARACTERS = [
       "Stamina": 2,
       "Agility / Reflexes": 3,
       "Healing / Recovery": null,
-      "Energy Projection": null,
+      "Energy Projection": 3,
       "Magic / Mystical Mastery": 5,
-      "Senses / Awareness": 1,
+      "Senses / Awareness": 3,
       "Skill / Technology": 1,
       "Power Versatility": 4
     },
     "allies": [
-      "Colossus",
+      "Colossus / Piotr Rasputin",
+      "Kitty Pryde",
       "New Mutants",
-      "Kitty Pryde"
+      "Madelyne Pryor — complicated ally and successor in Limbo"
     ],
     "enemies": [
       "Belasco",
-      "Limbo demons"
+      "S’ym",
+      "N’astirh"
     ],
     "history": [
       [
-        "1975",
-        "Debut",
-        "Magik enters the comics in Giant-Size X-Men #1 (1975)."
+        "Childhood",
+        "Taken into Limbo",
+        "Illyana experiences years away while little time passes for her family on Earth."
       ],
       [
-        "1983",
-        "Magik Miniseries",
-        "Illyana's lost years in Limbo are revealed."
+        "Escape",
+        "The Soulsword and Belasco",
+        "Her own spirit becomes the source of a weapon associated with resistance to her captor."
       ],
       [
-        "1984",
         "New Mutants",
-        "She joins the team as Magik."
+        "A place among peers",
+        "Friendship with Kitty and life alongside young mutants reconnect her with Earth."
       ],
       [
-        "2000s",
-        "Return",
-        "Illyana returns from death and reclaims Limbo."
+        "Inferno and aftermath",
+        "Childhood restored, then lost",
+        "A younger Illyana survives the Limbo crisis, then later dies from the Legacy Virus. Her later return is a supernatural history, not a mundane cure."
       ],
       [
-        "Modern",
-        "X-Men Captain",
-        "She becomes one of mutantkind's most important magical defenders."
+        "Adult service",
+        "A defender and team leader",
+        "Magik protects mutants through teleportation and sorcery and leads the Dead Souls team."
+      ],
+      [
+        "Limbo transition",
+        "Passing on the throne",
+        "Illyana cedes rule to Madelyne, remaining able to participate in later threats involving Limbo."
       ]
     ],
     "costumes": [
       [
-        "1980s",
-        "New Mutant",
-        "Black/yellow team uniform."
+        "New Mutants",
+        "Team uniform",
+        "Early team presentation connects Illyana to her young mutant peers."
       ],
       [
-        "2010s",
-        "Magik",
-        "Black armor, Soulsword and horned headpiece."
+        "Mystical states",
+        "Armor and Darkchylde",
+        "Manifested armor and transformed appearance belong to her mystical history."
       ],
       [
-        "Modern",
-        "Sorceress",
-        "Dark magical armor and oversized Soulsword."
+        "X-Men",
+        "Sword-bearing sorceress",
+        "Later black-and-gold/black team-era styling does not itself prove present rulership of Limbo."
       ]
     ],
     "comics": [
-      "Magik: Storm and Illyana",
-      "New Mutants"
+      "Magik (1983) #1–4 / Storm & Illyana",
+      "The New Mutants — Inferno-era story",
+      "New Mutants: Dead Souls (2018)",
+      "New Mutants (2019) — The Labors of Magik, beginning #25",
+      "Magik (2025) #6 / Vol. 2: Shadows of Resistance"
     ],
     "imageSlug": "magik",
     "aliases": [
@@ -32532,61 +33836,141 @@ window.COMIC_VAULT_CHARACTERS = [
       "Darkchylde"
     ],
     "family": [
-      "Colossus — brother",
-      "Mikhail Rasputin — brother"
+      "Colossus / Piotr Rasputin — older brother",
+      "Mikhail Rasputin — older brother"
     ],
-    "gear": [],
+    "gear": [
+      {
+        "type": "SOUL-FORGED WEAPON",
+        "name": "Soulsword",
+        "detail": "A manifestation bound to Illyana’s own spirit, particularly important against magical threats; not an ordinary borrowed steel blade."
+      },
+      {
+        "type": "MYSTICAL PROTECTION",
+        "name": "Manifested armor",
+        "detail": "Mystical protection associated with her Magik/Darkchylde portrayals; extent and appearance vary across eras."
+      }
+    ],
     "continuities": {
-      "Main Comics": [
+      "Life & Career": [
         {
-          "era": "1975",
-          "title": "Debut",
-          "detail": "Magik enters the comics in Giant-Size X-Men #1 (1975)."
+          "era": "Childhood",
+          "title": "Taken into Limbo",
+          "detail": "Illyana experiences years away while little time passes for her family on Earth.",
+          "sourceIds": [
+            "M12"
+          ]
         },
         {
-          "era": "1983",
-          "title": "Magik Miniseries",
-          "detail": "Illyana's lost years in Limbo are revealed."
+          "era": "Escape",
+          "title": "The Soulsword and Belasco",
+          "detail": "Her own spirit becomes the source of a weapon associated with resistance to her captor.",
+          "sourceIds": [
+            "M03",
+            "M06"
+          ]
         },
         {
-          "era": "1984",
-          "title": "New Mutants",
-          "detail": "She joins the team as Magik."
+          "era": "New Mutants",
+          "title": "A place among peers",
+          "detail": "Friendship with Kitty and life alongside young mutants reconnect her with Earth.",
+          "sourceIds": [
+            "M01",
+            "M02"
+          ]
         },
         {
-          "era": "2000s",
-          "title": "Return",
-          "detail": "Illyana returns from death and reclaims Limbo."
+          "era": "Inferno and aftermath",
+          "title": "Childhood restored, then lost",
+          "detail": "A younger Illyana survives the Limbo crisis, then later dies from the Legacy Virus. Her later return is a supernatural history, not a mundane cure.",
+          "sourceIds": [
+            "M02",
+            "M13"
+          ]
         },
         {
-          "era": "Modern",
-          "title": "X-Men Captain",
-          "detail": "She becomes one of mutantkind's most important magical defenders."
+          "era": "Adult service",
+          "title": "A defender and team leader",
+          "detail": "Magik protects mutants through teleportation and sorcery and leads the Dead Souls team.",
+          "sourceIds": [
+            "M07"
+          ]
+        },
+        {
+          "era": "Limbo transition",
+          "title": "Passing on the throne",
+          "detail": "Illyana cedes rule to Madelyne, remaining able to participate in later threats involving Limbo.",
+          "sourceIds": [
+            "M09",
+            "M10",
+            "M11"
+          ]
+        }
+      ],
+      "Continuity File": [
+        {
+          "era": "Identity",
+          "title": "Illyana’s debut is earlier than her Magik career",
+          "detail": "The child appears in Giant-Size X-Men #1 (1975); the older return and 1983 origin miniseries are separate stages.",
+          "sourceIds": [
+            "M01",
+            "M02",
+            "M04"
+          ]
+        },
+        {
+          "era": "Power origin",
+          "title": "A mutant and a sorceress",
+          "detail": "Stepping-disc teleportation is her mutation; sorcery is a learned mystical discipline. One does not make the other redundant.",
+          "sourceIds": [
+            "M05"
+          ]
+        },
+        {
+          "era": "Death and return",
+          "title": "Do not flatten the different Illyanas",
+          "detail": "Inferno’s younger child, the Legacy Virus death and the later supernatural return should not be written as a single uninterrupted teenage life.",
+          "sourceIds": [
+            "M02",
+            "M13"
+          ]
+        },
+        {
+          "era": "Modern role",
+          "title": "Former ruler does not mean powerless",
+          "detail": "The transfer to Madelyne ends an unqualified claim that Illyana presently rules Limbo. Later catalog material has her helping Madelyne retain it.",
+          "sourceIds": [
+            "M09",
+            "M10",
+            "M11"
+          ]
         }
       ]
     },
     "costumeCategories": {
       "Main Comics": [
         {
-          "era": "1980s",
-          "title": "New Mutant",
-          "detail": "Black/yellow team uniform."
+          "era": "New Mutants",
+          "title": "Team uniform",
+          "detail": "Early team presentation connects Illyana to her young mutant peers."
         },
         {
-          "era": "2010s",
-          "title": "Magik",
-          "detail": "Black armor, Soulsword and horned headpiece."
+          "era": "Mystical states",
+          "title": "Armor and Darkchylde",
+          "detail": "Manifested armor and transformed appearance belong to her mystical history."
         },
         {
-          "era": "Modern",
-          "title": "Sorceress",
-          "detail": "Dark magical armor and oversized Soulsword."
+          "era": "X-Men",
+          "title": "Sword-bearing sorceress",
+          "detail": "Later black-and-gold/black team-era styling does not itself prove present rulership of Limbo."
         }
       ]
     },
-    "continuityNote": "Illyana Rasputin appears before she adopts the Magik identity. Her first appearance as Illyana and her later emergence as Magik should remain separate.",
+    "continuityNote": "The child appears in Giant-Size X-Men #1 (1975); the older return and 1983 origin miniseries are separate stages. Stepping-disc teleportation is her mutation; sorcery is a learned mystical discipline. One does not make the other redundant. Inferno’s younger child, the Legacy Virus death and the later supernatural return should not be written as a single uninterrupted teenage life. The transfer to Madelyne ends an unqualified claim that Illyana presently rules Limbo. Later catalog material has her helping Madelyne retain it.",
     "auditCorrections": [
-      "Separated Illyana's child debut from her later Magik identity."
+      "Separated Illyana's child debut from her later Magik identity.",
+      "v8.48: Separated innate teleportation from learned sorcery and clarified movement versus running speed.",
+      "v8.48: Replaced perpetual Limbo control with historical rulership and Madelyne’s later role."
     ],
     "weight": "Not consistently published / varies by era",
     "hair": "Varies / not consistently published",
@@ -32598,29 +33982,66 @@ window.COMIC_VAULT_CHARACTERS = [
       "method": "Identity, first appearance, mantle/legacy separation, power origin, family, history and continuity review"
     },
     "auditSources": [
-      "Marvel publisher canon / official character and issue metadata",
-      "Continuity-sensitive reference cross-check",
-      "Comic Vault existing dossier compared against mantle and retcon history"
+      "Marvel — Magik: comics biography",
+      "Marvel — Meet Magik, Marvel’s Mutant Sorcerer",
+      "Marvel — Magik (1983) #1",
+      "Marvel — X-Men: Magik — Storm & Illyana",
+      "Marvel — Mystical Mutants",
+      "Marvel — The Most Powerful Swords",
+      "Marvel — New Mutants, New Beginnings",
+      "Marvel — Two Queens Battle for Limbo",
+      "Marvel — Sinister Four: witnessed historical moments",
+      "Marvel — Magik (2025) #6",
+      "Marvel — Magik Vol. 2: Shadows of Resistance",
+      "Marvel — Colossus: character biography",
+      "Marvel — Ten X-Men That Refuse to Stay Dead",
+      "Marvel — Meet Mikhail Rasputin"
     ],
     "originProfile": {
-      "originLossMotivation": "Illyana returns from death and reclaims Limbo. She becomes one of mutantkind's most important magical defenders.\n\nMagik's personal world is anchored by Colossus — brother; Mikhail Rasputin — brother; New Mutants — major ally; and Kitty Pryde — major ally.\n\nAt the center of the character is this core drive: Protect, survive or seek justice on personally defined terms, even when Magik's methods challenge conventional heroic limits and make redemption an ongoing choice rather than a settled identity.",
+      "originLossMotivation": "Illyana's early life was tied to a family whose extraordinary members would not be able to protect her from everything. Her brother Piotr became Colossus, but she was still a child when Belasco took her into Limbo. Time there did not pass as it did on Earth. The girl who disappeared returned older after only moments had passed for the people outside. What they experienced as a terrifying interruption had contained years of her life. Coming home could not simply restore the childhood they remembered or remove the experiences they had never shared.\n\nIn Limbo, Illyana encountered versions of familiar people whose lives had followed darker paths. An alternate Storm offered a possibility of guidance, while Belasco sought to corrupt her soul and make her useful to him. Illyana learned magic in a world where knowledge could be both a means of survival and an instrument of captivity. She eventually formed the Soulsword from her own spirit and broke Belasco's hold. Taking power in that realm meant more than escaping a locked room: it meant confronting a place that had tried to claim a part of her identity.\n\nReturning to Earth brought her into the New Mutants and back toward relationships not organized around demonic authority. Kitty Pryde became especially close to her, and Piotr remained her brother even when he could not easily understand what had changed. Illyana could protect teammates through teleportation and magic while still carrying secrets and dangerous obligations. Friendship gave her reasons to remain connected to the human world. It did not require the people around her to pretend that every choice she made was safe or that being needed was the same as being trusted.\n\nThe Inferno crisis made her connection to Limbo a danger beyond herself. The conflict ended with a young Illyana restored to the human world, separated from the older figure her teammates had known. That childhood did not remain protected: the Legacy Virus later killed her. Illyana's eventual return as Magik therefore carries more than the memory of one escape. Her life includes a child who died, a sorceress who came back and relationships forced to confront both experiences. The continuity of that return needs care; it is not an ordinary recovery from illness.\n\nAs her place among the X-Men developed, Magik became more than someone whose own past needed rescuing. Her teleportation and sorcery made her valuable against threats that teammates could not reach or fight by conventional means. She also took leadership of a New Mutants team confronting unusual dangers. Those responsibilities required making decisions for others as well as for herself. The confidence and sharp edges of the adult hero coexist with the importance of the people who knew her earlier. Neither her usefulness as a weapon nor her reputation as frightening exhausts the person they are dealing with.\n\nEventually Illyana chose to pass Limbo's throne to Madelyne Pryor. Later trouble in that realm still drew her back, but helping its ruler was different from being its ruler. The distinction matters to a woman whose childhood had been taken over by someone else's plans. Continuing as a sorceress without treating possession of Limbo as the condition of her existence opened a different kind of future. Magik's freedom is not measured only by how completely she can dominate the place that hurt her. It also lies in being able to leave, build relationships and decide when she will return.",
       "powerOrigin": {
-        "type": "Natural Mutant Ability + Learned/Innate Sorcery",
-        "detail": "Magik's power origin is classified as Natural Mutant Ability + Learned/Innate Sorcery. Illyana Rasputin is Colossus' younger sister, a mutant teleporter raised for years in the demonic dimension Limbo. The resulting ability set includes Stepping discs, Teleportation, Sorcery, Soulsword and Limbo control."
+        "type": "Mutant teleportation plus learned sorcery",
+        "detail": "Her mutation enables stepping-disc travel. Her magical knowledge and soul-forged weapon arise from a separate, deeply personal history in Limbo."
       },
       "importantPeople": [
-        "Colossus — brother",
+        "Colossus / Piotr Rasputin — brother",
         "Mikhail Rasputin — brother",
-        "New Mutants — major ally",
-        "Kitty Pryde — major ally",
-        "Belasco — major adversary",
-        "Limbo demons — major adversary"
+        "Kitty Pryde — close friend",
+        "Belasco — captor and adversary",
+        "Madelyne Pryor — successor as Limbo’s ruler"
       ],
-      "coreDrive": "Protect, survive or seek justice on personally defined terms, even when Magik's methods challenge conventional heroic limits and make redemption an ongoing choice rather than a settled identity.",
-      "standard": "Comic Vault Expanded Origin Standard v1",
+      "coreDrive": "Protect her people without letting captivity, dark magic or ownership of Limbo dictate the whole of her identity.",
+      "standard": "Character-first dossier / source-reviewed R3",
       "manualDeepDive": true,
-      "profilePass": "P300",
-      "profileUpdatedThrough": 300
+      "profilePass": "R3-v8.48",
+      "paragraphSources": [
+        [
+          "M12",
+          "M14"
+        ],
+        [
+          "M03",
+          "M04",
+          "M06"
+        ],
+        [
+          "M01",
+          "M02"
+        ],
+        [
+          "M02",
+          "M13"
+        ],
+        [
+          "M07",
+          "M05"
+        ],
+        [
+          "M08",
+          "M09",
+          "M10"
+        ]
+      ]
     },
     "attributeAudit": {
       "status": "Deep Vetted",
@@ -32642,18 +34063,237 @@ window.COMIC_VAULT_CHARACTERS = [
     },
     "relationshipGroups": {
       "FAMILY & CLOSE RELATIONS": [
-        "Colossus — brother",
-        "Mikhail Rasputin — brother"
+        "Colossus / Piotr Rasputin — older brother",
+        "Mikhail Rasputin — older brother"
       ],
       "KEY ALLIES": [
-        "Colossus",
+        "Colossus / Piotr Rasputin",
+        "Kitty Pryde",
         "New Mutants",
-        "Kitty Pryde"
+        "Madelyne Pryor — complicated ally and successor in Limbo"
       ],
       "KEY RIVALS / ENEMIES": [
         "Belasco",
-        "Limbo demons"
+        "S’ym",
+        "N’astirh"
       ]
+    },
+    "researchSources": [
+      {
+        "id": "M01",
+        "label": "Marvel — Magik: comics biography",
+        "url": "https://www.marvel.com/characters/magik-illyana-rasputin/in-comics",
+        "kind": "Publisher reference",
+        "note": "Mutant teleportation, Limbo, Soulsword and the New Mutants.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M02",
+        "label": "Marvel — Meet Magik, Marvel’s Mutant Sorcerer",
+        "url": "https://www.marvel.com/articles/comics/magik-illyana-rasputin-mutant-sorcerer-explainer",
+        "kind": "Publisher editorial",
+        "note": "Belasco, New Mutants, Kitty friendship, Inferno and the Legacy Virus.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M03",
+        "label": "Marvel — Magik (1983) #1",
+        "url": "https://www.marvel.com/comics/issue/23315/magik_1983_1",
+        "kind": "Publisher catalog",
+        "note": "Alternate Storm and Illyana’s captivity in Limbo.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M04",
+        "label": "Marvel — X-Men: Magik — Storm & Illyana",
+        "url": "https://www.marvel.com/comics/collection/47233/x-men_magik_-_storm_illyana_trade_paperback",
+        "kind": "Publisher catalog",
+        "note": "Origin collection and the child taken by Belasco.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M05",
+        "label": "Marvel — Mystical Mutants",
+        "url": "https://www.marvel.com/articles/comics/mystical-mutants-marvel-universe-list",
+        "kind": "Publisher editorial",
+        "note": "Distinguishes mutant stepping discs from considerable magical skill.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M06",
+        "label": "Marvel — The Most Powerful Swords",
+        "url": "https://www.marvel.com/articles/comics/the-most-powerful-swords-in-the-marvel-universe",
+        "kind": "Publisher editorial",
+        "note": "Soulsword forged from Illyana’s own spirit.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M07",
+        "label": "Marvel — New Mutants, New Beginnings",
+        "url": "https://www.marvel.com/articles/comics/new-mutants-new-beginnings",
+        "kind": "Publisher editorial",
+        "note": "Magik as leader of the 2018 Dead Souls team.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M08",
+        "label": "Marvel — Two Queens Battle for Limbo",
+        "url": "https://www.marvel.com/articles/comics/two-queens-battle-for-the-throne-of-limbo-in-new-mutants-25",
+        "kind": "Publisher announcement",
+        "note": "The Labors of Magik arc and Madelyne Pryor transition.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M09",
+        "label": "Marvel — Sinister Four: witnessed historical moments",
+        "url": "https://www.marvel.com/articles/comics/sinister-four-historic-marvel-universe-moments-witnessed-doctor-stasis-mother-righteous",
+        "kind": "Publisher editorial",
+        "note": "Recap confirms Magik ceding Limbo’s throne to Madelyne.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M10",
+        "label": "Marvel — Magik (2025) #6",
+        "url": "https://www.marvel.com/comics/issue/120367/magik_2025_6",
+        "kind": "Publisher catalog",
+        "note": "Madelyne’s request for help retaining control of Limbo.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M11",
+        "label": "Marvel — Magik Vol. 2: Shadows of Resistance",
+        "url": "https://www.marvel.com/comics/collection/120437/magik_vol_2_shadows_of_resistance_trade_paperback",
+        "kind": "Publisher catalog",
+        "note": "2026 collection maintains Madelyne’s rulership context.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M12",
+        "label": "Marvel — Colossus: character biography",
+        "url": "https://www.marvel.com/characters/colossus-piotr-rasputin",
+        "kind": "Publisher reference",
+        "note": "Piotr’s sister returns older despite only moments passing on Earth.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M13",
+        "label": "Marvel — Ten X-Men That Refuse to Stay Dead",
+        "url": "https://www.marvel.com/articles/comics/10-x-men-that-refuse-to-stay-dead",
+        "kind": "Publisher editorial",
+        "note": "Illyana’s death and later rebirth.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      },
+      {
+        "id": "M14",
+        "label": "Marvel — Meet Mikhail Rasputin",
+        "url": "https://www.marvel.com/articles/comics/meet-mikhail-rasputin-brother-of-colossus-magik",
+        "kind": "Publisher editorial",
+        "note": "The Rasputin siblings and Mikhail’s connection to Illyana’s history.",
+        "access": "Marvel blocked direct page retrieval (403); accessible search-indexed excerpts were reviewed. Complete issue text was not accessed."
+      }
+    ],
+    "researchUpdated": "2026-09-06",
+    "researchScope": "Earth-616 Illyana; Limbo origin, New Mutants, death/return and the transfer of Limbo through the 2025–2026 catalog material reviewed. Future-series announcements are not treated as completed life events. Detailed resurrection mechanics still merit issue-level follow-up.",
+    "researchReview": {
+      "batch": "R3",
+      "version": "v8.48",
+      "date": "2026-09-06",
+      "method": "Character-first narrative, era-scoped abilities, identity and relationship cross-checks; publisher references, catalog descriptions and explicitly labelled supplementary review.",
+      "limits": "Source review, not a complete issue-by-issue reading or certification of every historical claim. Motivation synthesis and reading choices are Comic Vault interpretation. The review date does not imply coverage of every comic published by that date. Some Marvel pages were available only as indexed extracts; see individual access notes."
+    },
+    "powerDetails": [
+      {
+        "title": "Mutant stepping discs",
+        "detail": "Illyana opens teleportation routes rather than running at a speedster’s velocity. Her portals can transport others as well as herself; the use of Limbo and the timing of journeys vary with the story.",
+        "sourceIds": [
+          "M01",
+          "M05"
+        ]
+      },
+      {
+        "title": "Sorcery",
+        "detail": "She has learned extensive magic in addition to being a mutant. Mystical knowledge and spell use deserve their own category instead of being described as an automatic property of all teleporters.",
+        "sourceIds": [
+          "M05"
+        ]
+      },
+      {
+        "title": "Soulsword",
+        "detail": "The sword is bound to her own soul and is especially significant against supernatural forces. Its changing depiction should not be reduced to an ordinary blade with a fixed material composition.",
+        "sourceIds": [
+          "M06"
+        ]
+      },
+      {
+        "title": "Armor and transformed states",
+        "detail": "Mystical protection and the Darkchylde aspect belong to her magical history. They do not prove unlimited durability in every human-appearing scene.",
+        "sourceIds": [
+          "M01",
+          "M02"
+        ]
+      },
+      {
+        "title": "Former sovereignty",
+        "detail": "Rule over Limbo is a role she has held, not a perpetual power that can be assumed after the throne passes to Madelyne. Ability to return or intervene is not the same as current sovereignty.",
+        "sourceIds": [
+          "M09",
+          "M10"
+        ]
+      }
+    ],
+    "readingGuide": [
+      {
+        "title": "Magik (1983) #1–4 / Storm & Illyana",
+        "scope": "Foundational origin",
+        "why": "Start with the years inside Limbo and the struggle for her own soul.",
+        "sourceIds": [
+          "M03",
+          "M04"
+        ]
+      },
+      {
+        "title": "The New Mutants — Inferno-era story",
+        "scope": "Continuity-heavy turning point",
+        "why": "Read for the consequences of the Limbo connection and the younger Illyana; this is not the most uncomplicated entry point.",
+        "sourceIds": [
+          "M02"
+        ]
+      },
+      {
+        "title": "New Mutants: Dead Souls (2018)",
+        "scope": "Leadership",
+        "why": "See Magik organizing a team rather than only dealing with her own origin.",
+        "sourceIds": [
+          "M07"
+        ]
+      },
+      {
+        "title": "New Mutants (2019) — The Labors of Magik, beginning #25",
+        "scope": "Limbo transition",
+        "why": "Explore the story leading to a new relationship with the place that shaped her.",
+        "sourceIds": [
+          "M08",
+          "M09"
+        ]
+      },
+      {
+        "title": "Magik (2025) #6 / Vol. 2: Shadows of Resistance",
+        "scope": "Later magical career",
+        "why": "Follow her involvement with Madelyne’s endangered rule, keeping their roles distinct.",
+        "sourceIds": [
+          "M10",
+          "M11"
+        ]
+      }
+    ],
+    "attributeContext": "Comic Vault editorial estimates, not official publisher statistics or battle predictions. Teleportation is not running speed. The Speed rating reflects movement utility; sorcery and swordsmanship are separate from unassisted strength. Limbo rulership and Phoenix-level enhancements are excluded from the baseline.",
+    "fieldSources": {
+      "firstAppearance": [
+        "M01"
+      ],
+      "powerDetails": "Per-card sourceIds",
+      "history": "Per-entry sourceIds",
+      "origin": "Per-paragraph paragraphSources"
     }
   },
   {
@@ -87858,7 +89498,38 @@ window.COMIC_VAULT_AUDIT_LOG = [
   const esc = (s="") => String(s).replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
 
   const slugify = (s="") => String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-  const savedFiles = new Set(JSON.parse(localStorage.getItem("comicVaultSavedFiles") || "[]"));
+  function readPreference(key, fallback){
+    try{const value=localStorage.getItem(key);return value===null ? fallback : value;}catch(_){return fallback;}
+  }
+  function writePreference(key, value){try{localStorage.setItem(key,value);}catch(_){/* Session state still works. */}}
+  function readSavedFiles(){
+    try{const value=JSON.parse(readPreference("comicVaultSavedFiles","[]"));return Array.isArray(value) ? value.filter(x=>typeof x==="string") : [];}catch(_){return [];}
+  }
+  const savedFiles = new Set(readSavedFiles());
+  const citationPreferenceKey = "comicVaultShowCitations";
+  let citationsVisible = readPreference(citationPreferenceKey,"false")==="true";
+  function applyCitationPreference(value, persist=false){
+    citationsVisible=Boolean(value);
+    document.documentElement.classList.toggle("cv-citations-visible",citationsVisible);
+    const toggle=$("citationToggle");if(toggle)toggle.checked=citationsVisible;
+    const state=$("citationToggleState");if(state)state.textContent=citationsVisible ? "ON" : "OFF";
+    if(persist)writePreference(citationPreferenceKey,String(citationsVisible));
+  }
+  applyCitationPreference(citationsVisible);
+  $("citationToggle")?.addEventListener("change",e=>applyCitationPreference(e.target.checked,true));
+  window.addEventListener("storage",e=>{
+    if(e.key===citationPreferenceKey || e.key===null) applyCitationPreference(e.newValue==="true");
+  });
+  $("openResearchSources")?.addEventListener("click",()=>{
+    if(!activeCharacter)return;
+    if(activeTab!=="history")setProfileTab("history");
+    const panel=profileBody.querySelector(".cv-research-evidence,.research-source-panel");
+    if(panel){
+      if(panel.tagName==="DETAILS")panel.open=true;
+      panel.scrollIntoView({block:"start",behavior:"auto"});
+      const focusTarget=panel.querySelector("summary,a");if(focusTarget)focusTarget.focus({preventScroll:true});
+    }
+  });
 
 
 
@@ -88020,32 +89691,51 @@ window.COMIC_VAULT_AUDIT_LOG = [
     return String(reference || "").trim();
   }
 
+  function referenceKey(value){
+    return String(value || "").normalize("NFKD").replace(/[\u0300-\u036f]/g,"")
+      .toLowerCase().replace(/[’']/g,"").replace(/[^a-z0-9]+/g," ").trim();
+  }
+  function uniqueReference(list){return list?.length===1 ? list[0] : null;}
+  // One index per build: avoids repeatedly normalizing all 400 records per link.
+  const referenceIndex={canonical:new Map(),civilian:new Map(),mantle:new Map()};
+  function indexReference(map,key,c){
+    if(!key)return;const bucket=map.get(key)||[];if(!bucket.includes(c))bucket.push(c);map.set(key,bucket);
+  }
+  characters.forEach(c=>{
+    indexReference(referenceIndex.canonical,referenceKey(c.name),c);
+    [c.realName,...String(c.realName || "").split(/\s*\/\s*/),...String(c.name).split(/\s*\/\s*/).slice(1)].forEach(n=>indexReference(referenceIndex.civilian,referenceKey(n).replace(/^(dr|doctor) /,""),c));
+    [String(c.name).split(/\s*\/\s*/)[0],...(c.aliases||[])].forEach(n=>indexReference(referenceIndex.mantle,referenceKey(n).replace(/^the /,""),c));
+  });
+  function civilianReference(value){
+    return uniqueReference(referenceIndex.civilian.get(referenceKey(value).replace(/^(dr|doctor) /,"")));
+  }
+  function resolveReferenceTarget(reference){
+    const raw=relationshipEntryText(reference);if(!raw)return null;
+    const identity=raw.split(/\s+—\s+/)[0].trim();
+    const key=referenceKey(identity);
+    if(activeCharacter?.unlinkedRelationshipIdentities?.some(x=>referenceKey(x)===key))return null;
+    const exact=referenceIndex.canonical.get(key);
+    if(exact?.length)return uniqueReference(exact);
+    const person=civilianReference(identity);if(person)return person;
+    const parts=identity.split(/\s*\/\s*/).filter(Boolean);
+    if(parts.length>1){
+      // Legacy references can be Person / Mantle or Mantle / Person. Resolve only
+      // a known civilian identity, never the remaining ambiguous mantle.
+      const people=[...new Set(parts.map(civilianReference).filter(Boolean))];
+      return uniqueReference(people);
+    }
+    const shortened=identity.replace(/\s*\([^)]*\)\s*$/g,"").trim();
+    if(shortened!==identity){
+      const specific=civilianReference(shortened)||uniqueReference(referenceIndex.canonical.get(referenceKey(shortened)));
+      if(specific)return specific;
+    }
+    return uniqueReference(referenceIndex.mantle.get(referenceKey(shortened).replace(/^the /,"")));
+  }
+
   function resolveCharacterReference(reference){
-    const raw = relationshipEntryText(reference);
-    if(!raw) return null;
-    const identityPart = raw.split(/\s+—\s+/)[0].trim();
-    const key = identityPart.toLowerCase();
-    if(activeCharacter?.unlinkedRelationshipIdentities?.some(x=>x.toLowerCase()===key)) return null;
-
-    let match = characters.find(c=>c.name.toLowerCase()===key);
-    if(match) return match;
-    match = characters.find(c=>String(c.realName || "").toLowerCase()===key);
-    if(match) return match;
-
-    const candidates = identityPart.split(/\s*\/\s*/).map(x=>x.trim()).filter(Boolean);
-    for(const candidate of candidates){
-      const candidateKey = candidate.toLowerCase();
-      match = characters.find(c=>c.name.toLowerCase()===candidateKey);
-      if(match) return match;
-      match = characters.find(c=>String(c.realName || "").toLowerCase()===candidateKey);
-      if(match) return match;
-    }
-    for(const candidate of candidates){
-      const candidateKey = candidate.toLowerCase();
-      match = characters.find(c=>(c.aliases || []).some(a=>String(a).toLowerCase()===candidateKey));
-      if(match) return match;
-    }
-    return null;
+    const target=resolveReferenceTarget(reference);
+    // A host/alias note is text, not a link back to the very same dossier.
+    return target && target!==activeCharacter ? target : null;
   }
 
 
@@ -88459,6 +90149,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
     profileReturnFocus = document.activeElement;
     if(options.remember !== false) rememberCurrentLocation();
     activeCharacter = c; activeTab = tab;
+    $("citationControls").hidden=!(c.researchSources || []).some(src=>src.id);
+    applyCitationPreference(citationsVisible);
     $("profilePublisher").textContent = c.publisher;
     $("profileName").textContent = c.name.toUpperCase();
     $("profileRealName").textContent = c.realName;
@@ -88514,7 +90206,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(!activeCharacter) return;
     if(savedFiles.has(activeCharacter.name)) savedFiles.delete(activeCharacter.name);
     else savedFiles.add(activeCharacter.name);
-    localStorage.setItem("comicVaultSavedFiles", JSON.stringify([...savedFiles]));
+    writePreference("comicVaultSavedFiles", JSON.stringify([...savedFiles]));
     updateFavoriteButton();
     renderSaved();
     updateMenuCounts();
@@ -88807,13 +90499,13 @@ window.COMIC_VAULT_AUDIT_LOG = [
       const overviewAllies = (c.allies || []).slice(0,6).map(name=>{
         const target = resolveCharacterReference(name);
         const linked = !!target;
-        return `<button class="network-chip ally ${linked?"linked":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(name)}</button>`;
+        return `<button class="network-chip ally ${linked?"linked":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(relationshipEntryText(name))}</button>`;
       }).join("") || `<span class="connection-empty">No ally relationships currently indexed.</span>`;
 
       const overviewEnemies = (c.enemies || []).slice(0,6).map(name=>{
         const target = resolveCharacterReference(name);
         const linked = !!target;
-        return `<button class="network-chip enemy ${linked?"linked":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(name)}</button>`;
+        return `<button class="network-chip enemy ${linked?"linked":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(relationshipEntryText(name))}</button>`;
       }).join("") || `<span class="connection-empty">No enemy relationships currently indexed.</span>`;
 
       const storylineHighlights = (c.history || []).slice(0,4).map(([era,title,detail])=>`
@@ -88827,8 +90519,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.47</b></span>
-          ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "✓ DEEP AUDITED + ORIGIN EXPANDED"}</span><b>${esc(c.audit.batch || "")}</b><em>${esc(c.audit.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.48</b></span>
+          ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
           ${c.researchScope ? `<div class="cv-dossier-scope"><strong>DOSSIER SCOPE</strong><span>${esc(c.researchScope)}</span></div>` : ""}
@@ -88852,11 +90544,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
               <span class="origin-standard-label">CORE DRIVE</span>
               <p>${esc(originDeep.drive)}</p>
             </article>
-            ${!c.researchReview && c.continuityNote && !/core identity, debut, power origin|this profile was reviewed for identity|no major mantle\/identity correction/i.test(String(c.continuityNote)) ? `
-            <article class="origin-standard-card origin-continuity">
-              <span class="origin-standard-label">CONTINUITY NOTE</span>
-              <p>${esc(c.continuityNote)}</p>
-            </article>` : ``}
+
           </div>
         </section>
 
@@ -88914,7 +90602,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
         </section>
 
         <section class="body-section"><h3>Primary Capabilities</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div></section>
-        <section class="body-section attribute-matrix-card"><h3>Attribute Matrix</h3><span class="attribute-audit-chip">${c.researchReview ? "EDITORIAL RATINGS" : "✓ DEEP VETTED"}</span>${c.attributeContext ? `<p class="cv-attribute-context">${esc(c.attributeContext)}</p>` : ""}<div class="attribute-list">${attrs}</div></section>
+        <section class="body-section attribute-matrix-card"><h3>Attribute Matrix</h3><span class="attribute-audit-chip">EDITORIAL RATINGS</span><p class="cv-attribute-context">${esc(c.attributeContext || "Comic Vault editorial estimates on a 1–5 scale, not official publisher statistics. Capability and era review is pending for this record; N/A denotes an unassigned or non-applicable rating.")}</p><div class="attribute-list">${attrs}</div></section>
 
         <section class="body-section storyline-index">
           <div class="section-kicker">HISTORY SNAPSHOT</div>
@@ -88945,7 +90633,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     } else if(activeTab==="powers"){
       profileBody.innerHTML = `
         <section class="body-section"><h3>Powers & Skills</h3><div class="tag-list">${c.powers.map(x=>`<span class="tag">${esc(x)}</span>`).join("")}</div>${researchedPowersMarkup(c)}</section>
-        <section class="body-section attribute-matrix-card"><h3>Attribute Matrix</h3>${c.attributeContext ? `<p class="cv-attribute-context">${esc(c.attributeContext)}</p>` : ""}<div class="attribute-list">${attrs}</div></section>`;
+        <section class="body-section attribute-matrix-card"><h3>Attribute Matrix</h3><p class="cv-attribute-context">${esc(c.attributeContext || "Comic Vault editorial estimates on a 1–5 scale, not official publisher statistics. Capability and era review is pending for this record; N/A denotes an unassigned or non-applicable rating.")}</p><div class="attribute-list">${attrs}</div></section>`;
     } else if(activeTab==="allies"){
       profileBody.innerHTML = relationSection("Known Allies",c.allies);
     } else if(activeTab==="enemies"){
@@ -89021,9 +90709,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function relationSection(title,items){
     if(!items.length) return `<section class="body-section"><h3>${esc(title)}</h3><p>No relationship files have been added yet.</p></section>`;
     return `<section class="body-section"><h3>${esc(title)}</h3><p>Tap any character already in the archive to jump directly to that dossier.</p><div class="tag-list">${items.map(name=>{
-      const target = activeCharacter?.researchReview ? resolveCharacterReference(name) : byName(name);
+      const target = resolveCharacterReference(name);
       const linked = !!target;
-      return `<button class="tag ${linked?"link-tag":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(name)}</button>`;
+      return `<button class="tag ${linked?"link-tag":""}" ${linked?`data-related="${esc(target.name)}"`:""}>${esc(relationshipEntryText(name))}</button>`;
     }).join("")}</div></section>`;
   }
 
