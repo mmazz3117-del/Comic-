@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="8.88" />
+  <meta name="comic-vault-build" content="8.91" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.90: RECONCILED CONNECTIONS MAP — CX17 FINAL DC CONNECTIONS / 400 DOSSIERS MAPPED + FIT, PINCH, PAN, CONTEXTUAL LEGACY & LINE KEY -->
+  <!-- Comic Vault v8.91: RECONCILED CONNECTIONS MAP — CX17 FINAL DC CONNECTIONS / 400 DOSSIERS INDEXED + FIT, PINCH, PAN, CONTEXTUAL LEGACY & LINE KEY -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4688,10 +4688,10 @@ html.cv-pinch-zoom .card-character-image{
     .research-source-list a span{font-size:10px;letter-spacing:.12em;color:var(--blue);white-space:nowrap}
     @media(max-width:620px){.research-source-list a{align-items:flex-start;flex-direction:column;gap:5px}}
 
-/* v8.90 reader-cleanup: internal research evidence is retained in data, but public citation/source UI is suppressed. */
+/* v8.91 reader-cleanup: internal research evidence is retained in data, but public citation/source UI is suppressed. */
 #citationControls,.cv-source-cites,.cv-research-evidence,.research-source-panel,.cvx-reading-toggle,#cvxSources,.cvx-preview .cvx-scope{display:none!important}
 
-/* v8.90 — active-search compact mode */
+/* v8.91 — active-search compact mode */
 .archive.is-searching{
   padding-top:24px;
 }
@@ -4720,7 +4720,7 @@ html.cv-pinch-zoom .card-character-image{
 }
 
 
-/* v8.90 — visible Connections search suggestions */
+/* v8.91 — visible Connections search suggestions */
 .cvx-search-suggestions{
   display:grid;
   gap:6px;
@@ -5015,7 +5015,7 @@ Connections, accepted visuals and application behavior preserved except current 
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.90</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.91</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -5251,7 +5251,7 @@ Connections, accepted visuals and application behavior preserved except current 
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.90</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.91</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -5300,7 +5300,7 @@ Connections, accepted visuals and application behavior preserved except current 
 
   <dialog class="cvx-dialog" id="cvConnections" aria-labelledby="cvxTitle" aria-describedby="cvxDescription">
  <div class="cvx-frame">
-  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.90</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.91</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
   <div class="cvz-bar" id="cvzMapBar" hidden>
    <div class="cvz-zoom-controls" role="group" aria-label="Map zoom controls">
     <button type="button" class="cvz-symbol" id="cvzZoomOut" aria-label="Zoom map out" title="Zoom out">−</button>
@@ -5340,7 +5340,7 @@ Connections, accepted visuals and application behavior preserved except current 
     <div class="cvx-segment" role="group" aria-label="Explorer mode"><button type="button" data-cvx-mode="connections" aria-pressed="true">Connections</button><button type="button" data-cvx-mode="legacy" aria-pressed="false">Flash legacy</button></div>
     <label class="cvx-reading-toggle"><span>Citations</span><input type="checkbox" role="switch" id="cvxCitations" aria-label="Show inline citations in connections"><span class="cvx-toggle-track" aria-hidden="true"></span><span id="cvxCiteState" aria-hidden="true">OFF</span></label>
    </div>
-   <div class="cvx-control-row" id="cvxCenterControls"><div class="cvx-picker"><label class="cvx-search-label" for="cvxSearch">FIND A MAPPED CHARACTER</label><input type="search" id="cvxSearch" placeholder="Hero, person or alias…" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="cvxSearchResult"><label class="cvx-select-label" for="cvxCenterSelect">CENTER ON<select id="cvxCenterSelect" aria-label="Center on a mapped character"></select></label><small id="cvxSearchResult" aria-live="polite"></small><div id="cvxSearchSuggestions" class="cvx-search-suggestions" hidden></div></div><div class="cvx-segment" role="group" aria-label="Relationship presentation"><button type="button" data-cvx-view="map" aria-pressed="true">Tree</button><button type="button" data-cvx-view="list" aria-pressed="false">List</button></div></div>
+   <div class="cvx-control-row" id="cvxCenterControls"><div class="cvx-picker"><label class="cvx-search-label" for="cvxSearch">FIND A CHARACTER</label><input type="search" id="cvxSearch" placeholder="Hero, person or alias…" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="cvxSearchResult"><label class="cvx-select-label" for="cvxCenterSelect">CENTER ON<select id="cvxCenterSelect" aria-label="Center on a character"></select></label><small id="cvxSearchResult" aria-live="polite"></small><div id="cvxSearchSuggestions" class="cvx-search-suggestions" hidden></div></div><div class="cvx-segment" role="group" aria-label="Relationship presentation"><button type="button" data-cvx-view="map" aria-pressed="true">Tree</button><button type="button" data-cvx-view="list" aria-pressed="false">List</button></div></div>
    <div class="cvx-history"><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxBack">← Back a step</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxStart">↶ Starting character</button></div>
    <nav class="cvx-trail" id="cvxTrail" aria-label="Exploration trail"></nav>
    <div class="cvx-filters" id="cvxFilters" role="group" aria-label="Filter relationship types"></div>
@@ -155729,7 +155729,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     profileReturnFocus = document.activeElement;
     if(options.remember !== false) rememberCurrentLocation();
     activeCharacter = c; activeTab = tab;
-    $("citationControls").hidden=true; // v8.90 reader-cleanup
+    $("citationControls").hidden=true; // v8.91 reader-cleanup
     applyCitationPreference(citationsVisible);
     $("profilePublisher").textContent = c.publisher;
     $("profileName").textContent = c.name.toUpperCase();
@@ -156100,7 +156100,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.90</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.91</b></span>
           ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -156515,9 +156515,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
 <script type="application/json" id="cvConnectionsData">{
   "schemaVersion": 2,
-  "release": "8.90",
+  "release": "8.91",
   "pilot": false,
-  "scope": "v8.90 reconciles the trusted 400/400 dossier research against the curated Connections registry. It prioritizes defining family, mentor, partner, rival and legacy relationships over generic roster-only teammate links; full team membership remains dossier/team-page data rather than an automatic map mesh.",
+  "scope": "Curated character-to-character relationships. v8.91 rechecks the four v8.90 additions and preserves all 622 pairs. 400 dossier nodes are registered; 395 have at least one edge and five have no curated personal links yet. These counts do not establish complete biographical coverage. Team nodes and a complete affiliation registry are still pending.",
   "nodes": {
     "dc:donna": {
       "id": "dc:donna",
@@ -170566,7 +170566,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "toB": "Friend & Daily Planet colleague",
       "toA": "Friend & Daily Planet colleague",
       "detail": "Lois and Jimmy have a longstanding friendship and professional bond at the Daily Planet that exists independently of their separate relationships with Superman.",
-      "era": "Long-running Daily Planet relationship across major Superman continuities.",
+      "era": "Main-comics Daily Planet friendship; the publisher retrospective discusses the 2019 identity-reveal storyline.",
       "sourceIds": [
         "SB90-JIMMY-LOIS"
       ],
@@ -170579,10 +170579,10 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "tags": [
         "allies"
       ],
-      "toB": "Outlaw ally & found-family bond",
-      "toA": "Outlaw ally & found-family bond",
-      "detail": "Artemis and Bizarro’s time in the Dark Trinity develops into a personal bond strong enough that Artemis helps fight to save Bizarro’s life; this is more than simple roster overlap.",
-      "era": "Red Hood and the Outlaws / Dark Trinity era.",
+      "toB": "Outlaws friend & ally",
+      "toA": "Outlaws friend & ally",
+      "detail": "Artemis of Bana-Mighdall and the Outlaws incarnation of Bizarro become friends. Artemis and Jason seek help to save him in Red Hood and the Outlaws #13. This link does not apply to every Bizarro incarnation.",
+      "era": "Red Hood and the Outlaws (2016 series), especially #13 (2017); Outlaws clone only.",
       "sourceIds": [
         "SB90-ARTEMIS-BIZARRO"
       ],
@@ -170597,10 +170597,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
       ],
       "toB": "Major Gotham adversary",
       "toA": "Major Gotham adversary",
-      "detail": "Red Hood’s campaigns repeatedly collide with Black Mask’s control of Gotham’s criminal underworld, making Roman Sionis one of Jason Todd’s defining criminal adversaries.",
-      "era": "Under the Hood and later Red Hood conflicts.",
+      "detail": "Jason Todd and Roman Sionis clash over Gotham’s criminal underworld in Under the Hood. Their conflict returns in the Dark Trinity storyline, including a direct confrontation in Red Hood and the Outlaws #6.",
+      "era": "Under the Hood (2005) and the Dark Trinity era (2016–17); not a claim about every Black Mask identity.",
       "sourceIds": [
-        "SB90-BLACKMASK-REDHOOD"
+        "SB90-BLACKMASK-REDHOOD",
+        "SB91-BLACKMASK-REDHOOD-2017"
       ],
       "priority": 2
     },
@@ -170613,10 +170614,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
       ],
       "toB": "Birds of Prey friend & ally",
       "toA": "Birds of Prey friend & ally",
-      "detail": "Black Canary and Huntress repeatedly operate together as part of the core Birds of Prey circle; their recurring partnership is strong enough to merit a personal ally edge rather than a generic team-only link.",
-      "era": "Birds of Prey eras.",
+      "detail": "Helena Bertinelli and Dinah Laurel Lance develop a sustained working partnership within the core Birds of Prey circle. This ally link represents that established partnership, not automatic links between everyone on the team.",
+      "era": "Main-comics Birds of Prey, especially Gail Simone’s original run; Helena Bertinelli, not Helena Wayne.",
       "sourceIds": [
-        "SB90-HUNTRESS-CANARY"
+        "SB90-HUNTRESS-CANARY",
+        "SB91-HUNTRESS-CANARY-FRIENDSHIP"
       ],
       "priority": 3
     }
@@ -175340,37 +175342,57 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "publisher": "DC",
       "reviewed": "2026-09-08",
       "kind": "Publisher editorial",
-      "access": "Public DC editorial text reviewed."
+      "access": "Publisher page opened and relevant Lois/Jimmy section inspected on 2026-09-08; not a full-issue reading."
     },
     "SB90-ARTEMIS-BIZARRO": {
       "id": "SB90-ARTEMIS-BIZARRO",
       "title": "DC — Red Hood and the Outlaws #13",
       "url": "https://www.dc.com/comics/red-hood-and-the-outlaws-2016/red-hood-and-the-outlaws-13",
-      "note": "DC’s synopsis has Red Hood and Artemis trying to save Bizarro and explicitly calls Bizarro their fallen friend, supporting a personal bond beyond roster membership.",
+      "note": "Issue synopsis establishes Artemis and Jason trying to save Bizarro, explicitly as a friend. Supports an era-specific friendship; does not alone establish a formal or universal family relationship.",
       "publisher": "DC",
       "reviewed": "2026-09-08",
       "kind": "Publisher issue synopsis",
-      "access": "Public DC issue description reviewed."
+      "access": "Publisher issue synopsis opened and inspected on 2026-09-08; not full comic pages."
     },
     "SB90-BLACKMASK-REDHOOD": {
       "id": "SB90-BLACKMASK-REDHOOD",
       "title": "DC — Batman #636",
       "url": "https://www.dc.com/comics/batman-636",
-      "note": "DC describes Black Mask and the new Red Hood carving up Gotham’s underworld against one another during Under the Hood, establishing a major adversarial relationship.",
+      "note": "Publisher-indexed synopsis places Black Mask and the new Red Hood in the Under the Hood criminal conflict. The second source documents a later direct confrontation.",
       "publisher": "DC",
       "reviewed": "2026-09-08",
       "kind": "Publisher issue synopsis",
-      "access": "Public DC issue description reviewed."
+      "access": "Publisher search-index text inspected on 2026-09-08. Direct page opening returned HTTP 403; not represented as an opened full page."
     },
     "SB90-HUNTRESS-CANARY": {
       "id": "SB90-HUNTRESS-CANARY",
       "title": "DC — Birds of Prey",
       "url": "https://www.dc.com/characters/birds-of-prey",
-      "note": "DC identifies Black Canary, Oracle and Huntress as the backbone of the Birds of Prey and describes the team as a network of friends and frenemies, supporting Canary/Huntress as a recurring personal ally relationship.",
+      "note": "Publisher team profile supports the core Canary/Oracle/Huntress partnership. The personal-alliance curation decision is supplemented by a publisher retrospective discussing the run’s friendships.",
       "publisher": "DC",
       "reviewed": "2026-09-08",
       "kind": "Publisher team profile",
-      "access": "Public DC character/team profile reviewed."
+      "access": "Publisher profile opened and inspected on 2026-09-08; core-team evidence, not a complete friendship chronology."
+    },
+    "SB91-BLACKMASK-REDHOOD-2017": {
+      "id": "SB91-BLACKMASK-REDHOOD-2017",
+      "title": "DC — Red Hood and the Outlaws #6 (2017)",
+      "url": "https://www.dc.com/comics/red-hood-and-the-outlaws-2016/red-hood-and-the-outlaws-6",
+      "note": "Dark Trinity conclusion explicitly sets Black Mask against Red Hood. Supplements the Under the Hood source with a later direct conflict.",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher issue synopsis",
+      "access": "Publisher page opened and synopsis inspected; complete issue not read."
+    },
+    "SB91-HUNTRESS-CANARY-FRIENDSHIP": {
+      "id": "SB91-HUNTRESS-CANARY-FRIENDSHIP",
+      "title": "DC — Bonding and Bombast: Revisiting Gail Simone’s Birds of Prey",
+      "url": "https://www.dc.com/blog/2023/03/27/bonding-and-bombast-revisiting-gail-simone-s-birds-of-prey",
+      "note": "Retrospective identifies the core trio and emphasizes the friendships within the original Simone run. Supports a recurring ally edge; no unique best-friend ranking is asserted.",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher editorial",
+      "access": "Publisher article opened and inspected; no claim of a full-issue chronology."
     }
   },
   "legacy": [
@@ -175583,7 +175605,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   ]
 }</script>
 <script id="cvConnectionsScript">
-/* Comic Vault v8.90 — Connections viewport + CX17 Magic / Shadowpact / Endless and final DC relationship registry; 400 current dossiers mapped. */
+/* Comic Vault v8.91 — Connections viewport + CX17 Magic / Shadowpact / Endless and final DC relationship registry; 400 dossier nodes indexed; 395 have curated personal links. */
 (() => {
   'use strict';
   const graph = JSON.parse(document.getElementById('cvConnectionsData').textContent);
@@ -175647,6 +175669,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     $('cvxTitle').textContent=title;$('cvxTitle').title=title;
     if(isTree){
       const count=selectedEdges().length,pages=Math.max(1,Math.ceil(count/PAGE_SIZE));
+      ['cvzZoomOut','cvzZoomIn','cvzFit','cvzReadable'].forEach(id=>$(id).disabled=!count);
       $('cvzPageLabel').textContent=`${state.page+1} / ${pages}`;
       $('cvzPageLabel').setAttribute('aria-label',`Connection page ${state.page+1} of ${pages}`);
       $('cvzPreviousPage').disabled=state.page===0;
@@ -175825,6 +175848,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function focusCenter(){requestAnimationFrame(()=>{const t=$('cvxCanvas').querySelector('.cvx-root')||$('cvxCenterSelect');t?.focus({preventScroll:true});});}
   function render(){
     if(!state)return;
+    save('comicVaultConnectionsLastRoot',state.root);
     // Show a legacy mode only when the centered character belongs to that curated legacy.
     const legacyAvailable=hasContextualLegacy(state.root);
     if(state.mode==='legacy'&&!legacyAvailable)state.mode='connections';
@@ -175859,7 +175883,12 @@ window.COMIC_VAULT_AUDIT_LOG = [
     $('cvxPager').hidden=state.view!=='map'||shown.length<=PAGE_SIZE;
     $('cvxPager').innerHTML=pager(pageCount,first,last,shown.length);
     const host=$('cvxCanvas');
-    if(!shown.length){host.innerHTML='<div class="cvx-empty">No recorded relationships match this filter. Choose another category.</div>';return;}
+    if(!shown.length){
+      host.innerHTML=!all.length
+        ? `<div class="cvx-empty"><strong>${esc(nodeName(n))}</strong><p>No curated personal links have been added to this map yet. This does not mean the character has no relationships. Their dossier remains available; team and organization branches are a separate planned feature.</p><button type="button" class="cvx-btn cvx-btn-primary" data-cvx-node="${esc(state.root)}" aria-haspopup="dialog">View character file ↗</button></div>`
+        : '<div class="cvx-empty">No recorded relationships match this filter. Choose another category.</div>';
+      return;
+    }
     if(state.view==='list'){
       host.innerHTML=`<div class="cvx-list">${shown.map(e=>{const id=relatedId(e,state.root),n=lookup(id);return `<button type="button" class="cvx-list-item" data-cvx-node="${id}" data-cvx-edge="${e.id}" aria-haspopup="dialog" aria-label="${esc(nodeName(n))}: ${esc(relationLabel(e,state.root))}">${artwork(n)}<span><span class="cvx-node-name">${esc(n.hero)}</span>${n.civilian?`<span class="cvx-node-person">${esc(n.civilian)}</span>`:''}<span class="cvx-node-relation">${esc(relationLabel(e,state.root))}</span><span class="cvx-list-summary">${esc(e.era)}</span></span><span class="cvx-list-arrow" aria-hidden="true">↗</span></button>`;}).join('')}</div>`;
     }else{
@@ -175929,16 +175958,24 @@ window.COMIC_VAULT_AUDIT_LOG = [
     else if(legacy){relation=legacy.label;detail=legacy.detail;era=legacy.era;refs=legacy.sourceIds;}
     else if(state.mode==='legacy'&&id==='dc:wallace'){relation='A separate Kid Flash';detail='Wallace is a different person from Wally West. Their cousin relationship belongs to the comics continuity mapped here.';era='Rebirth-era West family explanation.';refs=['C13','C16'];}
     else if(state.mode==='legacy'&&id==='dc:max'){relation='Mentor, not a Flash mantle holder';detail='Max mentors Bart Allen as Impulse. He appears beside this legacy for that relationship, not as another person in the Flash succession.';era='Impulse (1995) / Runs in the Family.';refs=['C14'];}
-    $('cvxPreviewBody').innerHTML=`<div class="cvx-preview-identity">${artwork(n)}<div><h3 id="cvxPreviewName">${esc(n.hero)}</h3>${n.civilian?`<p>${esc(n.civilian)}</p>`:''}</div></div><p class="cvx-preview-relation">${esc(relation)}</p><p class="cvx-preview-description">${esc(detail)} ${sourceLinks(refs)}</p>${era?`<p class="cvx-era"><strong>ERA &amp; CONTINUITY</strong>${esc(era)}</p>`:''}<div class="cvx-preview-actions"><button type="button" class="cvx-btn cvx-btn-primary" id="cvxOpenDossier">Open dossier ↗</button><button type="button" class="cvx-btn" id="cvxExploreNode">Explore connections</button></div>${refs.length?`<details class="cvx-scope"><summary>Relationship sources · ${refs.length}</summary>${sourceRows(refs)}<p>References remain available with inline citations off. Sources are publisher text and catalog descriptions, not a full issue-by-issue reading.</p></details>`:`<p class="cvx-status">${connections(id).length} recorded connections in this map. Open the dossier for the complete biography and its source register.</p>`}`;
+    $('cvxPreviewBody').innerHTML=`<div class="cvx-preview-identity">${artwork(n)}<div><h3 id="cvxPreviewName">${esc(n.hero)}</h3>${n.civilian?`<p>${esc(n.civilian)}</p>`:''}</div></div><p class="cvx-preview-relation">${esc(relation)}</p><p class="cvx-preview-description">${esc(detail)} ${sourceLinks(refs)}</p>${era?`<p class="cvx-era"><strong>ERA &amp; CONTINUITY</strong>${esc(era)}</p>`:''}<div class="cvx-preview-actions"><button type="button" class="cvx-btn cvx-btn-primary" id="cvxOpenDossier">Open dossier ↗</button><button type="button" class="cvx-btn" id="cvxExploreNode">Explore connections</button></div>${refs.length?`<details class="cvx-scope"><summary>Relationship sources · ${refs.length}</summary>${sourceRows(refs)}<p>References remain available with inline citations off. Sources are publisher text and catalog descriptions, not a full issue-by-issue reading.</p></details>`:`<p class="cvx-status">${connections(id).length} recorded connections in this map. Open the dossier for the character profile.</p>`}`;
     if(!preview.open)preview.showModal();preview.scrollTop=0;$('cvxPreviewClose').focus({preventScroll:true});
   }
   function closePreview(){if(preview.open)preview.close();previewSelection=null;}
-  function open(id='dc:donna',mode='connections',restored=null){
-    if(!lookup(id))id='dc:donna';
+  // v8.91: generic entry resumes context or a valid saved selection, never a pilot character.
+  function defaultRoot(){
+    const active=bridge.captureEntry()?.kind==='profile'?bySlug.get(bridge.activeSlug()):null;
+    const choices=[active,state?.root,pref('comicVaultConnectionsLastRoot','')];
+    return choices.find(id=>nodes.has(id)) || [...nodes.values()].sort((a,b)=>nodeName(a).localeCompare(nodeName(b)))[0]?.id;
+  }
+  function open(id=null,mode='connections',restored=null){
+    const generic=!lookup(id);
+    if(generic)id=defaultRoot();
+    if(!id)return;
     if(!dialog.open){
       bridge.dismissMenu();opener=document.activeElement;previousOverflow=document.body.style.overflow;
       state=restored?copy(restored):{root:id,start:id,mode,filter:'all',page:0,view:pref('comicVaultConnectionsView','map')==='list'?'list':'map',stack:[],entry:bridge.captureEntry(),scroll:0,camera:null,optionsOpen:false};
-      if(!nodes.has(state.root))state.root='dc:donna';
+      if(!nodes.has(state.root))state.root=defaultRoot();
       state.stack=Array.isArray(state.stack)?state.stack:[];
       $('cvxSearch').value='';state.page=Number.isInteger(state.page)?state.page:0;
       if(restored){bridge.restoreEntry(state.entry);opener=state.entry?.kind==='profile'?$('connectionExploreBtn'):document.querySelector('.cvx-home-entry');}
@@ -175946,7 +175983,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
       previousOverflow=document.body.style.overflow;document.body.style.overflow='hidden';
       dialog.showModal();
     }else{state.root=id;state.mode=mode;state.filter='all';state.page=0;$('cvxSearch').value='';}
-    render();requestAnimationFrame(()=>{scroller.scrollTop=restored?.scroll||0;queueLines();$('cvxTitle').focus({preventScroll:true});});
+    if(generic&&!restored){state.mode='connections';state.optionsOpen=true;}
+    save('comicVaultConnectionsLastRoot',state.root);
+    render();requestAnimationFrame(()=>{scroller.scrollTop=restored?.scroll||0;queueLines();(generic&&!restored?$('cvxSearch'):$('cvxTitle')).focus({preventScroll:true});});
   }
   function close(options={}){teardownMap();closingForDossier=options.toDossier===true;closePreview();if(dialog.open)dialog.close();}
   dialog.addEventListener('close',()=>{
@@ -176008,26 +176047,26 @@ $('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.ta
     if(!im.dataset.cvxFallback){im.dataset.cvxFallback='1';im.src=`assets/characters/${im.dataset.cvxArt}.png`;}
     else im.closest('.cvx-node-art')?.classList.add('cvx-art-missing');
   },true);
-  document.addEventListener('click',e=>{const button=e.target.closest('[data-cvx-open]');if(!button)return;let id=button.dataset.cvxOpen;if(id==='active')id=bySlug.get(bridge.activeSlug())||'dc:donna';open(id||'dc:donna',button.dataset.cvxStartMode||'connections');});
+  document.addEventListener('click',e=>{const button=e.target.closest('[data-cvx-open]');if(!button)return;let id=button.dataset.cvxOpen;if(id==='active')id=bySlug.get(bridge.activeSlug());else if(id==='connections')id=null;open(id,button.dataset.cvxStartMode||'connections');});
   const profileEntry=$('connectionExploreBtn');
   window.addEventListener('cv:profile-opened',e=>{profileEntry.hidden=!bySlug.has(e.detail.slug);});
   function updateCenterChoices(){
     const terms=norm($('cvxSearch').value).split(' ').filter(Boolean);
-    const available=[...nodes.values()].filter(n=>connections(n.id).length).sort((a,b)=>nodeName(a).localeCompare(nodeName(b)));
+    const available=[...nodes.values()].sort((a,b)=>nodeName(a).localeCompare(nodeName(b)));
     const matches=available.filter(n=>{const c=records.get(n.recordSlug);const text=norm([nodeName(n),c.name,c.realName,...(c.aliases||[])].join(' '));return terms.every(t=>text.includes(t));});
     const hasCurrent=matches.some(n=>n.id===state?.root);
-    const placeholder=matches.length?'Choose a matching character':'No mapped character matches';
-    $('cvxCenterSelect').innerHTML=(!hasCurrent?`<option value="" disabled selected>${placeholder}</option>`:'')+matches.map(n=>`<option value="${esc(n.id)}">${esc(nodeName(n))}</option>`).join('');
+    const placeholder=matches.length?'Choose a matching character':'No character matches';
+    $('cvxCenterSelect').innerHTML=(!hasCurrent?`<option value="" disabled selected>${placeholder}</option>`:'')+matches.map(n=>`<option value="${esc(n.id)}">${esc(nodeName(n))}${connections(n.id).length?'':' — no personal links yet'}</option>`).join('');
     $('cvxCenterSelect').disabled=!matches.length;
     if(hasCurrent)$('cvxCenterSelect').value=state.root;
-    $('cvxSearchResult').textContent=terms.length?`${matches.length} mapped ${matches.length===1?'match':'matches'}. Select one to explore.`:`Search hero names, people or aliases in the ${available.length} mapped dossiers.`;
+    $('cvxSearchResult').textContent=terms.length?`${matches.length} ${matches.length===1?'match':'matches'}. Select one to explore.`:`Search all ${available.length} dossiers, including those awaiting personal links.`;
     const suggestionBox=$('cvxSearchSuggestions');
     if(suggestionBox){
       const visible=terms.length ? matches.slice(0,8) : [];
       suggestionBox.hidden=!visible.length;
       suggestionBox.innerHTML=visible.map(n=>{
         const c=records.get(n.recordSlug);
-        const sub=[c?.realName && c.realName!==nodeName(n)?c.realName:'', c?.publisher||''].filter(Boolean).join(' · ');
+        const sub=[c?.realName && c.realName!==nodeName(n)?c.realName:'', c?.publisher||'',connections(n.id).length?'':'No personal links yet'].filter(Boolean).join(' · ');
         return `<button type="button" class="cvx-search-suggestion" data-cvx-suggest="${esc(n.id)}"><strong>${esc(nodeName(n))}</strong>${sub?`<small>${esc(sub)}</small>`:''}</button>`;
       }).join('');
       suggestionBox.querySelectorAll('[data-cvx-suggest]').forEach(btn=>btn.addEventListener('click',()=>{
@@ -176039,16 +176078,16 @@ $('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.ta
     }
   }
   updateCenterChoices();
-  const coverageText=`${mappedCount} / ${records.size} dossiers mapped · ${edges.length} selected relationships`;
+  const coverageText=`${mappedCount} / ${records.size} dossiers with personal links · ${edges.length} selected relationships`;
   $('cvxCoverageText').textContent=coverageText;
   $('cvxCoverageProgress').max=records.size;$('cvxCoverageProgress').value=mappedCount;
   $('cvxCoverageNote').textContent=mappedCount===records.size
     ? `All ${records.size} current dossiers have selected source-linked connections—not every relationship in their histories. New dossiers can extend this registry.`
-    : `${records.size-mappedCount} dossiers still await mapping. A mapped dossier has selected source-linked connections—not every relationship in its history.`;
-  document.querySelectorAll('[data-cvx-coverage]').forEach(el=>el.textContent=`${mappedCount} / ${records.size} MAPPED`);
+    : `${records.size-mappedCount} dossiers have no curated personal links yet. All ${records.size} remain searchable. This is not a complete relationship census; team nodes are not included yet.`;
+  document.querySelectorAll('[data-cvx-coverage]').forEach(el=>el.textContent=`${mappedCount} / ${records.size} LINKED`);
   $('cvxHomeCopy').textContent=mappedCount===records.size
     ? `Explore selected connections across all ${records.size} DC and Marvel dossiers.`
-    : `Explore selected DC and Marvel connections across ${mappedCount} of ${records.size} current dossiers.`;
+    : `Search all ${records.size} dossiers; ${mappedCount} currently have curated personal connections.`;
   $('cvxScopeText').textContent=`${mappedCount} / ${records.size} dossiers have selected mapped connections · ${edges.length} source-linked relationships. ${graph.scope} Other characters are not automatically connected from shared names or team tags.`;
   $('cvxSourceList').innerHTML=sourceRows(Object.keys(graph.sources));
   if('ResizeObserver' in window){resizeObserver=new ResizeObserver(queueLines);resizeObserver.observe($('cvxCanvas'));}else window.addEventListener('resize',queueLines);
