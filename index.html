@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.88: RECONCILED CONNECTIONS MAP — CX17 FINAL DC CONNECTIONS / 400 DOSSIERS MAPPED + FIT, PINCH, PAN, CONTEXTUAL LEGACY & LINE KEY -->
+  <!-- Comic Vault v8.89: RECONCILED CONNECTIONS MAP — CX17 FINAL DC CONNECTIONS / 400 DOSSIERS MAPPED + FIT, PINCH, PAN, CONTEXTUAL LEGACY & LINE KEY -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4688,8 +4688,68 @@ html.cv-pinch-zoom .card-character-image{
     .research-source-list a span{font-size:10px;letter-spacing:.12em;color:var(--blue);white-space:nowrap}
     @media(max-width:620px){.research-source-list a{align-items:flex-start;flex-direction:column;gap:5px}}
 
-/* v8.88 reader-cleanup: internal research evidence is retained in data, but public citation/source UI is suppressed. */
+/* v8.89 reader-cleanup: internal research evidence is retained in data, but public citation/source UI is suppressed. */
 #citationControls,.cv-source-cites,.cv-research-evidence,.research-source-panel,.cvx-reading-toggle,#cvxSources,.cvx-preview .cvx-scope{display:none!important}
+
+/* v8.89 — active-search compact mode */
+.archive.is-searching{
+  padding-top:24px;
+}
+.archive.is-searching .archive-intro{
+  margin-bottom:12px;
+}
+.archive.is-searching .archive-intro .section-kicker,
+.archive.is-searching .archive-intro h2,
+.archive.is-searching .archive-intro p{
+  display:none;
+}
+.archive.is-searching .archive-intro .count{
+  position:static;
+  margin:0;
+  font-size:12px;
+}
+.archive.is-searching .publisher-tabs{
+  margin:0 0 12px;
+  min-height:0;
+}
+.archive.is-searching .pub-tab{
+  min-height:42px;
+}
+.archive.is-searching .alphabet{
+  display:none;
+}
+
+
+/* v8.89 — visible Connections search suggestions */
+.cvx-search-suggestions{
+  display:grid;
+  gap:6px;
+  margin-top:8px;
+}
+.cvx-search-suggestions[hidden]{display:none}
+.cvx-search-suggestion{
+  width:100%;
+  border:1px solid #29425c;
+  border-radius:8px;
+  background:#0a1522;
+  color:#eaf4ff;
+  padding:10px 12px;
+  text-align:left;
+  cursor:pointer;
+  font:inherit;
+}
+.cvx-search-suggestion:hover,
+.cvx-search-suggestion:focus-visible{
+  border-color:#65b9f5;
+  background:#102238;
+  outline:none;
+}
+.cvx-search-suggestion small{
+  display:block;
+  margin-top:3px;
+  color:#7f93a9;
+}
+
 </style>
 
 <style id="cv-research-r2-styles">
@@ -4955,7 +5015,7 @@ Connections, accepted visuals and application behavior preserved except current 
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.88</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.89</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -5019,7 +5079,7 @@ Connections, accepted visuals and application behavior preserved except current 
           <i></i>
           <div><strong>2</strong><span>CONNECTED UNIVERSES</span></div>
         </div>
-        <button class="cvx-home-entry" type="button" data-cvx-open="dc:donna"><b aria-hidden="true">⌘</b><span>CONNECTIONS &amp; LEGACY<small id="cvxHomeCopy">Explore the Titans, Flash, Gotham, Superman, Lantern, Wonder and magic circles.</small></span><em data-cvx-coverage>EXPLORE ↗</em></button>
+        <button class="cvx-home-entry" type="button" data-cvx-open="connections"><b aria-hidden="true">⌘</b><span>CONNECTIONS &amp; LEGACY<small id="cvxHomeCopy">Explore the Titans, Flash, Gotham, Superman, Lantern, Wonder and magic circles.</small></span><em data-cvx-coverage>EXPLORE ↗</em></button>
         <button class="home-feature-link" id="homeFeaturedLink">VIEW FEATURED FILE →</button>
       </section>
 
@@ -5191,14 +5251,14 @@ Connections, accepted visuals and application behavior preserved except current 
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.88</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.89</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
           <button data-collection="all"><span>CHARACTER ARCHIVE</span><em>400</em></button>
           <button data-page="favorites"><span>FAVORITES</span><em id="menuFavoritesCount">0</em></button>
           <button data-page="spotlight"><span>FEATURED FILE</span></button>
-          <button type="button" data-cvx-open="dc:donna"><span>CONNECTIONS &amp; LEGACY</span><em data-cvx-coverage>EXPLORE</em></button>
+          <button type="button" data-cvx-open="connections"><span>CONNECTIONS &amp; LEGACY</span><em data-cvx-coverage>EXPLORE</em></button>
 
           <div class="menu-label">BROWSE COLLECTIONS</div>
 
@@ -5240,7 +5300,7 @@ Connections, accepted visuals and application behavior preserved except current 
 
   <dialog class="cvx-dialog" id="cvConnections" aria-labelledby="cvxTitle" aria-describedby="cvxDescription">
  <div class="cvx-frame">
-  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.88</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.89</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
   <div class="cvz-bar" id="cvzMapBar" hidden>
    <div class="cvz-zoom-controls" role="group" aria-label="Map zoom controls">
     <button type="button" class="cvz-symbol" id="cvzZoomOut" aria-label="Zoom map out" title="Zoom out">−</button>
@@ -5280,8 +5340,8 @@ Connections, accepted visuals and application behavior preserved except current 
     <div class="cvx-segment" role="group" aria-label="Explorer mode"><button type="button" data-cvx-mode="connections" aria-pressed="true">Connections</button><button type="button" data-cvx-mode="legacy" aria-pressed="false">Flash legacy</button></div>
     <label class="cvx-reading-toggle"><span>Citations</span><input type="checkbox" role="switch" id="cvxCitations" aria-label="Show inline citations in connections"><span class="cvx-toggle-track" aria-hidden="true"></span><span id="cvxCiteState" aria-hidden="true">OFF</span></label>
    </div>
-   <div class="cvx-control-row" id="cvxCenterControls"><div class="cvx-picker"><label class="cvx-search-label" for="cvxSearch">FIND A MAPPED CHARACTER</label><input type="search" id="cvxSearch" placeholder="Hero, person or alias…" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="cvxSearchResult"><label class="cvx-select-label" for="cvxCenterSelect">CENTER ON<select id="cvxCenterSelect" aria-label="Center on a mapped character"></select></label><small id="cvxSearchResult" aria-live="polite"></small></div><div class="cvx-segment" role="group" aria-label="Relationship presentation"><button type="button" data-cvx-view="map" aria-pressed="true">Tree</button><button type="button" data-cvx-view="list" aria-pressed="false">List</button></div></div>
-   <div class="cvx-history"><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxBack">← Back a step</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxStart">↶ Starting character</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxDonna">Donna’s circle</button></div>
+   <div class="cvx-control-row" id="cvxCenterControls"><div class="cvx-picker"><label class="cvx-search-label" for="cvxSearch">FIND A MAPPED CHARACTER</label><input type="search" id="cvxSearch" placeholder="Hero, person or alias…" autocomplete="off" autocapitalize="none" spellcheck="false" aria-describedby="cvxSearchResult"><label class="cvx-select-label" for="cvxCenterSelect">CENTER ON<select id="cvxCenterSelect" aria-label="Center on a mapped character"></select></label><small id="cvxSearchResult" aria-live="polite"></small><div id="cvxSearchSuggestions" class="cvx-search-suggestions" hidden></div></div><div class="cvx-segment" role="group" aria-label="Relationship presentation"><button type="button" data-cvx-view="map" aria-pressed="true">Tree</button><button type="button" data-cvx-view="list" aria-pressed="false">List</button></div></div>
+   <div class="cvx-history"><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxBack">← Back a step</button><button type="button" class="cvx-btn cvx-btn-subtle" id="cvxStart">↶ Starting character</button></div>
    <nav class="cvx-trail" id="cvxTrail" aria-label="Exploration trail"></nav>
    <div class="cvx-filters" id="cvxFilters" role="group" aria-label="Filter relationship types"></div>
    <div id="cvxMapGuide" class="cvx-map-guide"><p>Each branch connects directly to <strong id="cvxGuideRoot">the selected character</strong>. Position does not imply rank or ancestry.</p><p id="cvxRotateHint" class="cvx-rotate-hint">Use Fit map for the full page, then pinch or +/− to read details. Rotate for a wider arrangement; List is also available.</p></div>
@@ -155619,7 +155679,12 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function renderArchive(){
     updateArchiveBanner();
     const list = filtered();
-    resultCount.textContent = `${list.length} FILE${list.length===1?"":"S"}`;
+    const activeQuery = (searchInput?.value || "").trim();
+    const archiveSection = document.getElementById("archive");
+    if(archiveSection) archiveSection.classList.toggle("is-searching", !!activeQuery);
+    resultCount.textContent = activeQuery
+      ? `${list.length} RESULT${list.length===1?"":"S"} FOR “${activeQuery.toUpperCase()}”`
+      : `${list.length} FILE${list.length===1?"":"S"}`;
     if(!list.length){ archiveList.innerHTML = `<div class="empty">No character files match this search.</div>`; return; }
 
     const groups = {};
@@ -155664,7 +155729,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     profileReturnFocus = document.activeElement;
     if(options.remember !== false) rememberCurrentLocation();
     activeCharacter = c; activeTab = tab;
-    $("citationControls").hidden=true; // v8.88 reader-cleanup
+    $("citationControls").hidden=true; // v8.89 reader-cleanup
     applyCitationPreference(citationsVisible);
     $("profilePublisher").textContent = c.publisher;
     $("profileName").textContent = c.name.toUpperCase();
@@ -156035,7 +156100,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.88</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.89</b></span>
           ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
@@ -156452,7 +156517,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   "schemaVersion": 2,
   "release": "8.88",
   "pilot": false,
-  "scope": "v8.88 reconciles the trusted 400/400 dossier research against the curated Connections registry. It prioritizes defining family, mentor, partner, rival and legacy relationships over generic roster-only teammate links; full team membership remains dossier/team-page data rather than an automatic map mesh.",
+  "scope": "v8.89 reconciles the trusted 400/400 dossier research against the curated Connections registry. It prioritizes defining family, mentor, partner, rival and legacy relationships over generic roster-only teammate links; full team membership remains dossier/team-page data rather than an automatic map mesh.",
   "nodes": {
     "dc:donna": {
       "id": "dc:donna",
@@ -175414,7 +175479,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   ]
 }</script>
 <script id="cvConnectionsScript">
-/* Comic Vault v8.88 — Connections viewport + CX17 Magic / Shadowpact / Endless and final DC relationship registry; 400 current dossiers mapped. */
+/* Comic Vault v8.89 — Connections viewport + CX17 Magic / Shadowpact / Endless and final DC relationship registry; 400 current dossiers mapped. */
 (() => {
   'use strict';
   const graph = JSON.parse(document.getElementById('cvConnectionsData').textContent);
@@ -175830,8 +175895,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
       if(state.optionsOpen)$('cvxSearch').focus({preventScroll:true});
     }else{scroller.scrollTop=0;$('cvxSearch').focus({preventScroll:true});}
   });
-  $('cvxDonna').addEventListener('click',()=>center('dc:donna'));
-  $('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.target.value);});
+$('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.target.value);});
   $('cvxSearch').addEventListener('input',updateCenterChoices);
   $('cvxCitations').addEventListener('change',e=>{bridge.setCitations(e.target.checked);syncCitations();});
   // Listen for the same setting changing in the dossier, another tab, or unavailable-storage mode.
@@ -175853,6 +175917,22 @@ window.COMIC_VAULT_AUDIT_LOG = [
     $('cvxCenterSelect').disabled=!matches.length;
     if(hasCurrent)$('cvxCenterSelect').value=state.root;
     $('cvxSearchResult').textContent=terms.length?`${matches.length} mapped ${matches.length===1?'match':'matches'}. Select one to explore.`:`Search hero names, people or aliases in the ${available.length} mapped dossiers.`;
+    const suggestionBox=$('cvxSearchSuggestions');
+    if(suggestionBox){
+      const visible=terms.length ? matches.slice(0,8) : [];
+      suggestionBox.hidden=!visible.length;
+      suggestionBox.innerHTML=visible.map(n=>{
+        const c=records.get(n.recordSlug);
+        const sub=[c?.realName && c.realName!==nodeName(n)?c.realName:'', c?.publisher||''].filter(Boolean).join(' · ');
+        return `<button type="button" class="cvx-search-suggestion" data-cvx-suggest="${esc(n.id)}"><strong>${esc(nodeName(n))}</strong>${sub?`<small>${esc(sub)}</small>`:''}</button>`;
+      }).join('');
+      suggestionBox.querySelectorAll('[data-cvx-suggest]').forEach(btn=>btn.addEventListener('click',()=>{
+        const id=btn.getAttribute('data-cvx-suggest');
+        if(!id)return;
+        $('cvxCenterSelect').value=id;
+        $('cvxCenterSelect').dispatchEvent(new Event('change',{bubbles:true}));
+      }));
+    }
   }
   updateCenterChoices();
   const coverageText=`${mappedCount} / ${records.size} dossiers mapped · ${edges.length} selected relationships`;
