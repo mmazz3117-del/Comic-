@@ -4,7 +4,7 @@
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
   <meta http-equiv="Pragma" content="no-cache" />
   <meta http-equiv="Expires" content="0" />
-  <meta name="comic-vault-build" content="8.87" />
+  <meta name="comic-vault-build" content="8.88" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="theme-color" content="#05070b" />
@@ -17,7 +17,7 @@
   <link rel="apple-touch-icon-precomposed" href="./apple-touch-icon.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png?v=7.2" />
   <link rel="icon" type="image/png" sizes="512x512" href="./icon-512.png?v=7.2" />
-  <!-- Comic Vault v8.87: CONNECTIONS MAP — CX17 FINAL DC CONNECTIONS / 400 DOSSIERS MAPPED + FIT, PINCH, PAN, CONTEXTUAL LEGACY & LINE KEY -->
+  <!-- Comic Vault v8.88: RECONCILED CONNECTIONS MAP — CX17 FINAL DC CONNECTIONS / 400 DOSSIERS MAPPED + FIT, PINCH, PAN, CONTEXTUAL LEGACY & LINE KEY -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -4687,6 +4687,9 @@ html.cv-pinch-zoom .card-character-image{
     .research-source-list a:hover,.research-source-list a:focus-visible{border-color:rgba(83,156,255,.5);background:rgba(24,67,115,.32);outline:none}
     .research-source-list a span{font-size:10px;letter-spacing:.12em;color:var(--blue);white-space:nowrap}
     @media(max-width:620px){.research-source-list a{align-items:flex-start;flex-direction:column;gap:5px}}
+
+/* v8.88 reader-cleanup: internal research evidence is retained in data, but public citation/source UI is suppressed. */
+#citationControls,.cv-source-cites,.cv-research-evidence,.research-source-panel,.cvx-reading-toggle,#cvxSources,.cvx-preview .cvx-scope{display:none!important}
 </style>
 
 <style id="cv-research-r2-styles">
@@ -4952,7 +4955,7 @@ Connections, accepted visuals and application behavior preserved except current 
         <span class="brand-mark">CV</span>
         <span class="brand-copy">
           <strong>COMIC VAULT</strong>
-          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.87</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+          <span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.88</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
         </span>
       </button>
       <button class="icon-btn" id="menuBtn" aria-label="Open menu">
@@ -5188,7 +5191,7 @@ Connections, accepted visuals and application behavior preserved except current 
         <button class="sheet-close" data-close-menu aria-label="Close menu">×</button>
         <div class="brand menu-brand">
           <span class="brand-mark">CV</span>
-          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.87</em></span></span>
+          <span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v8.88</em></span></span>
         </div>
         <div class="menu-section">
           <button data-page="home"><span>HOME</span></button>
@@ -5237,7 +5240,7 @@ Connections, accepted visuals and application behavior preserved except current 
 
   <dialog class="cvx-dialog" id="cvConnections" aria-labelledby="cvxTitle" aria-describedby="cvxDescription">
  <div class="cvx-frame">
-  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.87</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
+  <header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v8.88</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button class="cvz-options-button" id="cvzOptions" type="button" aria-expanded="false" aria-controls="cvxExplorerOptions">Options</button><button class="cvx-close" id="cvxClose" type="button" aria-label="Close connections and return">×</button></header>
   <div class="cvz-bar" id="cvzMapBar" hidden>
    <div class="cvz-zoom-controls" role="group" aria-label="Map zoom controls">
     <button type="button" class="cvz-symbol" id="cvzZoomOut" aria-label="Zoom map out" title="Zoom out">−</button>
@@ -155661,7 +155664,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     profileReturnFocus = document.activeElement;
     if(options.remember !== false) rememberCurrentLocation();
     activeCharacter = c; activeTab = tab;
-    $("citationControls").hidden=!(c.researchSources || []).some(src=>src.id);
+    $("citationControls").hidden=true; // v8.88 reader-cleanup
     applyCitationPreference(citationsVisible);
     $("profilePublisher").textContent = c.publisher;
     $("profileName").textContent = c.name.toUpperCase();
@@ -156032,11 +156035,10 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
       profileBody.innerHTML = `
         <section class="dossier-lead">
-          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.87</b></span>
+          <span class="dossier-number">CV // ${esc(c.publisher)} // ${esc((c.imageSlug || slugify(c.name)).toUpperCase())} <b>• BUILD v8.88</b></span>
           ${c.audit ? `<div class="audit-badge"><span>${c.researchReview ? "SOURCE-REVIEWED DOSSIER" : "RESEARCH REVIEW PENDING"}</span><b>${esc(c.researchReview?.batch || "LEGACY RECORD")}</b><em>${esc(c.researchReview?.date || "")}</em></div>` : `<div class="audit-badge pending"><span>◇ STANDARD RECORD</span><b>DEEP AUDIT PENDING</b></div>`}
           <h3>${esc(c.name)} — Archive Summary</h3>
           <p>${esc(c.overview)}</p>
-          ${c.researchScope ? `<div class="cv-dossier-scope"><strong>DOSSIER SCOPE</strong><span>${esc(c.researchScope)}</span></div>` : ""}
         </section>
 
         <section class="body-section origin-dossier origin-dossier-v81">
@@ -156448,9 +156450,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
 <script type="application/json" id="cvConnectionsData">{
   "schemaVersion": 2,
-  "release": "8.87",
+  "release": "8.88",
   "pilot": false,
-  "scope": "CX17 completed selected source-linked mapping for the 400-dossier DC and Marvel archive in v8.72. This is dossier coverage, not an exhaustive catalog of every relationship. Live counts reflect the current registry, which remains open to new dossiers and verified links.",
+  "scope": "v8.88 reconciles the trusted 400/400 dossier research against the curated Connections registry. It prioritizes defining family, mentor, partner, rival and legacy relationships over generic roster-only teammate links; full team membership remains dossier/team-page data rather than an automatic map mesh.",
   "nodes": {
     "dc:donna": {
       "id": "dc:donna",
@@ -160047,7 +160049,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "a": "dc:wally",
       "b": "dc:max",
       "tags": [
-        "teammates"
+        "teammates",
+        "mentors"
       ],
       "toB": "Speedster ally",
       "toA": "Speedster ally",
@@ -162782,7 +162785,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "tags": [
         "family",
         "teammates",
-        "legacy"
+        "legacy",
+        "mentors"
       ],
       "toB": "Close family ally / mentor in classic era",
       "toA": "Protégé/foster-brother depending era",
@@ -163881,7 +163885,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "b": "marvel:falcon",
       "tags": [
         "allies",
-        "legacy"
+        "legacy",
+        "mentors"
       ],
       "toB": "Trusted partner & successor",
       "toA": "Friend, mentor & predecessor",
@@ -165693,123 +165698,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "priority": 3
     },
     {
-      "id": "cx65-jay-midnite",
-      "a": "dc:jay",
-      "b": "dc:midnite",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "JSA teammate",
-      "toA": "JSA teammate",
-      "detail": "Jay Garrick and Charles McNider are members of the Justice Society's Golden Age generation.",
-      "era": "Golden Age Justice Society.",
-      "sourceIds": [
-        "D65-JSA-FOUNDERS",
-        "D65-MIDNITE-WILDCAT"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx65-jay-hourman",
-      "a": "dc:jay",
-      "b": "dc:hourman",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "JSA teammate",
-      "toA": "JSA teammate",
-      "detail": "Jay Garrick and Rex Tyler served together in the original Justice Society.",
-      "era": "Golden Age Justice Society.",
-      "sourceIds": [
-        "D65-JSA-FOUNDERS"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx65-jay-wesley",
-      "a": "dc:jay",
-      "b": "dc:wesley",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "JSA teammate",
-      "toA": "JSA teammate",
-      "detail": "Jay Garrick and Wesley Dodds are founding-era Justice Society peers.",
-      "era": "Golden Age Justice Society.",
-      "sourceIds": [
-        "D65-JSA-FOUNDERS",
-        "D65-SANDMAN"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx65-jay-spectre",
-      "a": "dc:jay",
-      "b": "dc:spectre",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "JSA teammate",
-      "toA": "JSA teammate",
-      "detail": "Jim Corrigan's Spectre and Jay Garrick were part of the Justice Society's original Golden Age circle.",
-      "era": "Golden Age Justice Society; Spectre's host/status changes in later eras.",
-      "sourceIds": [
-        "D65-JSA-FOUNDERS"
-      ],
-      "priority": 3
-    },
-    {
-      "id": "cx65-jay-wildcat",
-      "a": "dc:jay",
-      "b": "dc:wildcat",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "JSA teammate",
-      "toA": "JSA teammate",
-      "detail": "Jay Garrick and Ted Grant are longtime Justice Society teammates and Golden Age veterans.",
-      "era": "Golden Age and later Justice Society eras.",
-      "sourceIds": [
-        "D65-JAY",
-        "D65-MIDNITE-WILDCAT"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx65-jay-powergirl",
-      "a": "dc:jay",
-      "b": "dc:powergirl",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "JSA teammate",
-      "toA": "JSA elder teammate",
-      "detail": "Power Girl became a major Justice Society member and later chairwoman alongside veterans such as Jay Garrick.",
-      "era": "Earth-Two legacy and modern Justice Society eras.",
-      "sourceIds": [
-        "D65-JAY",
-        "D65-POWERGIRL"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx65-jay-terrific",
-      "a": "dc:jay",
-      "b": "dc:terrific",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "JSA teammate",
-      "toA": "JSA elder teammate",
-      "detail": "Michael Holt and Jay Garrick share Justice Society service, linking the team's modern leadership with its Golden Age generation.",
-      "era": "Modern Justice Society era.",
-      "sourceIds": [
-        "D65-TERRIFIC",
-        "D65-JSA-MODERN"
-      ],
-      "priority": 3
-    },
-    {
       "id": "cx65-stargirl-jack",
       "a": "dc:stargirl",
       "b": "dc:jack",
@@ -165892,23 +165780,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
         "D65-DEGATON"
       ],
       "priority": 5
-    },
-    {
-      "id": "cx65-redtornado-jay",
-      "a": "dc:redtornado",
-      "b": "dc:jay",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "JSA teammate",
-      "toA": "JSA veteran teammate",
-      "detail": "Red Tornado was originally created to attack the Justice Society but overcame his programming and was later accepted onto the team, placing him alongside veterans such as Jay Garrick.",
-      "era": "Pre-Crisis Justice Society history; later Justice League service follows.",
-      "sourceIds": [
-        "D65-REDTORNADO",
-        "D65-JAY"
-      ],
-      "priority": 3
     },
     {
       "id": "cx65-degaton-jay",
@@ -167524,181 +167395,14 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "priority": 2
     },
     {
-      "id": "cx68-phantom-saturn",
-      "a": "dc:phantom-girl",
-      "b": "dc:saturn-girl",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Two long-serving Legionnaires linked through the team’s classic core.",
-      "era": "Selected team connection, not a hierarchy.",
-      "sourceIds": [
-        "D68-PHANTOM-GIRL",
-        "D68-SATURN-GIRL"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-ultra-cosmic",
-      "a": "dc:ultra-boy",
-      "b": "dc:cosmic-boy",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Ultra Boy served alongside founder Cosmic Boy as part of the Legion’s expanding roster.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-ULTRA-BOY",
-        "D68-COSMIC-BOY"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-bouncing-cosmic",
-      "a": "dc:bouncing-boy",
-      "b": "dc:cosmic-boy",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Bouncing Boy’s long Legion service connects him directly to founder Cosmic Boy.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-BOUNCING-BOY",
-        "D68-COSMIC-BOY"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-triplicate-saturn",
-      "a": "dc:triplicate-girl",
-      "b": "dc:saturn-girl",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Triplicate Girl is part of the early Legion generation led in part by Saturn Girl.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-TRIPLICATE-GIRL",
-        "D68-SATURN-GIRL"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-chameleon-brainiac5",
-      "a": "dc:chameleon-boy",
-      "b": "dc:brainiac-5",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Chameleon Boy and Brainiac 5 are two of the Legion’s longest-serving specialist members.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-CHAMELEON-BOY",
-        "D68-BRAINIAC-5"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-colossal-cosmic",
-      "a": "dc:colossal-boy",
-      "b": "dc:cosmic-boy",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Colossal Boy served within the classic Legion alongside founder Cosmic Boy.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-COLOSSAL-BOY",
-        "D68-COSMIC-BOY"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-element-saturn",
-      "a": "dc:element-lad",
-      "b": "dc:saturn-girl",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Element Lad’s long service places him within Saturn Girl’s Legion generation.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-ELEMENT-LAD",
-        "D68-SATURN-GIRL"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-karate-cosmic",
-      "a": "dc:karate-kid",
-      "b": "dc:cosmic-boy",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Karate Kid served as a Legionnaire alongside founder Cosmic Boy.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-KARATE-KID",
-        "D68-COSMIC-BOY"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-wildfire-brainiac5",
-      "a": "dc:wildfire",
-      "b": "dc:brainiac-5",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Wildfire and Brainiac 5 repeatedly served together as major Legion members with very different leadership styles.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-WILDFIRE",
-        "D68-BRAINIAC-5"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-dawnstar-saturn",
-      "a": "dc:dawnstar",
-      "b": "dc:saturn-girl",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Dawnstar’s Legion career connects her to the team’s founding generation through Saturn Girl.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-DAWNSTAR",
-        "D68-SATURN-GIRL"
-      ],
-      "priority": 2
-    },
-    {
       "id": "cx68-dream-brainiac5",
       "a": "dc:dream-girl",
       "b": "dc:brainiac-5",
       "tags": [
-        "teammates"
+        "teammates",
+        "family",
+        "partners",
+        "allies"
       ],
       "toB": "Legion teammate / strategist",
       "toA": "Legion teammate / strategist",
@@ -167745,23 +167449,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "priority": 2
     },
     {
-      "id": "cx68-timber-wildfire",
-      "a": "dc:timber-wolf",
-      "b": "dc:wildfire",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Timber Wolf and Wildfire share extensive Legion service in the classic roster.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-TIMBER-WOLF",
-        "D68-WILDFIRE"
-      ],
-      "priority": 2
-    },
-    {
       "id": "cx68-jacques-brainiac5",
       "a": "dc:jacques",
       "b": "dc:brainiac-5",
@@ -167779,57 +167466,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
         "D68-BRAINIAC-5"
       ],
       "priority": 1
-    },
-    {
-      "id": "cx68-jacques-wildfire",
-      "a": "dc:jacques",
-      "b": "dc:wildfire",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Jacques and Wildfire served together during Jacques’s early Legion years and shared dimensional adventures.",
-      "era": "Classic Jacques Foccart Legion service.",
-      "sourceIds": [
-        "D68-INVISIBLE-KID",
-        "D68-WILDFIRE"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-brainiac5-cosmic",
-      "a": "dc:brainiac-5",
-      "b": "dc:cosmic-boy",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Brainiac 5 became one of the Legion’s defining later members alongside founder Cosmic Boy.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-BRAINIAC-5",
-        "D68-COSMIC-BOY"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-mon-cosmic",
-      "a": "dc:mon-el",
-      "b": "dc:cosmic-boy",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Mon-El’s long Legion service connects him directly with founder Cosmic Boy.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-MON-EL",
-        "D68-COSMIC-BOY"
-      ],
-      "priority": 2
     },
     {
       "id": "cx68-phantom-triplicate",
@@ -167862,23 +167498,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "sourceIds": [
         "D68-LIGHTNING-LASS",
         "D68-DAWNSTAR"
-      ],
-      "priority": 2
-    },
-    {
-      "id": "cx68-ultra-wildfire",
-      "a": "dc:ultra-boy",
-      "b": "dc:wildfire",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Legion teammate",
-      "toA": "Legion teammate",
-      "detail": "Ultra Boy and Wildfire are major powerhouse members of the Legion’s classic era.",
-      "era": "Selected team connection.",
-      "sourceIds": [
-        "D68-ULTRA-BOY",
-        "D68-WILDFIRE"
       ],
       "priority": 2
     },
@@ -168336,7 +167955,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "a": "dc:amanda_waller",
       "b": "dc:rick_flag",
       "tags": [
-        "teammates"
+        "teammates",
+        "allies"
       ],
       "toB": "Task Force X director / commander",
       "toA": "Task Force X operative / field asset",
@@ -169065,7 +168685,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "a": "dc:punchline",
       "b": "dc:joker",
       "tags": [
-        "allies"
+        "allies",
+        "partners"
       ],
       "toB": "Devoted partner / lieutenant",
       "toA": "Criminal mentor / partner",
@@ -169670,54 +169291,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
         "D71-DIRECTORY"
       ],
       "priority": 1
-    },
-    {
-      "id": "cx71-fire-jonn",
-      "a": "dc:fire",
-      "b": "dc:jonn",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Justice League teammate",
-      "toA": "Justice League teammate",
-      "detail": "Fire and Martian Manhunter share Justice League International service.",
-      "era": "Primary comics continuity; relationship details can vary by era.",
-      "sourceIds": [
-        "D71-DIRECTORY"
-      ],
-      "priority": 3
-    },
-    {
-      "id": "cx71-ice-jonn",
-      "a": "dc:ice",
-      "b": "dc:jonn",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Justice League teammate",
-      "toA": "Justice League teammate",
-      "detail": "Ice and Martian Manhunter share Justice League International service.",
-      "era": "Primary comics continuity; relationship details can vary by era.",
-      "sourceIds": [
-        "D71-DIRECTORY"
-      ],
-      "priority": 3
-    },
-    {
-      "id": "cx71-kimiyo-jonn",
-      "a": "dc:doctor_light_kimiyo_hoshi",
-      "b": "dc:jonn",
-      "tags": [
-        "teammates"
-      ],
-      "toB": "Justice League teammate",
-      "toA": "Justice League teammate",
-      "detail": "Kimiyo Hoshi’s Doctor Light is a heroic Justice League-associated figure, distinct from Arthur Light.",
-      "era": "Primary comics continuity; relationship details can vary by era.",
-      "sourceIds": [
-        "D71-DIRECTORY"
-      ],
-      "priority": 3
     },
     {
       "id": "cx72-etrigan-xanadu",
@@ -170387,6 +169960,536 @@ window.COMIC_VAULT_AUDIT_LOG = [
         "D72-SABBAC-INDEX"
       ],
       "priority": 2
+    },
+    {
+      "id": "cx88-01",
+      "a": "dc:rose",
+      "b": "dc:dick",
+      "tags": [
+        "mentors",
+        "allies"
+      ],
+      "toB": "Mentor & ally",
+      "toA": "Protégée & ally",
+      "detail": "Rose’s dossier identifies Nightwing as a mentor, but the map currently connects her to Jericho, Deathstroke and Tim Drake only. DC explicitly says Nightwing trained Rose.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8801"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-02",
+      "a": "dc:orion",
+      "b": "dc:kalibak",
+      "tags": [
+        "family",
+        "rivals"
+      ],
+      "toB": "Half-brother & rival",
+      "toA": "Half-brother & rival",
+      "detail": "Both dossiers identify them as half-brothers and adversaries. DC explicitly identifies Kalibak as Orion’s biological half-brother.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8802"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-03",
+      "a": "dc:guy",
+      "b": "dc:ice",
+      "tags": [
+        "family",
+        "allies",
+        "partners"
+      ],
+      "toB": "Former partner & ally",
+      "toA": "Former partner & ally",
+      "detail": "Both dossiers treat this as a major romantic relationship. DC calls Tora one of Guy’s great loves and describes their on-again/off-again relationship.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8803"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-04",
+      "a": "dc:jade",
+      "b": "dc:obsidian",
+      "tags": [
+        "family",
+        "allies"
+      ],
+      "toB": "Twin brother & ally",
+      "toA": "Twin sister & ally",
+      "detail": "This is a defining sibling relationship and both are archive nodes. DC identifies Todd/Obsidian as Jade’s twin brother.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8804"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-05",
+      "a": "marvel:black-panther",
+      "b": "marvel:storm",
+      "tags": [
+        "family",
+        "allies",
+        "partners"
+      ],
+      "toB": "Former wife & ally",
+      "toA": "Former husband & ally",
+      "detail": "The dossiers preserve their former marriage. Marvel describes Storm becoming Queen of Wakanda through marriage to T’Challa and notes that their connection endures after the split.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8805"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-06",
+      "a": "dc:grail",
+      "b": "dc:darkseid",
+      "tags": [
+        "family"
+      ],
+      "toB": "Father",
+      "toA": "Daughter",
+      "detail": "Both dossiers identify the father-daughter relationship. DC repeatedly calls Grail Darkseid’s daughter.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8806"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-07",
+      "a": "dc:lady_shiva",
+      "b": "dc:cass",
+      "tags": [
+        "family",
+        "rivals"
+      ],
+      "toB": "Estranged daughter & rival",
+      "toA": "Mother & rival",
+      "detail": "This is one of Cassandra and Shiva’s defining relationships. DC’s official Lady Shiva page identifies Cassandra as her estranged daughter.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8807"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-08",
+      "a": "dc:gar",
+      "b": "dc:rita",
+      "tags": [
+        "family"
+      ],
+      "toB": "Adoptive mother",
+      "toA": "Adoptive son",
+      "detail": "The dossiers preserve Rita’s classic adoptive-mother role. DC notes that Rita Farr and Steve Dayton adopted Gar Logan.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8808"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-09",
+      "a": "dc:arthur-curry",
+      "b": "dc:garth",
+      "tags": [
+        "mentors",
+        "allies"
+      ],
+      "toB": "Former protégé & ally",
+      "toA": "Mentor & ally",
+      "detail": "Tempest is currently only one edge deep despite Arthur being a defining mentor. DC explicitly calls Garth Aquaman’s former protégé.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8809"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-10",
+      "a": "dc:barry",
+      "b": "dc:bart",
+      "tags": [
+        "family",
+        "legacy"
+      ],
+      "toB": "Grandson & Flash legacy",
+      "toA": "Grandfather & Flash legacy",
+      "detail": "Bart’s dossier identifies Barry as his paternal grandfather. DC states Bart Allen is Barry Allen’s grandson.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8810"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-11",
+      "a": "dc:jade",
+      "b": "dc:kyle",
+      "tags": [
+        "family",
+        "allies",
+        "partners"
+      ],
+      "toB": "Former partner & ally",
+      "toA": "Former partner & ally",
+      "detail": "Jade’s dossier records the romance, and DC’s collection description says their relationship was 'in full bloom' during Green Lantern #137–140.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8811"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-12",
+      "a": "dc:silver-banshee",
+      "b": "dc:jimmy",
+      "tags": [
+        "family",
+        "allies",
+        "partners"
+      ],
+      "toB": "Romantic partner & ally",
+      "toA": "Romantic partner & ally",
+      "detail": "The dossier records the Dawn of DC romance. DC notes that Jimmy began dating Siobhan McDougal in Superman #5 (2023).",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8812"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-13",
+      "a": "dc:lana_lang",
+      "b": "dc:johnhenry",
+      "tags": [
+        "family",
+        "allies",
+        "partners"
+      ],
+      "toB": "Spouse & ally",
+      "toA": "Spouse & ally",
+      "detail": "This relationship is now marriage-level, making omission from Connections especially noticeable. DC announced their wedding as the backdrop of Summer of Superman Special #1.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8813"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-14",
+      "a": "dc:omen",
+      "b": "dc:garth",
+      "tags": [
+        "family",
+        "allies",
+        "partners"
+      ],
+      "toB": "Former romantic partner & ally",
+      "toA": "Former romantic partner & ally",
+      "detail": "The dossiers record their Titans-era romance, and DC specifically discusses the Lilith/Garth relationship in Titans.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8814"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-15",
+      "a": "dc:dinah",
+      "b": "dc:wildcat",
+      "tags": [
+        "mentors",
+        "allies"
+      ],
+      "toB": "Boxing mentor & ally",
+      "toA": "Protégée & ally",
+      "detail": "This is a defining training relationship that is more useful than a generic teammate edge. DC states Dinah learned boxing from Ted Grant.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8815"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-16",
+      "a": "dc:wildcat",
+      "b": "dc:bruce",
+      "tags": [
+        "mentors",
+        "allies"
+      ],
+      "toB": "Student & ally",
+      "toA": "Boxing mentor & ally",
+      "detail": "DC explicitly lists Bruce Wayne among Wildcat’s students. Because Batman is already heavily connected, this should rank below Wildcat’s more defining under-connected links.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8816"
+      ],
+      "priority": 3
+    },
+    {
+      "id": "cx88-17",
+      "a": "dc:doctor_light_kimiyo_hoshi",
+      "b": "dc:arthur-light",
+      "tags": [
+        "rivals",
+        "legacy"
+      ],
+      "toB": "Earlier mantle holder & rival",
+      "toA": "Successor mantle holder & rival",
+      "detail": "They are separate mantle holders whose contrast matters to the legacy map. DC explicitly identifies Kimiyo as the second Doctor Light after Arthur.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8817"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-18",
+      "a": "dc:conner",
+      "b": "dc:lex",
+      "tags": [
+        "family",
+        "legacy"
+      ],
+      "toB": "Genetic contributor & adversary",
+      "toA": "Genetic legacy / clone connection",
+      "detail": "Conner’s dossier records Lex as a genetic contributor. DC says Conner’s DNA was updated to a mixture of Clark and Lex Luthor.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8818"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-19",
+      "a": "dc:garth",
+      "b": "dc:dolphin",
+      "tags": [
+        "family",
+        "allies",
+        "partners"
+      ],
+      "toB": "Wife & ally",
+      "toA": "Husband & ally",
+      "detail": "This is a defining pre-Flashpoint family relationship. DC explicitly identifies Dolphin as Tempest’s wife.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8819"
+      ],
+      "priority": 1
+    },
+    {
+      "id": "cx88-20",
+      "a": "dc:savitar",
+      "b": "dc:wally",
+      "tags": [
+        "rivals",
+        "legacy"
+      ],
+      "toB": "Speed Force rival",
+      "toA": "Speed Force rival",
+      "detail": "Savitar has only one current edge (Barry), but his defining comics conflict is with Wally’s Flash era. DC’s Flash collections explicitly frame Wally as the Flash who confronts and defeats Savitar.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8820"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-21",
+      "a": "dc:savitar",
+      "b": "dc:max",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Old foe",
+      "toA": "Old foe",
+      "detail": "DC identifies Max Mercury as Savitar’s old foe and says Max helped force Savitar back into the Speed Force. This is more character-specific than a generic speedster-team edge.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8821"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-22",
+      "a": "dc:jason",
+      "b": "dc:bizarro",
+      "tags": [
+        "allies",
+        "teammates"
+      ],
+      "toB": "Outlaws partner & ally",
+      "toA": "Outlaws partner & ally",
+      "detail": "Their Outlaws relationship is sustained and character-defining rather than a one-off team overlap. DC repeatedly describes Bizarro and Artemis as Jason’s partners and allies.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8822"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-23",
+      "a": "dc:tim",
+      "b": "dc:steph",
+      "tags": [
+        "family",
+        "allies",
+        "legacy",
+        "partners"
+      ],
+      "toB": "Romantic partner & Bat-family ally",
+      "toA": "Romantic partner & Bat-family ally",
+      "detail": "This is a long-running romantic and Bat-family relationship, not merely a teammate link. DC has published a dedicated history of Tim and Stephanie’s relationship.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8823"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-24",
+      "a": "dc:hal",
+      "b": "dc:kilowog",
+      "tags": [
+        "mentors",
+        "allies"
+      ],
+      "toB": "Trainer & mentor",
+      "toA": "Trainee & ally",
+      "detail": "Kilowog is not just another Corps teammate: DC explicitly identifies him as the drill sergeant who personally trained Hal Jordan.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8824"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-25",
+      "a": "dc:miracle",
+      "b": "dc:orion",
+      "tags": [
+        "family",
+        "legacy"
+      ],
+      "toB": "Pact brother",
+      "toA": "Pact brother",
+      "detail": "Their lives are structurally bound by the Pact that exchanged them at birth. Recent DC material calls Orion Mister Miracle’s Pact Brother and describes their lives as forever intertwined.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8825"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-26",
+      "a": "marvel:cable",
+      "b": "marvel:havok",
+      "tags": [
+        "family"
+      ],
+      "toB": "Uncle",
+      "toA": "Nephew",
+      "detail": "Marvel’s official character records identify Alexander Summers / Havok as Cable’s uncle and Cable as Havok’s nephew. This is a real family link, though less central than Cable’s Scott/Jean relationships.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8826"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-27",
+      "a": "marvel:cable",
+      "b": "marvel:jean-grey",
+      "tags": [
+        "family",
+        "mentors"
+      ],
+      "toB": "Stepmother & parental figure",
+      "toA": "Stepson",
+      "detail": "Marvel identifies Jean as Cable’s stepmother and specifically documents Jean and Scott raising Nathan in the future as Redd and Slym. This is a defining family relationship, not just shared X-Men membership.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8827"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-28",
+      "a": "dc:black-manta",
+      "b": "dc:mera",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Adversary",
+      "toA": "Adversary",
+      "detail": "Both trusted dossiers flag the rivalry, and DC repeatedly places Mera directly in Black Manta’s attacks on Aquaman and Atlantis. This is valid, but ranks below Manta ↔ Aquaman in importance.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8828"
+      ],
+      "priority": 2
+    },
+    {
+      "id": "cx88-29",
+      "a": "marvel:doom",
+      "b": "marvel:doctor-strange",
+      "tags": [
+        "allies",
+        "rivals"
+      ],
+      "toB": "Mystic ally & rival",
+      "toA": "Mystic ally & rival",
+      "detail": "Doom currently has only one map edge, to Mister Fantastic. His mystic side is a major part of the character, and Marvel’s Triumph and Torment specifically pairs Doom and Strange on a journey into Hell to free Cynthia von Doom’s soul.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8829"
+      ],
+      "priority": 3
+    },
+    {
+      "id": "cx88-30",
+      "a": "dc:krypto",
+      "b": "dc:kara",
+      "tags": [
+        "family",
+        "allies"
+      ],
+      "toB": "Kryptonian family companion & ally",
+      "toA": "Kryptonian companion & ally",
+      "detail": "Krypto currently has only one edge, to Superman, despite his dossier placing him in the wider Superman Family. DC’s Supergirl #25 directly pairs Kara and Krypto on the return to Krypton and treats them as family-linked Kryptonian companions.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8830"
+      ],
+      "priority": 3
+    },
+    {
+      "id": "cx88-31",
+      "a": "dc:dinah",
+      "b": "dc:lady_shiva",
+      "tags": [
+        "rivals"
+      ],
+      "toB": "Martial-arts rival",
+      "toA": "Martial-arts rival",
+      "detail": "This has become a character-specific martial-arts rivalry rather than a generic crossover. DC’s Black Canary: Best of the Best is built around a six-round Canary-versus-Shiva contest to determine the better fighter.",
+      "era": "Continuity and era qualifications follow the reconciled v8.87 dossiers and the cited publisher evidence.",
+      "sourceIds": [
+        "R8831"
+      ],
+      "priority": 3
     }
   ],
   "sources": {
@@ -171490,16 +171593,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "note": "Barbara Minerva’s Cheetah history and Circe’s role in empowering one era of the character. This does not make Circe her permanent master.",
       "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
     },
-    "W22": {
-      "id": "W22",
-      "title": "DC — Zatanna",
-      "url": "https://www.dc.com/characters/zatanna",
-      "publisher": "DC",
-      "kind": "Publisher character/editorial/catalog text",
-      "reviewed": "2026-09-07",
-      "note": "Zatanna’s magical identity and official related-character context with Constantine, Deadman, Swamp Thing and Phantom Stranger.",
-      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
-    },
     "W23": {
       "id": "W23",
       "title": "DC — John Constantine",
@@ -171518,26 +171611,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "kind": "Publisher character/editorial/catalog text",
       "reviewed": "2026-09-07",
       "note": "Swamp Thing/Alec Holland identity and official related-character context with Constantine, Deadman, Phantom Stranger and Zatanna.",
-      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
-    },
-    "W25": {
-      "id": "W25",
-      "title": "DC — Deadman",
-      "url": "https://www.dc.com/characters/deadman",
-      "publisher": "DC",
-      "kind": "Publisher character/editorial/catalog text",
-      "reviewed": "2026-09-07",
-      "note": "Deadman/Boston Brand and his work with supernatural heroes including Spectre and Justice League Dark.",
-      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
-    },
-    "W26": {
-      "id": "W26",
-      "title": "DC — The Phantom Stranger",
-      "url": "https://www.dc.com/characters/the-phantom-stranger",
-      "publisher": "DC",
-      "kind": "Publisher character/editorial/catalog text",
-      "reviewed": "2026-09-07",
-      "note": "Phantom Stranger’s supernatural role and related-character context; connections are kept era-qualified rather than defining him as permanent teammate to everyone listed.",
       "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
     },
     "W27": {
@@ -171608,16 +171681,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "kind": "Publisher character/editorial/catalog text",
       "reviewed": "2026-09-07",
       "note": "Trigon is Raven’s demonic father and recurring enemy of Raven and the Teen Titans.",
-      "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
-    },
-    "W34": {
-      "id": "W34",
-      "title": "DC — Doctor Fate",
-      "url": "https://www.dc.com/characters/doctor-fate",
-      "publisher": "DC",
-      "kind": "Publisher character/editorial/catalog text",
-      "reviewed": "2026-09-07",
-      "note": "Kent Nelson as Doctor Fate and Justice Society founder; related-character context includes Black Adam, but rivalry evidence uses a more specific story source.",
       "access": "Relevant public publisher text reviewed; complete comic issues were not read in full for this relationship pass."
     },
     "W35": {
@@ -172270,31 +172333,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "kind": "Publisher character/editorial source",
       "access": "Public Marvel publisher material reviewed for the selected relationship claim; not a claim that every comic appearance was read in full."
     },
-    "M63-KITTY_PRYDE": {
-      "title": "Marvel — Kitty Pryde character reference",
-      "url": "https://www.marvel.com/characters/kitty-pryde",
-      "note": "Official Marvel character material used to cross-check the selected Kitty Pryde relationships in this mapping batch.",
-      "id": "M63-KITTY_PRYDE",
-      "publisher": "Marvel",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher character/editorial source",
-      "access": "Public Marvel publisher material reviewed for the selected relationship claim; not a claim that every comic appearance was read in full."
-    },
     "M63-ROGUE": {
       "title": "Marvel — Rogue in comics",
       "url": "https://www.marvel.com/characters/rogue/in-comics",
       "note": "Official Marvel character material used to cross-check the selected Rogue relationships in this mapping batch.",
       "id": "M63-ROGUE",
-      "publisher": "Marvel",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher character/editorial source",
-      "access": "Public Marvel publisher material reviewed for the selected relationship claim; not a claim that every comic appearance was read in full."
-    },
-    "M63-GAMBIT": {
-      "title": "Marvel — Gambit character reference",
-      "url": "https://www.marvel.com/characters/gambit-remy-lebeau",
-      "note": "Official Marvel character material used to cross-check the selected Gambit relationships in this mapping batch.",
-      "id": "M63-GAMBIT",
       "publisher": "Marvel",
       "reviewed": "2026-09-07",
       "kind": "Publisher character/editorial source",
@@ -172315,16 +172358,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "url": "https://www.marvel.com/characters/jubilee",
       "note": "Official Marvel character material used to cross-check the selected Jubilee relationships in this mapping batch.",
       "id": "M63-JUBILEE",
-      "publisher": "Marvel",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher character/editorial source",
-      "access": "Public Marvel publisher material reviewed for the selected relationship claim; not a claim that every comic appearance was read in full."
-    },
-    "M63-CABLE": {
-      "title": "Marvel — Cable character reference",
-      "url": "https://www.marvel.com/characters/cable-nathan-summers/in-comics",
-      "note": "Official Marvel character material used to cross-check the selected Cable relationships in this mapping batch.",
-      "id": "M63-CABLE",
       "publisher": "Marvel",
       "reviewed": "2026-09-07",
       "kind": "Publisher character/editorial source",
@@ -172365,16 +172398,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "url": "https://www.marvel.com/characters/revanche",
       "note": "Official Marvel character material used to cross-check the selected Psylocke relationships in this mapping batch.",
       "id": "M63-PSYLOCKE",
-      "publisher": "Marvel",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher character/editorial source",
-      "access": "Public Marvel publisher material reviewed for the selected relationship claim; not a claim that every comic appearance was read in full."
-    },
-    "M63-X_23": {
-      "title": "Marvel — X-23 character reference",
-      "url": "https://www.marvel.com/characters/x-23",
-      "note": "Official Marvel character material used to cross-check the selected X-23 relationships in this mapping batch.",
-      "id": "M63-X_23",
       "publisher": "Marvel",
       "reviewed": "2026-09-07",
       "kind": "Publisher character/editorial source",
@@ -172550,16 +172573,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "kind": "Publisher character/editorial source",
       "access": "Public Marvel page or indexed publisher material; relationship mapping does not claim every appearance was read in full."
     },
-    "M64-AGATHA_HARKNESS": {
-      "title": "Marvel — Agatha Harkness",
-      "url": "https://www.marvel.com/characters/agatha-harkness",
-      "note": "Official Marvel/publisher source already used in Comic Vault’s source-reviewed Agatha Harkness dossier; used here only for selected relationship mapping.",
-      "id": "M64-AGATHA_HARKNESS",
-      "publisher": "Marvel",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher character/editorial source",
-      "access": "Public Marvel page or indexed publisher material; relationship mapping does not claim every appearance was read in full."
-    },
     "M64-AMERICA_CHAVEZ": {
       "title": "Marvel — America Chavez",
       "url": "https://www.marvel.com/characters/miss-america-america-chavez",
@@ -172650,16 +172663,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "kind": "Publisher character/editorial source",
       "access": "Public Marvel page or indexed publisher material; relationship mapping does not claim every appearance was read in full."
     },
-    "M64-KANG_THE_CONQUEROR": {
-      "title": "Marvel — Kang the Conqueror",
-      "url": "https://www.marvel.com/characters/kang/in-comics",
-      "note": "Official Marvel/publisher source already used in Comic Vault’s source-reviewed Kang the Conqueror dossier; used here only for selected relationship mapping.",
-      "id": "M64-KANG_THE_CONQUEROR",
-      "publisher": "Marvel",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher character/editorial source",
-      "access": "Public Marvel page or indexed publisher material; relationship mapping does not claim every appearance was read in full."
-    },
     "M64-KATE_BISHOP": {
       "title": "Marvel — Kate Bishop",
       "url": "https://www.marvel.com/characters/kate-bishop",
@@ -172735,16 +172738,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "url": "https://www.marvel.com/characters/shang-chi",
       "note": "Official Marvel/publisher source already used in Comic Vault’s source-reviewed Shang-Chi dossier; used here only for selected relationship mapping.",
       "id": "M64-SHANG_CHI",
-      "publisher": "Marvel",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher character/editorial source",
-      "access": "Public Marvel page or indexed publisher material; relationship mapping does not claim every appearance was read in full."
-    },
-    "M64-STAR_LORD": {
-      "title": "Marvel — Star-Lord",
-      "url": "https://www.marvel.com/characters/star-lord",
-      "note": "Official Marvel/publisher source already used in Comic Vault’s source-reviewed Star-Lord dossier; used here only for selected relationship mapping.",
-      "id": "M64-STAR_LORD",
       "publisher": "Marvel",
       "reviewed": "2026-09-07",
       "kind": "Publisher character/editorial source",
@@ -172960,36 +172953,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "kind": "Publisher text / catalog",
       "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues were not read for this mapping pass."
     },
-    "D65-POWERGIRL": {
-      "title": "DC — Justice Society of America Annual #1",
-      "url": "https://www.dc.com/comics/justice-society-of-america-2007/justice-society-of-america-annual-1",
-      "note": "Identifies Power Girl as a member and chairwoman of the Justice Society of America.",
-      "id": "D65-POWERGIRL",
-      "publisher": "DC",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher text / catalog",
-      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues were not read for this mapping pass."
-    },
-    "D65-SANDMAN": {
-      "title": "DC — Enter Sandman: Everything You Need to Know About Wesley Dodds",
-      "url": "https://www.dc.com/blog/2023/10/13/enter-sandman-everything-you-need-to-know-about-wesley-dodds",
-      "note": "Identifies Wesley Dodds as an original JSA member and places him alongside Doctor Fate, Hourman and the Spectre.",
-      "id": "D65-SANDMAN",
-      "publisher": "DC",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher text / catalog",
-      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues were not read for this mapping pass."
-    },
-    "D65-MIDNITE-WILDCAT": {
-      "title": "DC — DC Universe's Stargirl Series Adds the Justice Society",
-      "url": "https://www.dc.com/blog/2018/12/13/dc-universes-stargirl-series-adds-the-justice-society",
-      "note": "Publisher explainer identifies Golden Age Wildcat and Charles McNider / Doctor Mid-Nite as Justice Society founders.",
-      "id": "D65-MIDNITE-WILDCAT",
-      "publisher": "DC",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher text / catalog",
-      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues were not read for this mapping pass."
-    },
     "D65-ATOMSMASHER": {
       "title": "DC — Atom Smasher",
       "url": "https://www.dc.com/characters/atom-smasher",
@@ -173025,16 +172988,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "url": "https://www.dc.com/blog/2016/10/18/the-flash-who-is-jesse-quick",
       "note": "Comics explainer notes Jesse Quick's history and a significant Per Degaton prophecy concerning her future.",
       "id": "D65-JESSE",
-      "publisher": "DC",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher text / catalog",
-      "access": "Public page text or indexed publisher excerpt reviewed; complete comic issues were not read for this mapping pass."
-    },
-    "D65-REDTORNADO": {
-      "title": "DC — Kara Killers: A Look at Supergirl's Villains",
-      "url": "https://www.dc.com/blog/2015/09/03/kara-killers-a-look-at-supergirls-villains",
-      "note": "Comics background explains that Red Tornado overcame T.O. Morrow's anti-JSA programming and was accepted into the Justice Society.",
-      "id": "D65-REDTORNADO",
       "publisher": "DC",
       "reviewed": "2026-09-07",
       "kind": "Publisher text / catalog",
@@ -173315,16 +173268,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "url": "https://www.dc.com/blog/2025/07/15/meet-a-morpho-get-to-know-dcs-most-misunderstood-character",
       "note": "Explains Metamorpho’s long association with Batman’s Outsiders and later team roles.",
       "id": "D66-METAOUT",
-      "publisher": "DC",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher text / catalog",
-      "access": "Public DC page text or indexed publisher excerpt reviewed; complete comic issues were not read for this mapping pass."
-    },
-    "D66-VIXEN": {
-      "title": "DC — Vixen",
-      "url": "https://www.dc.com/characters/vixen",
-      "note": "Identifies Vixen as a Justice League member.",
-      "id": "D66-VIXEN",
       "publisher": "DC",
       "reviewed": "2026-09-07",
       "kind": "Publisher text / catalog",
@@ -173750,16 +173693,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "kind": "Publisher timeline",
       "access": "Public publisher page, issue/collection description, or already source-reviewed dossier evidence used for selected relationship mapping."
     },
-    "D67-KATANA": {
-      "title": "DC — Katana",
-      "url": "https://www.dc.com/characters/katana",
-      "note": "Source-reviewed Katana dossier page; used for Outsiders teammate context with Geo-Force.",
-      "id": "D67-KATANA",
-      "publisher": "DC",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher text / catalog",
-      "access": "Public publisher page, issue/collection description, or already source-reviewed dossier evidence used for selected relationship mapping."
-    },
     "D68-PHANTOM-GIRL": {
       "title": "DC — Phantom Girl",
       "url": "https://www.dc.com/characters/phantom-girl",
@@ -174025,16 +173958,6 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "url": "https://www.dc.com/comics/legion-secret-origin-2011/legion-secret-origin-1",
       "note": "DC solicitation explicitly identifies Cosmic Boy, Saturn Girl and Lightning Lad as the Legion founders.",
       "id": "D68-LEGION-SECRET",
-      "publisher": "DC",
-      "reviewed": "2026-09-07",
-      "kind": "Publisher editorial / issue or collection description",
-      "access": "Public DC publisher page used for selected relationship mapping."
-    },
-    "D68-LEGION-ARCHIVES": {
-      "title": "DC — Legion of Super-Heroes Archives Vol. 1",
-      "url": "https://www.dc.com/graphic-novels/legion-of-super-heroes-archives-1991/legion-of-super-heroes-archives-vol-1",
-      "note": "DC collection description identifies the three founders and the young future team framework.",
-      "id": "D68-LEGION-ARCHIVES",
       "publisher": "DC",
       "reviewed": "2026-09-07",
       "kind": "Publisher editorial / issue or collection description",
@@ -174969,6 +174892,316 @@ window.COMIC_VAULT_AUDIT_LOG = [
       "reviewed": "2026-09-07",
       "kind": "Supplementary issue/identity index",
       "access": "Supplementary issue-index cross-check for character identity; relationship encounter is supported separately by the publisher synopsis."
+    },
+    "R8801": {
+      "title": "DC — Breaking News: Rose Wilson Ravages Her Way on to Titans",
+      "url": "https://www.dc.com/blog/2019/03/21/breaking-news-rose-wilson-ravages-her-way-on-to-titans",
+      "note": "Rose’s dossier identifies Nightwing as a mentor, but the map currently connects her to Jericho, Deathstroke and Tim Drake only. DC explicitly says Nightwing trained Rose.",
+      "id": "R8801",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8802": {
+      "title": "DC — Mister Miracle: New Faces, Old Bargains",
+      "url": "https://www.dc.com/blog/2018/06/14/mister-miracle-new-faces-old-bargains",
+      "note": "Both dossiers identify them as half-brothers and adversaries. DC explicitly identifies Kalibak as Orion’s biological half-brother.",
+      "id": "R8802",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8803": {
+      "title": "DC — Behind the Bowl Cut: Everything You Need to Know About Guy Gardner",
+      "url": "https://www.dc.com/blog/2025/07/08/behind-the-bowl-cut-everything-you-need-to-know-about-guy-gardner",
+      "note": "Both dossiers treat this as a major romantic relationship. DC calls Tora one of Guy’s great loves and describes their on-again/off-again relationship.",
+      "id": "R8803",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8804": {
+      "title": "DC — Five Things to Know about Stargirl's Jade",
+      "url": "https://www.dc.com/blog/2021/08/17/five-things-to-know-about-stargirls-jade",
+      "note": "This is a defining sibling relationship and both are archive nodes. DC identifies Todd/Obsidian as Jade’s twin brother.",
+      "id": "R8804",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8805": {
+      "title": "Marvel — Storm In Comics",
+      "url": "https://www.marvel.com/characters/storm/in-comics",
+      "note": "The dossiers preserve their former marriage. Marvel describes Storm becoming Queen of Wakanda through marriage to T’Challa and notes that their connection endures after the split.",
+      "id": "R8805",
+      "publisher": "Marvel",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8806": {
+      "title": "DC — Wonder Woman #33",
+      "url": "https://www.dc.com/comics/wonder-woman-2016/wonder-woman-33",
+      "note": "Both dossiers identify the father-daughter relationship. DC repeatedly calls Grail Darkseid’s daughter.",
+      "id": "R8806",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8807": {
+      "title": "DC — Lady Shiva",
+      "url": "https://www.dc.com/characters/lady-shiva",
+      "note": "This is one of Cassandra and Shiva’s defining relationships. DC’s official Lady Shiva page identifies Cassandra as her estranged daughter.",
+      "id": "R8807",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8808": {
+      "title": "DC — Five Painfully Awkward DC Family Gatherings",
+      "url": "https://www.dc.com/blog/2020/11/26/five-painfully-awkward-dc-family-gatherings",
+      "note": "The dossiers preserve Rita’s classic adoptive-mother role. DC notes that Rita Farr and Steve Dayton adopted Gar Logan.",
+      "id": "R8808",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8809": {
+      "title": "DC — Aquaman #29",
+      "url": "https://www.dc.com/comics/aquaman-2016/aquaman-29",
+      "note": "Tempest is currently only one edge deep despite Arthur being a defining mentor. DC explicitly calls Garth Aquaman’s former protégé.",
+      "id": "R8809",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8810": {
+      "title": "DC — Catching Up with the Flashes",
+      "url": "https://www.dc.com/blog/2014/10/02/catching-up-with-the-flashes",
+      "note": "Bart’s dossier identifies Barry as his paternal grandfather. DC states Bart Allen is Barry Allen’s grandson.",
+      "id": "R8810",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8811": {
+      "title": "DC — DC Comics Presents: Green Lantern #1",
+      "url": "https://www.dc.com/comics/dc-comics-presents-2010/dc-comics-presents-green-lantern-1",
+      "note": "Jade’s dossier records the romance, and DC’s collection description says their relationship was 'in full bloom' during Green Lantern #137–140.",
+      "id": "R8811",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8812": {
+      "title": "DC — Ten Times Jimmy Olsen Proved He Was a Rizz Master",
+      "url": "https://www.dc.com/blog/2025/07/31/ten-times-jimmy-olsen-proved-he-was-a-rizz-master",
+      "note": "The dossier records the Dawn of DC romance. DC notes that Jimmy began dating Siobhan McDougal in Superman #5 (2023).",
+      "id": "R8812",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8813": {
+      "title": "DC — Summer of Superman publishing initiative",
+      "url": "https://www.dc.com/blog/2025/01/22/dc-reveals-details-on-its-summer-of-superman-publishing-initiative",
+      "note": "This relationship is now marriage-level, making omission from Connections especially noticeable. DC announced their wedding as the backdrop of Summer of Superman Special #1.",
+      "id": "R8813",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8814": {
+      "title": "DC — Titans: Omen Earns her Name",
+      "url": "https://www.dc.com/blog/2018/04/26/titans-omen-earns-her-name",
+      "note": "The dossiers record their Titans-era romance, and DC specifically discusses the Lilith/Garth relationship in Titans.",
+      "id": "R8814",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8815": {
+      "title": "DC — Arrow: Mo Metas, Mo Problems",
+      "url": "https://www.dc.com/blog/2017/02/01/arrow-mo-metas-mo-problems",
+      "note": "This is a defining training relationship that is more useful than a generic teammate edge. DC states Dinah learned boxing from Ted Grant.",
+      "id": "R8815",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8816": {
+      "title": "DC — School’s in Session: Who’s the Best Mentor in the DC Universe?",
+      "url": "https://www.dc.com/blog/2025/08/29/school-s-in-session-who-s-the-best-mentor-in-the-dc-universe",
+      "note": "DC explicitly lists Bruce Wayne among Wildcat’s students. Because Batman is already heavily connected, this should rank below Wildcat’s more defining under-connected links.",
+      "id": "R8816",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8817": {
+      "title": "DC — Doctor Light: The Unsung Hero of Crisis on Infinite Earths",
+      "url": "https://www.dc.com/blog/2024/01/09/doctor-light-the-unsung-hero-of-crisis-on-infinite-earths",
+      "note": "They are separate mantle holders whose contrast matters to the legacy map. DC explicitly identifies Kimiyo as the second Doctor Light after Arthur.",
+      "id": "R8817",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8818": {
+      "title": "DC — Meet Conner Kent, The Hero Who Reinvented Superboy",
+      "url": "https://www.dc.com/blog/2023/04/17/meet-conner-kent-the-hero-who-reinvented-superboy",
+      "note": "Conner’s dossier records Lex as a genetic contributor. DC says Conner’s DNA was updated to a mixture of Clark and Lex Luthor.",
+      "id": "R8818",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8819": {
+      "title": "DC — Best of the Worst: Ocean Master vs. Black Manta",
+      "url": "https://www.dc.com/blog/2023/12/15/best-of-the-worst-ocean-master-vs-black-manta",
+      "note": "This is a defining pre-Flashpoint family relationship. DC explicitly identifies Dolphin as Tempest’s wife.",
+      "id": "R8819",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8820": {
+      "title": "DC — The Flash by Mark Waid Book Five / The Flash: Dead Heat",
+      "url": "https://www.dc.com/graphic-novels/the-flash-by-mark-waid-2016/the-flash-by-mark-waid-book-five",
+      "note": "Savitar has only one current edge (Barry), but his defining comics conflict is with Wally’s Flash era. DC’s Flash collections explicitly frame Wally as the Flash who confronts and defeats Savitar.",
+      "id": "R8820",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8821": {
+      "title": "DC — The Flash: Secrets of Savitar",
+      "url": "https://www.dc.com/blog/2016/11/22/the-flash-secrets-of-savitar",
+      "note": "DC identifies Max Mercury as Savitar’s old foe and says Max helped force Savitar back into the Speed Force. This is more character-specific than a generic speedster-team edge.",
+      "id": "R8821",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8822": {
+      "title": "DC — Red Hood and the Outlaws #26",
+      "url": "https://www.dc.com/comics/red-hood-and-the-outlaws-2016/red-hood-and-the-outlaws-26",
+      "note": "Their Outlaws relationship is sustained and character-defining rather than a one-off team overlap. DC repeatedly describes Bizarro and Artemis as Jason’s partners and allies.",
+      "id": "R8822",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8823": {
+      "title": "DC — Love and Robins: The History of Tim Drake and Stephanie Brown",
+      "url": "https://www.dc.com/blog/2017/05/24/love-and-robins-the-history-of-tim-drake-and-stephanie-brown",
+      "note": "This is a long-running romantic and Bat-family relationship, not merely a teammate link. DC has published a dedicated history of Tim and Stephanie’s relationship.",
+      "id": "R8823",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8824": {
+      "title": "DC — School’s in Session: Who’s the Best Mentor in the DC Universe?",
+      "url": "https://www.dc.com/blog/2025/08/29/school-s-in-session-who-s-the-best-mentor-in-the-dc-universe",
+      "note": "Kilowog is not just another Corps teammate: DC explicitly identifies him as the drill sergeant who personally trained Hal Jordan.",
+      "id": "R8824",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8825": {
+      "title": "DC — Fourth World Problems: Ngozi Ukazu Returns with Orion",
+      "url": "https://www.dc.com/blog/2026/07/10/fourth-world-problems-ngozi-ukazu-returns-with-orion",
+      "note": "Their lives are structurally bound by the Pact that exchanged them at birth. Recent DC material calls Orion Mister Miracle’s Pact Brother and describes their lives as forever intertwined.",
+      "id": "R8825",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8826": {
+      "title": "Marvel — Cable / Havok character records",
+      "url": "https://www.marvel.com/characters/cable-nathan-summers/in-comics",
+      "note": "Marvel’s official character records identify Alexander Summers / Havok as Cable’s uncle and Cable as Havok’s nephew. This is a real family link, though less central than Cable’s Scott/Jean relationships.",
+      "id": "R8826",
+      "publisher": "Marvel",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8827": {
+      "title": "Marvel — Jean Grey reading guide / Cable profile",
+      "url": "https://www.marvel.com/comics/guides/921/JEAN-GREY",
+      "note": "Marvel identifies Jean as Cable’s stepmother and specifically documents Jean and Scott raising Nathan in the future as Redd and Slym. This is a defining family relationship, not just shared X-Men membership.",
+      "id": "R8827",
+      "publisher": "Marvel",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8828": {
+      "title": "DC — Black Manta / Aquaman #57",
+      "url": "https://www.dc.com/characters/black-manta",
+      "note": "Both trusted dossiers flag the rivalry, and DC repeatedly places Mera directly in Black Manta’s attacks on Aquaman and Atlantis. This is valid, but ranks below Manta ↔ Aquaman in importance.",
+      "id": "R8828",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8829": {
+      "title": "Marvel — Doctor Strange Epic Collection: Triumph and Torment",
+      "url": "https://www.marvel.com/comics/collection/77291/doctor_strange_epic_collection_triumph_and_torment_2019",
+      "note": "Doom currently has only one map edge, to Mister Fantastic. His mystic side is a major part of the character, and Marvel’s Triumph and Torment specifically pairs Doom and Strange on a journey into Hell to free Cynthia von Doom’s soul.",
+      "id": "R8829",
+      "publisher": "Marvel",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8830": {
+      "title": "DC — Supergirl #25",
+      "url": "https://www.dc.com/comics/supergirl-2016/supergirl-25",
+      "note": "Krypto currently has only one edge, to Superman, despite his dossier placing him in the wider Superman Family. DC’s Supergirl #25 directly pairs Kara and Krypto on the return to Krypton and treats them as family-linked Kryptonian companions.",
+      "id": "R8830",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
+    },
+    "R8831": {
+      "title": "DC — Black Canary: Best of the Best",
+      "url": "https://www.dc.com/graphic-novels/black-canary-best-of-the-best-2024/black-canary-best-of-the-best",
+      "note": "This has become a character-specific martial-arts rivalry rather than a generic crossover. DC’s Black Canary: Best of the Best is built around a six-round Canary-versus-Shiva contest to determine the better fighter.",
+      "id": "R8831",
+      "publisher": "DC",
+      "reviewed": "2026-09-08",
+      "kind": "Publisher text / catalog",
+      "access": "Public publisher page or catalog description reviewed during v8.87 dossier-vs-Connections reconciliation."
     }
   },
   "legacy": [
@@ -175181,7 +175414,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   ]
 }</script>
 <script id="cvConnectionsScript">
-/* Comic Vault v8.87 — Connections viewport + CX17 Magic / Shadowpact / Endless and final DC relationship registry; 400 current dossiers mapped. */
+/* Comic Vault v8.88 — Connections viewport + CX17 Magic / Shadowpact / Endless and final DC relationship registry; 400 current dossiers mapped. */
 (() => {
   'use strict';
   const graph = JSON.parse(document.getElementById('cvConnectionsData').textContent);
