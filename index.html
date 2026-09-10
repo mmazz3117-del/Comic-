@@ -5,7 +5,7 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta content="9.10" name="comic-vault-build"/>
+<meta content="9.11" name="comic-vault-build"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#05070b" name="theme-color"/>
@@ -4777,6 +4777,81 @@ html.cv-pinch-zoom .card-character-image{
 @media(max-width:500px){.cv-research-block{padding:15px}.cv-research-block h4{font-size:16px}.cv-dossier-scope{padding:12px}.cv-research-evidence{padding:13px}}
 </style>
 <style id="cv-v848-reading-controls">
+/* ==========================================================
+   Comic Vault v9.11 — targeted art scale cleanup
+   HTML/CSS only; source artwork unchanged.
+   Adjustments requested in review:
+   - Mister Mxyzptlk slightly smaller
+   - Mister Mind smaller
+   - Mera slightly larger
+   ========================================================== */
+.card-character-image[data-art-slug="mister-mxyzptlk"] img{
+  transform:scale(.84) !important;
+  transform-origin:center bottom !important;
+}
+.profile-character-image[data-art-slug="mister-mxyzptlk"] img{
+  transform:scale(.92) !important;
+  transform-origin:right bottom !important;
+}
+.art-viewer-image[data-art-slug="mister-mxyzptlk"] img{
+  transform:scale(.92) !important;
+  transform-origin:center center !important;
+}
+
+.card-character-image[data-art-slug="mister-mind"] img{
+  transform:scale(.82) !important;
+  transform-origin:center bottom !important;
+}
+.profile-character-image[data-art-slug="mister-mind"] img{
+  transform:scale(.86) !important;
+  transform-origin:right bottom !important;
+}
+.art-viewer-image[data-art-slug="mister-mind"] img{
+  transform:scale(.88) !important;
+  transform-origin:center center !important;
+}
+
+.card-character-image[data-art-slug="mera"] img{
+  transform:scale(1.04) !important;
+  transform-origin:center bottom !important;
+}
+.profile-character-image[data-art-slug="mera"] img{
+  transform:scale(1.04) !important;
+  transform-origin:right bottom !important;
+}
+.art-viewer-image[data-art-slug="mera"] img{
+  transform:scale(1.02) !important;
+  transform-origin:center center !important;
+}
+
+@media (max-width:600px){
+  .card-character-image[data-art-slug="mister-mxyzptlk"] img{transform:scale(.80) !important;}
+  .profile-character-image[data-art-slug="mister-mxyzptlk"] img{transform:scale(.86) !important;}
+  .art-viewer-image[data-art-slug="mister-mxyzptlk"] img{transform:scale(.86) !important;}
+
+  .card-character-image[data-art-slug="mister-mind"] img{transform:scale(.74) !important;}
+  .profile-character-image[data-art-slug="mister-mind"] img{transform:scale(.78) !important;}
+  .art-viewer-image[data-art-slug="mister-mind"] img{transform:scale(.80) !important;}
+
+  .card-character-image[data-art-slug="mera"] img{transform:scale(1.08) !important;}
+  .profile-character-image[data-art-slug="mera"] img{transform:scale(1.08) !important;}
+  .art-viewer-image[data-art-slug="mera"] img{transform:scale(1.05) !important;}
+}
+
+@media (max-width:390px){
+  .card-character-image[data-art-slug="mister-mxyzptlk"] img{transform:scale(.77) !important;}
+  .profile-character-image[data-art-slug="mister-mxyzptlk"] img{transform:scale(.82) !important;}
+  .art-viewer-image[data-art-slug="mister-mxyzptlk"] img{transform:scale(.82) !important;}
+
+  .card-character-image[data-art-slug="mister-mind"] img{transform:scale(.70) !important;}
+  .profile-character-image[data-art-slug="mister-mind"] img{transform:scale(.74) !important;}
+  .art-viewer-image[data-art-slug="mister-mind"] img{transform:scale(.76) !important;}
+
+  .card-character-image[data-art-slug="mera"] img{transform:scale(1.06) !important;}
+  .profile-character-image[data-art-slug="mera"] img{transform:scale(1.05) !important;}
+  .art-viewer-image[data-art-slug="mera"] img{transform:scale(1.03) !important;}
+}
+
 /* Reading preferences only. All accepted artwork/scale rules remain untouched. */
 html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 .cv-reading-tools{display:flex;align-items:center;justify-content:space-between;gap:14px;margin:20px 26px 0;padding:12px 16px;background:rgba(13,28,46,.78);border:1px solid rgba(125,165,196,.23);border-radius:12px;min-width:0}
@@ -5504,7 +5579,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <span class="brand-mark">CV</span>
 <span class="brand-copy">
 <strong>COMIC VAULT</strong>
-<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.10</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.11</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
 </span>
 </button>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn">
@@ -5710,7 +5785,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.10</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.11</em></span></span>
 </div>
 <div class="menu-section">
 <button data-page="home"><span>HOME</span></button>
@@ -5754,7 +5829,7 @@ Connections, accepted visuals and application behavior preserved except current 
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.10</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.11</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
