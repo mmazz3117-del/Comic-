@@ -5,7 +5,7 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta content="9.09" name="comic-vault-build"/>
+<meta content="9.10" name="comic-vault-build"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#05070b" name="theme-color"/>
@@ -4965,6 +4965,43 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 #cvConnections.cvz-tree-mode.cvz-options-open #cvxCanvas{height:clamp(300px,68dvh,760px);min-height:300px}
 #cvConnections.cvz-tree-mode.cvz-options-open .cvx-scroll{overflow:auto;display:block}
 #cvxExplorerOptions{padding-bottom:4px}
+
+/* v9.10: Teams view is a direct team list, not another setup/options screen. */
+.cvx-dialog.cvz-team-mode #cvxDescription,
+.cvx-dialog.cvz-team-mode #cvxCoverage,
+.cvx-dialog.cvz-team-mode #cvxCitationToggle,
+.cvx-dialog.cvz-team-mode #cvxCenterControls,
+.cvx-dialog.cvz-team-mode #cvxHistoryControls,
+.cvx-dialog.cvz-team-mode #cvxTrail,
+.cvx-dialog.cvz-team-mode #cvxLayerFilterWrap,
+.cvx-dialog.cvz-team-mode #cvxFilters,
+.cvx-dialog.cvz-team-mode #cvxMapGuide,
+.cvx-dialog.cvz-team-mode #cvxStatus,
+.cvx-dialog.cvz-team-mode #cvxPager{
+  display:none !important;
+}
+.cvx-dialog.cvz-team-mode #cvxExplorerOptions{
+  padding:0 12px 8px;
+  border-bottom:1px solid #203449;
+}
+.cvx-dialog.cvz-team-mode #cvxToolbar{
+  margin:0;
+  padding:8px 0 0;
+  justify-content:flex-start;
+}
+.cvx-dialog.cvz-team-mode #cvxModeControls{
+  margin:0;
+}
+.cvx-dialog.cvz-team-mode #cvxCanvas{
+  padding-top:8px;
+}
+.cvx-dialog.cvz-team-mode .cvx-team-gateway-section{
+  padding-top:0;
+}
+.cvx-dialog.cvz-team-mode .cvx-team-gateway-head{
+  margin-bottom:16px;
+}
+
 .cvz-viewport{position:relative;isolation:isolate;flex:1;width:100%;height:100%;min-height:0;overflow:hidden;border:1px solid #355570;border-radius:13px;background-color:#081522;background-image:radial-gradient(#29486188 .8px,transparent .8px);background-size:24px 24px;touch-action:none;overscroll-behavior:contain;cursor:grab;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;outline-offset:-4px}
 .cvz-viewport:focus-visible{outline:2px solid #a6d8ff}
 .cvz-viewport.cvz-dragging,.cvz-viewport.cvz-dragging *{cursor:grabbing!important}
@@ -5467,7 +5504,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <span class="brand-mark">CV</span>
 <span class="brand-copy">
 <strong>COMIC VAULT</strong>
-<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.09</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.10</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
 </span>
 </button>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn">
@@ -5673,7 +5710,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.09</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.10</em></span></span>
 </div>
 <div class="menu-section">
 <button data-page="home"><span>HOME</span></button>
@@ -5717,7 +5754,7 @@ Connections, accepted visuals and application behavior preserved except current 
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.09</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.10</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
@@ -5753,13 +5790,13 @@ Connections, accepted visuals and application behavior preserved except current 
 <div class="cvx-scroll" id="cvxScroll">
 <div id="cvxExplorerOptions">
 <p class="cvx-intro" id="cvxDescription">Tap a character to see the connection, open a dossier, or follow a new branch.</p>
-<details class="cvx-coverage"><summary id="cvxCoverageText">Mapping coverage</summary><progress aria-label="Dossiers with selected mapped connections" id="cvxCoverageProgress"></progress><p id="cvxCoverageNote"></p></details>
-<div class="cvx-toolbar">
+<details class="cvx-coverage" id="cvxCoverage"><summary id="cvxCoverageText">Mapping coverage</summary><progress aria-label="Dossiers with selected mapped connections" id="cvxCoverageProgress"></progress><p id="cvxCoverageNote"></p></details>
+<div class="cvx-toolbar" id="cvxToolbar">
 <div aria-label="Explorer mode" class="cvx-segment" id="cvxModeControls" role="group"><button aria-pressed="true" data-cvx-mode="connections" type="button">Connections</button><button aria-pressed="false" data-cvx-mode="teams" type="button">Teams &amp; Affiliations</button><button aria-pressed="false" data-cvx-mode="legacy" type="button">Flash legacy</button></div>
-<label class="cvx-reading-toggle"><span>Citations</span><input aria-label="Show inline citations in connections" id="cvxCitations" role="switch" type="checkbox"/><span aria-hidden="true" class="cvx-toggle-track"></span><span aria-hidden="true" id="cvxCiteState">OFF</span></label>
+<label class="cvx-reading-toggle" id="cvxCitationToggle"><span>Citations</span><input aria-label="Show inline citations in connections" id="cvxCitations" role="switch" type="checkbox"/><span aria-hidden="true" class="cvx-toggle-track"></span><span aria-hidden="true" id="cvxCiteState">OFF</span></label>
 </div>
 <div class="cvx-control-row" id="cvxCenterControls"><div class="cvx-picker"><label class="cvx-search-label" for="cvxSearch">FIND A CHARACTER</label><input aria-describedby="cvxSearchResult" autocapitalize="none" autocomplete="off" id="cvxSearch" placeholder="Hero, person or alias…" spellcheck="false" type="search"/><label class="cvx-select-label" for="cvxCenterSelect">CENTER ON<select aria-label="Center on a character" id="cvxCenterSelect"></select></label><small aria-live="polite" id="cvxSearchResult"></small><div class="cvx-search-suggestions" hidden="" id="cvxSearchSuggestions"></div></div><div aria-label="Relationship presentation" class="cvx-segment" id="cvxViewControls" role="group"><button aria-pressed="true" data-cvx-view="map" type="button">Tree</button><button aria-pressed="false" data-cvx-view="list" type="button">List</button></div></div>
-<div class="cvx-history"><button class="cvx-btn cvx-btn-subtle" id="cvxBack" type="button">← Back a step</button><button class="cvx-btn cvx-btn-subtle" id="cvxStart" type="button">↶ Starting character</button></div>
+<div class="cvx-history" id="cvxHistoryControls"><button class="cvx-btn cvx-btn-subtle" id="cvxBack" type="button">← Back a step</button><button class="cvx-btn cvx-btn-subtle" id="cvxStart" type="button">↶ Starting character</button></div>
 <nav aria-label="Exploration trail" class="cvx-trail" id="cvxTrail"></nav>
 <div class="cvx-layer-filter-wrap" id="cvxLayerFilterWrap"><span class="cvx-layer-label">RELATIONSHIP LAYER</span><div aria-label="Filter relationship layers" class="cvx-filters cvx-layer-filters" id="cvxLayerFilters" role="group"></div></div>
 <div aria-label="Filter relationship types" class="cvx-filters" id="cvxFilters" role="group"></div>
@@ -41775,15 +41812,18 @@ window.COMIC_VAULT_AUDIT_LOG = [
   const mapKey=()=>[state.root,state.layer||'personal',state.filter,state.page,isShortLandscape()?'phone-landscape':matchMedia('(max-width:700px)').matches?'portrait-layout':'wide-layout'].join('|');
   function mapUI(){
     const isTree=state.mode==='connections'&&state.view==='map'&&state.layer!=='off-roster';
+    const isTeams=state.mode==='teams';
     dialog.classList.toggle('cvz-tree-mode',isTree);
+    dialog.classList.toggle('cvz-team-mode',isTeams);
     dialog.classList.toggle('cvz-options-open',!!state.optionsOpen);
     $('cvxExplorerOptions').hidden=isTree&&!state.optionsOpen;
     $('cvzMapBar').hidden=!isTree;
     $('cvzMapHint').hidden=!isTree;
+    $('cvzOptions').hidden=isTeams;
     $('cvzOptions').setAttribute('aria-expanded',String(!isTree||!!state.optionsOpen));
     $('cvzOptions').textContent=isTree&&state.optionsOpen?'Show map':'Options';
     $('cvzQuickBack').disabled=!state.stack.length;
-    const title=isTree?nodeName(lookup(state.root)):'CONNECTIONS & LEGACY';
+    const title=(isTree||isTeams)?nodeName(lookup(state.root)):'CONNECTIONS & LEGACY';
     $('cvxTitle').textContent=title;$('cvxTitle').title=title;
     if(isTree){
       const count=selectedEdges().length,pages=Math.max(1,Math.ceil(count/PAGE_SIZE));
@@ -41992,12 +42032,13 @@ window.COMIC_VAULT_AUDIT_LOG = [
     teardownMap();
     document.querySelectorAll('[data-cvx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxMode===state.mode)));
     document.querySelectorAll('[data-cvx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxView===state.view)));
-    $('cvxCenterControls').hidden=state.mode==='legacy';
+    $('cvxCenterControls').hidden=state.mode!=='connections';
     $('cvxViewControls').hidden=state.mode!=='connections';
     $('cvxFilters').hidden=state.mode!=='connections';
     $('cvxLayerFilterWrap').hidden=state.mode!=='connections';
     $('cvxMapGuide').hidden=state.mode!=='connections'||state.layer==='off-roster';
     $('cvxRotateHint').hidden=state.mode!=='connections'||state.view!=='map'||state.layer==='off-roster';
+    $('cvxHistoryControls').hidden=state.mode==='teams';
     if(state.mode!=='connections')$('cvxPager').hidden=true;
     updateCenterChoices();$('cvxBack').disabled=state.stack.length===0;
     $('cvxStart').disabled=state.root===state.start&&state.mode==='connections'&&state.stack.length===0;
@@ -42025,7 +42066,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
       <div class="cvx-team-gateway-head">
         <span class="cvx-kicker">TEAM NETWORK</span>
         <h3>Teams &amp; Affiliations</h3>
-        <p>These are team and group affiliations from the audited dossiers. Sharing an affiliation does not automatically mean two characters are close friends.</p>
+        <p>Select a team or group to see its Comic Vault characters.</p>
       </div>
       <div class="cvx-team-gateway-grid">
         ${affiliations.map(entry=>{
