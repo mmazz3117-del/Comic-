@@ -5,7 +5,7 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta content="9.08" name="comic-vault-build"/>
+<meta content="9.09" name="comic-vault-build"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#05070b" name="theme-color"/>
@@ -4930,6 +4930,30 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
 .cvz-bar{flex:0 0 auto;padding:7px 12px;border-bottom:1px solid #294156;background:#0b1928;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:5px 10px}
 .cvz-zoom-controls,.cvz-navigation{display:flex;align-items:center;gap:5px;min-width:max-content;flex-shrink:0}
 .cvz-bar button{display:inline-flex;align-items:center;justify-content:center;min-height:44px;min-width:44px;padding:6px 10px;border:1px solid #3a5670;border-radius:8px;background:#142a3e;color:#e4f4ff;font:600 12px/1.3 Inter,system-ui,sans-serif;cursor:pointer}
+.cvz-team-jump{
+  flex:1 1 320px;
+  min-width:260px;
+  justify-content:center;
+  text-align:center;
+  padding:8px 16px !important;
+  border:1px solid #7bc0ff !important;
+  background:linear-gradient(180deg,#1a4670 0%,#163b60 100%) !important;
+  color:#f4fbff !important;
+  font:800 13px/1.25 Inter,system-ui,sans-serif !important;
+  letter-spacing:.03em;
+  box-shadow:0 0 0 1px rgba(123,192,255,.18),0 10px 24px rgba(5,15,28,.18);
+}
+.cvz-team-jump:hover,.cvz-team-jump:focus-visible{
+  border-color:#bfe4ff !important;
+  background:linear-gradient(180deg,#215687 0%,#1b4872 100%) !important;
+  outline:none;
+}
+.cvz-team-jump:disabled{
+  opacity:.45;
+  cursor:default;
+  box-shadow:none;
+}
+
 .cvz-bar button:disabled{opacity:.35;cursor:default}
 .cvz-bar .cvz-symbol{font-size:23px;padding:4px 8px}
 .cvz-bar output{width:43px;text-align:center;font:600 11px/1.2 Inter,system-ui,sans-serif;color:#bad7ed;font-variant-numeric:tabular-nums}
@@ -4955,6 +4979,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
  .cvz-options-button{font-size:11px;padding:7px 9px}
  .cvz-bar{padding:5px 9px;gap:4px;justify-content:center}
  .cvz-bar button{font-size:11px;padding:6px 8px}
+ .cvz-team-jump{order:3;flex:1 1 100%;min-width:0;font-size:12px !important;padding:9px 10px !important}
  .cvz-bar .cvz-symbol{font-size:23px}
  .cvz-navigation{flex:1 0 auto;justify-content:center}
  .cvz-hint{font-size:10px;text-align:center;padding:3px 9px}
@@ -4968,6 +4993,7 @@ html:not(.cv-citations-visible) .cv-source-cites{display:none!important}
  #cvConnections .cvx-header .cvx-kicker{font-size:8px;line-height:1.2}
  .cvz-bar{padding:3px max(10px,env(safe-area-inset-right)) 3px max(10px,env(safe-area-inset-left));flex-wrap:nowrap;gap:6px}
  .cvz-bar button{padding:4px 8px}
+ .cvz-team-jump{flex:1 1 240px;min-width:220px;font-size:11px !important;padding:6px 10px !important}
  .cvz-navigation{flex:none}
  .cvz-hint{padding:1px max(10px,env(safe-area-inset-left));font-size:10px;text-align:center}
  #cvConnections.cvz-tree-mode:not(.cvz-options-open) .cvx-scroll{padding:4px max(8px,env(safe-area-inset-right)) max(4px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left))}
@@ -5441,7 +5467,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <span class="brand-mark">CV</span>
 <span class="brand-copy">
 <strong>COMIC VAULT</strong>
-<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.08</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.09</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
 </span>
 </button>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn">
@@ -5647,7 +5673,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.08</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.09</em></span></span>
 </div>
 <div class="menu-section">
 <button data-page="home"><span>HOME</span></button>
@@ -5691,7 +5717,7 @@ Connections, accepted visuals and application behavior preserved except current 
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.08</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.09</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
@@ -5700,6 +5726,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <button id="cvzFit" title="Fit every branch on this page into the visible map" type="button">Fit map</button>
 <button id="cvzReadable" title="Actual size: center the selected character at 100%" type="button">100%</button>
 </div>
+<button aria-label="View Teams and Affiliations for the selected character" class="cvz-team-jump" id="cvzTeamsJump" title="Switch to the Teams &amp; Affiliations view" type="button">View Teams &amp; Affiliations</button>
 <div aria-label="Map navigation" class="cvz-navigation" role="group">
 <button aria-label="Back a map step" id="cvzQuickBack" title="Back a map step" type="button">↶</button>
 <button aria-label="Previous map page" data-cvx-page="-1" id="cvzPreviousPage" title="Previous map page" type="button">‹</button>
@@ -41952,6 +41979,14 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(legacyButton){legacyButton.hidden=!legacyAvailable;legacyButton.textContent='Flash legacy';}
     const teamButton=document.querySelector('[data-cvx-mode="teams"]');
     if(teamButton){teamButton.disabled=!teamCount;teamButton.textContent=`Teams & Affiliations · ${teamCount}`;}
+    const teamJump=$('cvzTeamsJump');
+    if(teamJump){
+      teamJump.disabled=!teamCount;
+      teamJump.hidden=state.mode!=='connections' || state.view!=='map' || state.layer==='off-roster';
+      teamJump.textContent=teamCount ? `View Teams & Affiliations · ${teamCount}` : 'View Teams & Affiliations';
+      teamJump.title=teamCount ? `Switch to the Teams & Affiliations view (${teamCount} indexed)` : 'No indexed team or group affiliations for this character';
+      teamJump.setAttribute('aria-label', teamCount ? `View Teams and Affiliations for ${shortName(state.root)} (${teamCount} indexed)` : `No indexed team or group affiliations for ${shortName(state.root)}`);
+    }
     const modeControls=$('cvxModeControls');
     if(modeControls)modeControls.style.setProperty('--cvx-mode-count',legacyAvailable?'3':'2');
     teardownMap();
@@ -42215,7 +42250,20 @@ window.COMIC_VAULT_AUDIT_LOG = [
   $('cvzFit').addEventListener('click',fitMap);
   $('cvzReadable').addEventListener('click',readableMap);
   $('cvzQuickBack').addEventListener('click',()=>{if(state.stack.length)restoreStep(state.stack.pop());});
-  $('cvzOptions').addEventListener('click',()=>{
+    $('cvzTeamsJump').addEventListener('click',()=>{
+    if(!state || !teamsForRoot(state.root).length)return;
+    if(state.mode!=='teams'){
+      pushStep();
+      state.mode='teams';
+      state.filter='all';
+      state.page=0;
+      state.optionsOpen=false;
+      render();
+      scroller.scrollTop=0;
+      $('cvxStatus').focus({preventScroll:true});
+    }
+  });
+$('cvzOptions').addEventListener('click',()=>{
     if(state.mode==='connections'&&state.view==='map'){
       state.optionsOpen=!state.optionsOpen;mapUI();scroller.scrollTop=0;scheduleMapMeasure();
       if(state.optionsOpen)$('cvxSearch').focus({preventScroll:true});
