@@ -5,7 +5,7 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta content="9.03" name="comic-vault-build"/>
+<meta content="9.08" name="comic-vault-build"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#05070b" name="theme-color"/>
@@ -5363,6 +5363,76 @@ Connections, accepted visuals and application behavior preserved except current 
 }
 </style>
 
+
+<style id="cv-team-extension-styles">
+.cvx-team-gateway-section{padding:4px 0 30px}
+.cvx-team-gateway-head{max-width:880px;margin:0 0 20px}
+.cvx-team-gateway-head h3{margin:5px 0 8px;font-size:clamp(1.25rem,2.2vw,1.65rem);color:#f4f7fa}
+.cvx-team-gateway-head p{margin:0;color:#aebfd0;line-height:1.55}
+.cvx-team-gateway-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:12px}
+.cvx-team-gateway{
+  appearance:none;display:grid;grid-template-columns:74px 1fr auto;gap:13px;align-items:center;
+  min-height:104px;padding:13px;text-align:left;border:1px solid #2e4356;background:#0b1219;
+  color:#edf5fb;cursor:pointer;border-radius:3px
+}
+.cvx-team-gateway:hover,.cvx-team-gateway:focus-visible{border-color:#5eaeff;background:#0e1924;outline:none}
+.cvx-team-gateway.historical{border-left:3px solid rgba(205,167,92,.7)}
+.cvx-team-gateway-copy{min-width:0;display:flex;flex-direction:column;gap:4px}
+.cvx-team-gateway-copy small{font-size:.62rem;letter-spacing:.12em;color:#7f9ab1}
+.cvx-team-gateway-copy strong{font-size:1rem;line-height:1.22;color:#f6f9fb}
+.cvx-team-gateway-copy em{font-style:normal;font-size:.78rem;color:#c2ac76;line-height:1.3}
+.cvx-team-gateway-copy span{font-size:.7rem;letter-spacing:.08em;color:#8ea4b8}
+.cvx-team-gateway>b{font-size:1rem;color:#6bb8ff}
+.cvx-team-logo{
+  position:relative;display:grid;place-items:center;overflow:hidden;background:#101923;
+  border:1px solid #33485c;flex:0 0 auto
+}
+.cvx-team-logo img{position:absolute;inset:6px;width:calc(100% - 12px);height:calc(100% - 12px);object-fit:contain;z-index:2}
+.cvx-team-logo-fallback{font-weight:800;letter-spacing:.08em;color:#7ba8cf;z-index:1}
+.cvx-team-gateway-logo{width:70px;height:70px}
+.cvx-node-art.cvx-team-logo{width:78px;height:92px;border-radius:2px}
+.cvx-team-detail-logo{width:96px;height:96px}
+.cvx-team-logo-help{margin:18px 0 0;color:#8197aa;font-size:.78rem}
+.cvx-team-single-note{margin:16px 0 0;color:#8da1b4;font-size:.78rem}
+.cvx-team-logo-help code,.cvx-team-detail-head+details code{color:#b9d8f3}
+.cvx-team-detail-head{display:flex;align-items:center;gap:16px;margin-bottom:14px}
+.cvx-team-detail-head h3{margin:3px 0 4px;font-size:1.35rem;color:#f5f8fa}
+.cvx-team-detail-head p{margin:0;color:#9eb0c2}
+.cvx-team-current{display:flex;justify-content:space-between;gap:12px;align-items:center;margin:14px 0;padding:10px 12px;border:1px solid #304457;background:#0b1219}
+.cvx-team-current strong{color:#f4f7fa}
+.cvx-team-current span{color:#c3ab72;font-size:.78rem;text-align:right}
+.cvx-team-member-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:9px;margin:18px 0}
+.cvx-team-member{
+  appearance:none;display:grid;grid-template-columns:52px 1fr;gap:10px;align-items:center;
+  padding:9px;text-align:left;border:1px solid #2d4052;background:#0b1118;color:#e8f0f7;cursor:pointer
+}
+.cvx-team-member:hover,.cvx-team-member:focus-visible{border-color:#5eaeff;outline:none}
+.cvx-team-member.current{border-left:3px solid #5eaeff}
+.cvx-team-member .cvx-node-art{width:50px;height:62px}
+.cvx-team-member>span{display:flex;min-width:0;flex-direction:column;gap:3px}
+.cvx-team-member strong{font-size:.83rem;line-height:1.2}
+.cvx-team-member small{font-size:.68rem;color:#c5ad75;line-height:1.2}
+.cvx-team-member em{font-style:normal;font-size:.61rem;letter-spacing:.08em;color:#7894ad}
+@media(max-width:700px){
+  #cvxModeControls{
+    display:grid;
+    grid-template-columns:repeat(var(--cvx-mode-count,3),minmax(0,1fr));
+    width:100%;
+  }
+  #cvxModeControls button{
+    min-width:0;
+    padding:8px 5px;
+    white-space:normal;
+    text-align:center;
+    font-size:10px;
+  }
+  .cvx-team-gateway-grid{grid-template-columns:1fr}
+  .cvx-team-gateway{grid-template-columns:68px 1fr auto}
+  .cvx-team-gateway-logo{width:64px;height:64px}
+  .cvx-team-member-grid{grid-template-columns:1fr}
+}
+</style>
+
 </head>
 <body>
 <div class="app-shell">
@@ -5371,7 +5441,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <span class="brand-mark">CV</span>
 <span class="brand-copy">
 <strong>COMIC VAULT</strong>
-<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.03</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
+<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.08</em><em class="archive-total-badge">400 FILES</em><em class="art-count-badge">294 ART</em></span>
 </span>
 </button>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn">
@@ -5577,7 +5647,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.03</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.08</em></span></span>
 </div>
 <div class="menu-section">
 <button data-page="home"><span>HOME</span></button>
@@ -5621,7 +5691,7 @@ Connections, accepted visuals and application behavior preserved except current 
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.03</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.08</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
@@ -5658,10 +5728,10 @@ Connections, accepted visuals and application behavior preserved except current 
 <p class="cvx-intro" id="cvxDescription">Tap a character to see the connection, open a dossier, or follow a new branch.</p>
 <details class="cvx-coverage"><summary id="cvxCoverageText">Mapping coverage</summary><progress aria-label="Dossiers with selected mapped connections" id="cvxCoverageProgress"></progress><p id="cvxCoverageNote"></p></details>
 <div class="cvx-toolbar">
-<div aria-label="Explorer mode" class="cvx-segment" role="group"><button aria-pressed="true" data-cvx-mode="connections" type="button">Connections</button><button aria-pressed="false" data-cvx-mode="legacy" type="button">Flash legacy</button></div>
+<div aria-label="Explorer mode" class="cvx-segment" id="cvxModeControls" role="group"><button aria-pressed="true" data-cvx-mode="connections" type="button">Connections</button><button aria-pressed="false" data-cvx-mode="teams" type="button">Teams &amp; Affiliations</button><button aria-pressed="false" data-cvx-mode="legacy" type="button">Flash legacy</button></div>
 <label class="cvx-reading-toggle"><span>Citations</span><input aria-label="Show inline citations in connections" id="cvxCitations" role="switch" type="checkbox"/><span aria-hidden="true" class="cvx-toggle-track"></span><span aria-hidden="true" id="cvxCiteState">OFF</span></label>
 </div>
-<div class="cvx-control-row" id="cvxCenterControls"><div class="cvx-picker"><label class="cvx-search-label" for="cvxSearch">FIND A CHARACTER</label><input aria-describedby="cvxSearchResult" autocapitalize="none" autocomplete="off" id="cvxSearch" placeholder="Hero, person or alias…" spellcheck="false" type="search"/><label class="cvx-select-label" for="cvxCenterSelect">CENTER ON<select aria-label="Center on a character" id="cvxCenterSelect"></select></label><small aria-live="polite" id="cvxSearchResult"></small><div class="cvx-search-suggestions" hidden="" id="cvxSearchSuggestions"></div></div><div aria-label="Relationship presentation" class="cvx-segment" role="group"><button aria-pressed="true" data-cvx-view="map" type="button">Tree</button><button aria-pressed="false" data-cvx-view="list" type="button">List</button></div></div>
+<div class="cvx-control-row" id="cvxCenterControls"><div class="cvx-picker"><label class="cvx-search-label" for="cvxSearch">FIND A CHARACTER</label><input aria-describedby="cvxSearchResult" autocapitalize="none" autocomplete="off" id="cvxSearch" placeholder="Hero, person or alias…" spellcheck="false" type="search"/><label class="cvx-select-label" for="cvxCenterSelect">CENTER ON<select aria-label="Center on a character" id="cvxCenterSelect"></select></label><small aria-live="polite" id="cvxSearchResult"></small><div class="cvx-search-suggestions" hidden="" id="cvxSearchSuggestions"></div></div><div aria-label="Relationship presentation" class="cvx-segment" id="cvxViewControls" role="group"><button aria-pressed="true" data-cvx-view="map" type="button">Tree</button><button aria-pressed="false" data-cvx-view="list" type="button">List</button></div></div>
 <div class="cvx-history"><button class="cvx-btn cvx-btn-subtle" id="cvxBack" type="button">← Back a step</button><button class="cvx-btn cvx-btn-subtle" id="cvxStart" type="button">↶ Starting character</button></div>
 <nav aria-label="Exploration trail" class="cvx-trail" id="cvxTrail"></nav>
 <div class="cvx-layer-filter-wrap" id="cvxLayerFilterWrap"><span class="cvx-layer-label">RELATIONSHIP LAYER</span><div aria-label="Filter relationship layers" class="cvx-filters cvx-layer-filters" id="cvxLayerFilters" role="group"></div></div>
@@ -6402,7 +6472,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   };
 
   const ignoredGroupPatterns = [
-    /^various/i,/rogues$/i,/underworld/i,/organizations?$/i,/allies$/i,
+    /^various/i,/^rogues$/i,/underworld/i,/organizations?$/i,/allies$/i,
     /^cosmic entities$/i,/^cosmic criminals$/i,/^mystic allies$/i,
     /^mercenary networks$/i,/^kryptonian military$/i,/^daily bugle$/i,
     /^daily planet$/i,/^wayne enterprises$/i,/^new york underworld$/i,
@@ -6415,14 +6485,12 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(!t) return null;
 
     t = t
-      .replace(/\s+\(varies\)$/i,"")
-      .replace(/\s+\(former\)$/i,"")
-      .replace(/\s+\(historic\)$/i,"")
+      .replace(/\s+[—–]\s+.+$/,"")
+      .replace(/\s+\([^()]*\)$/,"")
+      .replace(/\s+\/\s+.+\bally\b$/i,"")
       .replace(/\s+in some eras$/i,"")
       .replace(/\s+in recent continuity$/i,"")
       .replace(/\s+in Krakoa era$/i,"")
-      .replace(/\s+\(occasional\)$/i,"")
-      .replace(/\s+\(brief\)$/i,"")
       .trim();
 
     const aliases = [
@@ -6434,7 +6502,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
       [/^Wonder Woman allies$/i,"Wonder Woman Family"],
       [/^Shazam adversaries$/i,"Shazam Family"],
       [/^Spider-Man allies$/i,"Spider-Man Family"],
-      [/^X-Men allies$/i,"X-Men"]
+      [/^X-Men allies$/i,"X-Men"],
+      [/^Secret Society of Super Villains$/i,"Secret Society of Super-Villains"]
     ];
     for(const [rx,name] of aliases){
       if(rx.test(t)){ t = name; break; }
@@ -7707,7 +7776,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
       if(sideMenu.classList.contains("open"))closeMenu();
       if(connectionState){navHistory.push({kind:"connections",state:connectionState});if(navHistory.length>80)navHistory.shift();}
       if(profileSheet.classList.contains("open"))closeProfile();
-      browseTeam(team,{remember:false});
+      const normalized=canonicalTeam(team)||team;
+      const groupInput=$("groupSearch");
+      if(groupInput)groupInput.value=normalized;
+      renderGroups();
+      showPage("groups",{remember:false});
     }
   });
 
@@ -41377,6 +41450,138 @@ window.COMIC_VAULT_AUDIT_LOG = [
   const mappedCount=[...adjacency.values()].filter(list=>list.length>0).length;
   const norm=value=>String(value||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,' ').trim();
 
+  // v9.04: team gateway registry. Team membership is an affiliation layer,
+  // never automatic evidence of a Personal friendship.
+  const teamIgnoredPatterns=[
+    /^various/i,/^rogues$/i,/underworld/i,/organizations?$/i,/allies$/i,
+    /^cosmic entities$/i,/^cosmic criminals$/i,/^mystic allies$/i,
+    /^mercenary networks$/i,/^kryptonian military$/i,/^daily bugle$/i,
+    /^daily planet$/i,/^wayne enterprises$/i,/^new york underworld$/i,
+    /^gotham underworld$/i,/^wonder woman rogues$/i,/^superman rogues$/i,
+    /^aquaman rogues$/i,/^gotham rogues$/i
+  ];
+
+  function teamIdentity(raw){
+    const source=String(raw||'').trim();
+    if(!source)return null;
+    const lower=source.toLowerCase();
+    if(lower==='none'||/^various(?:\s|$)/.test(lower)||
+       lower.includes('not an operational team')||
+       lower.includes('adaptation only')||
+       lower.includes('not a main-comics membership'))return null;
+
+    const dash=source.split(/\s+[—–]\s+/,2);
+    let name=(dash[0]||'').trim();
+    let note=(dash[1]||'').trim();
+
+    const parenthetical=name.match(/\s+\(([^()]*)\)$/);
+    if(parenthetical){
+      if(!note)note=parenthetical[1].trim();
+      name=name.replace(/\s+\([^()]*\)$/,'').trim();
+    }
+    const allySuffix=name.match(/^(.*?)\s+\/\s+(.+\bally\b)$/i);
+    if(allySuffix){
+      name=allySuffix[1].trim();
+      if(!note)note=allySuffix[2].trim();
+    }
+    const suffixes=[
+      [/\s+in some eras$/i,'in some eras'],
+      [/\s+in recent continuity$/i,'recent continuity'],
+      [/\s+in Krakoa era$/i,'Krakoa era']
+    ];
+    suffixes.forEach(([rx,label])=>{
+      if(rx.test(name)){name=name.replace(rx,'').trim();if(!note)note=label;}
+    });
+
+    const aliases=[
+      [/^Justice League allies$/i,'Justice League','allied affiliation'],
+      [/^Batman Family ally$/i,'Batman Family','allied affiliation'],
+      [/^Batman allies$/i,'Batman Family','allied affiliation'],
+      [/^Superman allies$/i,'Superman Family','allied affiliation'],
+      [/^Guardians allies$/i,'Guardians of the Galaxy','allied affiliation'],
+      [/^Wonder Woman allies$/i,'Wonder Woman Family','allied affiliation'],
+      [/^Shazam adversaries$/i,'Shazam Family','adversarial affiliation'],
+      [/^Spider-Man allies$/i,'Spider-Man Family','allied affiliation'],
+      [/^X-Men allies$/i,'X-Men','allied affiliation'],
+      [/^Secret Society of Super Villains$/i,'Secret Society of Super-Villains','']
+    ];
+    for(const [rx,value,aliasNote] of aliases){
+      if(rx.test(name)){name=value;if(!note&&aliasNote)note=aliasNote;break;}
+    }
+    if(!name||teamIgnoredPatterns.some(rx=>rx.test(name)))return null;
+    return {name,note,raw:source,key:norm(name)};
+  }
+
+  function teamAssetSlug(name){
+    return String(name||'').normalize('NFKD').replace(/[\u0300-\u036f]/g,'')
+      .toLowerCase().replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-')
+      .replace(/^-+|-+$/g,'').replace(/-+/g,'-')||'team';
+  }
+
+  function teamInitials(name){
+    const ignored=new Set(['the','of','and','a','an']);
+    const words=String(name||'').replace(/[^\p{L}\p{N}\s]/gu,' ').split(/\s+/).filter(Boolean);
+    const useful=words.filter(w=>!ignored.has(w.toLowerCase()));
+    return (useful.length?useful:words).slice(0,3).map(w=>w[0]).join('').toUpperCase()||'?';
+  }
+
+  function teamLogoMarkup(name,extraClass=''){
+    const slug=teamAssetSlug(name),initials=teamInitials(name);
+    return `<span class="cvx-team-logo ${esc(extraClass)}" data-team-logo="${esc(slug)}">
+      <span class="cvx-team-logo-fallback" aria-hidden="true">${esc(initials)}</span>
+      <img src="assets/teams/${esc(slug)}.webp"
+        data-png="assets/teams/${esc(slug)}.png"
+        data-svg="assets/teams/${esc(slug)}.svg"
+        alt="${esc(name)} logo"
+        loading="lazy" decoding="async"
+        onerror="if(!this.dataset.logoTry){this.dataset.logoTry='png';this.src=this.dataset.png;}else if(this.dataset.logoTry==='png'){this.dataset.logoTry='svg';this.src=this.dataset.svg;}else{this.style.display='none';this.closest('.cvx-team-logo')?.classList.add('missing-team-logo');}">
+    </span>`;
+  }
+
+  const teamRegistry=new Map();
+  const teamsByRoot=new Map([...nodes.keys()].map(id=>[id,[]]));
+
+  nodes.forEach((node,id)=>{
+    const record=records.get(node.recordSlug)||{};
+    const localSeen=new Set();
+    (record.teams||[]).forEach(raw=>{
+      const parsed=teamIdentity(raw);
+      if(!parsed||localSeen.has(parsed.key))return;
+      localSeen.add(parsed.key);
+
+      if(!teamRegistry.has(parsed.key)){
+        teamRegistry.set(parsed.key,{
+          key:parsed.key,
+          name:parsed.name,
+          assetSlug:teamAssetSlug(parsed.name),
+          members:new Map()
+        });
+      }
+      const team=teamRegistry.get(parsed.key);
+      team.members.set(id,{
+        nodeId:id,
+        recordSlug:node.recordSlug,
+        character:record.name,
+        raw:parsed.raw,
+        note:parsed.note
+      });
+      teamsByRoot.get(id).push({
+        key:parsed.key,
+        name:parsed.name,
+        raw:parsed.raw,
+        note:parsed.note
+      });
+    });
+  });
+
+  teamsByRoot.forEach(list=>list.sort((a,b)=>a.name.localeCompare(b.name,undefined,{sensitivity:'base'})));
+  function teamsForRoot(id){return teamsByRoot.get(id)||[];}
+  function teamRecord(key){return teamRegistry.get(key)||null;}
+  function historicalTeamNote(note){
+    return /\b(histor|former|pre-|era|continuity|20th-century|2017|2023)\b/i.test(String(note||''));
+  }
+
+
   // Dossier parity overlay. This does not alter CRR1 or override an MR-governed pair.
   // It exposes already-researched family/key-relationship context and compact team affiliation nodes.
   const contextByRoot = new Map([...nodes.keys()].map(id=>[id,[]]));
@@ -41522,7 +41727,8 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function defaultLayer(id){const available=[...connections(id),...dossierContext(id)];if(available.some(e=>layerOf(e)==='personal'))return 'personal';for(const key of ['team','event','community','legacy'])if(available.some(e=>layerOf(e)===key))return key;return offRosterFor(id).length?'off-roster':'personal';}
   function artwork(n){
     const initials=String(n.hero||'?').split(/\s+/).filter(x=>x&&x.toLowerCase()!=='the').slice(0,3).map(x=>x.replace(/[^A-Za-z0-9]/g,'')[0]||'').join('').toUpperCase()||'?';
-    if(n.kind==='team'||n.kind==='reference')return `<span class="cvx-node-art cvx-art-missing"><span class="cvx-initials" aria-hidden="true">${esc(initials)}</span></span>`;
+    if(n.kind==='team')return teamLogoMarkup(n.teamName||n.hero,'cvx-node-art');
+    if(n.kind==='reference')return `<span class="cvx-node-art cvx-art-missing"><span class="cvx-initials" aria-hidden="true">${esc(initials)}</span></span>`;
     const c=records.get(n.recordSlug);return `<span class="cvx-node-art"><picture><img src="assets/characters/${esc(c.imageSlug)}.webp" data-cvx-art="${esc(c.imageSlug)}" alt="" width="120" height="160" loading="lazy" decoding="async"></picture><span class="cvx-initials" aria-hidden="true">${esc(initials)}</span></span>`;
   }
   function card(id,options={}){
@@ -41732,33 +41938,106 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function step(){return {root:state.root,mode:state.mode,layer:state.layer,filter:state.filter,view:state.view,page:state.page||0,scroll:scroller.scrollTop,camera:state.camera?{...state.camera}:null,optionsOpen:!!state.optionsOpen};}
   function pushStep(){state.stack.push(step());if(state.stack.length>40)state.stack.shift();}
   function restoreStep(s){Object.assign(state,s);$('cvxSearch').value='';render();requestAnimationFrame(()=>{scroller.scrollTop=s.scroll||0;});}
-  function center(id){if(!nodes.has(id))return;if(id!==state.root||state.mode!=='connections')pushStep();state.root=id;state.mode='connections';state.layer=defaultLayer(id);state.filter='all';state.page=0;state.optionsOpen=false;$('cvxSearch').value='';render();scroller.scrollTop=0;focusCenter();}
+  function center(id,preferredMode='connections'){if(!nodes.has(id))return;const nextMode=preferredMode==='teams'&&teamsForRoot(id).length?'teams':'connections';if(id!==state.root||state.mode!==nextMode)pushStep();state.root=id;state.mode=nextMode;state.layer=defaultLayer(id);state.filter='all';state.page=0;state.optionsOpen=false;$('cvxSearch').value='';render();scroller.scrollTop=0;focusCenter();}
   function focusCenter(){requestAnimationFrame(()=>{const t=$('cvxCanvas').querySelector('.cvx-root')||$('cvxCenterSelect');t?.focus({preventScroll:true});});}
   function render(){
     if(!state)return;
     save('comicVaultConnectionsLastRoot',state.root);
     const legacyAvailable=hasContextualLegacy(state.root);
+    const teamCount=teamsForRoot(state.root).length;
     if(state.mode==='legacy'&&!legacyAvailable)state.mode='connections';
+    if(state.mode==='teams'&&!teamCount)state.mode='connections';
     if(state.mode==='connections'&&!layerCategories.some(([key])=>key===state.layer))state.layer=defaultLayer(state.root);
     const legacyButton=document.querySelector('[data-cvx-mode="legacy"]');
     if(legacyButton){legacyButton.hidden=!legacyAvailable;legacyButton.textContent='Flash legacy';}
+    const teamButton=document.querySelector('[data-cvx-mode="teams"]');
+    if(teamButton){teamButton.disabled=!teamCount;teamButton.textContent=`Teams & Affiliations · ${teamCount}`;}
+    const modeControls=$('cvxModeControls');
+    if(modeControls)modeControls.style.setProperty('--cvx-mode-count',legacyAvailable?'3':'2');
     teardownMap();
     document.querySelectorAll('[data-cvx-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxMode===state.mode)));
     document.querySelectorAll('[data-cvx-view]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.cvxView===state.view)));
-    $('cvxCenterControls').hidden=state.mode==='legacy';$('cvxFilters').hidden=state.mode==='legacy';$('cvxLayerFilterWrap').hidden=state.mode==='legacy';
-    $('cvxMapGuide').hidden=state.mode==='legacy'||state.layer==='off-roster';
-    $('cvxRotateHint').hidden=state.mode==='legacy'||state.view!=='map'||state.layer==='off-roster';
-    if(state.mode==='legacy')$('cvxPager').hidden=true;
+    $('cvxCenterControls').hidden=state.mode==='legacy';
+    $('cvxViewControls').hidden=state.mode!=='connections';
+    $('cvxFilters').hidden=state.mode!=='connections';
+    $('cvxLayerFilterWrap').hidden=state.mode!=='connections';
+    $('cvxMapGuide').hidden=state.mode!=='connections'||state.layer==='off-roster';
+    $('cvxRotateHint').hidden=state.mode!=='connections'||state.view!=='map'||state.layer==='off-roster';
+    if(state.mode!=='connections')$('cvxPager').hidden=true;
     updateCenterChoices();$('cvxBack').disabled=state.stack.length===0;
     $('cvxStart').disabled=state.root===state.start&&state.mode==='connections'&&state.stack.length===0;
     const trail=state.stack.slice(-4);
     $('cvxTrail').hidden=state.stack.length===0;
-    $('cvxTrail').innerHTML=trail.map((s,i)=>`<button type="button" data-cvx-trail="${state.stack.length-trail.length+i}">${esc(s.mode==='legacy'?'Flash legacy':shortName(s.root))}</button><span aria-hidden="true">›</span>`).join('')+`<span aria-current="location">${esc(state.mode==='legacy'?'Flash legacy':shortName(state.root))}</span>`;
-    if(state.mode==='legacy') renderLegacy();else renderConnections();
+    const trailLabel=s=>s.mode==='legacy'?'Flash legacy':s.mode==='teams'?`Teams · ${shortName(s.root)}`:shortName(s.root);
+    $('cvxTrail').innerHTML=trail.map((s,i)=>`<button type="button" data-cvx-trail="${state.stack.length-trail.length+i}">${esc(trailLabel(s))}</button><span aria-hidden="true">›</span>`).join('')+`<span aria-current="location">${esc(trailLabel(state))}</span>`;
+    if(state.mode==='legacy')renderLegacy();else if(state.mode==='teams')renderTeams();else renderConnections();
     mapUI();
     if(state.mode==='connections'&&state.view==='map'&&state.layer!=='off-roster')attachMap();
     syncCitations();
   }
+
+  function renderTeams(){
+    const n=lookup(state.root),rootRecord=records.get(n.recordSlug)||{},rootName=rootRecord.name||nodeName(n),affiliations=teamsForRoot(state.root),host=$('cvxCanvas');
+    $('cvxPager').hidden=true;
+    $('cvxStatus').innerHTML=`<strong>${esc(rootName)}</strong> · ${affiliations.length} team${affiliations.length===1?'':'s'} / affiliation${affiliations.length===1?'':'s'}. Team and group affiliations are shown separately from Personal relationships.`;
+
+    if(!affiliations.length){
+      host.innerHTML=`<div class="cvx-empty"><strong>${esc(rootName)}</strong><p>No operational team or group affiliations are currently indexed for this dossier.</p></div>`;
+      return;
+    }
+
+    host.innerHTML=`<section class="cvx-team-gateway-section">
+      <div class="cvx-team-gateway-head">
+        <span class="cvx-kicker">TEAM NETWORK</span>
+        <h3>Teams &amp; Affiliations</h3>
+        <p>These are team and group affiliations from the audited dossiers. Sharing an affiliation does not automatically mean two characters are close friends.</p>
+      </div>
+      <div class="cvx-team-gateway-grid">
+        ${affiliations.map(entry=>{
+          const team=teamRecord(entry.key),count=team?.members?.size||1;
+          return `<button type="button" class="cvx-team-gateway${historicalTeamNote(entry.note)?' historical':''}" data-cvx-team-gateway="${esc(entry.key)}" aria-label="Open ${esc(entry.name)} team details">
+            ${teamLogoMarkup(entry.name,'cvx-team-gateway-logo')}
+            <span class="cvx-team-gateway-copy">
+              <small>${historicalTeamNote(entry.note)?'HISTORICAL / ERA-SPECIFIC AFFILIATION':'TEAM / GROUP AFFILIATION'}</small>
+              <strong>${esc(entry.name)}</strong>
+              ${entry.note?`<em>${esc(entry.note)}</em>`:''}
+              <span>${count} COMIC VAULT CHARACTER${count===1?'':'S'}</span>
+            </span>
+            <b aria-hidden="true">↗</b>
+          </button>`;
+        }).join('')}
+      </div>
+      <p class="cvx-team-logo-help">Team logos are optional. Add a matching file to <code>assets/teams/</code>; WebP, PNG and SVG are supported automatically.</p>
+    </section>`;
+  }
+
+  function showTeamDetail(key){
+    const team=teamRecord(key);if(!team)return;
+    const memberships=[...team.members.values()].sort((a,b)=>a.character.localeCompare(b.character,undefined,{sensitivity:'base'}));
+    const current=team.members.get(state.root);
+    previewSelection={id:null,kind:'team',team:team.name,teamKey:key};
+
+    $('cvxPreviewBody').innerHTML=`
+      <div class="cvx-team-detail-head">
+        ${teamLogoMarkup(team.name,'cvx-team-detail-logo')}
+        <div><span class="cvx-kicker">TEAM FILE</span><h3 id="cvxPreviewName">${esc(team.name)}</h3><p>${memberships.length} Comic Vault character${memberships.length===1?'':'s'} currently indexed with this affiliation</p></div>
+      </div>
+      ${current?`<div class="cvx-team-current"><strong>${esc(current.character)}</strong><span>${esc(current.note||'Affiliation indexed')}</span></div>`:''}
+      <p class="cvx-preview-description">This team view is built from the audited dossier affiliation data. An affiliation does not automatically create a Personal ally or friendship relationship.</p>
+      <div class="cvx-team-member-grid">
+        ${memberships.map(member=>{
+          const node=lookup(member.nodeId);
+          return `<button type="button" class="cvx-team-member${member.nodeId===state.root?' current':''}" data-cvx-team-member="${esc(member.nodeId)}">
+            ${artwork(node)}
+            <span><strong>${esc(member.character)}</strong>${member.note?`<small>${esc(member.note)}</small>`:''}<em>${member.nodeId===state.root?'CURRENT CHARACTER':'EXPLORE CONNECTIONS ↗'}</em></span>
+          </button>`;
+        }).join('')}
+      </div>
+      ${memberships.length>=2?`<div class="cvx-preview-actions"><button type="button" class="cvx-btn cvx-btn-primary" id="cvxOpenTeam">Open in Groups &amp; Leagues ↗</button></div>`:`<p class="cvx-team-single-note">No additional Comic Vault members are currently indexed for this affiliation.</p>`}
+      <details class="cvx-scope"><summary>Team logo filename</summary><p>Preferred: <code>assets/teams/${esc(team.assetSlug)}.webp</code><br>Fallbacks: <code>${esc(team.assetSlug)}.png</code> or <code>${esc(team.assetSlug)}.svg</code></p><p>The logo is optional; Comic Vault uses an initials fallback when no file is present.</p></details>`;
+    if(!preview.open)preview.showModal();preview.scrollTop=0;$('cvxPreviewClose').focus({preventScroll:true});
+  }
+
   function renderConnections(){
     const canonical=connections(state.root),context=dossierContext(state.root),deps=offRosterFor(state.root),n=lookup(state.root),inRoster=[...canonical,...context];
     const layerCounts=Object.fromEntries(layerCategories.map(([key])=>[key,key==='off-roster'?deps.length:inRoster.filter(e=>layerOf(e)===key).length]));
@@ -41919,9 +42198,12 @@ window.COMIC_VAULT_AUDIT_LOG = [
       render();if(state.view==='map'&&!state.optionsOpen){scroller.scrollTop=0;$('cvzViewport')?.focus({preventScroll:true});}else{$('cvxPager').scrollIntoView({block:'start',behavior:'auto'});$('cvxStatus').focus({preventScroll:true});}return;
     }
     const trail=e.target.closest('[data-cvx-trail]');if(trail){const i=Number(trail.dataset.cvxTrail),s=state.stack[i];if(s){state.stack=state.stack.slice(0,i);restoreStep(s);}return;}
+    const teamGateway=e.target.closest('[data-cvx-team-gateway]');if(teamGateway){showTeamDetail(teamGateway.dataset.cvxTeamGateway);return;}
     const button=e.target.closest('[data-cvx-node]');if(button){showPreview(button.dataset.cvxNode,button.dataset.cvxEdge,button.dataset.cvxLegacy);return;}
   });
   preview.addEventListener('click',e=>{
+    const teamMember=e.target.closest('[data-cvx-team-member]');
+    if(teamMember){const id=teamMember.dataset.cvxTeamMember;closePreview();center(id);return;}
     if(e.target.closest('#cvxOpenTeam')&&previewSelection?.kind==='team'){const team=previewSelection.team,s=snapshot();closePreview();close();bridge.openTeam?.(team,s);}
     else if(e.target.closest('#cvxExploreNode')&&previewSelection?.kind==='character'){const id=previewSelection.id;closePreview();center(id);}
     else if(e.target.closest('#cvxOpenDossier')&&previewSelection?.kind==='character'){const id=previewSelection.id,s=snapshot();close({toDossier:true});bridge.openDossier(lookup(id).recordSlug,s);}
@@ -41937,9 +42219,9 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(state.mode==='connections'&&state.view==='map'){
       state.optionsOpen=!state.optionsOpen;mapUI();scroller.scrollTop=0;scheduleMapMeasure();
       if(state.optionsOpen)$('cvxSearch').focus({preventScroll:true});
-    }else{scroller.scrollTop=0;$('cvxSearch').focus({preventScroll:true});}
+    }else{state.optionsOpen=true;scroller.scrollTop=0;$('cvxSearch').focus({preventScroll:true});}
   });
-$('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.target.value);});
+$('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.target.value,state.mode==='teams'?'teams':'connections');});
   $('cvxSearch').addEventListener('input',updateCenterChoices);
   $('cvxCitations').addEventListener('change',e=>{bridge.setCitations(e.target.checked);syncCitations();});
   // Listen for the same setting changing in the dossier, another tab, or unavailable-storage mode.
