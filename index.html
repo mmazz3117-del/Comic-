@@ -5,7 +5,7 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta content="9.15-ca26" name="comic-vault-build"/>
+<meta content="9.15-ca27" name="comic-vault-build"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <meta content="#05070b" name="theme-color"/>
@@ -5722,7 +5722,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <span class="brand-mark">CV</span>
 <span class="brand-copy">
 <strong>COMIC VAULT</strong>
-<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 CA26</em><em class="archive-total-badge">420 FILES</em><em class="art-count-badge">294 ART</em></span>
+<span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 CA27</em><em class="archive-total-badge">420 FILES</em><em class="art-count-badge">294 ART</em></span>
 </span>
 </button>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn">
@@ -5928,7 +5928,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 CA26</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 CA27</em></span></span>
 </div>
 <div class="menu-section">
 <button data-page="home"><span>HOME</span></button>
@@ -5972,7 +5972,7 @@ Connections, accepted visuals and application behavior preserved except current 
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 CA26</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 CA27</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
@@ -8266,6 +8266,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     const source=String(raw||'').trim();
     if(!source)return null;
     const lower=source.toLowerCase();
+    if(['green lantern legacy','captain america legacy / allies'].includes(lower))return null;
     if(lower==='none'||/^various(?:\s|$)/.test(lower)||
        lower.includes('not an operational team')||
        lower.includes('adaptation only')||
@@ -35209,10 +35210,10 @@ $('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.ta
   dialog.innerHTML=`<div class="cvc-head"><div><small>COMIC VAULT // CAPABILITY LAB</small><h2>Compare Abilities</h2></div><button class="cvc-close" type="button" aria-label="Close comparison">×</button></div><div class="cvc-body"><div class="cvc-pickers"><div class="cvc-picker"><label for="cvcA">FIRST CHARACTER</label><input id="cvcA" list="cvcNames" autocomplete="off" placeholder="Type a character name…"></div><div class="cvc-vs">VS</div><div class="cvc-picker"><label for="cvcB">SECOND CHARACTER</label><input id="cvcB" list="cvcNames" autocomplete="off" placeholder="Type a character name…"></div></div><datalist id="cvcNames">${characters.map(c=>`<option value="${esc(c.name)}">${esc(c.realName||'')}</option>`).join('')}</datalist><div class="cvc-status" id="cvcStatus">Choose two characters to compare their audited 1–10 ratings.</div><div id="cvcResults"></div></div>`;
   document.body.appendChild(dialog);
   const inputA=dialog.querySelector('#cvcA'),inputB=dialog.querySelector('#cvcB'),status=dialog.querySelector('#cvcStatus'),results=dialog.querySelector('#cvcResults');
-  const find=value=>{const q=String(value||'').trim().toLowerCase();if(!q)return null;return characters.find(c=>c.name.toLowerCase()===q)||characters.find(c=>c.name.toLowerCase().startsWith(q))||characters.find(c=>c.name.toLowerCase().includes(q)||String(c.realName||'').toLowerCase().includes(q))||null};
+  const find=value=>{const q=String(value||'').trim().toLowerCase();if(!q)return null;const matches=characters.filter(c=>c.name.toLowerCase()===q||String(c.realName||'').toLowerCase()===q);return matches.length===1?matches[0]:null};
   const score=(c,key)=>{const v=c?.attributes?.[key];return v===null||v===undefined||v==='N/A'||!Number.isFinite(Number(v))?null:Number(v)};
   const total=c=>Object.keys(c.attributes||{}).reduce((n,k)=>n+(score(c,k)||0),0);
-  function draw(){const a=find(inputA.value),b=find(inputB.value);if(!a||!b){results.innerHTML='';status.textContent=!inputA.value&&!inputB.value?'Choose two characters to compare their audited 1–10 ratings.':!a&&inputA.value?'No first-character match yet.':!b&&inputB.value?'No second-character match yet.':'Choose both characters.';return}inputA.value=a.name;inputB.value=b.name;status.textContent=`${a.name} vs ${b.name}`;const keys=[...new Set([...Object.keys(a.attributes||{}),...Object.keys(b.attributes||{})])];results.innerHTML=`<div class="cvc-summary"><div class="cvc-total"><strong>${esc(a.name)} · ${total(a)}</strong><span>TOTAL OF RATED CAPABILITIES</span></div><div class="cvc-total"><strong>${esc(b.name)} · ${total(b)}</strong><span>TOTAL OF RATED CAPABILITIES</span></div></div><div class="cvc-grid">${keys.map(k=>{const av=score(a,k),bv=score(b,k);return `<div class="cvc-row"><div class="cvc-name">${esc(a.name)} <span>${av??'N/A'}</span></div><div class="cvc-bar cvc-left ${av===null?'cvc-na':''}">${av===null?'':`<div class="cvc-fill" style="--score:${av}"></div>`}</div><div class="cvc-cap">${esc(k)}</div><div class="cvc-bar cvc-right ${bv===null?'cvc-na':''}">${bv===null?'':`<div class="cvc-fill" style="--score:${bv}"></div>`}</div><div class="cvc-name right"><span>${bv??'N/A'}</span> ${esc(b.name)}</div></div>`}).join('')}</div><p class="cvc-legend">Bars use the frozen Comic Vault v2.1 1–10 rubric. N/A is excluded from totals.</p>`}
+  function draw(){const a=find(inputA.value),b=find(inputB.value);if(!a||!b){results.innerHTML='';status.textContent=!inputA.value&&!inputB.value?'Choose two characters to compare their audited 1–10 ratings.':!a&&inputA.value?'Keep typing or choose a first character from the suggestions.':!b&&inputB.value?'Keep typing or choose a second character from the suggestions.':'Choose both characters.';return}status.textContent=`${a.name} vs ${b.name}`;const keys=[...new Set([...Object.keys(a.attributes||{}),...Object.keys(b.attributes||{})])];results.innerHTML=`<div class="cvc-summary"><div class="cvc-total"><strong>${esc(a.name)} · ${total(a)}</strong><span>TOTAL OF RATED CAPABILITIES</span></div><div class="cvc-total"><strong>${esc(b.name)} · ${total(b)}</strong><span>TOTAL OF RATED CAPABILITIES</span></div></div><div class="cvc-grid">${keys.map(k=>{const av=score(a,k),bv=score(b,k);return `<div class="cvc-row"><div class="cvc-name">${esc(a.name)} <span>${av??'N/A'}</span></div><div class="cvc-bar cvc-left ${av===null?'cvc-na':''}">${av===null?'':`<div class="cvc-fill" style="--score:${av}"></div>`}</div><div class="cvc-cap">${esc(k)}</div><div class="cvc-bar cvc-right ${bv===null?'cvc-na':''}">${bv===null?'':`<div class="cvc-fill" style="--score:${bv}"></div>`}</div><div class="cvc-name right"><span>${bv??'N/A'}</span> ${esc(b.name)}</div></div>`}).join('')}</div><p class="cvc-legend">Bars use the frozen Comic Vault v2.1 1–10 rubric. N/A is excluded from totals.</p>`}
   let timer;[inputA,inputB].forEach(input=>{input.addEventListener('input',()=>{clearTimeout(timer);timer=setTimeout(draw,120)});input.addEventListener('change',draw);input.addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();draw()}})});
   button.addEventListener('click',()=>{if(!dialog.open)dialog.showModal();setTimeout(()=>inputA.focus(),30)});
   dialog.querySelector('.cvc-close').addEventListener('click',()=>dialog.close());dialog.addEventListener('click',e=>{if(e.target===dialog)dialog.close()});
