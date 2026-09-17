@@ -5834,13 +5834,39 @@ Connections, accepted visuals and application behavior preserved except current 
  .publisher-tabs .pub-tab[data-publisher="SUPERNATURAL"]{grid-column:span 3}
 }
 </style>
+<style id="cvUniverseColorsSP09">
+.publisher-tabs{gap:4px}
+.publisher-tabs .pub-tab{
+ --cv-universe:178,191,212;
+ color:rgb(var(--cv-universe));
+ background:rgba(var(--cv-universe),.065);
+ box-shadow:inset 0 0 0 1px rgba(var(--cv-universe),.19);
+}
+.publisher-tabs .pub-tab[data-publisher="DC"]{--cv-universe:104,179,255}
+.publisher-tabs .pub-tab[data-publisher="MARVEL"]{--cv-universe:255,113,133}
+.publisher-tabs .pub-tab[data-publisher="BUFFYVERSE"]{--cv-universe:210,170,246}
+.publisher-tabs .pub-tab[data-publisher="SUPERNATURAL"]{--cv-universe:131,223,207}
+.publisher-tabs .pub-tab.active{
+ color:#f7f9ff;
+ background:rgba(var(--cv-universe),.24);
+ box-shadow:inset 0 0 0 1px rgba(var(--cv-universe),.64),inset 0 -3px 0 rgb(var(--cv-universe));
+}
+@media(hover:hover){
+ .publisher-tabs .pub-tab:hover{background:rgba(var(--cv-universe),.16)}
+ .publisher-tabs .pub-tab.active:hover{background:rgba(var(--cv-universe),.29)}
+}
+.publisher-tabs .pub-tab:focus-visible{
+ outline:2px solid rgb(var(--cv-universe));
+ outline-offset:2px;
+}
+</style>
 </head>
 <body>
 <div class="app-shell">
 <header class="topbar cv-header-bc05">
 <div class="cv-header-row">
 <button aria-label="Comic Vault home" class="brand" id="homeBtn" type="button"><span class="brand-copy"><strong>COMIC VAULT</strong></span></button>
-<em class="version-badge" title="Comic Vault v9.15 SP08">v9.15 SP08</em>
+<em class="version-badge" title="Comic Vault v9.15 SP09">v9.15 SP09</em>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
 </div>
 <nav class="cv-shortcuts" aria-label="Main navigation">
@@ -6054,7 +6080,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP08</em><em class="archive-total-badge">466 FILES</em><em class="art-count-badge">294 ART</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP09</em><em class="archive-total-badge">466 FILES</em><em class="art-count-badge">294 ART</em></span></span>
 </div>
 <div class="menu-section">
 <button data-page="home"><span>HOME</span></button>
@@ -6098,7 +6124,7 @@ Connections, accepted visuals and application behavior preserved except current 
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP08</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP09</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
@@ -6545,7 +6571,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   button.type='button';button.id='cvCompareAbilities';button.className='gateway-secondary-btn cvc-home-button';button.textContent='⇄ COMPARE ABILITIES';
 
   const dialog=document.createElement('dialog');dialog.id='cvcDialog';dialog.className='cvc-dialog';
-  dialog.innerHTML=`<div class="cvc-head"><div><small>COMIC VAULT // CAPABILITY LAB · SP08</small><h2>Compare Abilities</h2></div><button class="cvc-close" type="button" aria-label="Close comparison">×</button></div><div class="cvc-body"><div class="cvc-pickers"><div class="cvc-picker"><label for="cvcA">FIRST CHARACTER</label><input type="search" id="cvcA" name="vault-character-query-a" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" inputmode="search" enterkeyhint="search" data-1p-ignore data-lpignore="true" aria-label="Search Comic Vault characters" aria-controls="cvcChoicesA" placeholder="Search heroes or civilian identities…"><div id="cvcChoicesA" class="cvc-choices" aria-label="Character suggestions" hidden></div></div><div class="cvc-vs">VS</div><div class="cvc-picker"><label for="cvcB">SECOND CHARACTER</label><input type="search" id="cvcB" name="vault-character-query-b" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" inputmode="search" enterkeyhint="search" data-1p-ignore data-lpignore="true" aria-label="Search Comic Vault characters" aria-controls="cvcChoicesB" placeholder="Search heroes or civilian identities…"><div id="cvcChoicesB" class="cvc-choices" aria-label="Character suggestions" hidden></div></div></div><div class="cvc-status" id="cvcStatus">Choose two characters to compare their 1–10 capability ratings.</div><div id="cvcResults"></div></div>`;
+  dialog.innerHTML=`<div class="cvc-head"><div><small>COMIC VAULT // CAPABILITY LAB · SP09</small><h2>Compare Abilities</h2></div><button class="cvc-close" type="button" aria-label="Close comparison">×</button></div><div class="cvc-body"><div class="cvc-pickers"><div class="cvc-picker"><label for="cvcA">FIRST CHARACTER</label><input type="search" id="cvcA" name="vault-character-query-a" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" inputmode="search" enterkeyhint="search" data-1p-ignore data-lpignore="true" aria-label="Search Comic Vault characters" aria-controls="cvcChoicesA" placeholder="Search heroes or civilian identities…"><div id="cvcChoicesA" class="cvc-choices" aria-label="Character suggestions" hidden></div></div><div class="cvc-vs">VS</div><div class="cvc-picker"><label for="cvcB">SECOND CHARACTER</label><input type="search" id="cvcB" name="vault-character-query-b" autocomplete="off" autocorrect="off" autocapitalize="none" spellcheck="false" inputmode="search" enterkeyhint="search" data-1p-ignore data-lpignore="true" aria-label="Search Comic Vault characters" aria-controls="cvcChoicesB" placeholder="Search heroes or civilian identities…"><div id="cvcChoicesB" class="cvc-choices" aria-label="Character suggestions" hidden></div></div></div><div class="cvc-status" id="cvcStatus">Choose two characters to compare their 1–10 capability ratings.</div><div id="cvcResults"></div></div>`;
   document.body.appendChild(dialog);
   const inputA=dialog.querySelector('#cvcA'),inputB=dialog.querySelector('#cvcB'),status=dialog.querySelector('#cvcStatus'),results=dialog.querySelector('#cvcResults');
   const selected=[null,null];
