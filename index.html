@@ -5860,13 +5860,50 @@ Connections, accepted visuals and application behavior preserved except current 
  outline-offset:2px;
 }
 </style>
+
+<style id="cvArtworkButtonSP10">
+/* A separate native button remains reachable above long dossier titles. */
+.profile-hero{padding-bottom:68px !important;}
+.profile-art-button{
+  z-index:5;
+  pointer-events:auto;
+  min-height:44px;
+  min-width:156px;
+  bottom:10px !important;
+  right:14px !important;
+  padding:10px 14px !important;
+  border:1px solid rgba(91,169,245,.65);
+  border-radius:8px;
+  font-family:inherit;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:.08em;
+  color:#b9dcff;
+  opacity:1;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.profile-art-button:hover{background:#142b42 !important;color:#fff;}
+.profile-art-button:focus-visible{outline:2px solid #83c5ff;outline-offset:3px;}
+.profile-character-image{bottom:64px !important;}
+</style>
+<style id="cvAdaptiveTitlesSP11">
+.profile-title h2{line-height:1.02;overflow-wrap:normal;word-break:normal;}
+.profile-title[data-long-name="true"] h2{max-width:86%;font-size:38px;}
+.profile-title[data-long-name="true"] #profileRealName{font-size:14px;line-height:1.4;max-width:86%;}
+@media(max-width:600px){
+ .profile-title[data-long-name="true"] h2{max-width:76%;font-size:28px;}
+ .profile-title[data-long-name="true"] #profileRealName{max-width:78%;font-size:12px;line-height:1.35;}
+ .profile-title[data-long-name="true"] .profile-status{font-size:10px;letter-spacing:.15em;}
+}
+</style>
 </head>
 <body>
 <div class="app-shell">
 <header class="topbar cv-header-bc05">
 <div class="cv-header-row">
 <button aria-label="Comic Vault home" class="brand" id="homeBtn" type="button"><span class="brand-copy"><strong>COMIC VAULT</strong></span></button>
-<em class="version-badge" title="Comic Vault v9.15 SP09">v9.15 SP09</em>
+<em class="version-badge" title="Comic Vault v9.15 SP11">v9.15 SP11</em>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
 </div>
 <nav class="cv-shortcuts" aria-label="Main navigation">
@@ -6033,8 +6070,9 @@ Connections, accepted visuals and application behavior preserved except current 
 <div class="profile-publisher" id="profilePublisher">DC</div>
 <div aria-label="Enlarge character artwork" class="profile-visual profile-art-trigger" id="profileVisual" role="button" tabindex="0" title="Tap artwork to enlarge">
 <div class="profile-monogram">B</div>
-<span class="profile-art-hint">TAP ART TO ENLARGE ↗</span>
+
 </div>
+<button type="button" class="profile-art-hint profile-art-button" id="profileArtButton" aria-label="View character artwork" aria-haspopup="dialog" aria-controls="artViewer">⛶ VIEW ARTWORK</button>
 <div class="profile-title">
 <div class="profile-status" id="profileStatus">CLASSIFIED DOSSIER</div>
 <h2 id="profileName">BATMAN</h2>
@@ -6080,7 +6118,7 @@ Connections, accepted visuals and application behavior preserved except current 
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP09</em><em class="archive-total-badge">466 FILES</em><em class="art-count-badge">294 ART</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP11</em><em class="archive-total-badge">466 FILES</em><em class="art-count-badge">294 ART</em></span></span>
 </div>
 <div class="menu-section">
 <button data-page="home"><span>HOME</span></button>
@@ -6124,7 +6162,7 @@ Connections, accepted visuals and application behavior preserved except current 
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP09</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP11</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
@@ -7321,9 +7359,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
     applyCitationPreference(citationsVisible);
     $("profilePublisher").textContent = c.publisher;
     $("profileName").textContent = c.name.toUpperCase();
+    $("profileName").parentElement.dataset.longName = String(c.name.length > 28);
+    requestAnimationFrame(fitProfileTitle);
     $("profileRealName").textContent = c.realName + (c.expansionPilot ? " · " + c.expansionPilot.scope : "");
     $("profileStatus").textContent = c.mediaType === "television" ? "TV PILOT · PROVISIONAL" : c.expansionPilot ? "FOUNDATION PILOT" : "CLASSIFIED DOSSIER";
-    $("profileVisual").innerHTML = `${artMarkup(c,"profile-character-image")}<div class="profile-monogram">${esc(c.name.charAt(0))}</div><span class="profile-art-hint">TAP ART TO ENLARGE ↗</span>`;
+    $("profileVisual").innerHTML = `${artMarkup(c,"profile-character-image")}<div class="profile-monogram">${esc(c.name.charAt(0))}</div>`;
     updateFavoriteButton();
     $("profileFacts").innerHTML = [
       ["FIRST APPEARANCE",c.firstAppearance],["ALIGNMENT",c.alignment],["BASE",c.base]
@@ -7341,6 +7381,24 @@ window.COMIC_VAULT_AUDIT_LOG = [
     },10);
   }
 
+
+  function fitProfileTitle(){
+    const heading = $("profileName");
+    if(!heading || !heading.getBoundingClientRect().width) return;
+    const longName = heading.parentElement.dataset.longName === "true";
+    heading.style.removeProperty("font-size");
+    if(!longName) return;
+    const mobile = window.matchMedia("(max-width:600px)").matches;
+    let size = parseFloat(getComputedStyle(heading).fontSize);
+    const minimum = mobile ? 22 : 28;
+    const maxLines = 3;
+    while(size > minimum && heading.getBoundingClientRect().height > size * 1.02 * maxLines + 1){
+      size -= 1;
+      heading.style.fontSize = size + "px";
+    }
+  }
+  window.addEventListener("resize",()=>requestAnimationFrame(fitProfileTitle));
+  if(document.fonts) document.fonts.ready.then(()=>requestAnimationFrame(fitProfileTitle));
 
   function openArtViewer(){
     if(!activeCharacter || !artViewer) return;
@@ -8228,7 +8286,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
   document.addEventListener("click",e=>{
     if(e.target.closest("[data-close-art-viewer]")){ closeArtViewer(); return; }
-    const artTrigger = e.target.closest("#profileVisual");
+    const artTrigger = e.target.closest("#profileVisual, #profileArtButton");
     if(artTrigger && profileSheet.classList.contains("open")){ openArtViewer(); return; }
     const card = e.target.closest("[data-character]"); if(card){ openProfile(card.dataset.character); return; }
     const rel = e.target.closest("[data-related]"); if(rel){ openProfile(rel.dataset.related); return; }
