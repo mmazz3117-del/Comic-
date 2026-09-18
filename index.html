@@ -5,9 +5,23 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta content="9.15-sp05" name="comic-vault-build"/>
+<meta content="9.15-sp14" name="comic-vault-build"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<script id="cvViewModeBoot">
+(function(){
+  let mode = 'phone';
+  try { if(localStorage.getItem('cv-view-mode') === 'desktop') mode = 'desktop'; } catch(e) {}
+  document.documentElement.dataset.viewMode = mode;
+  window.cvLayoutWidth = () => document.documentElement.dataset.viewMode === 'phone' ? Math.min(window.innerWidth,430) : Math.max(window.innerWidth,1100);
+  window.cvViewQuery = query => query.replace(/\((min|max)-width\s*:\s*(\d+(?:\.\d+)?)px\)/g,(_,bound,value) => {
+    const matches = bound === 'min' ? window.cvLayoutWidth() >= Number(value) : window.cvLayoutWidth() <= Number(value);
+    return matches ? '(min-width:0px)' : '(max-width:0px)';
+  });
+  window.cvLayoutMatches = query => window.matchMedia(window.cvViewQuery(query)).matches;
+  if(mode === 'desktop') document.querySelector('meta[name="viewport"]').content = 'width=1100, viewport-fit=cover';
+})();
+</script>
 <meta content="#05070b" name="theme-color"/>
 <meta content="yes" name="apple-mobile-web-app-capable"/>
 <meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
@@ -5898,13 +5912,23 @@ Connections, accepted visuals and application behavior preserved except current 
 }
 </style>
 <style id="cvReaderLabelsSP12">#profileStatus[hidden]{display:none !important;}</style>
+<style id="cvViewModeStyle">
+html[data-view-mode="phone"] body{max-width:430px;margin-inline:auto;}
+html[data-view-mode="phone"] :is(.profile-sheet,.side-menu,.art-viewer,.cvc-dialog){max-width:430px;margin-inline:auto;}
+.cv-view-picker{border:1px solid #2d4054;border-radius:10px;padding:12px;margin:12px 0 18px;}
+.cv-view-picker legend{font-size:11px;letter-spacing:.12em;color:#a8c8e9;padding:0 6px;}
+.cv-view-options{display:flex;gap:8px;}
+.cv-view-options label{display:flex;align-items:center;justify-content:center;gap:8px;flex:1;min-height:44px;border:1px solid #36516a;border-radius:7px;cursor:pointer;font-size:13px;}
+.cv-view-options label:has(input:checked){background:#15314b;border-color:#75baff;}
+.cv-view-options input{accent-color:#75baff;}
+</style>
 </head>
 <body>
 <div class="app-shell">
 <header class="topbar cv-header-bc05">
 <div class="cv-header-row">
 <button aria-label="Comic Vault home" class="brand" id="homeBtn" type="button"><span class="brand-copy"><strong>COMIC VAULT</strong></span></button>
-<em class="version-badge" title="Comic Vault v9.15 SP12">v9.15 SP12</em>
+<em class="version-badge" title="Comic Vault v9.15 SP14">v9.15 SP14</em>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
 </div>
 <nav class="cv-shortcuts" aria-label="Main navigation">
@@ -6119,9 +6143,13 @@ Connections, accepted visuals and application behavior preserved except current 
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP12</em><em class="archive-total-badge">466 FILES</em><em class="art-count-badge">294 ART</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP14</em><em class="archive-total-badge">466 FILES</em><em class="art-count-badge">294 ART</em></span></span>
 </div>
 <div class="menu-section">
+<fieldset class="cv-view-picker"><legend>DISPLAY VIEW</legend><div class="cv-view-options">
+<label><input type="radio" name="cvViewMode" value="phone" checked> Phone</label>
+<label><input type="radio" name="cvViewMode" value="desktop"> Desktop</label>
+</div></fieldset>
 <button data-page="home"><span>HOME</span></button>
 <button data-collection="all"><span>CHARACTER ARCHIVE</span><em>466</em></button>
 <button data-page="favorites"><span>FAVORITES</span><em id="menuFavoritesCount">0</em></button>
@@ -6163,7 +6191,7 @@ Connections, accepted visuals and application behavior preserved except current 
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP12</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP14</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
@@ -7360,7 +7388,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     applyCitationPreference(citationsVisible);
     $("profilePublisher").textContent = c.publisher;
     $("profileName").textContent = c.name.toUpperCase();
-    $("profileName").parentElement.dataset.longName = String(c.name.length > 28);
+    $("profileName").parentElement.dataset.longName = String(c.name.length > 20 || c.name.includes(" / "));
     requestAnimationFrame(fitProfileTitle);
     $("profileRealName").textContent = c.realName + (c.expansionPilot ? " · " + c.expansionPilot.scope : "");
     $("profileStatus").textContent = "CLASSIFIED DOSSIER";
@@ -7387,14 +7415,22 @@ window.COMIC_VAULT_AUDIT_LOG = [
   function fitProfileTitle(){
     const heading = $("profileName");
     if(!heading || !heading.getBoundingClientRect().width) return;
-    const longName = heading.parentElement.dataset.longName === "true";
+    const container = heading.parentElement;
+    const name = heading.textContent.trim();
     heading.style.removeProperty("font-size");
-    if(!longName) return;
-    const mobile = window.matchMedia("(max-width:600px)").matches;
+    container.dataset.longName = "false";
+    const naturalStyle = getComputedStyle(heading);
+    const naturalLineHeight = parseFloat(naturalStyle.lineHeight) || parseFloat(naturalStyle.fontSize) * 1.02;
+    const wraps = heading.getBoundingClientRect().height > naturalLineHeight * 1.5;
+    const overflows = heading.scrollWidth > heading.clientWidth + 1;
+    const compact = name.length > 20 || name.includes(" / ") || wraps || overflows;
+    container.dataset.longName = String(compact);
+    if(!compact) return;
+    const mobile = window.cvLayoutMatches("(max-width:600px)");
     let size = parseFloat(getComputedStyle(heading).fontSize);
     const minimum = mobile ? 22 : 28;
     const maxLines = 3;
-    while(size > minimum && heading.getBoundingClientRect().height > size * 1.02 * maxLines + 1){
+    while(size > minimum && (heading.getBoundingClientRect().height > size * 1.02 * maxLines + 1 || heading.scrollWidth > heading.clientWidth + 1)){
       size -= 1;
       heading.style.fontSize = size + "px";
     }
@@ -8847,7 +8883,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
   let mapMetrics=null, ignoreMapClickUntil=0;
   const clamp=(value,min,max)=>Math.max(min,Math.min(max,value));
   const isShortLandscape=()=>matchMedia('(orientation:landscape) and (max-height:600px)').matches;
-  const mapKey=()=>[state.root,state.layer||'personal',state.filter,state.page,isShortLandscape()?'phone-landscape':matchMedia('(max-width:700px)').matches?'portrait-layout':'wide-layout'].join('|');
+  const mapKey=()=>[state.root,state.layer||'personal',state.filter,state.page,isShortLandscape()?'phone-landscape':cvLayoutMatches('(max-width:700px)')?'portrait-layout':'wide-layout'].join('|');
   function mapUI(){
     const isTree=state.mode==='connections'&&state.view==='map'&&state.layer!=='off-roster';
     const isTeams=state.mode==='teams';
@@ -8886,7 +8922,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     const vp=$('cvzViewport'),stage=$('cvxMap');
     if(!vp||!stage||!dialog.open)return;
     const vw=vp.clientWidth,vh=vp.clientHeight;if(vw<10||vh<10)return;
-    const small=matchMedia('(max-width:700px)').matches;
+    const small=cvLayoutMatches('(max-width:700px)');
     // Retain the accepted two-column portrait and radial landscape arrangements.
     const width=isShortLandscape()?1120:small?Math.max(420,vw):Math.max(800,Math.min(1120,vw));
     stage.style.width=width+'px';
@@ -9227,7 +9263,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
     svg.setAttribute('viewBox',`0 0 ${stage.clientWidth} ${stage.clientHeight}`);
     svg.setAttribute('preserveAspectRatio','none');
     const rootRect=localRect(root),rootCenter=center(rootRect);
-    const portrait=!isShortLandscape()&&window.matchMedia('(max-width:700px)').matches;
+    const portrait=!isShortLandscape()&&window.cvLayoutMatches('(max-width:700px)');
     const cards=[...stage.querySelectorAll('[data-cvx-edge]')];
     svg.innerHTML=cards.map(card=>{
       const cardRect=localRect(card),cardCenter=center(cardRect);
@@ -35523,6 +35559,35 @@ $('cvxCenterSelect').addEventListener('change',e=>{if(e.target.value)center(e.ta
     dialog.addEventListener('close',sync);
   });
   sync();
+})();
+</script>
+<script id="cvViewModeControls">
+(function(){
+  const originals = new WeakMap();
+  function updateRules(rules){
+    for(const rule of rules){
+      if(rule.type === CSSRule.MEDIA_RULE){
+        if(!originals.has(rule)) originals.set(rule,rule.conditionText);
+        rule.media.mediaText = window.cvViewQuery(originals.get(rule));
+      }
+      if(rule.cssRules) updateRules(rule.cssRules);
+    }
+  }
+  function refresh(){
+    for(const style of document.querySelectorAll('style')) if(style.sheet) updateRules(style.sheet.cssRules);
+    for(const input of document.querySelectorAll('input[name="cvViewMode"]')) input.checked = input.value === document.documentElement.dataset.viewMode;
+  }
+  document.addEventListener('change',event => {
+    if(!event.target.matches('input[name="cvViewMode"]')) return;
+    const mode = event.target.value;
+    document.documentElement.dataset.viewMode = mode;
+    try { localStorage.setItem('cv-view-mode',mode); } catch(e) {}
+    document.querySelector('meta[name="viewport"]').content = mode === 'desktop' ? 'width=1100, viewport-fit=cover' : 'width=device-width, initial-scale=1, viewport-fit=cover';
+    refresh();
+    window.dispatchEvent(new Event('resize'));
+  });
+  window.addEventListener('resize',refresh);
+  refresh();
 })();
 </script>
 </body>
