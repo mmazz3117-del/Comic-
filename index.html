@@ -5,7 +5,7 @@
 <meta content="no-cache, no-store, must-revalidate" http-equiv="Cache-Control"/>
 <meta content="no-cache" http-equiv="Pragma"/>
 <meta content="0" http-equiv="Expires"/>
-<meta content="9.15-sp18" name="comic-vault-build"/>
+<meta content="9.15-sp19" name="comic-vault-build"/>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
 <script id="cvViewModeBoot">
@@ -5936,13 +5936,19 @@ html[data-view-mode="phone"] :is(.profile-sheet,.side-menu,.art-viewer,.cvc-dial
  #archiveTeamLogo{width:132px;height:132px;}
 }
 </style>
-</head>
+<style id="cvGroupSearchSP19">
+.group-logo{position:relative;overflow:hidden;}
+.group-logo img{position:absolute;inset:4px;width:calc(100% - 8px);height:calc(100% - 8px);object-fit:contain;}
+#archiveTeamResults{display:grid;gap:12px;margin:0 0 28px;}
+#archiveTeamResults[hidden]{display:none;}
+#archiveTeamResults h3{font-size:12px;letter-spacing:.12em;color:#72b9ff;}
+</style></head>
 <body>
 <div class="app-shell">
 <header class="topbar cv-header-bc05">
 <div class="cv-header-row">
 <button aria-label="Comic Vault home" class="brand" id="homeBtn" type="button"><span class="brand-copy"><strong>COMIC VAULT</strong></span></button>
-<em class="version-badge" title="Comic Vault v9.15 SP18">v9.15 SP18</em>
+<em class="version-badge" title="Comic Vault v9.15 SP19">v9.15 SP19</em>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
 </div>
 <nav class="cv-shortcuts" aria-label="Main navigation">
@@ -6023,7 +6029,7 @@ html[data-view-mode="phone"] :is(.profile-sheet,.side-menu,.art-viewer,.cvc-dial
 <section class="archive-command">
 <div class="searchbar">
 <span>⌕</span>
-<input autocomplete="off" id="searchInput" placeholder="Search every character…" type="search"/>
+<input autocomplete="off" id="searchInput" placeholder="Search characters, teams & leagues…" type="search"/>
 <span class="shortcut">⌘ K</span>
 <button aria-label="Clear search" class="clear-btn" id="clearSearch">×</button>
 </div>
@@ -6055,6 +6061,7 @@ html[data-view-mode="phone"] :is(.profile-sheet,.side-menu,.art-viewer,.cvc-dial
 <button class="pub-tab" data-publisher="SUPERNATURAL">SUPERNATURAL</button>
 </div>
 <div class="alphabet" id="alphabet"></div>
+<section id="archiveTeamResults" hidden aria-label="Matching teams and leagues"></section>
 <div class="archive-list" id="archiveList"></div>
 </section>
 </div>
@@ -6158,7 +6165,7 @@ html[data-view-mode="phone"] :is(.profile-sheet,.side-menu,.art-viewer,.cvc-dial
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP18</em><em class="archive-total-badge">466 FILES</em><em class="art-count-badge" data-artwork-count>… ART</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP19</em><em class="archive-total-badge">466 FILES</em><em class="art-count-badge" data-artwork-count>… ART</em></span></span>
 </div>
 <div class="menu-section">
 <fieldset class="cv-view-picker"><legend>DISPLAY VIEW</legend><div class="cv-view-options">
@@ -6206,7 +6213,7 @@ html[data-view-mode="phone"] :is(.profile-sheet,.side-menu,.art-viewer,.cvc-dial
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP18</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP19</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
@@ -7241,11 +7248,29 @@ window.COMIC_VAULT_AUDIT_LOG = [
     resetArchiveControls();
     updateArchiveBanner();
     renderArchive();
-    showPage("archive",options);
+    showPage("archive",{...options,instant:true});
+    const openedTeam=currentTeam;
+    const resetScroll=()=>{if(currentPage==='archive'&&currentTeam===openedTeam)window.scrollTo({top:0,left:0,behavior:'instant'});};
+    resetScroll();
+    requestAnimationFrame(resetScroll);
   }
 
   function groupInitials(name){
     return name.split(/\s+/).filter(Boolean).slice(0,3).map(x=>x[0]).join("").toUpperCase();
+  }
+
+  function groupLogoMarkup(name){
+    const slug=String(name).normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase()
+      .replace(/&/g,' and ').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    return `<span class="group-monogram group-logo"><span>${esc(groupInitials(name))}</span><img src="assets/teams/${esc(slug)}.webp" alt="${esc(name)} logo" loading="lazy" onload="this.previousElementSibling.hidden=true" onerror="const formats=['png','svg'];const n=Number(this.dataset.attempt||0);if(n&lt;formats.length){this.dataset.attempt=n+1;this.src='assets/teams/${esc(slug)}.'+formats[n];}else{this.onerror=null;this.remove();}"></span>`;
+  }
+
+  function matchingSearchTeams(query){
+    const q=searchNormalize(query);
+    if(!q || currentTeam)return [];
+    return groupIndex.filter(g=>searchNormalize(g.team).includes(q) &&
+      g.members.some(c=>(currentPublisher==='ALL'||c.publisher===currentPublisher)&&matchesCollection(c)))
+      .sort((a,b)=>a.team.localeCompare(b.team));
   }
 
   function renderGroups(){
@@ -7265,7 +7290,7 @@ window.COMIC_VAULT_AUDIT_LOG = [
 
     host.innerHTML = list.length ? list.map(g=>`
       <button class="group-card" data-team="${esc(g.team)}">
-        <span class="group-monogram">${esc(groupInitials(g.team))}</span>
+        ${groupLogoMarkup(g.team)}
         <span class="group-copy">
           <small>GROUP // ${g.members.length} MEMBER${g.members.length===1?"":"S"}</small>
           <strong>${esc(g.team)}</strong>
@@ -7373,10 +7398,14 @@ window.COMIC_VAULT_AUDIT_LOG = [
     updateArchiveBanner();
     const list = filtered();
     const activeQuery = (searchInput?.value || "").trim();
+    const teamMatches=matchingSearchTeams(activeQuery);
+    const teamResults=$("archiveTeamResults");
+    teamResults.hidden=!teamMatches.length;
+    teamResults.innerHTML=teamMatches.length?`<h3>TEAMS &amp; LEAGUES</h3>`+teamMatches.map(g=>`<button type="button" class="group-card" data-search-team="${esc(g.team)}">${groupLogoMarkup(g.team)}<span class="group-copy"><small>TEAM / LEAGUE · ${g.members.length} MEMBERS</small><strong>${esc(g.team)}</strong></span><b aria-hidden="true">↗</b></button>`).join(''):'';
     const archiveSection = document.getElementById("archive");
     if(archiveSection) archiveSection.classList.toggle("is-searching", !!activeQuery);
     resultCount.textContent = activeQuery
-      ? `${list.length} RESULT${list.length===1?"":"S"} FOR “${activeQuery.toUpperCase()}”`
+      ? `${list.length} CHARACTERS · ${teamMatches.length} TEAMS FOR “${activeQuery.toUpperCase()}”`
       : `${list.length} FILE${list.length===1?"":"S"}`;
     if(!list.length){ archiveList.innerHTML = `<div class="empty">No character files match this search.</div>`; return; }
 
@@ -8468,6 +8497,11 @@ window.COMIC_VAULT_AUDIT_LOG = [
     if(!b) return;
     closeMenu();
     showPage(b.dataset.page);
+  });
+
+  $("archiveTeamResults").addEventListener("click",e=>{
+    const card=e.target.closest('[data-search-team]');
+    if(card)browseTeam(card.dataset.searchTeam);
   });
 
   $("groupsList").addEventListener("click",e=>{
