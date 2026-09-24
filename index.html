@@ -6034,13 +6034,38 @@ picture.costume-character-image[data-cv-portrait].missing-art + span{opacity:0!i
   }
 }
 </style>
+<style id="cvSP87ArtworkAdjustments">
+/* Per-character mobile framing, keeping the original artwork intact. */
+@media (max-width:600px){
+  .profile-character-image[data-art-slug="triplicate-girl"] img{
+    transform:translateX(-12px) scale(.78) !important;
+    transform-origin:right bottom !important;
+  }
+  .card-character-image[data-art-slug="trigon"] img{
+    transform:scale(1.12) !important;
+    transform-origin:center bottom !important;
+  }
+  .card-character-image[data-art-slug="brain-doom-patrol"] img{
+    transform:translateY(-28px) scale(.72) !important;
+    transform-origin:center bottom !important;
+  }
+  .profile-character-image[data-art-slug="brain-doom-patrol"] img{
+    transform:scale(.82) !important;
+    transform-origin:right bottom !important;
+  }
+  .art-viewer-image[data-art-slug="brain-doom-patrol"] img{
+    transform:scale(.84) !important;
+    transform-origin:center center !important;
+  }
+}
+</style>
 </head>
 <body>
 <div class="app-shell">
 <header class="topbar cv-header-bc05">
 <div class="cv-header-row">
 <button aria-label="Comic Vault home" class="brand" id="homeBtn" type="button"><span class="brand-copy"><strong>COMIC VAULT</strong></span></button>
-<em class="version-badge" title="Comic Vault v9.15 SP86">v9.15 SP86</em>
+<em class="version-badge" title="Comic Vault v9.15 SP87">v9.15 SP87</em>
 <button aria-label="Open menu" class="icon-btn" id="menuBtn" type="button"><span></span><span></span><span></span></button>
 </div>
 <nav class="cv-shortcuts" aria-label="Main navigation">
@@ -6257,7 +6282,7 @@ picture.costume-character-image[data-cv-portrait].missing-art + span{opacity:0!i
 <button aria-label="Close menu" class="sheet-close" data-close-menu="">×</button>
 <div class="brand menu-brand">
 <span class="brand-mark">CV</span>
-<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP86</em><em class="archive-total-badge">508 FILES</em><em class="art-count-badge" data-artwork-count>… ART</em></span></span>
+<span class="brand-copy"><strong>COMIC VAULT</strong><span class="brand-meta"><small>THE CHARACTER ARCHIVE</small><em class="version-badge">v9.15 SP87</em><em class="archive-total-badge">508 FILES</em><em class="art-count-badge" data-artwork-count>… ART</em></span></span>
 </div>
 <div class="menu-section">
 <fieldset class="cv-view-picker"><legend>DISPLAY VIEW</legend><div class="cv-view-options">
@@ -6305,7 +6330,7 @@ picture.costume-character-image[data-cv-portrait].missing-art + span{opacity:0!i
 </div>
 <dialog aria-describedby="cvxDescription" aria-labelledby="cvxTitle" class="cvx-dialog" id="cvConnections">
 <div class="cvx-frame">
-<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP86</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
+<header class="cvx-header"><div><span class="cvx-kicker">CONNECTIONS &amp; LEGACY · v9.15 SP87</span><h2 id="cvxTitle" tabindex="-1">CONNECTIONS &amp; LEGACY</h2></div><button aria-controls="cvxExplorerOptions" aria-expanded="false" class="cvz-options-button" id="cvzOptions" type="button">Options</button><button aria-label="Close connections and return" class="cvx-close" id="cvxClose" type="button">×</button></header>
 <div class="cvz-bar" hidden="" id="cvzMapBar">
 <div aria-label="Map zoom controls" class="cvz-zoom-controls" role="group">
 <button aria-label="Zoom map out" class="cvz-symbol" id="cvzZoomOut" title="Zoom out" type="button">−</button>
