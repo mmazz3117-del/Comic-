@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1000" height="720" viewBox="0 0 1000 720" role="img" aria-labelledby="title desc">
+<title id="title">FIRST FLOOR</title><desc id="desc">Living room left, dining room front-right, kitchen rear-right, back porch rear-left, central foyer and stairs. Front entrance and street are at the bottom. Clean reference-traced orientation plan; dimensions and furniture are not surveyed.</desc>
+<defs><pattern id="paper" width="12" height="12" patternUnits="userSpaceOnUse"><path d="M12 0H0V12" fill="none" stroke="#dcd4bf" stroke-width=".35" opacity=".45"/></pattern></defs>
+<style>.wall{fill:none;stroke:#4b463d;stroke-width:2.3;stroke-linecap:square;stroke-linejoin:miter}.partition{fill:none;stroke:#706757;stroke-width:1.4}.furniture{fill:#f8f5eb;stroke:#aa9f87;stroke-width:.85}.label{font:600 7.5px Arial,sans-serif;fill:#413c33;text-anchor:middle}.small{font:5px Arial,sans-serif;fill:#71664f;text-anchor:middle}.door{fill:none;stroke:#9c9077;stroke-width:.75}.window{fill:none;stroke:#62929a;stroke-width:1}.dash{fill:none;stroke:#ac9b79;stroke-width:.8;stroke-dasharray:2 2}</style>
+<rect width="1000" height="720" fill="#eee7d8"/><rect x="20" y="20" width="960" height="680" rx="16" fill="#f8f4e9" stroke="#d1c4aa"/><rect x="20" y="20" width="960" height="680" rx="16" fill="url(#paper)"/>
+<text x="54" y="59" fill="#4b4232" font-family="Arial,sans-serif" font-size="25" font-weight="700">1630 REVELLO DRIVE</text><text x="54" y="84" fill="#786c56" font-family="Arial,sans-serif" font-size="15">FIRST FLOOR</text>
+<text x="939" y="56" text-anchor="end" fill="#786c56" font-family="Arial,sans-serif" font-size="12">REAR / GARDEN ↑</text>
+<g transform="translate(113 -502) scale(2)">
+<!-- Ground floor: reference x 68–317, y 289–567. -->
+<path d="M84 301H222V290H249V301H294L317 326V551H68V367H84Z" fill="#eee3cb"/>
+<path d="M69 371H170V519H69Z" fill="#ede2c4"/>
+<path d="M222 413H316V520H220V471H220V414Z" fill="#e7d8bf"/>
+<path d="M222 302H294L316 327V411H221V326H219V302Z" fill="#dce5d6"/>
+<path d="M84 301H168V325H218V366H84Z" fill="#e4e5d4"/>
+<path d="M170 326H219V391H198V471H220V521H171Z" fill="#f5ebd8"/>
+<!-- Outer house/porch outline and actual door gaps. -->
+<path d="M84 302V366H69V520H176M210 520H316V327L294 302H250M223 302H84M69 520V550H316V520" class="wall"/>
+<!-- Living-room boundary; foyer remains open beside the front room. -->
+<path d="M69 369H169V390M169 412V471H152M69 430V484" class="wall"/>
+<!-- Rear corridor and kitchen divide. -->
+<path d="M170 366V354M170 337V326H207M219 326V364M220 385V411H233M254 411H317M220 411V431M220 471V521" class="wall"/>
+<!-- Interior glazing and rear/front entry details. -->
+<path d="M127 364H166M88 302H121M264 302H292M317 333V360M316 454V490M83 520H130" class="window"/>
+<path d="M170 337H187A17 17 0 0 1 170 354M233 411V432A21 21 0 0 0 254 411M176 520V497A23 23 0 0 1 199 520M210 520V502M223 302V326A25 25 0 0 0 248 302M170 390H151A19 19 0 0 0 170 409" class="door"/>
+<!-- Open front porch steps and separate rear garden steps. -->
+<path d="M167 550V557H214V550M167 554H214M170 560H211M223 290H250M223 294H250M223 298H250" class="partition"/>
+<!-- Furniture footprints, pared back from the supplied plan. -->
+<rect x="86" y="389" width="61" height="26" rx="2" class="furniture"/>
+<path d="M90 386h8m6 0h8m6 0h8m6 0h8M90 418h8m6 0h8m6 0h8m6 0h8" class="partition"/>
+<rect x="82" y="497" width="58" height="19" rx="2" class="furniture"/><path d="M86 501H137M101 497V516M120 497V516" class="partition"/>
+<rect x="100" y="476" width="32" height="15" class="furniture"/>
+<path d="M86 451l15-7 8 16-15 7ZM134 446l16 7-8 16-16-7Z" class="furniture"/>
+<rect x="246" y="461" width="49" height="25" rx="2" class="furniture"/><path d="M250 457h9m6 0h9m6 0h9M250 490h9m6 0h9m6 0h9" class="partition"/>
+<path d="M254 303V315H293L307 329V384H316V327L294 302Z" class="furniture"/>
+<rect x="257" y="342" width="20" height="40" class="furniture"/>
+<rect x="260" y="396" width="18" height="12" class="furniture"/><circle cx="265" cy="400" r="2" fill="none" stroke="#aa9f87" stroke-width=".7"/><circle cx="273" cy="404" r="2" fill="none" stroke="#aa9f87" stroke-width=".7"/>
+<rect x="188" y="335" width="22" height="49" class="furniture"/>
+<rect x="199" y="421" width="19" height="79" fill="#f4eedd" stroke="#51493c" stroke-width="1.6"/><path d="M199 426.64h19" class="partition"/><path d="M199 432.29h19" class="partition"/><path d="M199 437.93h19" class="partition"/><path d="M199 443.57h19" class="partition"/><path d="M199 449.21h19" class="partition"/><path d="M199 454.86h19" class="partition"/><path d="M199 460.50h19" class="partition"/><path d="M199 466.14h19" class="partition"/><path d="M199 471.79h19" class="partition"/><path d="M199 477.43h19" class="partition"/><path d="M199 483.07h19" class="partition"/><path d="M199 488.71h19" class="partition"/><path d="M199 494.36h19" class="partition"/><path d="M208.5 493V428m-2 4l2-4 2 4" fill="none" stroke="#756a56" stroke-width=".85"/><text x="208.5" y="510" class="label">UP</text><text x="118" y="439" class="label">LIVING ROOM</text><text x="118" y="447" class="small">front-left · rear sitting area</text><text x="271" y="438" class="label">DINING ROOM</text><text x="271" y="446" class="small">front-right</text><text x="276" y="337" class="label">KITCHEN</text><text x="276" y="345" class="small">rear-right</text><text x="127" y="329" class="label">BACK PORCH</text><text x="127" y="337" class="small">rear-left</text><text x="181" y="490" class="label">FOYER</text><text x="191" y="538" class="label">FRONT ENTRANCE</text></g>
+<text x="500" y="687" text-anchor="middle" fill="#786c56" font-family="Arial,sans-serif" font-size="13" letter-spacing="1.5">FRONT / STREET ↓</text>
+<text x="54" y="654" fill="#8a7c63" font-family="Arial,sans-serif" font-size="10">Layout follows your supplied plan.</text><text x="54" y="669" fill="#8a7c63" font-family="Arial,sans-serif" font-size="10">Orientation guide · not to scale</text>
+</svg>
