@@ -1,24 +1,8 @@
-Comic Vault v10.42.3 — Compact movie-cover grid
+Comic Vault v10.48.1: Brackett uniform add-on
 
-The Halloween movie browser now shows six covers in two columns in Phone mode, with a compact All Movies button above them. Posters are fully contained, not cropped. This removes the sideways cover row; the page may still scroll vertically depending on your screen and header.
+Keep all four v10.48 Portrait ZIPs and the v10.48 Movie Images ZIP: they are still required and unchanged.
+1. Extract this new Brackett Portrait Add-on ZIP and upload its WEBP into assets/characters. Keep his civilian portrait.
+2. Use this v10.48.1 App Files ZIP instead of the older v10.48 App Files ZIP. Upload the JavaScript files beside index.html at the repository root FIRST. Upload index.html LAST.
+3. Keep all older scripts and artwork. No dossiers are removed or duplicated.
 
-This update includes the earlier Loomis and returning-character film-card fixes and Laurie’s Halloween II portrait selection.
-
-If Laurie’s hospital image is not already uploaded, add it first using the image instructions below.
-
-1. Unzip ComicVault-v10.42.3-Movie-Grid-App.zip.
-2. Open the ROOT of your GitHub repository, where index.html is located.
-3. Upload halloween-data-v10.42.3.js there FIRST and commit.
-4. Upload index.html there LAST and commit.
-
-Do not upload the ZIP itself. These app files do NOT go inside assets/characters.
-UPLOAD-INSTRUCTIONS.txt is for you and does not need to be uploaded.
-Keep existing images, covers and older data companions. Do not delete anything.
-
-No new movie covers or artwork were created for this layout update.
-If you already uploaded Laurie’s hospital picture with v10.42.2, no image upload is needed.
-If not, use the previously supplied ComicVault-v10.42.2-Laurie-Hospital-Image.zip. Unzip it, OPEN assets then OPEN characters in GitHub, and upload halloween-laurie-strode-1981.webp there. Confirm the path is assets/characters, not just assets. That image ZIP contains only the image at its root.
-
-After the site refreshes, open Characters, choose Halloween, and look for the two-column cover grid. All Movies remains a separate filter button. Existing Phone/Desktop view settings are preserved; Desktop mode uses the wider grid.
-
-If Halloween reports missing data, confirm halloween-data-v10.42.3.js is beside index.html at the repository root, then refresh.
+This release preserves 917 dossiers, 10 movies, 150 trivia cards and nine Michael portrait choices. Brackett has one 2007 look and two 2009 looks in the existing remake dossier.
