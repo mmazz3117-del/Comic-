@@ -1,8 +1,7 @@
-Comic Vault v10.48.1: Brackett uniform add-on
+Comic Vault v10.48.2: Selected movie layout
 
-Keep all four v10.48 Portrait ZIPs and the v10.48 Movie Images ZIP: they are still required and unchanged.
-1. Extract this new Brackett Portrait Add-on ZIP and upload its WEBP into assets/characters. Keep his civilian portrait.
-2. Use this v10.48.1 App Files ZIP instead of the older v10.48 App Files ZIP. Upload the JavaScript files beside index.html at the repository root FIRST. Upload index.html LAST.
-3. Keep all older scripts and artwork. No dossiers are removed or duplicated.
+Use this App Files ZIP instead of earlier App Files ZIPs. Extract the flat ZIP, upload the JavaScript companions to the repository root beside index.html FIRST, then upload index.html LAST.
 
-This release preserves 917 dossiers, 10 movies, 150 trivia cards and nine Michael portrait choices. Brackett has one 2007 look and two 2009 looks in the existing remake dossier.
+All earlier portrait and Movie Images ZIPs remain valid, including the Brackett uniform add-on. No artwork changes or deletions are needed. Keep all old scripts and images.
+
+The full movie grid stays above a distinct selected-movie box containing the chosen cover, information, movie-info button and contrasting characters-below notice. Film filters, archival checkbox, full posters and reduced-motion scrolling remain available.
