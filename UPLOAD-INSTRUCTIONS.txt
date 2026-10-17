@@ -1,7 +1,7 @@
-Comic Vault v10.49: Real filming locations
+Comic Vault v10.49.1: Movie detail layout cleanup
 
 Use this cumulative App Files ZIP instead of earlier App Files ZIPs. Extract the flat ZIP. Upload JavaScript companions to the repository root beside index.html FIRST, then upload index.html LAST.
 
 All prior portrait and Movie Images ZIPs remain valid, including the Brackett uniform add-on. Keep all older scripts and images. No new artwork is required.
 
-All ten movie dossiers now separate sourced real filming sites from fictional story locations. Scene details are spoiler-gated; source links, evidence limits and access/status notes are included. Earlier dossiers, trivia, portraits, film snapshots and selected-poster resizing remain intact.
+Movie credits now use a separate full-width block; mobile dialog controls have safe-area clearance. Pointer/touch openings no longer leave a title focus ring, while keyboard focus stays visible. Real filming-location cards no longer have a green side rule; the teal characters-below cue remains unchanged. All dossiers, locations, trivia and artwork are preserved.
