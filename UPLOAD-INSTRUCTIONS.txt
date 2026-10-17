@@ -1,7 +1,7 @@
-Comic Vault v10.48.2: Selected movie layout
+Comic Vault v10.49: Real filming locations
 
-Use this App Files ZIP instead of earlier App Files ZIPs. Extract the flat ZIP, upload the JavaScript companions to the repository root beside index.html FIRST, then upload index.html LAST.
+Use this cumulative App Files ZIP instead of earlier App Files ZIPs. Extract the flat ZIP. Upload JavaScript companions to the repository root beside index.html FIRST, then upload index.html LAST.
 
-All earlier portrait and Movie Images ZIPs remain valid, including the Brackett uniform add-on. No artwork changes or deletions are needed. Keep all old scripts and images.
+All prior portrait and Movie Images ZIPs remain valid, including the Brackett uniform add-on. Keep all older scripts and images. No new artwork is required.
 
-The full movie grid stays above a distinct selected-movie box containing the chosen cover, information, movie-info button and contrasting characters-below notice. Film filters, archival checkbox, full posters and reduced-motion scrolling remain available.
+All ten movie dossiers now separate sourced real filming sites from fictional story locations. Scene details are spoiler-gated; source links, evidence limits and access/status notes are included. Earlier dossiers, trivia, portraits, film snapshots and selected-poster resizing remain intact.
