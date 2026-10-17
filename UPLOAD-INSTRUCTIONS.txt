@@ -1,7 +1,16 @@
-Comic Vault v10.49.1: Movie detail layout cleanup
+COMIC VAULT v10.50 - FRIDAY THE 13TH (1980)
 
-Use this cumulative App Files ZIP instead of earlier App Files ZIPs. Extract the flat ZIP. Upload JavaScript companions to the repository root beside index.html FIRST, then upload index.html LAST.
+Keep all existing files and artwork except the two explicitly replaced John Tate portrait files. This update adds one universe and its original movie without replacing the prior collections.
 
-All prior portrait and Movie Images ZIPs remain valid, including the Brackett uniform add-on. Keep all older scripts and images. No new artwork is required.
+1. Extract each ZIP. Upload the flat Friday portrait files into assets/characters. The separate John Tate Replacement ZIP also goes into assets/characters; replace halloween-john-tate.webp and halloween-john-tate.png.
+2. Upload friday-the-13th-1980.jpg into movie-covers. Preserve its JPG filename and extension.
+3. Upload friday13-universe-icon.png into assets/ui.
+4. Upload all JavaScript companions from the App Files ZIP into the site root, beside the existing index.html. In particular, vault-core-data-v10.50.js, friday13-data-v10.50.js and film-registry-v10.50.js are required new files.
+5. Upload index.html into the site root LAST. Replace the old index.html.
+6. Reload. Confirm the version badge says v10.50 and the Friday the 13th gateway opens the 1980 movie and 16 dossiers.
 
-Movie credits now use a separate full-width block; mobile dialog controls have safe-area clearance. Pointer/touch openings no longer leave a title focus ring, while keyboard focus stays visible. Real filming-location cards no longer have a green side rule; the teal characters-below cue remains unchanged. All dossiers, locations, trivia and artwork are preserved.
+Full character history now opens expanded by default. Collapse history returns to the selected film; Expand character history restores the complete account. Separate spoiler sections keep their existing collapsed defaults.
+
+The existing halloween-data-v10.48.1.js, movie-dossiers-v10.49.js, and clayface-data-v10.44.js remain required. Do not delete earlier assets or other site files.
+
+Checks: 933 dossiers across 8 universes; 170 Halloween dossiers and 10 Halloween films are retained. Friday the 13th adds 16 dossiers and 1 film. The 1980 Jason dossier covers only the child in the ending sequence, not the later adult hockey-mask incarnation. Its approved original film still is displayed in a black-backed frame at or below native size, not as a tall cutout.
