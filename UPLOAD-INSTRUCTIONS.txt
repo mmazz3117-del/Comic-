@@ -1,16 +1,47 @@
-COMIC VAULT v10.50 - FRIDAY THE 13TH (1980)
+COMIC VAULT v10.57 — SIX APPROVED FRIDAY NEWSPAPERS
 
-Keep all existing files and artwork except the two explicitly replaced John Tate portrait files. This update adds one universe and its original movie without replacing the prior collections.
+This replaces the held v10.55/v10.56 newspaper updates. Use only this v10.57 app ZIP and its matching Newspaper Images ZIP. Nothing has been deployed for you.
 
-1. Extract each ZIP. Upload the flat Friday portrait files into assets/characters. The separate John Tate Replacement ZIP also goes into assets/characters; replace halloween-john-tate.webp and halloween-john-tate.png.
-2. Upload friday-the-13th-1980.jpg into movie-covers. Preserve its JPG filename and extension.
-3. Upload friday13-universe-icon.png into assets/ui.
-4. Upload all JavaScript companions from the App Files ZIP into the site root, beside the existing index.html. In particular, vault-core-data-v10.50.js, friday13-data-v10.50.js and film-registry-v10.50.js are required new files.
-5. Upload index.html into the site root LAST. Replace the old index.html.
-6. Reload. Confirm the version badge says v10.50 and the Friday the 13th gateway opens the 1980 movie and 16 dossiers.
+WHAT IS INCLUDED
+- Friday the 13th (1980): six full illustrated newspapers in chronological order.
+- Before 1957: Mrs. Voorhees as camp cook (explicitly fan-imagined).
+- 1957 reported drowning; 1958 counselor killings; 1962 water setback.
+- Steve Christy's reopening preparations; the original film's aftermath.
+- 26 clickable printed articles. Open a story to enlarge the actual newspaper image; switch to Readable text for its exact transcript. Back returns to the same full paper.
+- Whole-paper fit by default, plus zoom controls, edition navigation, keyboard navigation and browser Back/Forward support.
 
-Full character history now opens expanded by default. Collapse history returns to the selected film; Expand character history restores the complete account. Separate spoiler sections keep their existing collapsed defaults.
+Only the original Friday movie has the newspaper section in this release. Halloween newspapers are not included or exposed; they are not being represented as finished. Existing movie information is unchanged.
 
-The existing halloween-data-v10.48.1.js, movie-dossiers-v10.49.js, and clayface-data-v10.44.js remain required. Do not delete earlier assets or other site files.
+UPLOAD ORDER — EXISTING GITHUB REPOSITORY
+1. Unzip Comic-Vault-v10.57-Newspaper-Images.zip.
+   Upload its assets folder at the repository root, keeping this exact structure:
+   assets/newspapers/friday13/[six PNG files]
+   Do not put the PNGs beside index.html or rename them. Merge with your existing assets folder; do not delete existing character art.
 
-Checks: 933 dossiers across 8 universes; 170 Halloween dossiers and 10 Halloween films are retained. Friday the 13th adds 16 dossiers and 1 film. The 1980 Jason dossier covers only the child in the ending sequence, not the later adult hockey-mask incarnation. Its approved original film still is displayed in a black-backed frame at or below native size, not as a tall cutout.
+2. Unzip Comic-Vault-v10.57-App-Files.zip.
+   Upload all .js and .css files from that ZIP to the repository root, where index.html already lives. Keep the filenames exactly as supplied.
+   The older version numbers on unchanged companion files are intentional.
+
+3. Upload index.html LAST, also at the repository root. This activates v10.57 only after the scripts, styles and six newspaper images are present.
+   UPLOAD-INSTRUCTIONS.txt is for you; uploading it is optional.
+
+4. Allow GitHub Pages to finish its normal deployment. Reload the site, using a hard refresh if needed, and confirm the visible version is v10.57.
+
+You do not have to reconcile individual files from v10.55 or v10.56. The new index uses only the v10.57 newspaper JS/CSS. Old unused press files may remain; no deletion is required.
+
+QUICK CHECK AFTER UPLOAD
+- Open Friday the 13th (1980), then its detailed movie information.
+- Choose Newspapers & Articles and unfold the archive.
+- Open the newspaper. The entire page, including bottom ads, should fit without initial scrolling.
+- Use the edition arrows/menu to visit all six papers.
+- Tap a story or use Choose an article. The printed clipping enlarges; scroll/swipe to pan at larger zoom.
+- Use Readable text for an exact transcript. Back to paper returns to the same edition.
+- Escape returns from an article to its paper, then closes the newspaper. Browser Back/Forward preserves these layers.
+
+PRESERVED
+All nine v10.54 companion files are included unchanged: all 938 dossiers, eight universes, character/movie data, artwork references, slideshow shuffle-without-repeats, controls visible before Play, full-screen slideshow and Abigail's v10.54 image cache keys. This update does not replace Abigail's separate approved image asset; keep/upload that separately if it is still pending.
+
+TESTING LIMIT
+JavaScript parsing, CSS/static checks, simulated DOM interaction tests and static desktop/mobile layout previews were used. This is not a claim of an actual-device browser test. Please run the quick check above after your upload, especially on your phone.
+
+No remote repository changes, automatic deployment or unrelated image replacements were made.
