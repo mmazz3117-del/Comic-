@@ -1,47 +1,12 @@
-COMIC VAULT v10.57 — SIX APPROVED FRIDAY NEWSPAPERS
+Comic Vault v10.62 — Halloween Kills
 
-This replaces the held v10.55/v10.56 newspaper updates. Use only this v10.57 app ZIP and its matching Newspaper Images ZIP. Nothing has been deployed for you.
+Unzip before uploading. Upload the contents, not the ZIP files.
 
-WHAT IS INCLUDED
-- Friday the 13th (1980): six full illustrated newspapers in chronological order.
-- Before 1957: Mrs. Voorhees as camp cook (explicitly fan-imagined).
-- 1957 reported drowning; 1958 counselor killings; 1962 water setback.
-- Steve Christy's reopening preparations; the original film's aftermath.
-- 26 clickable printed articles. Open a story to enlarge the actual newspaper image; switch to Readable text for its exact transcript. Back returns to the same full paper.
-- Whole-paper fit by default, plus zoom controls, edition navigation, keyboard navigation and browser Back/Forward support.
+1. Portrait files: assets/characters
+2. Cover JPG: movie-covers
+3. Newspaper PNGs: assets/newspapers/halloween
+4. App files: repository root. Upload every supplied JS and CSS file first, then index.html LAST.
 
-Only the original Friday movie has the newspaper section in this release. Halloween newspapers are not included or exposed; they are not being represented as finished. Existing movie information is unchanged.
+Wait for GitHub Pages publishing to finish between batches. Preserve all existing files. No folders or records need to be deleted.
 
-UPLOAD ORDER — EXISTING GITHUB REPOSITORY
-1. Unzip Comic-Vault-v10.57-Newspaper-Images.zip.
-   Upload its assets folder at the repository root, keeping this exact structure:
-   assets/newspapers/friday13/[six PNG files]
-   Do not put the PNGs beside index.html or rename them. Merge with your existing assets folder; do not delete existing character art.
-
-2. Unzip Comic-Vault-v10.57-App-Files.zip.
-   Upload all .js and .css files from that ZIP to the repository root, where index.html already lives. Keep the filenames exactly as supplied.
-   The older version numbers on unchanged companion files are intentional.
-
-3. Upload index.html LAST, also at the repository root. This activates v10.57 only after the scripts, styles and six newspaper images are present.
-   UPLOAD-INSTRUCTIONS.txt is for you; uploading it is optional.
-
-4. Allow GitHub Pages to finish its normal deployment. Reload the site, using a hard refresh if needed, and confirm the visible version is v10.57.
-
-You do not have to reconcile individual files from v10.55 or v10.56. The new index uses only the v10.57 newspaper JS/CSS. Old unused press files may remain; no deletion is required.
-
-QUICK CHECK AFTER UPLOAD
-- Open Friday the 13th (1980), then its detailed movie information.
-- Choose Newspapers & Articles and unfold the archive.
-- Open the newspaper. The entire page, including bottom ads, should fit without initial scrolling.
-- Use the edition arrows/menu to visit all six papers.
-- Tap a story or use Choose an article. The printed clipping enlarges; scroll/swipe to pan at larger zoom.
-- Use Readable text for an exact transcript. Back to paper returns to the same edition.
-- Escape returns from an article to its paper, then closes the newspaper. Browser Back/Forward preserves these layers.
-
-PRESERVED
-All nine v10.54 companion files are included unchanged: all 938 dossiers, eight universes, character/movie data, artwork references, slideshow shuffle-without-repeats, controls visible before Play, full-screen slideshow and Abigail's v10.54 image cache keys. This update does not replace Abigail's separate approved image asset; keep/upload that separately if it is still pending.
-
-TESTING LIMIT
-JavaScript parsing, CSS/static checks, simulated DOM interaction tests and static desktop/mobile layout previews were used. This is not a claim of an actual-device browser test. Please run the quick check above after your upload, especially on your phone.
-
-No remote repository changes, automatic deployment or unrelated image replacements were made.
+This update preserves prior films, adds Halloween Kills in the 1978/2018 continuity, and keeps the theatrical story separate from extended-cut notes. The five Kills dossiers marked Photo pending are Vanessa, Dennis, Deputy Sullivan, Deputy Tobias, and Laurie’s EMT (Trenell Mooring). Their dossiers remain accessible without a fabricated image. Guard Haskell’s existing Halloween (2018) Photo pending status is preserved separately.
