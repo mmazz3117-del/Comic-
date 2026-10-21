@@ -1,12 +1,17 @@
-Comic Vault v10.62 — Halloween Kills
+Comic Vault v10.63 — Friday the 13th Part III
 
-Unzip before uploading. Upload the contents, not the ZIP files.
+Unzip each archive first. Upload the extracted files, not the ZIPs.
+Keep all existing files and folders. Nothing needs to be deleted.
 
-1. Portrait files: assets/characters
-2. Cover JPG: movie-covers
-3. Newspaper PNGs: assets/newspapers/halloween
-4. App files: repository root. Upload every supplied JS and CSS file first, then index.html LAST.
+1. Character Images parts: upload every WEBP to assets/characters.
+2. Movie Cover: upload the JPG to movie-covers.
+3. Part III Newspapers: create assets/newspapers/friday13-part3 if needed, then upload the three PNGs there. This is a sibling of friday13 and friday13-part2, not inside either folder.
+4. App Files: upload ALL supplied JS and CSS files to the repository root, beside the existing index.html. Wait for publishing to finish. Upload the supplied index.html LAST, then wait for publishing again. UPLOAD-INSTRUCTIONS.txt is for you and need not be uploaded.
 
-Wait for GitHub Pages publishing to finish between batches. Preserve all existing files. No folders or records need to be deleted.
+Wait for the current GitHub Pages publishing queue to finish between each batch. Do not start another batch while the previous one is still publishing.
 
-This update preserves prior films, adds Halloween Kills in the 1978/2018 continuity, and keeps the theatrical story separate from extended-cut notes. The five Kills dossiers marked Photo pending are Vanessa, Dennis, Deputy Sullivan, Deputy Tobias, and Laurie’s EMT (Trenell Mooring). Their dossiers remain accessible without a fabricated image. Guard Haskell’s existing Halloween (2018) Photo pending status is preserved separately.
+The App Files archive is cumulative through v10.63, including v10.62 and the simpler whole-newspaper viewer. No intermediate app version is needed. Existing portraits, movie covers and the 45 earlier newspapers are preserved and must remain in their existing folders; they are not duplicated in these new-asset archives.
+
+This update adds Part III: the movie dossier, 21 new character records, 15 approved portraits including Jason's separate hockey-mask look, and three newspapers. Six minor credited on-screen roles have compact dossiers without invented portraits. The voice-only Newscaster is optional and has no on-screen likeness. Earlier Friday films and all other universes remain intact.
+
+No files have been published automatically.
